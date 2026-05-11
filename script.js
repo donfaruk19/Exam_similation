@@ -406,7 +406,7 @@ function shuffle(array) {
 function updateTimerDisplay() {
     const minutes = Math.floor(timeLeft / 60);
     const seconds = timeLeft % 60;
-    document.getElementById('timer').innerText = `Time: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    document.getElementById('exam-timer').innerText = `Time: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 }
 
 function startTimer() {

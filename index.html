@@ -44,9 +44,24 @@
             <div id="feedback" class="hidden"></div>
         </main>
         <footer>
-            <button id="submit-btn" onclick="checkAnswer()">Submit Answer</button>
-            <button id="next-btn" class="hidden" onclick="nextQuestion()">Next Question</button>
-        </footer>
+    <button id="flag-btn" onclick="toggleFlag()">Flag for Review</button>
+    <div>
+        <button id="submit-btn" onclick="checkAnswer()">Submit Answer</button>
+        <button id="next-btn" class="hidden" onclick="nextQuestion()">Next Question</button>
+    </div>
+</footer>
+
+<!-- New review screen -->
+<div id="review-screen" class="hidden">
+    <h2>Review Flagged Questions</h2>
+    <p>You flagged <span id="flag-count">0</span> questions.</p>
+    <div id="review-list"></div>
+    <div class="review-actions">
+        <button onclick="goToFlagged(0)">Go to First Flagged</button>
+        <button onclick="submitExam()">Submit Exam</button>
+        <button onclick="backToExam()">Back to Exam</button>
+    </div>
+</div>
     </div>
 
     <div id="result-screen" class="hidden">

@@ -386,15 +386,20 @@ const allModules = {
     ]
 };
 
-// --- TIMER & APP LOGIC ---
+// ===== IC3 GS6 Simulator Logic =====
+
+// State variables
 let activeQuestions = [];
 let currentQ = 0;
 let score = 0;
 let mode = '';
 let selectedIdx = null;
 let timerInterval;
-let timeLeft = 2700; // 45 Minutes
+let timeLeft = 2700; // 45 minutes
+let isPaused = false;
+let flaggedQuestions = [];
 
+// Utility: shuffle array
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -403,23 +408,33 @@ function shuffle(array) {
     return array;
 }
 
+// ===== Timer =====
 function updateTimerDisplay() {
     const minutes = Math.floor(timeLeft / 60);
     const seconds = timeLeft % 60;
-    document.getElementById('exam-timer').innerText = `Time: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    const timerEl = document.getElementById('exam-timer');
+
+    timerEl.innerText = `Time: ${minutes}:${seconds < 10? '0' : ''}${seconds}`;
+
+    // Warning at 5 minutes
+    if (timeLeft <= 300) {
+        timerEl.classList.add('warning');
+    }
 }
 
 function startTimer() {
     clearInterval(timerInterval);
-    timeLeft = 2700; 
+    if (!isPaused) timeLeft = 2700;
+    isPaused = false;
     updateTimerDisplay();
+
     timerInterval = setInterval(() => {
         timeLeft--;
         updateTimerDisplay();
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
             alert("Time is up!");
-            showResults();
+            showReviewScreen();
         }
     }, 1000);
 }
@@ -431,25 +446,40 @@ function quitToMenu() {
     }
 }
 
+// ===== Exam Flow =====
 function startApp(selectedMode) {
+    // Basic anti-cheat
+    window.history.pushState(null, "", window.location.href);
+    window.onpopstate = () => window.history.pushState(null, "", window.location.href);
+    document.addEventListener('contextmenu', e => e.preventDefault());
+
     const moduleKey = document.getElementById('module-select').value;
     mode = selectedMode;
     activeQuestions = shuffle([...allModules[moduleKey]]);
-    
+
     document.getElementById('setup-screen').classList.add('hidden');
     document.getElementById('exam-container').classList.remove('hidden');
     document.getElementById('module-title').innerText = document.getElementById('module-select').selectedOptions[0].text;
-    
+
     currentQ = 0;
     score = 0;
+    flaggedQuestions = [];
     startTimer();
     loadQuestion();
 }
 
 function loadQuestion() {
     const q = activeQuestions[currentQ];
+
+    // Update question text
     document.getElementById('q-number').innerText = `Question ${currentQ + 1} of ${activeQuestions.length}`;
     document.getElementById('q-text').innerText = q.q;
+
+    // Update progress bar
+    const progress = ((currentQ + 1) / activeQuestions.length) * 100;
+    document.getElementById('progress-fill').style.width = progress + '%';
+
+    // Clear old options
     const container = document.getElementById('options-container');
     container.innerHTML = '';
     document.getElementById('feedback').classList.add('hidden');
@@ -457,6 +487,18 @@ function loadQuestion() {
     document.getElementById('submit-btn').classList.remove('hidden');
     selectedIdx = null;
 
+    // Update flag button state
+    const flagBtn = document.getElementById('flag-btn');
+    const questionArea = document.getElementById('question-area');
+    if (flaggedQuestions.includes(currentQ)) {
+        flagBtn.textContent = "Unflag Question";
+        questionArea.classList.add('flagged');
+    } else {
+        flagBtn.textContent = "Flag for Review";
+        questionArea.classList.remove('flagged');
+    }
+
+    // Create answer buttons
     q.a.forEach((opt, index) => {
         const btn = document.createElement('button');
         btn.innerText = opt;
@@ -474,6 +516,7 @@ function selectOption(idx) {
 
 function checkAnswer() {
     if (selectedIdx === null) return alert("Select an answer!");
+
     const q = activeQuestions[currentQ];
     const isCorrect = selectedIdx === q.cor;
     if (isCorrect) score++;
@@ -481,8 +524,8 @@ function checkAnswer() {
     if (mode === 'training') {
         const f = document.getElementById('feedback');
         f.classList.remove('hidden');
-        f.className = isCorrect ? 'correct-box' : 'wrong-box';
-        f.innerHTML = `<strong>${isCorrect ? 'Correct!' : 'Incorrect.'}</strong><br>${q.exp}`;
+        f.className = isCorrect? 'correct-box' : 'wrong-box';
+        f.innerHTML = `<strong>${isCorrect? 'Correct!' : 'Incorrect.'}</strong><br>${q.exp}`;
         document.getElementById('submit-btn').classList.add('hidden');
         document.getElementById('next-btn').classList.remove('hidden');
     } else {
@@ -495,20 +538,97 @@ function nextQuestion() {
     if (currentQ < activeQuestions.length) {
         loadQuestion();
     } else {
-        clearInterval(timerInterval);
-        showResults();
+        showReviewScreen();
     }
 }
 
+// ===== Flag & Review System =====
+function toggleFlag() {
+    const idx = currentQ;
+    const flagBtn = document.getElementById('flag-btn');
+    const questionArea = document.getElementById('question-area');
+
+    if (flaggedQuestions.includes(idx)) {
+        flaggedQuestions = flaggedQuestions.filter(i => i!== idx);
+        flagBtn.textContent = "Flag for Review";
+        questionArea.classList.remove('flagged');
+    } else {
+        flaggedQuestions.push(idx);
+        flagBtn.textContent = "Unflag Question";
+        questionArea.classList.add('flagged');
+    }
+    updateFlagCount();
+}
+
+function updateFlagCount() {
+    document.getElementById('flag-count').textContent = flaggedQuestions.length;
+}
+
+function showReviewScreen() {
+    clearInterval(timerInterval);
+    document.getElementById('exam-container').classList.add('hidden');
+    document.getElementById('review-screen').classList.remove('hidden');
+
+    const list = document.getElementById('review-list');
+    list.innerHTML = '';
+
+    if (flaggedQuestions.length === 0) {
+        list.innerHTML = '<p>No questions flagged. Ready to submit.</p>';
+    } else {
+        flaggedQuestions.sort((a, b) => a - b).forEach(idx => {
+            const item = document.createElement('div');
+            item.className = 'review-item';
+            item.innerHTML = `<span>Question ${idx + 1}</span><span>Click to review</span>`;
+            item.onclick = () => goToFlagged(flaggedQuestions.indexOf(idx));
+            list.appendChild(item);
+        });
+    }
+    updateFlagCount();
+}
+
+function goToFlagged(flaggedIndex) {
+    currentQ = flaggedQuestions[flaggedIndex];
+    document.getElementById('review-screen').classList.add('hidden');
+    document.getElementById('exam-container').classList.remove('hidden');
+    startTimer();
+    loadQuestion();
+}
+
+function backToExam() {
+    document.getElementById('review-screen').classList.add('hidden');
+    document.getElementById('exam-container').classList.remove('hidden');
+    startTimer();
+}
+
+function submitExam() {
+    document.getElementById('review-screen').classList.add('hidden');
+    showResults();
+}
+
 function showResults() {
+    clearInterval(timerInterval);
+    document.getElementById('review-screen').classList.add('hidden');
     document.getElementById('exam-container').classList.add('hidden');
     document.getElementById('result-screen').classList.remove('hidden');
+
     const percent = Math.round((score / activeQuestions.length) * 100);
-    const passStatus = percent >= 70 ? "PASSED" : "FAILED";
+    const passStatus = percent >= 70? "PASSED" : "FAILED";
+
     document.getElementById('final-score').innerHTML = `
-        <h2 style="color: ${percent >= 70 ? 'green' : 'red'}">${passStatus}</h2>
+        <h2 style="color: ${percent >= 70? 'green' : 'red'}">${passStatus}</h2>
         <h1>${percent}%</h1>
         <p>Correct: ${score} | Total: ${activeQuestions.length}</p>
+        <p>Flagged: ${flaggedQuestions.length}</p>
         <button onclick="location.reload()">Back to Menu</button>
     `;
 }
+
+// ===== Tab Pause =====
+document.addEventListener("visibilitychange", () => {
+    if (document.hidden && timerInterval) {
+        clearInterval(timerInterval);
+        isPaused = true;
+    } else if (!document.hidden && mode && timeLeft > 0) {
+        startTimer();
+    }
+});

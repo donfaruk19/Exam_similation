@@ -306,15 +306,94 @@ const allModules = {
         { q: "What does 'Print to PDF' do?", a: ["Sends a document to a physical printer", "Creates a digital PDF file instead of a paper copy", "Prints a photo of a PDF", "Deletes the printer"], cor: 1, exp: "Printing to PDF is a way to 'Save As' a PDF from any program." },
         { q: "What is the 'Quick Access Toolbar'?", a: ["The Start Menu", "A customizable toolbar for frequently used commands", "The Taskbar", "The Recycle Bin"], cor: 1, exp: "It is usually at the very top of the window and holds shortcuts like Save and Undo." },
         { q: "Which key is used to exit a PowerPoint Slide Show?", a: ["Enter", "Esc", "Tab", "Shift"], cor: 1, exp: "The Escape (Esc) key stops the presentation and returns to the edit screen." }
+    ],
+    lesson5: [
+        { q: "What is an online journal where a creator posts articles and others comment?", a: ["Wiki", "Blog", "Podcast", "Portal"], cor: 1, exp: "Blogs are online journals used for sharing opinions and information on specific topics." },
+        { q: "What is the term for the amount of visitors a blog or website receives?", a: ["Bandwidth", "Traffic", "Streaming", "Ping"], cor: 1, exp: "Traffic refers to the volume of users visiting a digital platform." },
+        { q: "What does 'RSS' (Real Simple Syndication) allow users to do?", a: ["Chat in real-time", "Subscribe to and receive automatic updates from websites", "Edit a wiki", "Post a video"], cor: 1, exp: "RSS feeds notify subscribers of new content as it occurs." },
+        { q: "Which medium is described as 'radio on demand'?", a: ["Blog", "Streaming", "Podcast", "SMS"], cor: 2, exp: "Podcasts are digital audio or video series available for download or streaming." },
+        { q: "What is 'Streaming'?", a: ["Downloading a file completely before playing", "Receiving and playing media content simultaneously", "Sending an email attachment", "Deleting temporary files"], cor: 1, exp: "Streaming allows you to intake media while it is being delivered over the internet." },
+        { q: "Which platform is specifically mentioned as welcoming 'vlogs'?", a: ["Excel", "YouTube", "Wikipedia", "Outlook"], cor: 1, exp: "YouTube is a primary platform for video blogs (vlogs)." },
+        { q: "What is a 'Wiki'?", a: ["A private email server", "A collaborative website where anyone can add or edit content", "A type of podcast", "A hardware component"], cor: 1, exp: "Wikis enable collective information management and editing." },
+        { q: "To interact with someone in a digital environment, what is generally required first?", a: ["A credit card", "An account for access", "A printer", "A new monitor"], cor: 1, exp: "Most digital environments require a user account to post or interact." },
+        { q: "Which email command sends a reply ONLY to the original sender?", a: ["Reply to All", "Forward", "Reply", "Bcc"], cor: 2, exp: "The 'Reply' function goes back only to the person who sent the message." },
+        { q: "What does 'Cc' stand for in an email?", a: ["Computer Copy", "Carbon Copy", "Contact Creator", "Correct Content"], cor: 1, exp: "Cc is used to send a copy to someone for informational purposes." },
+        { q: "Which field should you use to send a copy of an email without other recipients knowing?", a: ["To", "Cc", "Bcc", "Subject"], cor: 2, exp: "Bcc (Blind Carbon Copy) hides the recipient's address from everyone else." },
+        { q: "What does 'Forward' do in email communication?", a: ["Sends a copy of a received message to a new person", "Deletes the message", "Replies to everyone in the thread", "Moves the message to the trash"], cor: 0, exp: "Forwarding sends a copy of the existing message to a different recipient." },
+        { q: "What should you do before posting comments on a social network?", a: ["Use all capital letters", "Be thoughtful and consider how it reflects on your identity", "Include your home address", "Nothing, it's anonymous"], cor: 1, exp: "Online posts reflect your digital identity and reputation." },
+        { q: "When viewing diverse opinions online, what is the best practice?", a: ["Respond in a negative manner", "Be inclusive and demonstrate respect", "Judge the author immediately", "Report every post you disagree with"], cor: 1, exp: "Respect and inclusivity are key to professional digital citizenship." },
+        { q: "What is 'Digital Communication'?", a: ["Face-to-face talking", "Exchanging info through electronic formats", "Writing a letter by hand", "Reading a paper book"], cor: 1, exp: "Digital communication involves sharing info via devices and networks." },
+        { q: "Which tool is best for real-time (synchronous) communication?", a: ["Email", "Instant Messaging (IM)", "Blog post", "Wiki edit"], cor: 1, exp: "IM allows for instant, back-and-forth conversation." },
+        { q: "True or False: Authors of blogs and wikis always have expert qualifications.", a: ["True", "False"], cor: 1, exp: "False. Anyone can contribute to blogs or wikis, so credibility must be checked." },
+        { q: "What is a common use for the 'To' field in an email?", a: ["To hide the sender", "To identify the primary recipient(s)", "To list people who don't need to reply", "To add an attachment"], cor: 1, exp: "The 'To' field is for the people the message is directly intended for." },
+        { q: "Why should you use 'inclusive language' online?", a: ["To make the email shorter", "To demonstrate respect for a variety of cultures and beliefs", "To bypass spam filters", "To hide your identity"], cor: 1, exp: "Inclusive language fosters a respectful and professional digital environment." },
+        { q: "What is the main advantage of a Podcast over live radio?", a: ["It requires more battery", "It can be listened to on-demand at any time", "It is always in 3D", "It doesn't use the internet"], cor: 1, exp: "Podcasts offer flexibility to listen whenever the user chooses." },
+        { q: "In email, what is a 'Thread'?", a: ["A type of cable", "A sequence of messages forming a conversation", "A security virus", "A font style"], cor: 1, exp: "Threads group related email replies together." },
+        { q: "Which of these is a form of digital expression?", a: ["Vlogging", "Podcasting", "Posting on social media", "All of the above"], cor: 3, exp: "All these methods allow individuals to express ideas digitally." },
+        { q: "What is a 'Vlog'?", a: ["A voice log", "A video-based blog", "A virus log", "A vertical log"], cor: 1, exp: "Vlogs use video as the primary medium for journaling or reporting." },
+        { q: "What is 'Netiquette'?", a: ["Internet speed", "The rules for polite and correct behavior online", "A type of web browser", "Network security software"], cor: 1, exp: "Netiquette is the etiquette of the internet." },
+        { q: "Which action is most likely to help your digital reputation?", a: ["Posting angry comments", "Sharing helpful, respectful content", "Oversharing private details", "Ignoring all messages"], cor: 1, exp: "Positive interaction builds a strong digital reputation." },
+        { q: "What does the '@' symbol in an email address do?", a: ["Encrypts the message", "Separates the username from the domain name", "Identifies the subject", "Marks the message as urgent"], cor: 1, exp: "The @ symbol is the standard separator for email addresses." },
+        { q: "What is a 'Handle' in social media?", a: ["The mouse", "Your unique username (e.g., @User)", "A private message", "A type of link"], cor: 1, exp: "A handle identifies you uniquely on a social platform." },
+        { q: "What should you check to verify a blog's authority?", a: ["The background color", "The author's credentials and site traffic", "The number of images", "The length of the URL"], cor: 1, exp: "Authority is determined by the author's expertise and site reliability." },
+        { q: "If you want to reply to everyone listed in an email, which button do you use?", a: ["Reply", "Forward", "Reply to All", "Send"], cor: 2, exp: "Reply to All includes everyone in the To and Cc fields." },
+        { q: "What is an 'Attachment' in communication?", a: ["An emoji", "A file sent along with an email or IM", "The subject line", "A user profile"], cor: 1, exp: "Attachments allow you to share external files like PDFs or images." },
+        { q: "Which is a characteristic of a Wiki?", a: ["Only one person can write on it", "It is always factually perfect", "It allows collaborative editing by many users", "It is a type of hardware"], cor: 2, exp: "Collaborative editing is the core feature of a wiki." },
+        { q: "What does it mean if a blog has high 'Traffic'?", a: ["It is blocked", "It has many visitors", "It is very slow", "It has many typos"], cor: 1, exp: "High traffic means the blog is popular or widely read." },
+        { q: "What is a 'Syndicated' feed?", a: ["A deleted feed", "Content delivered automatically to subscribers (like RSS)", "A paid advertisement", "A private message"], cor: 1, exp: "Syndicated feeds push updates to users automatically." },
+        { q: "Why is 'Bcc' useful for privacy?", a: ["It makes the email smaller", "Recipients cannot see each other's email addresses", "It encrypts the text", "It blocks spam"], cor: 1, exp: "Bcc prevents the disclosure of the recipient list." },
+        { q: "When is 'Forward' most appropriate?", a: ["When you want to reply to the sender", "When you want to share a received message with a third party", "When you want to delete a message", "When you are angry"], cor: 1, exp: "Forwarding passes information to someone not originally on the email." },
+        { q: "What is a 'Social Network'?", a: ["A group of physical computers", "An online platform for building social relations and sharing content", "A type of internet cable", "A virus"], cor: 1, exp: "Social networks like LinkedIn or Facebook facilitate digital interaction." },
+        { q: "What is 'Digital Citizenship'?", a: ["Living in a computer", "The responsible use of technology by anyone who uses it", "Owning many devices", "Working as a computer repair person"], cor: 1, exp: "Digital citizenship covers safety, etiquette, and responsibility online." },
+        { q: "Which of these is 'Asynchronous' communication?", a: ["Phone call", "Email", "Video chat", "Face-to-face"], cor: 1, exp: "Email is asynchronous because there is a time gap between sending and receiving." },
+        { q: "Which of these is 'Synchronous' communication?", a: ["Email", "Blog comment", "Live Instant Messaging", "Letter"], cor: 2, exp: "Live chat/IM happens in real-time." },
+        { q: "What can 'Oversharing' lead to?", a: ["Better privacy", "Reputation damage and security risks", "Faster downloads", "More RAM"], cor: 1, exp: "Posting too much personal info exposes you to various digital risks." },
+        { q: "What is the 'Subject' line in an email used for?", a: ["Writing the whole message", "A brief summary of what the email is about", "Listing the recipients", "Adding an attachment"], cor: 1, exp: "The subject line tells the reader the topic of the message." },
+        { q: "What is a 'Signature' in email?", a: ["A handwritten name on the screen", "A pre-set block of text with your contact info at the end of an email", "A password", "A digital virus"], cor: 1, exp: "Signatures provide professional contact details automatically." },
+        { q: "What is the purpose of 'Moderation' in a digital forum?", a: ["To delete all posts", "To review and approve comments to maintain a respectful environment", "To speed up the internet", "To sell products"], cor: 1, exp: "Moderation prevents harassment and off-topic content." },
+        { q: "What is 'VoIP' (Voice over IP)?", a: ["A video file", "Making voice calls over the internet", "A type of printer", "A secure email"], cor: 1, exp: "VoIP (like Skype/WhatsApp calls) uses data networks for voice." },
+        { q: "What is 'Multimedia'?", a: ["Just text", "Just audio", "A combination of text, audio, images, and video", "A type of hardware"], cor: 2, exp: "Multimedia uses multiple forms of content." },
+        { q: "What is 'Presence' in a chat app?", a: ["A gift", "Status icons showing if a user is online or busy", "A fast connection", "The user's real name"], cor: 1, exp: "Presence indicators show availability." },
+        { q: "What should you do if you receive an inappropriate email?", a: ["Forward it to everyone", "Reply with an insult", "Follow company/school policy (report or delete)", "Save it as your wallpaper"], cor: 2, exp: "Proper response involves following established safety/professional guidelines." },
+        { q: "Why check 'Traffic' on a site you use for research?", a: ["To see if it is pretty", "To gauge the site's popularity and potential reliability", "To change the site's content", "To buy the site"], cor: 1, exp: "High traffic can suggest a site is a recognized resource, though not always accurate." },
+        { q: "What is 'Tone' in digital communication?", a: ["The volume of the speakers", "The attitude or emotion conveyed through writing", "The color of the font", "The speed of typing"], cor: 1, exp: "Tone is critical in text because body language is missing." },
+        { q: "Which of these is a 'Professional' email practice?", a: ["Using all caps", "Using a clear subject line and proper grammar", "Using many emojis in a business letter", "Not signing your name"], cor: 1, exp: "Clarity and grammar are essential for professional communication." },
+        { q: "What is 'Streaming Media'?", a: ["A DVD", "Video or audio consumed while it is being delivered", "A printout", "A file on a USB drive"], cor: 1, exp: "Streaming occurs in real-time without a permanent download required first." },
+        { q: "What is a 'Podcast Episode'?", a: ["A single recording within a podcast series", "A type of email", "A computer monitor", "A social media 'like'"], cor: 0, exp: "Episodes are individual parts of a larger podcast series." },
+        { q: "How can 'Blogs' help your career?", a: ["By letting you play games", "By establishing you as an authority on a subject", "By increasing your typing speed", "By deleting your digital footprint"], cor: 1, exp: "Sharing expertise on a blog builds a professional brand." },
+        { q: "What is 'Collaboration' in a digital context?", a: ["Working alone", "Multiple people working together using digital tools", "Stealing code", "Buying a computer"], cor: 1, exp: "Tools like wikis and shared docs enable collaboration." },
+        { q: "What is 'Cloud-based' communication?", a: ["Using a weather app", "Communication tools hosted on the internet (e.g., Slack, Teams)", "A physical server in your room", "A type of radio"], cor: 1, exp: "Cloud tools are accessible from anywhere via the web." },
+        { q: "In the context of Lesson 5, what is a 'Bulletin Board System' (BBS)?", a: ["A wooden board", "An early electronic message board for public discussion", "A modern smartphone", "A type of printer"], cor: 1, exp: "BBS was a precursor to modern social media and forums." },
+        { q: "What is 'Spam'?", a: ["A virus", "Unsolicited or junk email", "A type of attachment", "A secure login"], cor: 1, exp: "Spam is unwanted bulk messaging." },
+        { q: "What does 'Reply to All' include?", a: ["Only the sender", "Only the Cc recipients", "The sender and everyone in the To and Cc fields", "Everyone in the world"], cor: 2, exp: "Reply to All is broad communication within the existing group." },
+        { q: "What is an 'Emoji' used for?", a: ["To speed up the CPU", "To convey emotion or tone in digital text", "To secure a password", "To print a file"], cor: 1, exp: "Emojis help provide the emotional context that text lacks." },
+        { q: "Why is 'Context' important in digital messages?", a: ["It makes the file bigger", "It helps the recipient understand the meaning and intent", "It changes the font", "It is a type of hardware"], cor: 1, exp: "Without context, text messages can be easily misunderstood." },
+        { q: "Which of these is a 'Messaging' app?", a: ["WhatsApp", "Excel", "Photoshop", "PowerPoint"], cor: 0, exp: "WhatsApp is a primary example of a messaging tool." },
+        { q: "What is 'Video Conferencing'?", a: ["Watching a movie", "Live, visual connection between two or more people via the internet", "Sending a video in email", "A type of webcam"], cor: 1, exp: "Conferencing allows for remote face-to-face meetings." },
+        { q: "What is 'Cyberbullying'?", a: ["Fixing a computer", "Using digital means to harass, threaten, or intimidate someone", "A type of software", "An internet speed test"], cor: 1, exp: "Cyberbullying is a violation of digital citizenship." },
+        { q: "What does 'Inclusive' mean online?", a: ["Excluding people you don't like", "Ensuring content and interactions are accessible and respectful to all", "Only using one language", "Blocking all comments"], cor: 1, exp: "Inclusivity ensures a welcoming environment for diverse users." },
+        { q: "What is the 'Domain' in 'user@gmail.com'?", a: ["user", "@", "gmail.com", ".com"], cor: 2, exp: "The domain follows the @ symbol and identifies the mail service." },
+        { q: "What is 'Instant' about Instant Messaging?", a: ["The set up", "The delivery of the message in real-time", "The way you type", "The cost"], cor: 1, exp: "IM is characterized by immediate transmission." },
+        { q: "True or False: A blog post is a permanent part of your digital footprint.", a: ["True", "False"], cor: 0, exp: "True. Even if deleted, copies may exist or have been seen." },
+        { q: "What is 'Multimedia Intaking'?", a: ["Deleting files", "Consuming content like video, audio, and text", "Building a computer", "Writing code"], cor: 1, exp: "Intaking refers to viewing or listening to shared media." },
+        { q: "What is a 'News Feed'?", a: ["A type of printer", "A list of newly published content or news stories", "A security alert", "A hardware part"], cor: 1, exp: "Feeds keep users updated on new information." },
+        { q: "Which field should you use if you want to 'inform' someone but don't need a reply?", a: ["To", "Cc", "Subject", "Forward"], cor: 1, exp: "Cc is traditionally used for 'FYI' (For Your Information) purposes." },
+        { q: "What is 'Digital Expression'?", a: ["Drawing on paper", "Sharing ideas and creativity through digital platforms", "A facial expression", "A mathematical formula"], cor: 1, exp: "Expression involves using tools like blogs and podcasts to share thoughts." },
+        { q: "What is a 'Portal'?", a: ["A type of door", "A website that acts as a gateway to other sites and services", "A virus", "A computer case"], cor: 1, exp: "Portals aggregate various links and tools in one place." },
+        { q: "What is 'Digital Etiquette'?", a: ["Fast typing", "Another word for Netiquette", "Buying digital goods", "Fixing a router"], cor: 1, exp: "Etiquette refers to the standards of conduct online." },
+        { q: "Why check the 'Last Updated' date on a blog?", a: ["To see the colors", "To ensure the information is current and relevant", "To see the author's age", "To check the site's price"], cor: 1, exp: "Communication and facts change; currency is vital for accuracy." },
+        { q: "What is the 'Golden Rule' of digital communication?", a: ["Type fast", "Treat others as you would want to be treated", "Never use punctuation", "Always use BCC"], cor: 1, exp: "Respect is the foundation of all positive digital interaction." }
     ]
 };
 
-// Logic for Shuffle, Menu, and App initialization
+// --- TIMER & APP LOGIC ---
 let activeQuestions = [];
 let currentQ = 0;
 let score = 0;
 let mode = '';
 let selectedIdx = null;
+let timerInterval;
+let timeLeft = 2700; // 45 Minutes
 
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -324,15 +403,46 @@ function shuffle(array) {
     return array;
 }
 
+function updateTimerDisplay() {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    document.getElementById('timer').innerText = `Time: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+}
+
+function startTimer() {
+    clearInterval(timerInterval);
+    timeLeft = 2700; 
+    updateTimerDisplay();
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        updateTimerDisplay();
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            alert("Time is up!");
+            showResults();
+        }
+    }, 1000);
+}
+
+function quitToMenu() {
+    if (confirm("Are you sure you want to quit? Your progress will be lost.")) {
+        clearInterval(timerInterval);
+        location.reload();
+    }
+}
+
 function startApp(selectedMode) {
     const moduleKey = document.getElementById('module-select').value;
     mode = selectedMode;
     activeQuestions = shuffle([...allModules[moduleKey]]);
+    
     document.getElementById('setup-screen').classList.add('hidden');
     document.getElementById('exam-container').classList.remove('hidden');
     document.getElementById('module-title').innerText = document.getElementById('module-select').selectedOptions[0].text;
+    
     currentQ = 0;
     score = 0;
+    startTimer();
     loadQuestion();
 }
 
@@ -385,6 +495,7 @@ function nextQuestion() {
     if (currentQ < activeQuestions.length) {
         loadQuestion();
     } else {
+        clearInterval(timerInterval);
         showResults();
     }
 }
@@ -397,6 +508,7 @@ function showResults() {
     document.getElementById('final-score').innerHTML = `
         <h2 style="color: ${percent >= 70 ? 'green' : 'red'}">${passStatus}</h2>
         <h1>${percent}%</h1>
-        <p>You answered ${score} out of ${activeQuestions.length} correctly.</p>
+        <p>Correct: ${score} | Total: ${activeQuestions.length}</p>
+        <button onclick="location.reload()">Back to Menu</button>
     `;
 }

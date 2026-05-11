@@ -309,8 +309,7 @@ const allModules = {
     ]
 };
 
-// --- APP LOGIC (Shuffle, Initialization, Navigation) ---
-
+// Logic for Shuffle, Menu, and App initialization
 let activeQuestions = [];
 let currentQ = 0;
 let score = 0;
@@ -328,14 +327,10 @@ function shuffle(array) {
 function startApp(selectedMode) {
     const moduleKey = document.getElementById('module-select').value;
     mode = selectedMode;
-    
-    // Copy and Shuffle
     activeQuestions = shuffle([...allModules[moduleKey]]);
-    
     document.getElementById('setup-screen').classList.add('hidden');
     document.getElementById('exam-container').classList.remove('hidden');
     document.getElementById('module-title').innerText = document.getElementById('module-select').selectedOptions[0].text;
-    
     currentQ = 0;
     score = 0;
     loadQuestion();
@@ -368,7 +363,7 @@ function selectOption(idx) {
 }
 
 function checkAnswer() {
-    if (selectedIdx === null) return alert("Please select an answer.");
+    if (selectedIdx === null) return alert("Select an answer!");
     const q = activeQuestions[currentQ];
     const isCorrect = selectedIdx === q.cor;
     if (isCorrect) score++;
@@ -401,7 +396,7 @@ function showResults() {
     const passStatus = percent >= 70 ? "PASSED" : "FAILED";
     document.getElementById('final-score').innerHTML = `
         <h2 style="color: ${percent >= 70 ? 'green' : 'red'}">${passStatus}</h2>
-        <h1>Score: ${percent}%</h1>
-        <p>You got ${score} out of ${activeQuestions.length} correct.</p>
+        <h1>${percent}%</h1>
+        <p>You answered ${score} out of ${activeQuestions.length} correctly.</p>
     `;
 }

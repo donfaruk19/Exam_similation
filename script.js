@@ -229,10 +229,88 @@ const allModules = {
         { q: "What is a 'Paraphrase'?", a: ["Copying word-for-word", "Rewriting someone else's ideas in your own words", "Deleting a sentence", "A type of password"], cor: 1, exp: "Paraphrasing still requires a source citation even if the words are yours." },
         { q: "Which search tool is best for finding scholarly articles?", a: ["Social Media", "Google Scholar", "YouTube", "A personal blog"], cor: 1, exp: "Scholarly search engines focus on peer-reviewed and academic papers." },
         { q: "What is the primary goal of Information Management?", a: ["To buy more hard drives", "To make sure information is accurate, organized, and accessible", "To delete all old emails", "To browse social media"], cor: 1, exp: "Effective management ensures data is useful and reachable." }
+    ],
+    lesson4: [
+        { q: "What is a 'Template' in Microsoft Office?", a: ["A type of computer virus", "A pre-designed document used to create new ones quickly", "A blank white page", "The save button"], cor: 1, exp: "Templates are standard forms or documents with pre-designed elements." },
+        { q: "Which view in Office applications allows you to manage files (Save, Print, Share)?", a: ["Edit View", "Review View", "Backstage View", "Web View"], cor: 2, exp: "Backstage View contains commands that relate to the entire file." },
+        { q: "What is the purpose of a 'ScreenTip'?", a: ["To clean the monitor", "To identify a button and its function when hovering", "To change the screen brightness", "To show a video tutorial"], cor: 1, exp: "Hovering over a button displays a ScreenTip identifying the command." },
+        { q: "Which keyboard shortcut is used to 'Undo' an action?", a: ["Ctrl + Y", "Ctrl + Z", "Ctrl + U", "Ctrl + X"], cor: 1, exp: "Ctrl + Z is the universal shortcut to undo the last action." },
+        { q: "Which keyboard shortcut is used to 'Redo' an action?", a: ["Ctrl + R", "Ctrl + Z", "Ctrl + Y", "Ctrl + P"], cor: 2, exp: "Ctrl + Y is used to redo an action that was undone." },
+        { q: "What does the 'Find and Replace' tool do?", a: ["Deletes the entire document", "Locates specific text and replaces it with new text", "Changes the font color", "Saves the file"], cor: 1, exp: "Find and Replace automates the process of updating specific words throughout a file." },
+        { q: "In Word, what is the default file extension?", a: [".txt", ".pdf", ".docx", ".xlsx"], cor: 2, exp: "Microsoft Word documents use the .docx extension." },
+        { q: "Which feature allows you to see how a document will look on paper before printing?", a: ["Draft View", "Print Preview", "Outline View", "Read Mode"], cor: 1, exp: "Print Preview shows the layout as it will appear when printed." },
+        { q: "What is the shortcut to 'Save' a document?", a: ["Ctrl + S", "Ctrl + V", "Ctrl + P", "Ctrl + N"], cor: 0, exp: "Ctrl + S is the shortcut for Save." },
+        { q: "Which command should you use to save a copy of a file with a NEW name?", a: ["Save", "Export", "Save As", "Share"], cor: 2, exp: "Save As allows you to create a separate copy with a different name or location." },
+        { q: "What is the shortcut to 'Print' a document?", a: ["Ctrl + P", "Ctrl + Shift + P", "Alt + P", "Ctrl + Print"], cor: 0, exp: "Ctrl + P opens the print dialog." },
+        { q: "In PowerPoint, what is a single page of a presentation called?", a: ["Sheet", "Frame", "Slide", "Canvas"], cor: 2, exp: "Individual pages in a presentation are called slides." },
+        { q: "Which PowerPoint view is best for seeing all slides as thumbnails?", a: ["Slide Show", "Slide Sorter", "Notes Page", "Reading View"], cor: 1, exp: "Slide Sorter allows you to see all slides and rearrange them easily." },
+        { q: "What is a 'Placeholder' in PowerPoint?", a: ["A blank slide", "A box with dotted borders where you enter text or images", "A type of transition", "The file name"], cor: 1, exp: "Placeholders hold specific content like titles, body text, or charts." },
+        { q: "Which key starts a PowerPoint slide show from the beginning?", a: ["F1", "F5", "F10", "F12"], cor: 1, exp: "F5 is the shortcut to start a presentation from slide one." },
+        { q: "What is a 'Transition' in PowerPoint?", a: ["Moving a picture", "The visual effect between two slides", "Changing the font size", "A way to save the file"], cor: 1, exp: "Transitions are the animations that occur when moving from one slide to the next." },
+        { q: "What is an 'Animation' in PowerPoint?", a: ["The movement of objects ON a slide", "Moving from slide 1 to slide 2", "Printing the slides", "The background color"], cor: 0, exp: "Animations control the movement of text, images, or shapes on a single slide." },
+        { q: "What does 'AutoSave' do?", a: ["Deletes old files", "Saves your changes automatically to the cloud every few seconds", "Prints the file automatically", "Checks for spelling errors"], cor: 1, exp: "AutoSave prevents data loss by saving work in real-time to OneDrive or SharePoint." },
+        { q: "Why is it important to 'Back Up' your work?", a: ["To make the computer faster", "To ensure you have a copy if the original is lost or damaged", "To hide files from others", "To reduce file size"], cor: 1, exp: "Backups protect your data from hardware failure or accidental deletion." },
+        { q: "What is a 'Cloud Backup'?", a: ["Saving a file to a USB", "Saving files to remote servers via the internet", "Printing a hard copy", "Saving to the Desktop"], cor: 1, exp: "Cloud backups (like OneDrive) allow access from any device with internet." },
+        { q: "Which of these is an example of an 'Attribute' of text?", a: ["File size", "Bold, Italic, and Underline", "The keyboard used", "The computer brand"], cor: 1, exp: "Attributes describe the style or appearance of text." },
+        { q: "What is 'Portrait' orientation?", a: ["Wide layout", "Tall layout (vertical)", "Circular layout", "Diagonal layout"], cor: 1, exp: "Portrait is taller than it is wide; it is the default for most documents." },
+        { q: "What is 'Landscape' orientation?", a: ["Vertical layout", "Horizontal layout (wide)", "Square layout", "Small layout"], cor: 1, exp: "Landscape is wider than it is tall." },
+        { q: "What does 'Scaling' do in printing?", a: ["Changes the color of the ink", "Adjusts the document size to fit on a specific number of sheets", "Deletes the margins", "Turns the printer off"], cor: 1, exp: "Scaling allows you to shrink or enlarge the content for the physical paper." },
+        { q: "What is a PDF (Portable Document Format)?", a: ["A type of video file", "A file format that preserves layout and design across all devices", "A Word document that can be edited easily", "An internet browser"], cor: 1, exp: "PDFs ensure the document looks the same on any computer without needing the original app." },
+        { q: "Which program is used to view PDF files?", a: ["Excel", "Adobe Reader", "PowerPoint", "Notepad"], cor: 1, exp: "Adobe Reader is a common application for viewing PDFs." },
+        { q: "In Word, what is the 'Ribbon'?", a: ["A physical piece of string", "The area at the top containing tabs and command groups", "The scroll bar", "The status bar at the bottom"], cor: 1, exp: "The Ribbon organizes all features into tabs like Home, Insert, and Layout." },
+        { q: "Which tab would you click to change the page margins?", a: ["Home", "Insert", "Layout", "View"], cor: 2, exp: "The Layout tab contains page setup options like margins and orientation." },
+        { q: "Which tab is used to add a Table or a Picture?", a: ["File", "Home", "Insert", "Design"], cor: 2, exp: "The Insert tab is used to add elements that are not plain text." },
+        { q: "What is a 'Font'?", a: ["A type of printer", "A set of characters with a specific design/style", "A paper size", "A saving method"], cor: 1, exp: "Fonts like Arial or Calibri define the look of the text." },
+        { q: "What does the 'Format Painter' do?", a: ["Draws a picture", "Copies the formatting of one piece of text and applies it to another", "Changes the page color", "Deletes text"], cor: 1, exp: "Format Painter saves time by duplicating styles (bold, color, size) across text." },
+        { q: "Which alignment places text evenly between the left and right margins?", a: ["Align Left", "Align Right", "Center", "Justify"], cor: 2, exp: "Center alignment places the text in the middle of the page." },
+        { q: "Which alignment makes the text flush against both the left and right margins?", a: ["Center", "Align Left", "Justify", "Indent"], cor: 2, exp: "Justify adds spacing between words so both edges of the paragraph are straight." },
+        { q: "What is 'Line Spacing'?", a: ["The space between letters", "The vertical space between lines of text in a paragraph", "The space between two pages", "The margin size"], cor: 1, exp: "Line spacing (like Single or Double) affects the vertical density of text." },
+        { q: "What is a 'Bullet' in a document?", a: ["A weapon", "A small symbol used to introduce items in a list", "A type of font", "A page break"], cor: 1, exp: "Bullets are used to organize unordered lists." },
+        { q: "Which key is used to create a new paragraph?", a: ["Space", "Tab", "Enter", "Shift"], cor: 2, exp: "Pressing Enter moves the cursor to a new line and starts a new paragraph." },
+        { q: "How do you select an entire word quickly?", a: ["Single-click it", "Double-click it", "Triple-click it", "Right-click it"], cor: 1, exp: "Double-clicking selects the word; triple-clicking usually selects the paragraph." },
+        { q: "What does 'Checking Spelling' identify?", a: ["Words not in the dictionary", "Factually incorrect information", "Your email address", "The file size"], cor: 0, exp: "Spell check flags words it doesn't recognize (typos or proper names)." },
+        { q: "What is 'Grammar Check'?", a: ["A tool to find synonyms", "A tool that identifies errors in sentence structure and punctuation", "A tool that translates text", "A tool to change fonts"], cor: 1, exp: "Grammar check looks for mistakes like subject-verb agreement." },
+        { q: "Which feature allows you to put a specific piece of text at the top of every page?", a: ["Footer", "Margin", "Header", "Note"], cor: 2, exp: "Headers appear at the top of every page; footers appear at the bottom." },
+        { q: "What is 'Citing' a source?", a: ["Deleting a quote", "Giving credit to the original author within your content", "Copying a whole website", "Buying a book"], cor: 1, exp: "Citations ensure proper credit is given and avoid plagiarism." },
+        { q: "What is a 'Hyperlink'?", a: ["A very fast internet connection", "Text or an image that you click to jump to another location or website", "A type of font", "A secure password"], cor: 1, exp: "Hyperlinks connect different pieces of digital content." },
+        { q: "In PowerPoint, which view is used to present your work to an audience?", a: ["Normal View", "Slide Show View", "Reading View", "Master View"], cor: 1, exp: "Slide Show view fills the screen with your slides for presentation." },
+        { q: "What is the 'Notes Pane' in PowerPoint used for?", a: ["Drawing pictures", "Entering speaker notes that only the presenter can see", "Writing the main content", "Hiding slides"], cor: 1, exp: "Speaker notes help the presenter remember talking points." },
+        { q: "Which feature makes an object on a slide 'Fly In' from the side?", a: ["Transition", "Animation", "Template", "Design Idea"], cor: 1, exp: "Animations are applied to specific objects to control how they appear or move." },
+        { q: "How do you advance to the next slide during a presentation?", a: ["Press the Escape key", "Click the mouse or press the Spacebar", "Press F1", "Turn off the monitor"], cor: 1, exp: "Clicking or pressing Space moves the presentation forward." },
+        { q: "What happens when you 'Export' a document as a PDF?", a: ["The original Word file is deleted", "A new version of the file is created in PDF format", "The file is sent to the printer", "The file is uploaded to the internet"], cor: 1, exp: "Exporting creates a new file in a different format without changing the original." },
+        { q: "Which setting allows you to print on both sides of a sheet of paper?", a: ["Portrait", "Collated", "Duplex (Print on Both Sides)", "Grayscale"], cor: 2, exp: "Duplex printing saves paper by using both sides." },
+        { q: "What does 'Collated' mean when printing multiple copies?", a: ["Printing all page 1s, then all page 2s", "Printing the full document in order (1,2,3) before starting the next set", "Printing in black and white", "Stapling the pages"], cor: 1, exp: "Collated printing keeps the sets of documents in the correct order." },
+        { q: "What is 'Grayscale' printing?", a: ["Printing very fast", "Printing using only shades of black and white", "Printing with large fonts", "Printing on gray paper"], cor: 1, exp: "Grayscale saves color ink/toner by using only black ink." },
+        { q: "Which shortcut opens a BLANK new document?", a: ["Ctrl + B", "Ctrl + N", "Ctrl + O", "Ctrl + M"], cor: 1, exp: "Ctrl + N stands for New." },
+        { q: "Which shortcut 'Opens' an existing file?", a: ["Ctrl + E", "Ctrl + O", "Ctrl + X", "Ctrl + G"], cor: 1, exp: "Ctrl + O stands for Open." },
+        { q: "What is the 'Status Bar'?", a: ["The bar at the top with the name", "The bar at the bottom showing page count and word count", "A type of menu", "A virus scanner"], cor: 1, exp: "The Status Bar provides real-time information about your document." },
+        { q: "Which key is used to indent the first line of a paragraph?", a: ["Enter", "Shift", "Tab", "Alt"], cor: 2, exp: "The Tab key moves the cursor to the next tab stop (usually 0.5 inches)." },
+        { q: "What is 'Thesaurus' in Word used for?", a: ["Checking spelling", "Finding synonyms (words with similar meanings)", "Counting words", "Printing the file"], cor: 1, exp: "The Thesaurus helps improve vocabulary by suggesting alternative words." },
+        { q: "What is 'Margin'?", a: ["The space between two letters", "The white space between the edge of the paper and the text", "The header text", "The font size"], cor: 1, exp: "Margins define the printable area of the page." },
+        { q: "Which of these is a valid way to 'Share' a file from Office?", a: ["Emailing it as an attachment", "Sharing a link to OneDrive", "Copying it to a USB drive", "All of the above"], cor: 3, exp: "Digital content can be shared via email, cloud links, or physical media." },
+        { q: "What is a 'Version History'?", a: ["A list of all users who have the file", "A record of previous versions of a file that you can restore", "The date the software was made", "A type of printer"], cor: 1, exp: "Cloud-stored files allow you to go back to an earlier version if you make a mistake." },
+        { q: "What does 'Read Only' mode mean?", a: ["You cannot open the file", "You can view the file but cannot make or save changes to it", "The file is read out loud by the computer", "The file is a PDF"], cor: 1, exp: "Read Only status protects a document from being edited." },
+        { q: "What is the purpose of 'Page Numbers'?", a: ["To make the document longer", "To help organize and reference pages in a document", "To count the words", "To check the ink level"], cor: 1, exp: "Page numbers are essential for navigation in multi-page documents." },
+        { q: "What is a 'Theme' in Office?", a: ["A song that plays", "A set of colors, fonts, and effects that give a document a consistent look", "The file's name", "A password"], cor: 1, exp: "Themes allow you to change the entire look of a file with one click." },
+        { q: "Which key allows you to select multiple non-adjacent slides in PowerPoint?", a: ["Shift", "Alt", "Ctrl", "Tab"], cor: 2, exp: "Holding Ctrl allows you to click and select specific items that are not next to each other." },
+        { q: "What is 'Co-authoring'?", a: ["Two people writing separate books", "Multiple people editing the same document at the same time", "Copying someone else's work", "Writing a book about yourself"], cor: 1, exp: "Cloud applications allow real-time collaboration (co-authoring)." },
+        { q: "Which of these describes 'Hard Copy'?", a: ["A file on a USB", "A document printed on paper", "A password", "A computer screen"], cor: 1, exp: "Hard copy is the physical version of digital content." },
+        { q: "What is 'Soft Copy'?", a: ["A printed paper", "The digital version of a document", "A soft keyboard", "A fuzzy mousepad"], cor: 1, exp: "Soft copy refers to the electronic version of a file." },
+        { q: "Why should you 'Sign Out' of an Office account on a public computer?", a: ["To save battery", "To prevent others from accessing your files and personal info", "To make the computer faster", "To update the software"], cor: 1, exp: "Signing out is crucial for digital security and privacy." },
+        { q: "What is 'Attribution'?", a: ["Changing a file name", "Acknowledging the creator of a work you are using", "Deleting a file", "Selling a file"], cor: 1, exp: "Attribution is the act of giving credit to the source of information." },
+        { q: "What is 'Footnote'?", a: ["A note at the end of the document", "A note at the bottom of the page providing more info or a citation", "The page number", "A header"], cor: 1, exp: "Footnotes provide details or citations at the bottom of the specific page." },
+        { q: "What is an 'Endnote'?", a: ["A note at the bottom of the page", "A note at the end of the entire document or section", "The last slide", "The save button"], cor: 1, exp: "Endnotes collect all citations/notes at the very end of the file." },
+        { q: "Which shortcut 'Cuts' the selected item to the clipboard?", a: ["Ctrl + C", "Ctrl + V", "Ctrl + X", "Ctrl + Z"], cor: 2, exp: "Ctrl + X removes the item from the page and puts it in the clipboard." },
+        { q: "Which shortcut 'Copies' the selected item?", a: ["Ctrl + X", "Ctrl + C", "Ctrl + P", "Ctrl + V"], cor: 1, exp: "Ctrl + C copies the item without removing it." },
+        { q: "What is 'Landscape' printing used for most often?", a: ["Letters", "Spreadsheets or wide charts", "Envelopes", "Novels"], cor: 1, exp: "Landscape provides more horizontal space for wide data." },
+        { q: "What does 'Print to PDF' do?", a: ["Sends a document to a physical printer", "Creates a digital PDF file instead of a paper copy", "Prints a photo of a PDF", "Deletes the printer"], cor: 1, exp: "Printing to PDF is a way to 'Save As' a PDF from any program." },
+        { q: "What is the 'Quick Access Toolbar'?", a: ["The Start Menu", "A customizable toolbar for frequently used commands", "The Taskbar", "The Recycle Bin"], cor: 1, exp: "It is usually at the very top of the window and holds shortcuts like Save and Undo." },
+        { q: "Which key is used to exit a PowerPoint Slide Show?", a: ["Enter", "Esc", "Tab", "Shift"], cor: 1, exp: "The Escape (Esc) key stops the presentation and returns to the edit screen." }
     ]
 };
 
-// Logic for Shuffle, Menu, and App initialization
+// --- APP LOGIC (Shuffle, Initialization, Navigation) ---
+
 let activeQuestions = [];
 let currentQ = 0;
 let score = 0;
@@ -250,10 +328,14 @@ function shuffle(array) {
 function startApp(selectedMode) {
     const moduleKey = document.getElementById('module-select').value;
     mode = selectedMode;
+    
+    // Copy and Shuffle
     activeQuestions = shuffle([...allModules[moduleKey]]);
+    
     document.getElementById('setup-screen').classList.add('hidden');
     document.getElementById('exam-container').classList.remove('hidden');
     document.getElementById('module-title').innerText = document.getElementById('module-select').selectedOptions[0].text;
+    
     currentQ = 0;
     score = 0;
     loadQuestion();
@@ -286,7 +368,7 @@ function selectOption(idx) {
 }
 
 function checkAnswer() {
-    if (selectedIdx === null) return alert("Select an answer!");
+    if (selectedIdx === null) return alert("Please select an answer.");
     const q = activeQuestions[currentQ];
     const isCorrect = selectedIdx === q.cor;
     if (isCorrect) score++;
@@ -319,7 +401,7 @@ function showResults() {
     const passStatus = percent >= 70 ? "PASSED" : "FAILED";
     document.getElementById('final-score').innerHTML = `
         <h2 style="color: ${percent >= 70 ? 'green' : 'red'}">${passStatus}</h2>
-        <h1>${percent}%</h1>
-        <p>You answered ${score} out of ${activeQuestions.length} correctly.</p>
+        <h1>Score: ${percent}%</h1>
+        <p>You got ${score} out of ${activeQuestions.length} correct.</p>
     `;
 }

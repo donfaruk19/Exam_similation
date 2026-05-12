@@ -1,219 +1,329 @@
+/* ==========================================
+   IC3 GS6 EXAM SIMULATOR - MODERN UI
+   Created by: Donfaruk19
+========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* --- Global Reset & Body --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #f4f4f4, #e8f0fe);
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 20px;
+    font-family: 'Inter', Arial, sans-serif;
+    background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px 20px;
 }
 
-.hidden { display: none!important; }
+.hidden { display: none !important; }
 
-#exam-container, #setup-screen, #result-screen {
-  background: white;
-  width: 90%;
-  max-width: 850px;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+/* --- Main Containers (Glassmorphism Effect) --- */
+#exam-container, 
+#setup-screen, 
+#result-screen, 
+#review-screen {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    width: 100%;
+    max-width: 900px;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    margin-bottom: auto; /* Pushes footer to bottom */
 }
 
+/* --- Header & Timer --- */
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  background: #f0f0f0;
-  border-bottom: 2px solid #ccc;
-  margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #edf2f7;
+    margin-bottom: 25px;
 }
-
-#progress-bar {
-  width: 100%;
-  height: 6px;
-  background: #e0e0e0;
-  border-radius: 3px;
-  margin-bottom: 20px;
-  overflow: hidden;
-}
-
-#progress-fill {
-  height: 100%;
-  width: 0%;
-  background: #0056b3;
-  transition: width 0.3s ease;
-}
-
-#q-number { color: #666; margin-bottom: 10px; }
-#options-container { display: flex; flex-direction: column; gap: 10px; margin: 20px 0; }
-
-button {
-  padding: 12px;
-  cursor: pointer;
-  border: 1px solid #0056b3;
-  background: white;
-  border-radius: 4px;
-  transition: 0.2s;
-  font-weight: 600;
-}
-
-button:hover { background: #e7f1ff; }
-button:disabled { opacity: 0.5; cursor: not-allowed; }
-
-footer {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-  border-top: 1px solid #ddd;
-  padding-top: 20px;
-}
-
-#feedback { padding: 15px; margin-top: 10px; border-radius: 4px; line-height: 1.5; }
-.correct-box { background: #d4edda; border: 1px solid #c3e6cb; color: #155724; }
-.wrong-box { background: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; }
-.menu-section { margin-bottom: 25px; display: flex; flex-direction: column; gap: 10px; }
-select { padding: 10px; font-size: 16px; border-radius: 5px; border: 1px solid #0056b3; }
-#module-title { font-weight: bold; color: #0056b3; }
 
 .timer {
-  font-weight: bold;
-  font-family: monospace;
-  font-size: 1.2rem;
-  color: #333;
+    background: #2d3748;
+    color: #63b3ed;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
 }
 
 .timer.warning {
-  color: #d9534f;
-  animation: blink 1s infinite;
+    background: #fff5f5;
+    color: #e53e3e;
+    border: 1px solid #feb2b2;
+    animation: pulse 1s infinite;
 }
 
-@keyframes blink {
- 50% { opacity: 0.3; }
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
 
-#quit-btn {
-  background: #6c757d;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-  border-radius: 4px;
-}
-#flag-btn {
-  background: #ffc107;
-  border-color: #ffc107;
-  color: #212529;
-}
-
-.flagged {
-  border-left: 4px solid #ffc107!important;
-}
-
-#review-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin: 20px 0;
-}
-
-.review-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  background: #f8f9fa;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.review-item:hover {
-  background: #e7f1ff;
-}
-
-.review-actions {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-}
-
+/* --- Progress Bar --- */
 #progress-bar {
-  width: 100%;
-  height: 6px;
-  background: #e0e0e0;
-  border-radius: 3px;
-  margin-bottom: 20px;
-  overflow: hidden;
+    width: 100%;
+    height: 8px;
+    background: #edf2f7;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    overflow: hidden;
 }
 
 #progress-fill {
-  height: 100%;
-  width: 0%;
-  background: #0056b3;
-  transition: width 0.3s ease;
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #0056b3, #00b4d8);
+    box-shadow: 0 0 10px rgba(0, 180, 216, 0.4);
+    transition: width 0.4s ease;
+    border-radius: 10px;
 }
 
-/* Interactive Question Styling */
+/* --- Typography --- */
+#q-number {
+    color: #718096;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+#q-text {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+h1, h2 { color: #2d3748; margin-bottom: 15px; }
+
+/* --- Forms & Menus --- */
+.menu-section {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+label { font-weight: 600; color: #4a5568; }
+
+select {
+    padding: 12px 15px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 2px solid #e2e8f0;
+    background: #f8fafc;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+select:focus { border-color: #0056b3; }
+
+/* --- Standard Buttons --- */
+button {
+    padding: 12px 20px;
+    cursor: pointer;
+    border: 2px solid #e2e8f0;
+    background: white;
+    border-radius: 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 600;
+    font-size: 1rem;
+    color: #4a5568;
+    font-family: 'Inter', sans-serif;
+}
+
+button:hover:not(:disabled) {
+    border-color: #0056b3;
+    background: #f0f7ff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 86, 179, 0.15);
+    color: #0056b3;
+}
+
+button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: #edf2f7;
+}
+
+/* Primary Action Buttons */
+#submit-btn, #next-btn {
+    background: #0056b3;
+    color: white;
+    border: none;
+}
+
+#submit-btn:hover, #next-btn:hover {
+    background: #004494;
+    color: white;
+}
+
+#quit-btn { background: #cbd5e0; border: none; color: #2d3748; }
+#quit-btn:hover { background: #a0aec0; color: white; }
+
+#flag-btn { border-color: #ecc94b; color: #b7791f; }
+#flag-btn:hover { background: #fffff0; }
+
+/* --- Options Container (Multiple Choice) --- */
+#options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+#options-container button {
+    text-align: left;
+    justify-content: flex-start;
+    padding: 15px 20px;
+}
+
+/* --- Interactive Question Styling (Matching & Ordering) --- */
 #interactive-container {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
     margin-top: 20px;
 }
 
-/* Matching Grid: Two Columns */
 .matching-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 25px;
 }
 
 .match-column {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
 }
 
-/* Individual Tiles */
 .interactive-item {
-    padding: 12px;
-    background: #fff;
-    border: 2px solid #0056b3;
-    border-radius: 6px;
+    padding: 16px;
+    background: #fdfdfd;
+    border: 2px solid #edf2f7;
+    border-radius: 12px;
     cursor: pointer;
-    transition: all 0.2s;
-    font-size: 0.95rem;
+    transition: all 0.25s ease;
+    font-size: 1rem;
+    font-weight: 500;
     text-align: center;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+    color: #2d3748;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    user-select: none;
 }
 
 .interactive-item:hover {
-    background: #e8f0fe;
+    background: #f8fafc;
+    border-color: #cbd5e0;
 }
 
 /* Selection and Order States */
 .interactive-item.selected {
-    background: #0056b3;
-    color: white;
+    background: #ebf8ff;
+    border-color: #3182ce;
+    color: #2b6cb0;
+    transform: scale(1.02);
+    box-shadow: 0 4px 10px rgba(49, 130, 206, 0.1);
 }
 
 .interactive-item.paired {
-    background: #d4edda;
-    border-color: #28a745;
-    color: #155724;
+    background: #f0fff4;
+    border-color: #38a169;
+    color: #276749;
     cursor: default;
+    transform: none;
 }
 
 /* Numbering for Ordering Questions */
 .order-number {
-    display: inline-block;
-    background: #333;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #2d3748;
     color: white;
-    width: 24px;
-    height: 24px;
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
-    margin-right: 10px;
+    margin-right: 12px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+/* --- Exam Footer (Buttons) --- */
+.exam-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    border-top: 1px solid #edf2f7;
+    padding-top: 20px;
+}
+
+/* --- Feedback Boxes --- */
+#feedback {
+    padding: 15px 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+.correct-box { background: #f0fff4; border: 1px solid #c6f6d5; color: #22543d; }
+.wrong-box { background: #fff5f5; border: 1px solid #fed7d7; color: #822727; }
+
+/* --- Review List --- */
+#review-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0;
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.review-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* --- Copyright Footer --- */
+.copyright-footer {
     text-align: center;
-    line-height: 24px;
-    font-size: 0.8rem;
+    margin-top: 40px;
+    padding: 20px 0;
+    color: #718096;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.copyright-footer span {
+    color: #0056b3;
+    font-weight: 700;
 }

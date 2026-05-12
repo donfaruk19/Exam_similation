@@ -1,5 +1,5 @@
 const allModules = {
-    lesson1: [
+    l1_lesson1: [
     { q: "What is the definition of an Operating System (OS)?", a: ["A collection of mechanical parts", "A program that manages hardware and controls communication between apps and hardware", "A set of tools for editing photos", "The physical casing of a computer"], cor: 1, exp: "The OS is the software that manages hardware and facilitates communication between hardware and applications." },
     { q: "What is the specific term for individual lines of instructions that guide a computer?", a: ["Hardware", "Framework", "Code", "Nodes"], cor: 2, exp: "Individual lines of instruction in a program are referred to as code." },
     { q: "Which of these is considered 'Software'?", a: ["The Monitor", "The Operating System and Application Programs", "The CPU and RAM", "The Keyboard and Mouse"], cor: 1, exp: "Software refers to any program that makes a computer run, including the OS and apps." },
@@ -91,7 +91,7 @@ const allModules = {
     { type: "ordering", q: "Order of Hardware Installation:", items: ["Install CPU", "Attach Cooling Fan", "Insert RAM", "Connect Power"], cor: ["Install CPU", "Attach Cooling Fan", "Insert RAM", "Connect Power"], exp: "The CPU must be seated and cooled before memory and power are finalized." },
     { type: "matching", q: "Match the System Icon to its function:", pairs: [{term: "Recycle Bin", definition: "Temporary storage for deleted files"}, {term: "Taskbar", definition: "Shows active apps and Start button"}, {term: "System Tray", definition: "Contains clock and notification icons"}], exp: "These are standard Windows desktop components." }
     ],
-    lesson2: [
+    l1_lesson2: [
         { q: "What constitutes your 'Digital Identity'?", a: ["Only your profile picture", "Your profile plus all posts, likes, and people you follow", "Only the websites you visit in private mode", "Your physical ID card"], cor: 1, exp: "Your digital identity is the combination of your profile and all your online actions." },
         { q: "What is a 'Digital Footprint'?", a: ["A record of your physical steps", "A permanent record of the 'steps' you take online", "A temporary file that deletes itself", "A type of secure password"], cor: 1, exp: "A digital footprint is a permanent record of your online activity that others can follow." },
         { q: "Why do employers check your digital footprints?", a: ["To steal your data", "To see if you are good at games", "To assess your character and personal brand", "To check your internet speed"], cor: 2, exp: "Employers and schools check online accounts to see who you are as a person." },
@@ -183,7 +183,7 @@ const allModules = {
         { type: "ordering", q: "Steps for a balanced Digital Diet:", items: ["Track screen time", "Set daily limits", "Schedule tech-free hours", "Evaluate your mood"], cor: ["Track screen time", "Set daily limits", "Schedule tech-free hours", "Evaluate your mood"], exp: "Monitoring leads to effective limit setting." },
         { type: "matching", q: "Match Identity Protection:", pairs: [{term: "Biometrics", definition: "Fingerprint or Face ID"}, {term: "VPN", definition: "Hides your IP address"}, {term: "Firewall", definition: "Monitors network traffic"}], exp: "These tools guard your digital identity and data." }
     ],
-    lesson3: [
+    l1_lesson3: [
         { q: "Which type of website allows users to add, edit, or rearrange information collaboratively?", a: ["Blog", "Wiki", "Podcast", "Portal"], cor: 1, exp: "Wiki sites provide tools for individuals to collaboratively edit information." },
         { q: "What does RSS stand for in the context of news feeds?", a: ["Remote Site Security", "Read Simple Scripts", "Real Simple Syndication", "Rapid System Search"], cor: 2, exp: "RSS (Real Simple Syndication) delivers current news stories as they occur." },
         { q: "Which URL domain is used specifically for schools and universities?", a: [".com", ".gov", ".edu", ".org"], cor: 2, exp: ".edu is the top-level domain for educational institutions." },
@@ -275,7 +275,7 @@ const allModules = {
         { type: "ordering", q: "Workflow to download a PDF:", items: ["Click the download link", "Choose a save location", "Wait for transfer", "Open from the folder"], cor: ["Click the download link", "Choose a save location", "Wait for transfer", "Open from the folder"], exp: "Standard file acquisition process." },
         { type: "matching", q: "Match Domain Suffixes:", pairs: [{term: ".edu", definition: "Educational institutions"}, {term: ".gov", definition: "Government agencies"}, {term: ".com", definition: "Commercial businesses"}], exp: "Suffixes indicate the nature of the organization." }
     ],
-    lesson4: [
+    l1_lesson4: [
         { q: "What is a 'Template' in Microsoft Office?", a: ["A type of computer virus", "A pre-designed document used to create new ones quickly", "A blank white page", "The save button"], cor: 1, exp: "Templates are standard forms or documents with pre-designed elements." },
         { q: "Which view in Office applications allows you to manage files (Save, Print, Share)?", a: ["Edit View", "Review View", "Backstage View", "Web View"], cor: 2, exp: "Backstage View contains commands that relate to the entire file." },
         { q: "What is the purpose of a 'ScreenTip'?", a: ["To clean the monitor", "To identify a button and its function when hovering", "To change the screen brightness", "To show a video tutorial"], cor: 1, exp: "Hovering over a button displays a ScreenTip identifying the command." },
@@ -365,9 +365,9 @@ const allModules = {
         { type: "ordering", q: "Inserting a Table:", items: ["Click Insert tab", "Select Table", "Choose rows/columns", "Enter data"], cor: ["Click Insert tab", "Select Table", "Choose rows/columns", "Enter data"], exp: "Process for adding structured data." },
         { type: "matching", q: "Match Font Styles:", pairs: [{term: "Serif", definition: "Fonts with small 'feet'"}, {term: "Sans Serif", definition: "Clean fonts without 'feet'"}, {term: "Script", definition: "Handwritten style fonts"}], exp: "Typography choices impact readability." },
         { type: "ordering", q: "Spell Check Process:", items: ["Identify red underline", "Right-click word", "Select correct spelling", "Click Ignore if correct"], cor: ["Identify red underline", "Right-click word", "Select correct spelling", "Click Ignore if correct"], exp: "Standard error correction workflow." },
-        { type: "matching", q: "Match Backup Methods:", pairs: [{term: "Cloud", definition: "OneDrive / Google Drive"}, {term: "Physical", definition: "USB Flash Drive"}, {term: "Version History", definition: "Restoring older file drafts"}], exp: "Safeguarding work is a core GS6 objective." },
+        { type: "matching", q: "Match Backup Methods:", pairs: [{term: "Cloud", definition: "OneDrive / Google Drive"}, {term: "Physical", definition: "USB Flash Drive"}, {term: "Version History", definition: "Restoring older file drafts"}], exp: "Safeguarding work is a core GS6 objective." }
     ],
-    lesson5: [
+    l1_lesson5: [
         { q: "What is an online journal where a creator posts articles and others comment?", a: ["Wiki", "Blog", "Podcast", "Portal"], cor: 1, exp: "Blogs are online journals used for sharing opinions and information on specific topics." },
         { q: "What is the term for the amount of visitors a blog or website receives?", a: ["Bandwidth", "Traffic", "Streaming", "Ping"], cor: 1, exp: "Traffic refers to the volume of users visiting a digital platform." },
         { q: "What does 'RSS' (Real Simple Syndication) allow users to do?", a: ["Chat in real-time", "Subscribe to and receive automatic updates from websites", "Edit a wiki", "Post a video"], cor: 1, exp: "RSS feeds notify subscribers of new content as it occurs." },
@@ -459,7 +459,7 @@ const allModules = {
         { type: "ordering", q: "Deleting a Conversation:", items: ["Select the thread", "Click Delete", "Confirm action", "Empty the Trash"], cor: ["Select the thread", "Click Delete", "Confirm action", "Empty the Trash"], exp: "Permanent removal of data." },
         { type: "matching", q: "Match Digital Messaging Risks:", pairs: [{term: "Misinterpretation", definition: "Lack of tone/body language"}, {term: "Data Leak", definition: "Forwarding private info"}, {term: "Harassment", definition: "Unwanted repeated messages"}], exp: "Awareness of communication pitfalls." }
     ],
-    lesson6: [
+    l1_lesson6: [
         { q: "What is a primary benefit of digital collaboration?", a: ["It decreases the need for internet access", "Productivity increases through simultaneous activity", "It eliminates the need for leadership", "It slows down project completion"], cor: 1, exp: "Productivity increases because team members can work on the same project simultaneously." },
         { q: "How does digital collaboration improve communication?", a: ["By using only physical mail", "Through instant messaging features within collaborative tools", "By preventing people from talking", "By limiting messages to once a day"], cor: 1, exp: "Communication is faster and more efficient using instant messaging inside collaborative tools." },
         { q: "How does digital collaboration help when a team lacks specific expertise?", a: ["You can easily add remote collaborators with the needed expertise", "You must hire a new full-time employee", "The project must be canceled", "You have to finish the project without the expertise"], cor: 0, exp: "You can add or subtract collaborators where specific expertise is needed." },
@@ -551,7 +551,7 @@ const allModules = {
         { type: "ordering", q: "Giving Feedback on a document:", items: ["Select text", "Click 'New Comment'", "Type feedback", "Tag collaborator"], cor: ["Select text", "Click 'New Comment'", "Type feedback", "Tag collaborator"], exp: "Providing constructive digital input." },
         { type: "matching", q: "Match Mobile Collaboration:", pairs: [{term: "Push Notifications", definition: "Alerts on phone screen"}, {term: "Mobile App", definition: "Optimized tool for phone"}, {term: "Offline mode", definition: "Working without data"}], exp: "Collaborating on the go." }
     ],
-    lesson7: [
+    l1_lesson7: [
         { q: "What is a 'Hacker'?", a: ["A computer repair technician", "A person who tries to gain unauthorized access to computer systems", "A type of antivirus software", "A network administrator"], cor: 1, exp: "Hackers employ methods to gain unauthorized access to systems." },
         { q: "What is a 'Virus'?", a: ["A hardware malfunction", "A malicious program designed to take control of system operations or destroy data", "A type of firewall", "A secure network connection"], cor: 1, exp: "Viruses are human-made malicious programs that damage data and spread to other users." },
         { q: "How are computer viruses typically transferred?", a: ["Only by hackers typing on your keyboard", "Via email attachments, file downloads, or infected flash drives", "Through clean, secure networks", "By turning the computer on and off too fast"], cor: 1, exp: "Viruses spread through shared files, emails, and removable media." },
@@ -731,19 +731,36 @@ function startApp(selectedMode) {
     mode = selectedMode;
     
     if (moduleKey === "full_level1") {
+        // Automatically grabs any key in allModules that starts with "l1_"
         let megaPool = [];
-        for (let key in allModules) {
-            megaPool.push(...allModules[key]);
-        }
+        Object.keys(allModules).forEach(key => {
+            if (key.startsWith('l1_')) {
+                megaPool.push(...allModules[key]);
+            }
+        });
         shuffle(megaPool);
-        const examLength = 90; 
-        activeQuestions = megaPool.slice(0, examLength);
+        activeQuestions = megaPool.slice(0, 75); // Standardized to 75 questions
         timeLeft = 3000; 
-    } else {
+    } 
+    else if (moduleKey === "full_level2") {
+        // Automatically grabs any key in allModules that starts with "l2_"
+        let megaPool = [];
+        Object.keys(allModules).forEach(key => {
+            if (key.startsWith('l2_')) {
+                megaPool.push(...allModules[key]);
+            }
+        });
+        shuffle(megaPool);
+        activeQuestions = megaPool.slice(0, 75);
+        timeLeft = 3000;
+    } 
+    else {
+        // Standard single-module selection
         activeQuestions = shuffle([...allModules[moduleKey]]);
         timeLeft = 3000; 
     }
 
+    // Standard initialization
     document.getElementById('setup-screen').classList.add('hidden');
     document.getElementById('exam-container').classList.remove('hidden');
     document.getElementById('module-title').innerText = document.getElementById('module-select').selectedOptions[0].text;

@@ -547,7 +547,7 @@ let score = 0;
 let mode = '';
 let selectedIdx = null;
 let timerInterval;
-let timeLeft = 2700; // 45 minutes
+let timeLeft = 3000; // 50 minutes
 let isPaused = false;
 let flaggedQuestions = [];
 let isReviewMode = false; // Tracks if the user is jumping back to fix flags
@@ -572,7 +572,7 @@ function updateTimerDisplay() {
 
 function startTimer() {
     clearInterval(timerInterval);
-    if (!isPaused) timeLeft = 2700;
+    if (!isPaused) timeLeft = 3000;
     isPaused = false;
     updateTimerDisplay();
 
@@ -599,20 +599,35 @@ function startApp(selectedMode) {
     const moduleKey = document.getElementById('module-select').value;
     mode = selectedMode;
     
-    // Auto-generate missing filler questions if the array has less than 75 questions
-    // (This acts as a safety net in case older lessons only had 20 questions typed out)
-    if(allModules[moduleKey].length < 75) {
-        let currentLen = allModules[moduleKey].length;
-        for(let i = currentLen; i < 75; i++) {
-            allModules[moduleKey].push({
-                q: `Placeholder Question ${i+1}: Please refer to the ${moduleKey} course material.`,
-                a: ["Correct", "Wrong", "Wrong", "Wrong"], cor: 0, exp: "Placeholder"
-            });
-        }
+    if (moduleKey === "full_level1") {
+        // 1. Combine all questions from all 7 lessons into one pool
+        let megaPool = [
+            ...allModules.lesson1,
+            ...allModules.lesson2,
+            ...allModules.lesson3,
+            ...allModules.lesson4,
+            ...allModules.lesson5,
+            ...allModules.lesson6,
+            ...allModules.lesson7
+        ];
+
+        // 2. Shuffle the entire pool
+        shuffle(megaPool);
+
+        // 3. Set the number of questions (Certiport standard is 50)
+        // You could also use: let userCount = prompt("How many questions?", "50");
+        const examLength = 75; 
+        activeQuestions = megaPool.slice(0, examLength);
+        
+        // 4. Update timer for the full exam (Certiport uses 50 minutes)
+        timeLeft = 3000; // 50 minutes
+    } else {
+        // Standard single-module logic
+        activeQuestions = shuffle([...allModules[moduleKey]]);
+        timeLeft = 3000; // 50 minutes for single lessons
     }
 
-    activeQuestions = shuffle([...allModules[moduleKey]]);
-
+    // Standard initialization
     document.getElementById('setup-screen').classList.add('hidden');
     document.getElementById('exam-container').classList.remove('hidden');
     document.getElementById('module-title').innerText = document.getElementById('module-select').selectedOptions[0].text;

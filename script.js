@@ -75,7 +75,22 @@ const allModules = {
     { q: "Which key moves the cursor to the beginning of a line of text?", a: ["Page Up", "Home", "End", "Insert"], cor: 1, exp: "The Home key moves the cursor to the start; End moves it to the end." },
     { q: "What is a 'Search Engine'?", a: ["A physical machine", "A website used to find information on the internet", "A web browser", "A computer virus"], cor: 1, exp: "Search engines (like Google or Bing) index and find websites." },
     { q: "Which component provides power to all other parts of the computer?", a: ["Battery", "Motherboard", "PSU (Power Supply Unit)", "CPU"], cor: 2, exp: "The PSU converts wall electricity into power the computer can use." }
-],
+    { type: "matching", q: "Match the Operating System to its primary device:", pairs: [{term: "Desktop OS", definition: "Laptops and Workstations (Windows)"}, {term: "Mobile OS", definition: "Smartphones and Tablets (Android)"}, {term: "Embedded OS", definition: "Specialized hardware (ATMs/GPS)"}], exp: "Desktop is for general PCs; Mobile for handhelds; Embedded for specific machines." },
+    { type: "ordering", q: "Arrange the computer boot process in order:", items: ["Power reaches CPU", "POST runs", "OS Kernel loads", "Login screen"], cor: ["Power reaches CPU", "POST runs", "OS Kernel loads", "Login screen"], exp: "Hardware tests first, then software loads." },
+    { type: "matching", q: "Match Hardware to Function:", pairs: [{term: "CPU", definition: "Processes data"}, {term: "RAM", definition: "Temporary workspace"}, {term: "Hard Drive", definition: "Permanent storage"}], exp: "The brain processes, RAM holds active tasks, HDD saves files." },
+    { type: "ordering", q: "Storage Size (Smallest to Largest):", items: ["Kilobyte", "Megabyte", "Gigabyte", "Terabyte"], cor: ["Kilobyte", "Megabyte", "Gigabyte", "Terabyte"], exp: "Units increase by a factor of 1024." },
+    { type: "matching", q: "Match Network Hardware:", pairs: [{term: "Modem", definition: "Connects to ISP"}, {term: "Router", definition: "Distributes local traffic"}, {term: "Ethernet", definition: "Physical wired connection"}], exp: "Modem brings internet in; router shares it." },
+    { type: "ordering", q: "Steps to end a frozen app in Windows:", items: ["Ctrl+Alt+Delete", "Open Task Manager", "Select App", "Click End Task"], cor: ["Ctrl+Alt+Delete", "Open Task Manager", "Select App", "Click End Task"], exp: "Task Manager handles unresponsive software." },
+    { type: "matching", q: "Match Ports to Use:", pairs: [{term: "HDMI", definition: "High-def Video/Audio"}, {term: "USB-C", definition: "Universal Power/Data"}, {term: "RJ-45", definition: "Wired Networking"}], exp: "HDMI for screens, USB-C for everything, RJ-45 for LAN." },
+    { type: "ordering", q: "Information Processing Cycle:", items: ["Input", "Processing", "Output", "Storage"], cor: ["Input", "Processing", "Output", "Storage"], exp: "Standard flow for all computing devices." },
+    { type: "matching", q: "Match Peripheral Category:", pairs: [{term: "Scanner", definition: "Input"}, {term: "Printer", definition: "Output"}, {term: "Webcam", definition: "Input"}], exp: "Input brings data in; Output sends data out." },
+    { type: "ordering", q: "Connecting to Wi-Fi:", items: ["Open Network list", "Select SSID", "Enter Security Key", "Click Connect"], cor: ["Open Network list", "Select SSID", "Enter Security Key", "Click Connect"], exp: "Identify the network before authenticating." },
+    { type: "matching", q: "Match File Extension:", pairs: [{term: ".docx", definition: "Word Document"}, {term: ".xlsx", definition: "Excel Spreadsheet"}, {term: ".pptx", definition: "PowerPoint Slides"}], exp: "Extensions tell the OS which app to use." },
+    { type: "ordering", q: "Troubleshooting Connection:", items: ["Check Cables", "Restart Modem", "Restart PC", "Call ISP"], cor: ["Check Cables", "Restart Modem", "Restart PC", "Call ISP"], exp: "Always start with the easiest physical fix." },
+    { type: "matching", q: "Match Data Type to Unit:", pairs: [{term: "Bit", definition: "Binary digit (0 or 1)"}, {term: "Byte", definition: "8 bits / Single character"}, {term: "File size", definition: "Measured in KB, MB, or GB"}], exp: "Bits are the smallest unit; bytes represent characters." },
+    { type: "ordering", q: "Order of Hardware Installation:", items: ["Install CPU", "Attach Cooling Fan", "Insert RAM", "Connect Power"], cor: ["Install CPU", "Attach Cooling Fan", "Insert RAM", "Connect Power"], exp: "The CPU must be seated and cooled before memory and power are finalized." },
+    { type: "matching", q: "Match the System Icon to its function:", pairs: [{term: "Recycle Bin", definition: "Temporary storage for deleted files"}, {term: "Taskbar", definition: "Shows active apps and Start button"}, {term: "System Tray", definition: "Contains clock and notification icons"}], exp: "These are standard Windows desktop components." }
+    ],
     lesson2: [
         { q: "What constitutes your 'Digital Identity'?", a: ["Only your profile picture", "Your profile plus all posts, likes, and people you follow", "Only the websites you visit in private mode", "Your physical ID card"], cor: 1, exp: "Your digital identity is the combination of your profile and all your online actions." },
         { q: "What is a 'Digital Footprint'?", a: ["A record of your physical steps", "A permanent record of the 'steps' you take online", "A temporary file that deletes itself", "A type of secure password"], cor: 1, exp: "A digital footprint is a permanent record of your online activity that others can follow." },
@@ -152,6 +167,21 @@ const allModules = {
         { q: "What is 'Metadata'?", a: ["A large file", "Data that provides information about other data (like a photo's date)", "A computer virus", "A secure password"], cor: 1, exp: "Metadata describes the characteristics of a file." },
         { q: "Which is a sign of 'Digital Wellbeing'?", a: ["Spending 10 hours a day on your phone", "Setting screen time limits and taking breaks", "Checking notifications every minute", "Never turning your computer off"], cor: 1, exp: "Digital wellbeing is about maintaining a healthy balance with tech." },
         { q: "What should you do before selling an old smartphone?", a: ["Just turn it off", "Perform a factory reset to wipe all personal data", "Delete your favorite apps", "Take the battery out"], cor: 1, exp: "A factory reset ensures your private data isn't stolen by the next owner." }
+        { type: "matching", q: "Match Digital Identity Terms:", pairs: [{term: "Digital Footprint", definition: "Permanent record of online activity"}, {term: "Digital Reputation", definition: "How others perceive you online"}, {term: "Netiquette", definition: "Proper online behavior code"}], exp: "Footprints determine your reputation over time." },
+        { type: "ordering", q: "Responding to Cyberbullying:", items: ["Don't respond", "Save Screenshots", "Report to Authority"], cor: ["Don't respond", "Save Screenshots", "Report to Authority"], exp: "Disengage, document, and report." },
+        { type: "matching", q: "Match Privacy Terms:", pairs: [{term: "2FA", definition: "Two-step verification"}, {term: "Cookies", definition: "Track site preferences"}, {term: "Incognito", definition: "Browsing without history saving"}], exp: "2FA secures accounts; cookies remember you; incognito hides history." },
+        { type: "ordering", q: "Source Reliability (High to Low):", items: [".gov Website", ".org Website", "Personal Blog", "Anonymous Forum"], cor: [".gov Website", ".org Website", "Personal Blog", "Anonymous Forum"], exp: "Official and academic sources rank highest." },
+        { type: "matching", q: "Match the Online Behavior:", pairs: [{term: "Flaming", definition: "Posting hostile messages"}, {term: "Trolling", definition: "Intentionally provoking others"}, {term: "Phishing", definition: "Deceptive emails to steal info"}], exp: "These represent negative or dangerous online behaviors." },
+        { type: "ordering", q: "Evaluating an Online Profile:", items: ["Check profile photo", "Read 'About' section", "Look for verified badge", "Search for external news"], cor: ["Check profile photo", "Read 'About' section", "Look for verified badge", "Search for external news"], exp: "Verification should follow a logical investigative order." },
+        { type: "matching", q: "Match the Protection Method:", pairs: [{term: "Strong Password", definition: "Mix of letters, numbers, and symbols"}, {term: "Privacy Settings", definition: "Limits who sees your posts"}, {term: "Digital Wellness", definition: "Balancing online and offline time"}], exp: "Security and wellness are both parts of being a good digital citizen." },
+        { type: "ordering", q: "Steps to secure a Social Account:", items: ["Create unique password", "Enable 2FA", "Review app permissions", "Set profile to private"], cor: ["Create unique password", "Enable 2FA", "Review app permissions", "Set profile to private"], exp: "Security first, then privacy tuning." },
+        { type: "matching", q: "Match Digital Rights Concepts:", pairs: [{term: "Freedom of Speech", definition: "Right to express opinions"}, {term: "Intellectual Property", definition: "Ownership of creative works"}, {term: "Data Privacy", definition: "Control over personal information"}], exp: "Digital citizenship involves understanding your rights and responsibilities." },
+        { type: "ordering", q: "Developing a Personal Brand:", items: ["Identify your skills", "Choose a professional username", "Post helpful content", "Network with peers"], cor: ["Identify your skills", "Choose a professional username", "Post helpful content", "Network with peers"], exp: "Brand building is a progressive process." },
+        { type: "matching", q: "Match the Communication Type:", pairs: [{term: "Formal", definition: "Professional emails to teachers"}, {term: "Informal", definition: "Texting friends"}, {term: "Public", definition: "Posting on a social media wall"}], exp: "Tone must match the audience and platform." },
+        { type: "ordering", q: "Order of reporting a scam:", items: ["Stop communication", "Take screenshots", "Notify the platform", "Inform local authorities"], cor: ["Stop communication", "Take screenshots", "Notify the platform", "Inform local authorities"], exp: "Halt the threat first, then document and report." },
+        { type: "matching", q: "Match User Type:", pairs: [{term: "Subscriber", definition: "Follows a specific account"}, {term: "Moderator", definition: "Enforces rules in a group"}, {term: "Administrator", definition: "Has full control over a site"}], exp: "Roles define what a user can do in a digital space." },
+        { type: "ordering", q: "Steps for a balanced Digital Diet:", items: ["Track screen time", "Set daily limits", "Schedule tech-free hours", "Evaluate your mood"], cor: ["Track screen time", "Set daily limits", "Schedule tech-free hours", "Evaluate your mood"], exp: "Monitoring leads to effective limit setting." },
+        { type: "matching", q: "Match Identity Protection:", pairs: [{term: "Biometrics", definition: "Fingerprint or Face ID"}, {term: "VPN", definition: "Hides your IP address"}, {term: "Firewall", definition: "Monitors network traffic"}], exp: "These tools guard your digital identity and data." }
     ],
     lesson3: [
         { q: "Which type of website allows users to add, edit, or rearrange information collaboratively?", a: ["Blog", "Wiki", "Podcast", "Portal"], cor: 1, exp: "Wiki sites provide tools for individuals to collaboratively edit information." },
@@ -229,6 +259,21 @@ const allModules = {
         { q: "What is a 'Paraphrase'?", a: ["Copying word-for-word", "Rewriting someone else's ideas in your own words", "Deleting a sentence", "A type of password"], cor: 1, exp: "Paraphrasing still requires a source citation even if the words are yours." },
         { q: "Which search tool is best for finding scholarly articles?", a: ["Social Media", "Google Scholar", "YouTube", "A personal blog"], cor: 1, exp: "Scholarly search engines focus on peer-reviewed and academic papers." },
         { q: "What is the primary goal of Information Management?", a: ["To buy more hard drives", "To make sure information is accurate, organized, and accessible", "To delete all old emails", "To browse social media"], cor: 1, exp: "Effective management ensures data is useful and reachable." }
+        { type: "matching", q: "Match Search Operators:", pairs: [{term: "Quotes \" \"", definition: "Exact phrase search"}, {term: "Minus -", definition: "Exclude a keyword"}, {term: "Site:", definition: "Search specific domain"}], exp: "Operators filter results for accuracy." },
+        { type: "ordering", q: "Refining Search Criteria:", items: ["Animal", "Mammal", "Dog", "Golden Retriever"], cor: ["Animal", "Mammal", "Dog", "Golden Retriever"], exp: "Moving from general to specific narrows results." },
+        { type: "matching", q: "Match Licensing Terms:", pairs: [{term: "Copyright", definition: "Exclusive owner rights"}, {term: "Public Domain", definition: "Free for all use"}, {term: "Creative Commons", definition: "Flexible usage licenses"}], exp: "Copyright protects; Public domain is open; CC is a middle ground." },
+        { type: "ordering", q: "Using Search Filters (Order):", items: ["Enter keywords", "Click 'Images' tab", "Select 'Tools'", "Filter by 'Size'"], cor: ["Enter keywords", "Click 'Images' tab", "Select 'Tools'", "Filter by 'Size'"], exp: "Filter tools are usually applied after the initial category selection." },
+        { type: "matching", q: "Match Information Sources:", pairs: [{term: "Wiki", definition: "Collaborative knowledge base"}, {term: "Blog", definition: "Personal journal or commentary"}, {term: "Podcast", definition: "Audio-based digital broadcast"}], exp: "Format determines how information is consumed." },
+        { type: "ordering", q: "Citing a Source (Logical Flow):", items: ["Find the author", "Note the publication date", "Copy the URL", "Format in APA/MLA style"], cor: ["Find the author", "Note the publication date", "Copy the URL", "Format in APA/MLA style"], exp: "Information gathering precedes final formatting." },
+        { type: "matching", q: "Match Browsing Terms:", pairs: [{term: "URL", definition: "The web address of a site"}, {term: "Hyperlink", definition: "Clickable text that jumps to a page"}, {term: "Browser", definition: "Software used to access the web"}], exp: "Fundamental tools for navigating the internet." },
+        { type: "ordering", q: "Steps to Bookmark a Site:", items: ["Navigate to the page", "Click the Star icon", "Select a folder", "Click 'Done'"], cor: ["Navigate to the page", "Click the Star icon", "Select a folder", "Click 'Done'"], exp: "The standard workflow for most modern browsers." },
+        { type: "matching", q: "Match Search Engine Features:", pairs: [{term: "Autofill", definition: "Predicts your search query"}, {term: "Snippet", definition: "Small preview of site content"}, {term: "Index", definition: "The database of all web pages"}], exp: "Engines use these to make searching faster and easier." },
+        { type: "ordering", q: "Fact-Checking a News Story:", items: ["Read the headline", "Check the source date", "Look for other sources", "Confirm author expertise"], cor: ["Read the headline", "Check the source date", "Look for other sources", "Confirm author expertise"], exp: "Cross-referencing is key to validating information." },
+        { type: "matching", q: "Match Content Rights:", pairs: [{term: "Fair Use", definition: "Legal exception for education/news"}, {term: "Attribution", definition: "Giving credit to the creator"}, {term: "Plagiarism", definition: "Taking work as your own"}], exp: "Legal and ethical use of content is critical in IC3 GS6." },
+        { type: "ordering", q: "Refining results with AND/OR:", items: ["Search 'Apples'", "Search 'Apples AND Oranges'", "Search 'Apples AND Oranges AND Price'"], cor: ["Search 'Apples'", "Search 'Apples AND Oranges'", "Search 'Apples AND Oranges AND Price'"], exp: "Adding Boolean operators narrows the scope." },
+        { type: "matching", q: "Match Metadata Types:", pairs: [{term: "Hashtags", definition: "Keywords preceded by #"}, {term: "Handles", definition: "Usernames preceded by @"}, {term: "Tags", definition: "Internal labels for files"}], exp: "Metadata helps organize and find digital content." },
+        { type: "ordering", q: "Workflow to download a PDF:", items: ["Click the download link", "Choose a save location", "Wait for transfer", "Open from the folder"], cor: ["Click the download link", "Choose a save location", "Wait for transfer", "Open from the folder"], exp: "Standard file acquisition process." },
+        { type: "matching", q: "Match Domain Suffixes:", pairs: [{term: ".edu", definition: "Educational institutions"}, {term: ".gov", definition: "Government agencies"}, {term: ".com", definition: "Commercial businesses"}], exp: "Suffixes indicate the nature of the organization." }
     ],
     lesson4: [
         { q: "What is a 'Template' in Microsoft Office?", a: ["A type of computer virus", "A pre-designed document used to create new ones quickly", "A blank white page", "The save button"], cor: 1, exp: "Templates are standard forms or documents with pre-designed elements." },
@@ -306,6 +351,21 @@ const allModules = {
         { q: "What does 'Print to PDF' do?", a: ["Sends a document to a physical printer", "Creates a digital PDF file instead of a paper copy", "Prints a photo of a PDF", "Deletes the printer"], cor: 1, exp: "Printing to PDF is a way to 'Save As' a PDF from any program." },
         { q: "What is the 'Quick Access Toolbar'?", a: ["The Start Menu", "A customizable toolbar for frequently used commands", "The Taskbar", "The Recycle Bin"], cor: 1, exp: "It is usually at the very top of the window and holds shortcuts like Save and Undo." },
         { q: "Which key is used to exit a PowerPoint Slide Show?", a: ["Enter", "Esc", "Tab", "Shift"], cor: 1, exp: "The Escape (Esc) key stops the presentation and returns to the edit screen." }
+        { type: "matching", q: "Match Word UI Elements:", pairs: [{term: "Ribbon", definition: "Main command center tabs"}, {term: "Quick Access", definition: "Custom shortcut buttons"}, {term: "Status Bar", definition: "Page and word count info"}], exp: "UI elements organize features for productivity." },
+        { type: "ordering", q: "Steps to Save as PDF:", items: ["Click File", "Choose Save As", "Select PDF format", "Click Save"], cor: ["Click File", "Choose Save As", "Select PDF format", "Click Save"], exp: "PDF conversion happens within the Save As menu." },
+        { type: "matching", q: "Match Layout Terms:", pairs: [{term: "Portrait", definition: "Vertical page orientation"}, {term: "Landscape", definition: "Horizontal page orientation"}, {term: "Margins", definition: "White space around edges"}], exp: "Orientation and margins define the print area." },
+        { type: "ordering", q: "Formatting a Paragraph:", items: ["Select the text", "Change font type", "Apply bold styling", "Adjust line spacing"], cor: ["Select the text", "Change font type", "Apply bold styling", "Adjust line spacing"], exp: "Selection must occur before formatting can be applied." },
+        { type: "matching", q: "Match Content Features:", pairs: [{term: "Header", definition: "Text at top of every page"}, {term: "Footer", definition: "Text at bottom of every page"}, {term: "Caption", definition: "Label for a picture or table"}], exp: "These help organize long documents." },
+        { type: "ordering", q: "Creating a Presentation:", items: ["Choose a template", "Add a title slide", "Insert new slides", "Apply transitions"], cor: ["Choose a template", "Add a title slide", "Insert new slides", "Apply transitions"], exp: "Logical flow for building slide decks." },
+        { type: "matching", q: "Match Image Wrap Settings:", pairs: [{term: "In Line", definition: "Image sits like a word"}, {term: "Square", definition: "Text flows around the box"}, {term: "Tight", definition: "Text flows around the image shape"}], exp: "Wrap settings control how text interacts with visuals." },
+        { type: "ordering", q: "Printing a Document:", items: ["Select Print option", "Choose the printer", "Set page range", "Click Print button"], cor: ["Select Print option", "Choose the printer", "Set page range", "Click Print button"], exp: "The configuration steps before the final execution." },
+        { type: "matching", q: "Match Keyboard Shortcuts:", pairs: [{term: "Ctrl + S", definition: "Save document"}, {term: "Ctrl + P", definition: "Print document"}, {term: "Ctrl + Z", definition: "Undo last action"}], exp: "Essential productivity shortcuts." },
+        { type: "ordering", q: "Sharing a File:", items: ["Click Share button", "Enter email address", "Set permissions (View/Edit)", "Click Send"], cor: ["Click Share button", "Enter email address", "Set permissions (View/Edit)", "Click Send"], exp: "Cloud-based collaboration workflow." },
+        { type: "matching", q: "Match Document Views:", pairs: [{term: "Print Layout", definition: "Standard editing view"}, {term: "Read Mode", definition: "Optimized for viewing"}, {term: "Web Layout", definition: "Shows how it looks online"}], exp: "Views change how content is displayed." },
+        { type: "ordering", q: "Inserting a Table:", items: ["Click Insert tab", "Select Table", "Choose rows/columns", "Enter data"], cor: ["Click Insert tab", "Select Table", "Choose rows/columns", "Enter data"], exp: "Process for adding structured data." },
+        { type: "matching", q: "Match Font Styles:", pairs: [{term: "Serif", definition: "Fonts with small 'feet'"}, {term: "Sans Serif", definition: "Clean fonts without 'feet'"}, {term: "Script", definition: "Handwritten style fonts"}], exp: "Typography choices impact readability." },
+        { type: "ordering", q: "Spell Check Process:", items: ["Identify red underline", "Right-click word", "Select correct spelling", "Click Ignore if correct"], cor: ["Identify red underline", "Right-click word", "Select correct spelling", "Click Ignore if correct"], exp: "Standard error correction workflow." },
+        { type: "matching", q: "Match Backup Methods:", pairs: [{term: "Cloud", definition: "OneDrive / Google Drive"}, {term: "Physical", definition: "USB Flash Drive"}, {term: "Version History", definition: "Restoring older file drafts"}], exp: "Safeguarding work is a core GS6 objective." }
     ],
     lesson5: [
         { q: "What is an online journal where a creator posts articles and others comment?", a: ["Wiki", "Blog", "Podcast", "Portal"], cor: 1, exp: "Blogs are online journals used for sharing opinions and information on specific topics." },
@@ -383,6 +443,21 @@ const allModules = {
         { q: "What is 'Digital Etiquette'?", a: ["Fast typing", "Another word for Netiquette", "Buying digital goods", "Fixing a router"], cor: 1, exp: "Etiquette refers to the standards of conduct online." },
         { q: "Why check the 'Last Updated' date on a blog?", a: ["To see the colors", "To ensure the information is current and relevant", "To see the author's age", "To check the site's price"], cor: 1, exp: "Communication and facts change; currency is vital for accuracy." },
         { q: "What is the 'Golden Rule' of digital communication?", a: ["Type fast", "Treat others as you would want to be treated", "Never use punctuation", "Always use BCC"], cor: 1, exp: "Respect is the foundation of all positive digital interaction." }
+        { type: "matching", q: "Match Email Fields:", pairs: [{term: "To", definition: "Primary recipient"}, {term: "Cc", definition: "Visible copy for info"}, {term: "Bcc", definition: "Hidden copy for privacy"}], exp: "Bcc hides recipients from each other." },
+        { type: "ordering", q: "Professional Email Structure:", items: ["Subject Line", "Salutation", "Body Paragraphs", "Closing"], cor: ["Subject Line", "Salutation", "Body Paragraphs", "Closing"], exp: "Standard structure ensures clear communication." },
+        { type: "matching", q: "Match Social Tools:", pairs: [{term: "Blog", definition: "Online journal/articles"}, {term: "Wiki", definition: "Collaborative knowledge site"}, {term: "Podcast", definition: "Digital audio broadcast"}], exp: "Different tools serve different communication needs." },
+        { type: "ordering", q: "Replying to a Message:", items: ["Read original message", "Click Reply", "Type response", "Send message"], cor: ["Read original message", "Click Reply", "Type response", "Send message"], exp: "Basic communication flow." },
+        { type: "matching", q: "Match Communication Channels:", pairs: [{term: "SMS", definition: "Short text via phone"}, {term: "IM", definition: "Instant web-based chat"}, {term: "Email", definition: "Formal digital mail"}], exp: "Speed and formality vary by channel." },
+        { type: "ordering", q: "Attaching a File to Email:", items: ["Click Paperclip icon", "Select file from PC", "Wait for upload", "Send email"], cor: ["Click Paperclip icon", "Select file from PC", "Wait for upload", "Send email"], exp: "Method for sending external documents." },
+        { type: "matching", q: "Match Inbox Folders:", pairs: [{term: "Drafts", definition: "Unsent messages"}, {term: "Spam/Junk", definition: "Unwanted/dangerous mail"}, {term: "Sent", definition: "History of outgoing mail"}], exp: "Folders organize your communication history." },
+        { type: "ordering", q: "Searching an Inbox:", items: ["Click search bar", "Type sender name", "Apply 'Has Attachment' filter", "Select correct email"], cor: ["Click search bar", "Type sender name", "Apply 'Has Attachment' filter", "Select correct email"], exp: "Efficient way to find lost messages." },
+        { type: "matching", q: "Match Digital Presence:", pairs: [{term: "Profile", definition: "Personal info page"}, {term: "Status", definition: "Current activity update"}, {term: "Notification", definition: "Alert for new activity"}], exp: "Components of social networking." },
+        { type: "ordering", q: "Setting an Out-of-Office:", items: ["Go to Settings", "Select Automatic Replies", "Type message", "Enable date range"], cor: ["Go to Settings", "Select Automatic Replies", "Type message", "Enable date range"], exp: "Automating communication during absences." },
+        { type: "matching", q: "Match Video Call Icons:", pairs: [{term: "Microphone", definition: "Mute/Unmute audio"}, {term: "Camera", definition: "Enable/Disable video"}, {term: "Screen Share", definition: "Show your desktop to others"}], exp: "Standard controls for digital meetings." },
+        { type: "ordering", q: "Scheduling a Meeting:", items: ["Open Calendar", "Click New Event", "Invite attendees", "Set Time/Location"], cor: ["Open Calendar", "Click New Event", "Invite attendees", "Set Time/Location"], exp: "Workflow for group coordination." },
+        { type: "matching", q: "Match Professionalism Rules:", pairs: [{term: "Check Spelling", definition: "Avoid typos in emails"}, {term: "Avoid ALL CAPS", definition: "Don't 'shout' online"}, {term: "Subject lines", definition: "Be clear and concise"}], exp: "Etiquette rules for business communication." },
+        { type: "ordering", q: "Deleting a Conversation:", items: ["Select the thread", "Click Delete", "Confirm action", "Empty the Trash"], cor: ["Select the thread", "Click Delete", "Confirm action", "Empty the Trash"], exp: "Permanent removal of data." },
+        { type: "matching", q: "Match Digital Messaging Risks:", pairs: [{term: "Misinterpretation", definition: "Lack of tone/body language"}, {term: "Data Leak", definition: "Forwarding private info"}, {term: "Harassment", definition: "Unwanted repeated messages"}], exp: "Awareness of communication pitfalls." }
     ],
     lesson6: [
         { q: "What is a primary benefit of digital collaboration?", a: ["It decreases the need for internet access", "Productivity increases through simultaneous activity", "It eliminates the need for leadership", "It slows down project completion"], cor: 1, exp: "Productivity increases because team members can work on the same project simultaneously." },
@@ -460,6 +535,21 @@ const allModules = {
         { q: "In a professional setting, what is the best practice for abbreviations like 'ICYMI' (In case you missed it)?", a: ["Use them in every email", "Avoid them; use full words for clarity and professionalism", "Only use them with the boss", "Make up your own abbreviations"], cor: 1, exp: "Abbreviations are generally not accepted in professional communication." },
         { q: "What is the main difference between a live video call and an email?", a: ["Video calls are asynchronous; emails are synchronous", "Video calls are synchronous; emails are asynchronous", "There is no difference", "Emails use facial expressions"], cor: 1, exp: "Video calls happen in real-time (sync), while emails have a delay (async)." },
         { q: "You are the manager of a project. How does SharePoint help you?", a: ["It cooks lunch for the team", "It provides a central site to track documents and contributor updates", "It physically blocks employees from leaving", "It prints documents automatically"], cor: 1, exp: "SharePoint provides a central location for oversight and document management." }
+        { type: "matching", q: "Match Microsoft 365 Tools:", pairs: [{term: "Teams", definition: "Chat and video meetings"}, {term: "SharePoint", definition: "Team sites and document management"}, {term: "OneDrive", definition: "Personal cloud storage"}], exp: "Teams is for communication; SharePoint for team data." },
+        { type: "ordering", q: "Co-authoring Workflow:", items: ["Share link to file", "Grant Edit permission", "Open file simultaneously", "See live changes"], cor: ["Share link to file", "Grant Edit permission", "Open file simultaneously", "See live changes"], exp: "Co-authoring allows real-time teamwork." },
+        { type: "matching", q: "Match Etiquette Concepts:", pairs: [{term: "Synchronous", definition: "Real-time communication"}, {term: "Asynchronous", definition: "Delayed communication"}, {term: "Netiquette", definition: "Online polite code"}], exp: "Timeframes and rules define digital interaction." },
+        { type: "ordering", q: "Conducting a Video Meeting:", items: ["Send invite link", "Admit participants", "Present content", "Record session"], cor: ["Send invite link", "Admit participants", "Present content", "Record session"], exp: "Phases of a successful virtual meeting." },
+        { type: "matching", q: "Match Collaboration Roles:", pairs: [{term: "Owner", definition: "Full control over the group"}, {term: "Member", definition: "Can edit and contribute"}, {term: "Guest", definition: "Limited view-only access"}], exp: "Permissions ensure secure collaboration." },
+        { type: "ordering", q: "Working with Shared Files:", items: ["Navigate to SharePoint", "Locate folder", "Check out file", "Edit and save"], cor: ["Navigate to SharePoint", "Locate folder", "Check out file", "Edit and save"], exp: "Standard document management flow." },
+        { type: "matching", q: "Match Chat Features:", pairs: [{term: "Thread", definition: "Specific topic in a channel"}, {term: "Mention (@)", definition: "Tagging a specific person"}, {term: "Emoji", definition: "Visual emotional indicator"}], exp: "Tools for making chat more efficient." },
+        { type: "ordering", q: "Resolving a Conflict online:", items: ["Identify the issue", "Take it to private chat", "Listen to both sides", "Agree on a solution"], cor: ["Identify the issue", "Take it to private chat", "Listen to both sides", "Agree on a solution"], exp: "Professionalism in collaborative environments." },
+        { type: "matching", q: "Match Project Tools:", pairs: [{term: "Planner", definition: "Assign and track tasks"}, {term: "Whiteboard", definition: "Brainstorming and drawing"}, {term: "Forms", definition: "Surveys and feedback"}], exp: "Specialized tools for team productivity." },
+        { type: "ordering", q: "Steps to Leave a Group:", items: ["Open group settings", "Select 'Leave Group'", "Confirm decision", "Check for confirmation email"], cor: ["Open group settings", "Select 'Leave Group'", "Confirm decision", "Check for confirmation email"], exp: "Process for removing yourself from a collaboration." },
+        { type: "matching", q: "Match File Management:", pairs: [{term: "Sync", definition: "Updating local and cloud files"}, {term: "Conflict", definition: "Two people saving at once"}, {term: "Lock", definition: "Preventing edits by others"}], exp: "Challenges and solutions in shared editing." },
+        { type: "ordering", q: "Sharing a Screen:", items: ["Click Share icon", "Select 'Desktop' or 'App'", "Wait for red border", "Stop sharing when done"], cor: ["Click Share icon", "Select 'Desktop' or 'App'", "Wait for red border", "Stop sharing when done"], exp: "Procedure for visual presentation." },
+        { type: "matching", q: "Match Connection Quality:", pairs: [{term: "Lag", definition: "Delay in audio/video"}, {term: "Bandwidth", definition: "Data capacity of connection"}, {term: "Jitter", definition: "Unstable connection quality"}], exp: "Technical factors affecting collaboration." },
+        { type: "ordering", q: "Giving Feedback on a document:", items: ["Select text", "Click 'New Comment'", "Type feedback", "Tag collaborator"], cor: ["Select text", "Click 'New Comment'", "Type feedback", "Tag collaborator"], exp: "Providing constructive digital input." },
+        { type: "matching", q: "Match Mobile Collaboration:", pairs: [{term: "Push Notifications", definition: "Alerts on phone screen"}, {term: "Mobile App", definition: "Optimized tool for phone"}, {term: "Offline mode", definition: "Working without data"}], exp: "Collaborating on the go." }
     ],
     lesson7: [
         { q: "What is a 'Hacker'?", a: ["A computer repair technician", "A person who tries to gain unauthorized access to computer systems", "A type of antivirus software", "A network administrator"], cor: 1, exp: "Hackers employ methods to gain unauthorized access to systems." },
@@ -537,9 +627,25 @@ const allModules = {
         { q: "What does a 'Self-Replicating' program do?", a: ["It deletes itself", "It automatically makes copies of itself to spread to other computers", "It fixes the system", "It creates backups"], cor: 1, exp: "Worms are self-replicating malware." },
         { q: "If you feel threatened by online stalking, what should you do?", a: ["Nothing", "Record the incidents and report them to the police", "Delete the internet", "Threaten them back"], cor: 1, exp: "Stalking is a crime; record evidence and involve law enforcement." },
         { q: "What does an 'Ergonomic Keyboard' do?", a: ["Types for you", "Allows your hands to rest in a more natural, angled position while typing", "Glows in the dark", "Prevents viruses"], cor: 1, exp: "Ergonomic keyboards are split or angled to prevent wrist strain." }
+        { type: "matching", q: "Match Security Threats:", pairs: [{term: "Virus", definition: "Damages or destroys data"}, {term: "Worm", definition: "Spreads across networks automatically"}, {term: "Trojan", definition: "Hides inside fake apps"}], exp: "Viruses damage; worms spread; Trojans trick." },
+        { type: "ordering", q: "Ergonomics (Bottom to Top):", items: ["Feet flat on floor", "Thighs parallel to floor", "Wrists straight", "Monitor at eye level"], cor: ["Feet flat on floor", "Thighs parallel to floor", "Wrists straight", "Monitor at eye level"], exp: "Ergonomics starts with body support from the ground up." },
+        { type: "matching", q: "Match Defense Tools:", pairs: [{term: "Firewall", definition: "Blocks unauthorized network access"}, {term: "Antivirus", definition: "Scans for malicious code"}, {term: "VPN", definition: "Encrypts your internet connection"}], exp: "Firewalls are gatekeepers; Antivirus is an internal scanner; VPNs secure the path." },
+        { type: "ordering", q: "Creating a Secure Password:", items: ["Choose a long phrase", "Add numbers", "Add special characters", "Avoid personal info"], cor: ["Choose a long phrase", "Add numbers", "Add special characters", "Avoid personal info"], exp: "Method for building high-entropy passwords." },
+        { type: "matching", q: "Match Health Issues:", pairs: [{term: "Eyestrain", definition: "Caused by blue light/glare"}, {term: "RSI", definition: "Caused by repetitive motion"}, {term: "Sedentary risk", definition: "Caused by sitting too long"}], exp: "Physical risks of excessive technology use." },
+        { type: "ordering", q: "Steps to Secure a Device:", items: ["Apply OS updates", "Enable Lock Screen", "Install Antivirus", "Set up Remote Wipe"], cor: ["Apply OS updates", "Enable Lock Screen", "Install Antivirus", "Set up Remote Wipe"], exp: "Layered defense strategy." },
+        { type: "matching", q: "Match Social Engineering:", pairs: [{term: "Phishing", definition: "Fake emails for info"}, {term: "Smishing", definition: "Fake text messages"}, {term: "Vishing", definition: "Fake phone calls"}], exp: "Psychological manipulation to steal data." },
+        { type: "ordering", q: "Reacting to a Breach:", items: ["Change passwords", "Notify banks", "Check credit report", "Enable 2FA"], cor: ["Change passwords", "Notify banks", "Check credit report", "Enable 2FA"], exp: "Immediate recovery steps." },
+        { type: "matching", q: "Match Physical Security:", pairs: [{term: "Cable Lock", definition: "Secures laptop to desk"}, {term: "Biometrics", definition: "Uses body for access"}, {term: "Privacy Screen", definition: "Blocks side-viewing of monitor"}], exp: "Protecting the physical hardware." },
+        { type: "ordering", q: "Setting up 2FA:", items: ["Enter password", "Select 2FA option", "Scan QR code", "Enter backup code"], cor: ["Enter password", "Select 2FA option", "Scan QR code", "Enter backup code"], exp: "Process for adding an extra security layer." },
+        { type: "matching", q: "Match Data Privacy Laws:", pairs: [{term: "GDPR", definition: "European data protection"}, {term: "COPPA", definition: "Children's online privacy"}, {term: "FERPA", definition: "Student record privacy"}], exp: "Legal frameworks for data safety." },
+        { type: "ordering", q: "Clearing Browser Data:", items: ["Open Settings", "Select 'Privacy & Security'", "Click 'Clear browsing data'", "Select 'All Time'"], cor: ["Open Settings", "Select 'Privacy & Security'", "Click 'Clear browsing data'", "Select 'All Time'"], exp: "Standard privacy maintenance." },
+        { type: "matching", q: "Match Secure Web Signs:", pairs: [{term: "HTTPS", definition: "Secure encrypted protocol"}, {term: "Padlock Icon", definition: "Indicates active encryption"}, {term: "Warning Page", definition: "Browser alert for bad sites"}], exp: "Visual cues for safe browsing." },
+        { type: "ordering", q: "Disposing of a Device:", items: ["Back up data", "Sign out of accounts", "Factory reset", "Recycle at certified center"], cor: ["Back up data", "Sign out of accounts", "Factory reset", "Recycle at certified center"], exp: "Safe way to retire old technology." },
+        { type: "matching", q: "Match Backup Strategy:", pairs: [{term: "Full Backup", definition: "Copies every file"}, {term: "Incremental", definition: "Only copies new changes"}, {term: "Off-site", definition: "Stored in a different building"}], exp: "Ensuring data can be recovered after failure." }
     ]
 };
 
+// ===== Logics =====
 // ===== State Variables =====
 let activeQuestions = [];
 let currentQ = 0;
@@ -547,10 +653,15 @@ let score = 0;
 let mode = '';
 let selectedIdx = null;
 let timerInterval;
-let timeLeft = 3000; // 50 minutes
+let timeLeft = 3000; 
 let isPaused = false;
 let flaggedQuestions = [];
-let isReviewMode = false; // Tracks if the user is jumping back to fix flags
+let isReviewMode = false; 
+
+// NEW: Interactive State Variables
+let userSelection = []; // Tracks clicks for Ordering
+let userPairs = {};    // Tracks matches for Matching
+let activeTerm = null; // Helper for Matching logic
 
 // ===== Utilities =====
 function shuffle(array) {
@@ -566,13 +677,14 @@ function updateTimerDisplay() {
     const minutes = Math.floor(timeLeft / 60);
     const seconds = timeLeft % 60;
     const timerEl = document.getElementById('exam-timer');
-    timerEl.innerText = `Time: ${minutes}:${seconds < 10? '0' : ''}${seconds}`;
-    if (timeLeft <= 300) timerEl.style.color = "red";
+    if(timerEl) {
+        timerEl.innerText = `Time: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        if (timeLeft <= 300) timerEl.classList.add("warning");
+    }
 }
 
 function startTimer() {
     clearInterval(timerInterval);
-    if (!isPaused) timeLeft = 3000;
     isPaused = false;
     updateTimerDisplay();
 
@@ -600,34 +712,19 @@ function startApp(selectedMode) {
     mode = selectedMode;
     
     if (moduleKey === "full_level1") {
-        // 1. Combine all questions from all 7 lessons into one pool
-        let megaPool = [
-            ...allModules.lesson1,
-            ...allModules.lesson2,
-            ...allModules.lesson3,
-            ...allModules.lesson4,
-            ...allModules.lesson5,
-            ...allModules.lesson6,
-            ...allModules.lesson7
-        ];
-
-        // 2. Shuffle the entire pool
+        let megaPool = [];
+        for (let key in allModules) {
+            megaPool.push(...allModules[key]);
+        }
         shuffle(megaPool);
-
-        // 3. Set the number of questions (Certiport standard is 50)
-        // You could also use: let userCount = prompt("How many questions?", "50");
-        const examLength = 75; 
+        const examLength = 90; 
         activeQuestions = megaPool.slice(0, examLength);
-        
-        // 4. Update timer for the full exam (Certiport uses 50 minutes)
-        timeLeft = 3000; // 50 minutes
+        timeLeft = 3000; 
     } else {
-        // Standard single-module logic
         activeQuestions = shuffle([...allModules[moduleKey]]);
-        timeLeft = 3000; // 50 minutes for single lessons
+        timeLeft = 3000; 
     }
 
-    // Standard initialization
     document.getElementById('setup-screen').classList.add('hidden');
     document.getElementById('exam-container').classList.remove('hidden');
     document.getElementById('module-title').innerText = document.getElementById('module-select').selectedOptions[0].text;
@@ -642,77 +739,142 @@ function startApp(selectedMode) {
 
 function loadQuestion() {
     const q = activeQuestions[currentQ];
+    const optionsContainer = document.getElementById('options-container');
+    const interactiveContainer = document.getElementById('interactive-container');
+    const feedback = document.getElementById('feedback');
 
+    // UI Reset
     document.getElementById('q-number').innerText = `Question ${currentQ + 1} of ${activeQuestions.length}`;
     document.getElementById('q-text').innerText = q.q;
-
-    // Update Progress Bar
     const progress = ((currentQ + 1) / activeQuestions.length) * 100;
     document.getElementById('progress-fill').style.width = progress + '%';
 
-    // Clear Options
-    const container = document.getElementById('options-container');
-    container.innerHTML = '';
-    document.getElementById('feedback').classList.add('hidden');
+    optionsContainer.innerHTML = '';
+    interactiveContainer.innerHTML = '';
+    optionsContainer.classList.add('hidden');
+    interactiveContainer.classList.add('hidden');
+    feedback.classList.add('hidden');
     document.getElementById('next-btn').classList.add('hidden');
     document.getElementById('submit-btn').classList.remove('hidden');
+    
+    // Logic Reset
     selectedIdx = null;
+    userSelection = [];
+    userPairs = {};
+    activeTerm = null;
 
-    // Button Text based on Mode
-    const nextBtn = document.getElementById('next-btn');
-    if (isReviewMode) {
-        nextBtn.innerText = "Return to Review List";
-    } else {
-        nextBtn.innerText = "Next Question";
-    }
-
-    // Flag visual status
+    // Flag UI
     const flagBtn = document.getElementById('flag-btn');
-    if (flaggedQuestions.includes(currentQ)) {
-        flagBtn.textContent = "Unflag Question";
-        flagBtn.style.background = "#ffc107";
-    } else {
-        flagBtn.textContent = "Flag for Review";
-        flagBtn.style.background = "white";
-    }
+    flagBtn.textContent = flaggedQuestions.includes(currentQ) ? "Unflag Question" : "Flag for Review";
+    flagBtn.style.background = flaggedQuestions.includes(currentQ) ? "#ffc107" : "white";
 
-    // Render Options
-    q.a.forEach((opt, index) => {
-        const btn = document.createElement('button');
-        btn.innerText = opt;
-        btn.onclick = () => selectOption(index, btn);
-        container.appendChild(btn);
-    });
+    // SMART LOADER: Check Type
+    if (!q.type || q.type === "mcq") {
+        optionsContainer.classList.remove('hidden');
+        q.a.forEach((opt, index) => {
+            const btn = document.createElement('button');
+            btn.innerText = opt;
+            btn.onclick = () => selectMCQ(index, btn);
+            optionsContainer.appendChild(btn);
+        });
+    } else if (q.type === "ordering") {
+        interactiveContainer.classList.remove('hidden');
+        renderOrdering(q);
+    } else if (q.type === "matching") {
+        interactiveContainer.classList.remove('hidden');
+        renderMatching(q);
+    }
 }
 
-function selectOption(idx, clickedBtn) {
+// --- MCQ Logic ---
+function selectMCQ(idx, btn) {
     selectedIdx = idx;
-    const btns = document.querySelectorAll('#options-container button');
-    btns.forEach(b => {
+    document.querySelectorAll('#options-container button').forEach(b => {
         b.style.background = 'white';
         b.style.color = 'black';
     });
-    clickedBtn.style.background = '#0056b3';
-    clickedBtn.style.color = 'white';
+    btn.style.background = '#0056b3';
+    btn.style.color = 'white';
+}
+
+// --- Ordering Logic ---
+function renderOrdering(q) {
+    const container = document.getElementById('interactive-container');
+    const shuffledItems = shuffle([...q.items]);
+    
+    shuffledItems.forEach(item => {
+        const div = document.createElement('div');
+        div.className = "interactive-item";
+        div.innerText = item;
+        div.onclick = function() {
+            if (this.classList.contains('selected')) return;
+            userSelection.push(this.innerText);
+            this.classList.add('selected');
+            this.innerHTML = `<span class="order-number">${userSelection.length}</span> ${this.innerText}`;
+        };
+        container.appendChild(div);
+    });
+}
+
+// --- Matching Logic ---
+function renderMatching(q) {
+    const container = document.getElementById('interactive-container');
+    container.innerHTML = `<div class="matching-grid"><div class="match-column" id="terms"></div><div class="match-column" id="defs"></div></div>`;
+    
+    const shuffledTerms = shuffle([...q.pairs]);
+    const shuffledDefs = shuffle([...q.pairs]);
+
+    shuffledTerms.forEach(p => {
+        const div = document.createElement('div');
+        div.className = "interactive-item";
+        div.innerText = p.term;
+        div.onclick = function() {
+            if (this.classList.contains('paired')) return;
+            document.querySelectorAll('#terms .interactive-item').forEach(d => d.classList.remove('selected'));
+            this.classList.add('selected');
+            activeTerm = this;
+        };
+        document.getElementById('terms').appendChild(div);
+    });
+
+    shuffledDefs.forEach(p => {
+        const div = document.createElement('div');
+        div.className = "interactive-item";
+        div.innerText = p.definition;
+        div.onclick = function() {
+            if (!activeTerm || this.classList.contains('paired')) return;
+            userPairs[activeTerm.innerText] = this.innerText;
+            this.classList.add('paired');
+            activeTerm.classList.remove('selected');
+            activeTerm.classList.add('paired');
+            activeTerm = null;
+        };
+        document.getElementById('defs').appendChild(div);
+    });
 }
 
 function checkAnswer() {
-    if (selectedIdx === null) return alert("Select an answer!");
-
     const q = activeQuestions[currentQ];
-    const isCorrect = selectedIdx === q.cor;
-    
-    // Simple scoring logic: If they get it right, we give a point. 
-    // (In a real exam engine, you'd track answers per question index to avoid double scoring in review mode).
-    // For this simple simulator, we just tally it as they proceed.
-    if (isCorrect && !isReviewMode) score++; 
+    let isCorrect = false;
+
+    if (!q.type || q.type === "mcq") {
+        if (selectedIdx === null) return alert("Select an answer!");
+        isCorrect = (selectedIdx === q.cor);
+    } else if (q.type === "ordering") {
+        if (userSelection.length < q.items.length) return alert("Please rank all items!");
+        isCorrect = JSON.stringify(userSelection) === JSON.stringify(q.cor);
+    } else if (q.type === "matching") {
+        if (Object.keys(userPairs).length < q.pairs.length) return alert("Please match all items!");
+        isCorrect = q.pairs.every(p => userPairs[p.term] === p.definition);
+    }
+
+    if (isCorrect && !isReviewMode) score++;
 
     if (mode === 'training') {
         const f = document.getElementById('feedback');
         f.classList.remove('hidden');
         f.className = isCorrect ? 'correct-box' : 'wrong-box';
         f.innerHTML = `<strong>${isCorrect ? 'Correct!' : 'Incorrect.'}</strong><br>${q.exp}`;
-        
         document.getElementById('submit-btn').classList.add('hidden');
         document.getElementById('next-btn').classList.remove('hidden');
     } else {
@@ -720,39 +882,29 @@ function checkAnswer() {
     }
 }
 
-function nextQuestion() {
-    processNextStep();
-}
-
 function processNextStep() {
     if (isReviewMode) {
-        // Return to the review screen
         isReviewMode = false;
         showReviewScreen();
     } else {
         currentQ++;
-        if (currentQ < activeQuestions.length) {
-            loadQuestion();
-        } else {
-            showReviewScreen();
-        }
+        if (currentQ < activeQuestions.length) loadQuestion();
+        else showReviewScreen();
     }
 }
 
-// ===== Flag & Review =====
 function toggleFlag() {
     if (flaggedQuestions.includes(currentQ)) {
         flaggedQuestions = flaggedQuestions.filter(i => i !== currentQ);
     } else {
         flaggedQuestions.push(currentQ);
     }
-    loadQuestion(); // Re-render to update the flag button color
+    loadQuestion();
 }
 
 function showReviewScreen() {
     document.getElementById('exam-container').classList.add('hidden');
     document.getElementById('review-screen').classList.remove('hidden');
-    
     document.getElementById('flag-count').textContent = flaggedQuestions.length;
     const list = document.getElementById('review-list');
     list.innerHTML = '';
@@ -762,11 +914,8 @@ function showReviewScreen() {
     } else {
         flaggedQuestions.sort((a, b) => a - b).forEach(idx => {
             const item = document.createElement('div');
-            item.style.padding = "10px";
-            item.style.margin = "5px 0";
-            item.style.background = "#f8f9fa";
-            item.style.border = "1px solid #ccc";
-            item.style.cursor = "pointer";
+            item.className = "interactive-item";
+            item.style.marginBottom = "5px";
             item.innerHTML = `<strong>Question ${idx + 1}</strong> - Click to review`;
             item.onclick = () => goToFlagged(idx);
             list.appendChild(item);
@@ -782,27 +931,15 @@ function goToFlagged(idx) {
     loadQuestion();
 }
 
-function backToExam() {
-    isReviewMode = false;
-    document.getElementById('review-screen').classList.add('hidden');
-    document.getElementById('exam-container').classList.remove('hidden');
-    // If they were at the end, bring them to the last question
-    if (currentQ >= activeQuestions.length) currentQ = activeQuestions.length - 1;
-    loadQuestion();
-}
-
 function submitExam() {
     clearInterval(timerInterval);
     document.getElementById('review-screen').classList.add('hidden');
     document.getElementById('result-screen').classList.remove('hidden');
-
     const percent = Math.round((score / activeQuestions.length) * 100);
     const passStatus = percent >= 70 ? "PASSED" : "FAILED";
-
     document.getElementById('final-score').innerHTML = `
         <h2 style="color: ${percent >= 70 ? 'green' : 'red'}">${passStatus}</h2>
         <h1>${percent}%</h1>
         <p>Correct: ${score} | Total: ${activeQuestions.length}</p>
-        <p><em>Note: Score calculation tracks first-attempt answers during sequence.</em></p>
     `;
 }

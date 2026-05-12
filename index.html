@@ -9,22 +9,18 @@
 <body>
     <div id="setup-screen">
         <h1>IC3 GS6 L1 Exam Prep</h1>
-		<header>
-    		<div id="module-title">IC3 Digital Literacy</div>
-    		<div class="timer" id="timer">Timer: 45:00</div>
-   			<button id="quit-btn" onclick="quitToMenu()">Quit to Menu</button>
-		</header>
+        
         <div class="menu-section">
             <label>1. Select Module:</label>
             <select id="module-select">
-				<option value="lesson1">Lesson 1: Technology Basics</option>
-				<option value="lesson2">Lesson 2: Digital Citizenship</option>
-				<option value="lesson3">Lesson 3: Information Management</option>
-				<option value="lesson4">Lesson 4: Content Creation</option>
-				<option value="lesson5">Lesson 5: Communication</option>
-				<option value="lesson6">Lesson 6: Collaboration</option>
-			</select>
+                <option value="lesson1">Lesson 1: Technology Basics</option>
+                <option value="lesson2">Lesson 2: Digital Citizenship</option>
+                <option value="lesson3">Lesson 3: Information Management</option>
+                <option value="lesson4">Lesson 4: Content Creation</option>
+                <option value="lesson5">Lesson 5: Communication</option>
+            </select>
         </div>
+        
         <div class="menu-section">
             <label>2. Select Mode:</label>
             <button onclick="startApp('training')">Training Mode (Feedback ON)</button>
@@ -35,40 +31,46 @@
     <div id="exam-container" class="hidden">
         <header>
             <div id="module-title">IC3 Digital Literacy</div>
-            <div class="timer" id="exam-timer">Timer: 45:00</div>
+            <div class="timer" id="exam-timer">Time: 45:00</div>
             <button id="quit-btn" onclick="quitToMenu()">Quit to Menu</button>
         </header>
+
+        <div id="progress-bar">
+            <div id="progress-fill"></div>
+        </div>
+
         <main id="question-area">
             <div id="q-number">Question 1 of --</div>
             <h2 id="q-text">Question text?</h2>
+            
             <div id="options-container"></div>
+            
             <div id="feedback" class="hidden"></div>
         </main>
+        
         <footer>
-    <button id="flag-btn" onclick="toggleFlag()">Flag for Review</button>
-    <div>
-        <button id="submit-btn" onclick="checkAnswer()">Submit Answer</button>
-        <button id="next-btn" class="hidden" onclick="nextQuestion()">Next Question</button>
+            <button id="flag-btn" onclick="toggleFlag()">Flag for Review</button>
+            <div>
+                <button id="submit-btn" onclick="checkAnswer()">Submit Answer</button>
+                <button id="next-btn" class="hidden" onclick="nextQuestion()">Next Question</button>
+            </div>
+        </footer>
     </div>
-</footer>
 
-<!-- New review screen -->
-<div id="review-screen" class="hidden">
-    <h2>Review Flagged Questions</h2>
-    <p>You flagged <span id="flag-count">0</span> questions.</p>
-    <div id="review-list"></div>
-    <div class="review-actions">
-        <button onclick="goToFlagged(0)">Go to First Flagged</button>
-        <button onclick="submitExam()">Submit Exam</button>
-        <button onclick="backToExam()">Back to Exam</button>
-    </div>
-</div>
+    <div id="review-screen" class="hidden">
+        <h2>Review Flagged Questions</h2>
+        <p>You flagged <span id="flag-count">0</span> questions.</p>
+        <div id="review-list"></div>
+        <div class="review-actions">
+            <button onclick="goToFlagged(0)">Go to First Flagged</button>
+            <button onclick="submitExam()">Submit Exam</button>
+            <button onclick="backToExam()">Back to Exam</button>
+        </div>
     </div>
 
     <div id="result-screen" class="hidden">
         <h2 id="status-text">Module Complete!</h2>
         <div id="final-score"></div>
-        <button onclick="location.reload()">Back to Main Menu</button>
     </div>
 
     <script src="script.js"></script>

@@ -943,3 +943,8 @@ function submitExam() {
         <p>Correct: ${score} | Total: ${activeQuestions.length}</p>
     `;
 }
+
+// Bridge function to connect the HTML button to the logic
+function nextQuestion() {
+    processNextStep();
+}

@@ -502,6 +502,7 @@ function loadQuestion() {
     q.a.forEach((opt, index) => {
         const btn = document.createElement('button');
         btn.innerText = opt;
+        btn.className = "option-button";
         btn.onclick = () => selectOption(index);
         container.appendChild(btn);
     });
@@ -510,8 +511,14 @@ function loadQuestion() {
 function selectOption(idx) {
     selectedIdx = idx;
     const btns = document.querySelectorAll('#options-container button');
-    btns.forEach(b => b.style.background = 'white');
-    btns[idx].style.background = '#d0e1fd';
+    btns.forEach(b => {
+        b.style.background = '#f0f0f0'; // Light grey instead of pure white
+        b.style.color = '#333';          // Force dark text
+        b.style.border = '1px solid #ccc';
+    });
+    // Highlight selected
+    btns[idx].style.background = '#0056b3'; 
+    btns[idx].style.color = 'white';
 }
 
 function checkAnswer() {

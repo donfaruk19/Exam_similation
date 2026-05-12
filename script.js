@@ -460,6 +460,7 @@ const allModules = {
         { q: "In a professional setting, what is the best practice for abbreviations like 'ICYMI' (In case you missed it)?", a: ["Use them in every email", "Avoid them; use full words for clarity and professionalism", "Only use them with the boss", "Make up your own abbreviations"], cor: 1, exp: "Abbreviations are generally not accepted in professional communication." },
         { q: "What is the main difference between a live video call and an email?", a: ["Video calls are asynchronous; emails are synchronous", "Video calls are synchronous; emails are asynchronous", "There is no difference", "Emails use facial expressions"], cor: 1, exp: "Video calls happen in real-time (sync), while emails have a delay (async)." },
         { q: "You are the manager of a project. How does SharePoint help you?", a: ["It cooks lunch for the team", "It provides a central site to track documents and contributor updates", "It physically blocks employees from leaving", "It prints documents automatically"], cor: 1, exp: "SharePoint provides a central location for oversight and document management." }
+    ]
 };
 
 // ===== Logics =====

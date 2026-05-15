@@ -1043,3 +1043,6 @@ function jumpToQuestion(idx) {
     loadQuestion();
     updateNavGrid();
 }
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
+}

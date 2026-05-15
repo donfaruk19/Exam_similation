@@ -11,82 +11,88 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 </head>
 <body>
-    <div id="setup-screen">
-        <h1>IC3 GS6 Exam Practice</h1>
-        <div class="menu-section">
-            <label>1. Select Module:</label>
-            <select id="module-select">
-                <optgroup label="Level 1: Fundamentals">
-                    <option value="l1_lesson1">L1M1: Technology Basics</option>
-                    <option value="l1_lesson2">L1M2: Digital Citizenship</option>
-                    <option value="l1_lesson3">L1M3: Information Management</option>
-                    <option value="l1_lesson4">L1M4: Content Creation</option>
-                    <option value="l1_lesson5">L1M5: Communication</option>
-                    <option value="l1_lesson6">L1M6: Collaboration</option>
-                    <option value="l1_lesson7">L1M7: Safety and Security</option>
-                    <option value="full_level1">FULL Level 1 Exam Practice</option>
-                </optgroup>
-                <optgroup label="Level 2: Key Applications">
-                    <option value="l2_lesson1">L2M1: Digital Assets and Data</option>
-                    <option value="full_level2">FULL Level 2 Exam Practice</option>
-                </optgroup>
-            </select>
-        </div>
-        <div class="menu-section">
-            <button onclick="startApp('training')">Start Training Mode (Instant Feedback)</button>
-            <button onclick="startApp('testing')" style="background: #2d3748; color: white;">Start Exam Mode (Timed & Scored)</button>
-        </div>
+
+    <div id="loading-overlay" class="hidden" role="alert" aria-busy="true" aria-live="polite">
+        <div class="spinner"></div>
+        <p>Loading Exam Module...</p>
     </div>
 
+    <section id="setup-screen" aria-labelledby="setup-title">
+        <h1 id="setup-title">IC3 GS6 Exam Practice</h1>
+        
+        <form id="setup-form" onsubmit="event.preventDefault();">
+            <div class="menu-section">
+                <label for="module-select">1. Select Module:</label>
+                <select id="module-select" required>
+                    <optgroup label="Level 1: Fundamentals">
+                        <option value="l1_lesson1">L1M1: Technology Basics</option>
+                        <option value="l1_lesson2">L1M2: Digital Citizenship</option>
+                        <option value="l1_lesson3">L1M3: Information Management</option>
+                        <option value="l1_lesson4">L1M4: Content Creation</option>
+                        <option value="l1_lesson5">L1M5: Communication</option>
+                        <option value="l1_lesson6">L1M6: Collaboration</option>
+                        <option value="l1_lesson7">L1M7: Safety and Security</option>
+                    </optgroup>
+                    <optgroup label="Level 2: Working Knowledge">
+                        <option value="l2_lesson8">L2M8: Technology Basics (50 Qs)</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <button type="button" id="start-btn" onclick="startExam()">Start Examination</button>
+        </form>
+    </section>
+
     <div id="exam-container" class="hidden">
-        <header>
-            <div id="q-number">Question 1 of 10</div>
-            <div id="exam-timer" class="timer">Time: 50:00</div>
+        <header class="exam-header">
+            <div id="timer" aria-live="off" aria-label="Remaining Time">Time: --:--</div>
+            <div id="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Exam Progress">
+                <div id="progress-fill"></div>
+            </div>
         </header>
-        
-        <div id="progress-bar"><div id="progress-fill"></div></div>
-        
-        <main id="question-area">
-            <h2 id="q-text">Question Text Goes Here</h2>
-            <div id="options-container" class="hidden"></div>
+
+        <main id="question-workspace" aria-live="assertive">
+            <h2 id="q-text">Question Loading...</h2>
+            
+            <div id="options-container"></div>
             <div id="interactive-container" class="hidden"></div>
-            <div id="feedback" class="hidden"></div>
+            
+            <div id="feedback" class="hidden" role="status" aria-live="polite"></div>
         </main>
         
-        <div class="exam-footer">
-            <button id="flag-btn" onclick="toggleFlag()">Flag for Review</button>
+        <footer class="exam-footer">
+            <button id="flag-btn" onclick="toggleFlag()" aria-label="Flag current question for review">Flag for Review</button>
             <div>
                 <button id="submit-btn" onclick="checkAnswer()">Submit Answer</button>
                 <button id="next-btn" class="hidden" onclick="nextQuestion()">Next Question</button>
             </div>
-        </div>
+        </footer>
         
-        <div id="nav-pane">
+        <nav id="nav-pane" aria-label="Question Navigation Matrix">
             <h3>Question Overview</h3>
-            <div id="q-grid"></div>
-        </div>
+            <div id="q-grid" role="list"></div>
+        </nav>
     </div>
 
-    <div id="review-screen" class="hidden">
-        <h2>Exam Summary</h2>
+    <section id="review-screen" class="hidden" aria-labelledby="review-title">
+        <h2 id="review-title">Exam Summary</h2>
         <p style="color: #4a5568; margin-bottom: 20px;">Click any question to return and edit your answer. 🚩 indicates flagged items.</p>
-        <div id="review-list"></div>
+        <div id="review-list" role="list"></div>
         <div class="review-actions">
             <button onclick="submitExam()" style="background: #28a745; color: white;">Submit Final Exam</button>
             <button onclick="document.getElementById('review-screen').classList.add('hidden'); document.getElementById('exam-container').classList.remove('hidden');">Back to Exam</button>
         </div>
-    </div>
+    </section>
 
-    <div id="result-screen" class="hidden">
-        <h2 id="status-text">Exam Complete!</h2>
-        <div id="final-score"></div>
+    <section id="result-screen" class="hidden" aria-labelledby="result-title">
+        <h2 id="result-title">Exam Complete!</h2>
+        <div id="final-score" aria-live="polite"></div>
         <button onclick="location.reload()" style="margin-top: 20px; background: #0056b3; color: white;">Return to Main Menu</button>
-    </div>
+    </section>
 
-    <div class="copyright-footer">
-        &copy; 2024 Exam Simulator | Developed by <span>Donfaruk19</span>
-    </div>
+    <footer class="copyright-footer" role="contentinfo">
+        <p>© 2026 IC3 GS6 Exam Simulator. All Rights Reserved. Designed by <span>Donfaruk19</span>.</p>
+    </footer>
 
-    <script src="script.js"></script>
 </body>
 </html>

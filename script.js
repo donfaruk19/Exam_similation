@@ -12,9 +12,9 @@ document.onkeydown = function(e) {
     if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false; 
 }
 
-// ==========================================
-// PASTE YOUR `const allModules = { ... };` HERE
-// ==========================================
+// =====================
+// allModules Questions
+// =====================
 const allModules = {
     l1_lesson1: [
     { q: "What is the definition of an Operating System (OS)?", a: ["A collection of mechanical parts", "A program that manages hardware and controls communication between apps and hardware", "A set of tools for editing photos", "The physical casing of a computer"], cor: 1, exp: "The OS is the software that manages hardware and facilitates communication between hardware and applications." },
@@ -663,16 +663,16 @@ const allModules = {
 };
 // ==========================================
 
-
 // 1. CONFIGURATION
 const CONFIG = {
     PASS_SCORE: 70,
     TOTAL_EXAM_QUESTIONS: 75,
-    DEFAULT_TIME: 3000, // 50 minutes
-    WARNING_TIME: 300 // 5 minutes
+    DEFAULT_TIME: 3000, 
+    WARNING_TIME: 300,
+    STORAGE_KEY: 'ic3_sim_session'
 };
 
-// 2. UI MANAGER (DOM CACHE)
+// 2. UI MANAGER
 const UI = {
     setup: document.getElementById('setup-screen'),
     exam: document.getElementById('exam-container'),
@@ -702,7 +702,8 @@ class ExamTimer {
         this.interval = null;
     }
 
-    start() {
+    start(startTime = null) {
+        if (startTime !== null) this.timeLeft = startTime;
         clearInterval(this.interval);
         this.interval = setInterval(() => {
             this.timeLeft--;
@@ -717,23 +718,51 @@ class ExamTimer {
     stop() { clearInterval(this.interval); }
 }
 
-// 4. EXAM SESSION CLASS
+// 4. EXAM SESSION CLASS (With Persistence)
 class ExamSession {
-    constructor(questions, mode) {
+    constructor(questions, mode, resumeData = null) {
         this.questions = questions;
         this.mode = mode;
-        this.currentIdx = 0;
-        this.userAnswers = new Array(questions.length).fill(null);
-        this.flags = [];
+        
+        if (resumeData) {
+            this.currentIdx = resumeData.currentIdx;
+            this.userAnswers = resumeData.userAnswers;
+            this.flags = resumeData.flags;
+        } else {
+            this.currentIdx = 0;
+            this.userAnswers = new Array(questions.length).fill(null);
+            this.flags = [];
+        }
     }
 
-    setAnswer(val) { this.userAnswers[this.currentIdx] = val; }
+    save() {
+        const data = {
+            questions: this.questions,
+            mode: this.mode,
+            currentIdx: this.currentIdx,
+            userAnswers: this.userAnswers,
+            flags: this.flags,
+            timeLeft: timer ? timer.timeLeft : CONFIG.DEFAULT_TIME
+        };
+        localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(data));
+    }
+
+    clearSave() {
+        localStorage.removeItem(CONFIG.STORAGE_KEY);
+    }
+
+    setAnswer(val) { 
+        this.userAnswers[this.currentIdx] = val; 
+        this.save();
+    }
+
     getAnswer(idx = this.currentIdx) { return this.userAnswers[idx]; }
 
     toggleFlag() {
         const idx = this.currentIdx;
         if (this.flags.includes(idx)) this.flags = this.flags.filter(i => i !== idx);
         else this.flags.push(idx);
+        this.save();
     }
 
     calculateScore() {
@@ -770,7 +799,11 @@ function startApp(mode) {
         pool = shuffle([...allModules[moduleKey]]);
     }
 
-    session = new ExamSession(pool, mode);
+    initSession(pool, mode);
+}
+
+function initSession(questions, mode, resumeData = null) {
+    session = new ExamSession(questions, mode, resumeData);
     timer = new ExamTimer(CONFIG.DEFAULT_TIME, updateTimerUI, () => {
         alert("Time is up!");
         showReviewScreen();
@@ -778,13 +811,26 @@ function startApp(mode) {
 
     UI.setup.classList.add('hidden');
     UI.exam.classList.remove('hidden');
-    timer.start();
+    
+    const startTime = resumeData ? resumeData.timeLeft : CONFIG.DEFAULT_TIME;
+    timer.start(startTime);
     loadQuestion();
+}
+
+function checkResume() {
+    const saved = localStorage.getItem(CONFIG.STORAGE_KEY);
+    if (saved) {
+        const data = JSON.parse(saved);
+        if (confirm("Resume your previous unfinished exam?")) {
+            initSession(data.questions, data.mode, data);
+        } else {
+            localStorage.removeItem(CONFIG.STORAGE_KEY);
+        }
+    }
 }
 
 function loadQuestion() {
     const q = session.questions[session.currentIdx];
-    
     UI.options.innerHTML = '';
     UI.interactive.innerHTML = '';
     UI.feedback.classList.add('hidden');
@@ -812,6 +858,7 @@ function loadQuestion() {
     else if (q.type === 'matching') renderMatching(q);
 
     updateNavGrid();
+    session.save(); // Save current index position
 }
 
 // 6. RENDERERS
@@ -828,8 +875,6 @@ function renderMCQ(q) {
             document.querySelectorAll('#options-container button').forEach(b => b.classList.remove('selected-btn'));
             btn.classList.add('selected-btn');
             updateNavGrid();
-            
-            // Auto-check in training mode
             if(session.mode === 'training') checkAnswer();
         };
         UI.options.appendChild(btn);
@@ -846,19 +891,16 @@ function renderOrdering(q) {
             const div = document.createElement('div');
             div.className = "interactive-item";
             const pos = currentOrder.indexOf(item);
-            
             if (pos !== -1) {
                 div.classList.add('selected');
                 div.innerHTML = `<span class="order-number">${pos + 1}</span> ${item}`;
             } else {
                 div.innerText = item;
             }
-
             div.onclick = () => {
                 const idx = currentOrder.indexOf(item);
                 if (idx > -1) currentOrder.splice(idx, 1);
                 else currentOrder.push(item);
-                
                 session.setAnswer(currentOrder.length > 0 ? [...currentOrder] : null);
                 renderItems();
                 updateNavGrid();
@@ -876,7 +918,6 @@ function renderMatching(q) {
 
     const render = () => {
         UI.interactive.innerHTML = '<div class="matching-grid"><div class="match-column" id="terms"></div><div class="match-column" id="defs"></div></div>';
-        
         q.pairs.forEach(p => {
             const tDiv = document.createElement('div');
             tDiv.className = `interactive-item ${pairs[p.term] ? 'paired' : ''} ${activeTerm === p.term ? 'selected' : ''}`;
@@ -909,11 +950,9 @@ function renderMatching(q) {
     render();
 }
 
-// 7. NAVIGATION & REVIEW
+// 7. NAVIGATION & RESULTS
 function checkAnswer() {
-    // Only used for Training Mode instant feedback
     if (session.mode !== 'training') return;
-    
     const q = session.questions[session.currentIdx];
     const ans = session.getAnswer();
     if (ans === null) return alert("Select an answer!");
@@ -931,7 +970,6 @@ function checkAnswer() {
     `;
     UI.submitBtn.classList.add('hidden');
     UI.nextBtn.classList.remove('hidden');
-    if (session.currentIdx === session.questions.length - 1) UI.nextBtn.innerText = "Review Exam";
 }
 
 function nextQuestion() {
@@ -972,15 +1010,16 @@ function showReviewScreen() {
 }
 
 function submitExam() {
-    if (!confirm("Are you sure you want to submit your final answers?")) return;
+    if (!confirm("Are you sure you want to submit? This will clear your progress.")) return;
     
     timer.stop();
     const finalScore = session.calculateScore();
     const percent = Math.round((finalScore / session.questions.length) * 100);
     
+    session.clearSave(); // Clear local storage upon final submission
+    
     UI.review.classList.add('hidden');
     UI.result.classList.remove('hidden');
-    
     document.getElementById('final-score').innerHTML = `
         <h2 style="color: ${percent >= CONFIG.PASS_SCORE ? 'green' : 'red'}; font-size:2rem;">
             ${percent >= CONFIG.PASS_SCORE ? 'PASSED' : 'FAILED'}
@@ -998,7 +1037,6 @@ function updateNavGrid() {
         if (i === session.currentIdx) box.classList.add('current');
         if (session.userAnswers[i] !== null) box.classList.add('answered');
         if (session.flags.includes(i)) box.classList.add('flagged');
-        
         box.innerText = i + 1;
         box.onclick = () => { session.currentIdx = i; loadQuestion(); };
         UI.navGrid.appendChild(box);
@@ -1018,7 +1056,9 @@ function updateTimerUI(seconds) {
 function shuffle(arr) { return arr.sort(() => Math.random() - 0.5); }
 function toggleFlag() { session.toggleFlag(); loadQuestion(); }
 
-// Register Service Worker for PWA (App Install)
+// INITIALIZE
+window.onload = checkResume;
+
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js');
 }

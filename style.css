@@ -113,7 +113,10 @@ header {
     line-height: 1.4;
 }
 
-h1, h2 { color: #2d3748; margin-bottom: 15px; }
+h1, h2 { 
+    color: #2d3748; 
+    margin-bottom: 15px; 
+}
 
 /* --- Forms & Menus --- */
 .menu-section {
@@ -123,7 +126,10 @@ h1, h2 { color: #2d3748; margin-bottom: 15px; }
     gap: 12px;
 }
 
-label { font-weight: 600; color: #4a5568; }
+label { 
+    font-weight: 600; 
+    color: #4a5568; 
+}
 
 select {
     padding: 12px 15px;
@@ -136,7 +142,9 @@ select {
     transition: border-color 0.2s;
 }
 
-select:focus { border-color: #0056b3; }
+select:focus { 
+    border-color: #0056b3; 
+}
 
 /* --- Standard Buttons --- */
 button {
@@ -182,11 +190,25 @@ button:disabled {
     color: white;
 }
 
-#quit-btn { background: #cbd5e0; border: none; color: #2d3748; }
-#quit-btn:hover { background: #a0aec0; color: white; }
+#quit-btn { 
+    background: #cbd5e0; 
+    border: none; 
+    color: #2d3748; 
+}
 
-#flag-btn { border-color: #ecc94b; color: #b7791f; }
-#flag-btn:hover { background: #fffff0; }
+#quit-btn:hover { 
+    background: #a0aec0; 
+    color: white; 
+}
+
+#flag-btn { 
+    border-color: #ecc94b; 
+    color: #b7791f; 
+}
+
+#flag-btn:hover { 
+    background: #fffff0; 
+}
 
 /* --- Options Container (Multiple Choice) --- */
 #options-container {
@@ -291,8 +313,18 @@ button:disabled {
     line-height: 1.6;
     font-size: 1rem;
 }
-.correct-box { background: #f0fff4; border: 1px solid #c6f6d5; color: #22543d; }
-.wrong-box { background: #fff5f5; border: 1px solid #fed7d7; color: #822727; }
+
+.correct-box { 
+    background: #f0fff4; 
+    border: 1px solid #c6f6d5; 
+    color: #22543d; 
+}
+
+.wrong-box { 
+    background: #fff5f5; 
+    border: 1px solid #fed7d7; 
+    color: #822727; 
+}
 
 /* --- Review List --- */
 #review-list {
@@ -328,9 +360,13 @@ button:disabled {
     font-weight: 700;
 }
 
+/* --- Navigation Pane --- */
 #nav-pane {
-    margin-top: 20px;
-    padding-top: 15px;
+    display: block !important;
+    margin-top: 30px;
+    padding: 15px;
+    background: #f8fafc;
+    border-radius: 12px;
     border-top: 1px solid #edf2f7;
 }
 
@@ -339,12 +375,15 @@ button:disabled {
     color: #718096;
     margin-bottom: 10px;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 #q-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(35px, 1fr));
     gap: 8px;
+    max-height: 200px;
+    overflow-y: auto;
 }
 
 .q-box {
@@ -358,25 +397,63 @@ button:disabled {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s;
+    background: white;
+    color: #718096;
+}
+
+.q-box:hover {
+    border-color: #cbd5e0;
+    background: #f8fafc;
 }
 
 /* Status Colors */
-.q-box.current { border: 2px solid #0056b3; color: #0056b3; }
-.q-box.answered { background: #e8f0fe; border-color: #0056b3; }
-.q-box.flagged { background: #fffaf0; border-color: #ecc94b; }
-
-#nav-pane {
-    display: block !important; /* Forces visibility */
-    margin-top: 30px;
-    background: #f8fafc;
-    padding: 15px;
-    border-radius: 12px;
+.q-box.current { 
+    border: 2px solid #0056b3; 
+    color: #0056b3;
+    background: #ebf8ff;
 }
 
-#q-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(35px, 1fr));
-    gap: 8px;
-    max-height: 200px; /* Limits height so it doesn't push buttons away */
-    overflow-y: auto;
+.q-box.answered { 
+    background: #e8f0fe; 
+    border-color: #0056b3;
+    color: #0056b3;
+}
+
+.q-box.flagged { 
+    background: #fffaf0; 
+    border-color: #ecc94b;
+    color: #b7791f;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    body {
+        padding: 20px 10px;
+    }
+
+    #exam-container, 
+    #setup-screen, 
+    #result-screen, 
+    #review-screen {
+        padding: 20px;
+        border-radius: 12px;
+    }
+
+    #q-text {
+        font-size: 1.2rem;
+    }
+
+    .matching-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .exam-footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #q-grid {
+        grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
+    }
 }

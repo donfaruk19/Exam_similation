@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exam Simulator</title>
-    <link rel="icon" type="image/png" href="icon-192.ico">
+    <title>IC3 GS6 Exam Simulator</title>
     <link rel="stylesheet" href="style.css">
+    
     <link rel="manifest" href="manifest.json">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -16,7 +16,7 @@
         <div class="menu-section">
             <label>1. Select Module:</label>
             <select id="module-select">
-                <optgroup label="Level 1: Fundamental Concepts and EC">
+                <optgroup label="Level 1: Fundamentals">
                     <option value="l1_lesson1">L1M1: Technology Basics</option>
                     <option value="l1_lesson2">L1M2: Digital Citizenship</option>
                     <option value="l1_lesson3">L1M3: Information Management</option>
@@ -26,35 +26,29 @@
                     <option value="l1_lesson7">L1M7: Safety and Security</option>
                     <option value="full_level1">FULL Level 1 Exam Practice</option>
                 </optgroup>
-
-                <optgroup label="Level 2: Working Knowledge of Core Skills">
+                <optgroup label="Level 2: Key Applications">
                     <option value="l2_lesson1">L2M1: Digital Assets and Data</option>
                     <option value="full_level2">FULL Level 2 Exam Practice</option>
                 </optgroup>
-        </select>
+            </select>
         </div>
         <div class="menu-section">
-            <label>2. Select Mode:</label>
-            <button onclick="startApp('training')">Training Mode (Feedback ON)</button>
-            <button onclick="startApp('testing')">Testing Mode (Exam Style)</button>
+            <button onclick="startApp('training')">Start Training Mode (Instant Feedback)</button>
+            <button onclick="startApp('testing')" style="background: #2d3748; color: white;">Start Exam Mode (Timed & Scored)</button>
         </div>
     </div>
 
     <div id="exam-container" class="hidden">
         <header>
-            <div id="module-title">IC3 Digital Literacy</div>
-            <div class="timer" id="exam-timer">Time: 50:00</div>
-            <button id="quit-btn" onclick="quitToMenu()">Quit to Menu</button>
+            <div id="q-number">Question 1 of 10</div>
+            <div id="exam-timer" class="timer">Time: 50:00</div>
         </header>
-
-        <div id="progress-bar" style="width: 100%; height: 8px; background: #e0e0e0; margin-bottom: 15px; border-radius: 4px; overflow: hidden;">
-            <div id="progress-fill" style="height: 100%; width: 0%; background: #0056b3; transition: width 0.3s ease;"></div>
-        </div>
-
+        
+        <div id="progress-bar"><div id="progress-fill"></div></div>
+        
         <main id="question-area">
-            <div id="q-number">Question 1 of --</div>
-            <h2 id="q-text">Question text?</h2>
-            <div id="options-container"></div>
+            <h2 id="q-text">Question Text Goes Here</h2>
+            <div id="options-container" class="hidden"></div>
             <div id="interactive-container" class="hidden"></div>
             <div id="feedback" class="hidden"></div>
         </main>
@@ -66,30 +60,33 @@
                 <button id="next-btn" class="hidden" onclick="nextQuestion()">Next Question</button>
             </div>
         </div>
+        
         <div id="nav-pane">
-    <h3>Question Overview</h3>
-    <div id="q-grid"></div>
+            <h3>Question Overview</h3>
+            <div id="q-grid"></div>
         </div>
     </div>
 
     <div id="review-screen" class="hidden">
-        <h2>Review Flagged Questions</h2>
-        <p>You flagged <span id="flag-count">0</span> questions.</p>
+        <h2>Exam Summary</h2>
+        <p style="color: #4a5568; margin-bottom: 20px;">Click any question to return and edit your answer. 🚩 indicates flagged items.</p>
         <div id="review-list"></div>
         <div class="review-actions">
             <button onclick="submitExam()" style="background: #28a745; color: white;">Submit Final Exam</button>
-            <button onclick="backToExam()">Back to Exam</button>
+            <button onclick="document.getElementById('review-screen').classList.add('hidden'); document.getElementById('exam-container').classList.remove('hidden');">Back to Exam</button>
         </div>
     </div>
 
     <div id="result-screen" class="hidden">
-        <h2 id="status-text">Module Complete!</h2>
+        <h2 id="status-text">Exam Complete!</h2>
         <div id="final-score"></div>
-        <button onclick="location.reload()" style="margin-top: 15px;">Back to Main Menu</button>
+        <button onclick="location.reload()" style="margin-top: 20px; background: #0056b3; color: white;">Return to Main Menu</button>
     </div>
+
     <div class="copyright-footer">
-        &copy; 2026 Exam Simulator | Developed by <span>Donfaruk19</span>
+        &copy; 2024 Exam Simulator | Developed by <span>Donfaruk19</span>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>

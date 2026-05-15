@@ -677,6 +677,7 @@ l2_lesson1: [
 // ===== Logics =====
 // ===== State Variables =====
 let activeQuestions = [];
+let userAnswers = []; // Stores the index of the selected answer for each question
 let currentQ = 0;
 let score = 0;
 let mode = '';
@@ -781,8 +782,21 @@ function startApp(selectedMode) {
     isReviewMode = false;
     startTimer();
     loadQuestion();
+   
+    userAnswers = new Array(activeQuestions.length).fill(null); 
+    updateNavGrid(); // Create the grid
+    loadQuestion();
 }
 
+function selectOption(index) {
+    userAnswers[currentQ] = index; // Save the choice
+    updateNavGrid();
+    
+    // In Training mode, get immediate feedback
+    if (mode === 'training') {
+        showFeedback(index);
+    }
+}
 function loadQuestion() {
     const q = activeQuestions[currentQ];
     const optionsContainer = document.getElementById('options-container');
@@ -830,6 +844,11 @@ function loadQuestion() {
         interactiveContainer.classList.remove('hidden');
         renderMatching(q);
     }
+    if (userAnswers[currentQ] !== null) {
+        const buttons = document.querySelectorAll('#options-container button');
+        buttons[userAnswers[currentQ]].style.borderColor = "#0056b3";
+    }
+    updateNavGrid();
 }
 
 // --- MCQ Logic ---
@@ -993,4 +1012,27 @@ function submitExam() {
 // Bridge function to connect the HTML button to the logic
 function nextQuestion() {
     processNextStep();
+}
+
+function updateNavGrid() {
+    const grid = document.getElementById('q-grid');
+    grid.innerHTML = '';
+    
+    activeQuestions.forEach((_, idx) => {
+        const box = document.createElement('div');
+        box.className = 'q-box';
+        if (idx === currentQ) box.classList.add('current');
+        if (userAnswers[idx] !== null) box.classList.add('answered');
+        if (flaggedQuestions.includes(idx)) box.classList.add('flagged');
+        
+        box.innerText = idx + 1;
+        box.onclick = () => jumpToQuestion(idx);
+        grid.appendChild(box);
+    });
+}
+
+function jumpToQuestion(idx) {
+    currentQ = idx;
+    loadQuestion();
+    updateNavGrid();
 }

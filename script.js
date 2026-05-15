@@ -795,6 +795,13 @@ function selectOption(index) {
     // In Training mode, get immediate feedback
     if (mode === 'training') {
         showFeedback(index);
+    } else {
+        // In testing mode, visually highlight the selected button
+        const buttons = document.querySelectorAll('#options-container button');
+        buttons.forEach((btn, i) => {
+            btn.style.border = (i === index) ? "2px solid #0056b3" : "1px solid #e2e8f0";
+            btn.style.background = (i === index) ? "#e8f0fe" : "white";
+        });
     }
 }
 function loadQuestion() {

@@ -659,6 +659,404 @@ const allModules = {
         { type: "matching", q: "Match Secure Web Signs:", pairs: [{term: "HTTPS", definition: "Secure encrypted protocol"}, {term: "Padlock Icon", definition: "Indicates active encryption"}, {term: "Warning Page", definition: "Browser alert for bad sites"}], exp: "Visual cues for safe browsing." },
         { type: "ordering", q: "Disposing of a Device:", items: ["Back up data", "Sign out of accounts", "Factory reset", "Recycle at certified center"], cor: ["Back up data", "Sign out of accounts", "Factory reset", "Recycle at certified center"], exp: "Safe way to retire old technology." },
         { type: "matching", q: "Match Backup Strategy:", pairs: [{term: "Full Backup", definition: "Copies every file"}, {term: "Incremental", definition: "Only copies new changes"}, {term: "Off-site", definition: "Stored in a different building"}], exp: "Ensuring data can be recovered after failure." }
+    ],
+    //----- Beginnning of Level Two -----
+    l2_lesson8: [
+        // --- SECTION 1: GLOBAL & PROFILE-SPECIFIC SETTINGS / WINDOWS SETTINGS APP ---
+        {
+            q: "You need to change a setting on a Windows computer. Which type of setting generally relates directly to hardware and affects every user account on the system?",
+            a: ["Profile-specific settings", "Global settings", "Application-specific preferences", "Temporary container configurations"],
+            cor: 1,
+            exp: "According to the guide, global settings affect all user accounts on the system and are generally related to hardware."
+        },
+        {
+            q: "A user wants to change their personal background image and lock screen colors. How is this type of setting classified?",
+            a: ["Global hardware setting", "System-wide override", "Profile-specific setting", "Kernel configuration"],
+            cor: 2,
+            exp: "Profile-specific settings are tied to an individual user's profile, such as personal backgrounds or lock screens, rather than affecting the entire system hardware."
+        },
+        {
+            q: "What is the official step-by-step mouse navigation sequence required to open the primary Windows Settings app?",
+            a: ["Click Start, and then click Settings", "Right-click Taskbar, and click Properties", "Open File Explorer, and select Network Settings", "Click Start, select Control Panel, and choose Registry"],
+            cor: 0,
+            exp: "To configure commonly-accessed options, you click the Start button and then select the Settings icon."
+        },
+        {
+            q: "When navigating the main interface of the Windows Settings application, which method is available to quickly locate an obscure setting without browsing categories?",
+            a: ["Pressing F5 to refresh the navigation panel", "Using the provided 'Find a setting' search box", "Opening the system Command Prompt window", "Double-clicking on the window title bar"],
+            cor: 1,
+            exp: "The Windows Settings app allows you to either browse designated categories or utilize the 'Find a setting' search box directly."
+        },
+        {
+            type: "matching",
+            q: "Match each administrative setting type to its core system behavioral characteristic.",
+            pairs: [
+                { term: "Global Settings", definition: "Affects all user accounts on the system and generally relates to hardware components." },
+                { term: "Profile-Specific Settings", definition: "Tied directly to an individual user account and does not modify other environments." }
+            ]
+        },
+
+        // --- SECTION 2: BROWSER PREFERENCES AND SETTINGS ---
+        {
+            q: "Which specific utility should be deployed to defend a Local Area Network (LAN) from unauthorized, unwanted incoming internet traffic?",
+            a: ["Antivirus software", "Network Firewall", "Local Web Browser Extensions", "Operating System AutoCorrect"],
+            cor: 1,
+            exp: "Firewalls protect a Local Area Network (LAN) from unwanted network traffic originating from public untrusted networks."
+        },
+        {
+            q: "Your system keeps catching hidden spyware, trojans, and worms. Which tool is primarily designed to actively run background scans and protect the local OS file system from these specific threats?",
+            a: ["A network firewall rule", "Antivirus software", "An AutoFill form manager", "A browser default search filter"],
+            cor: 1,
+            exp: "Antivirus software protects the local operating system from threats like viruses, Trojans, and spyware."
+        },
+        {
+            q: "[SIMULATION] You click the 'Customize and Control' three-dot icon in Google Chrome. Which designated menu category must you choose to alter the browser's default search engine or autofill behaviors?",
+            a: ["History", "Downloads", "Settings", "More Tools"],
+            cor: 2,
+            exp: "To customize web browser preferences such as search engines, autofill, or default behaviors, you must choose 'Settings' from the control menu."
+        },
+        {
+            q: "You want to clear your saved address entries and automated payment forms from a browser session. Under which specific settings sub-panel are these data completion preferences grouped?",
+            a: ["Appearance settings", "Default browser configurations", "On startup configurations", "Autofill settings"],
+            cor: 3,
+            exp: "Options like Autofill handle the saving and automatic entering of form information such as login credentials, addresses, and credit cards."
+        },
+        {
+            q: "True or False: Web browser settings look identical, share the exact same names, and are located in the same structural configurations across all available web browsers.",
+            a: ["True", "False"],
+            cor: 1,
+            exp: "Customized browser settings vary in exact location, layout, and nomenclature depending on the specific web browser being utilized."
+        },
+
+        // --- SECTION 3: USING A DIGITAL CALENDAR (CONCEPTS & CREATION) ---
+        {
+            q: "You need to block out an hour on your calendar for an individual task. No other personnel or shared equipment are involved. What type of calendar entry should be created?",
+            a: ["A meeting request", "An appointment", "An all-day event", "A collaborative task"],
+            cor: 1,
+            exp: "An appointment is a personal calendar activity that usually only involves you and blocks out specific time slots on your schedule."
+        },
+        {
+            q: "You are planning a collaborative project overview session where several team members are invited and a physical conference room must be reserved. What type of calendar entry is required?",
+            a: ["A basic appointment", "A meeting", "An all-day event", "A digital task entry"],
+            cor: 1,
+            exp: "A meeting is an appointment to which external participants are explicitly invited and may involve reserving structural resources like rooms or AV gear."
+        },
+        {
+            q: "You are setting up a reminder on your calendar for a national holiday that spans the entire day. How does this entry affect your timeline visibility?",
+            a: ["It blocks out your calendar as 'Busy' from 9:00 AM to 5:00 PM", "It does not block out specific hourly blocks of time in your calendar", "It automatically deletes your other overlapping appointments", "It locks out your calendar to an 'Out of office' status permanently"],
+            cor: 1,
+            exp: "The guide explicitly notes that events lasting an entire day or longer do not block out discrete operational time slots in your calendar."
+        },
+        {
+            type: "matching",
+            q: "Match each digital calendar entry type to its exact operational behavior.",
+            pairs: [
+                { term: "Appointment", definition: "Involves only you and blocks out active time slots in your daily calendar matrix." },
+                { term: "Meeting", definition: "Invites external colleagues and frequently manages shared physical rooms or equipment." },
+                { term: "All-Day Event", definition: "Spans a full day duration or longer and does not block out discrete timeline hours." }
+            ]
+        },
+        {
+            q: "When colleagues look at your calendar, they see colored bars over certain hours. What do these custom indicators communicate to them?",
+            a: ["Your network bandwidth speeds", "Your specific user profile access privileges", "Your availability status (free, tentative, busy, out of office)", "The physical proximity of your device"],
+            cor: 2,
+            exp: "Colored bars represent a user's chosen availability configurations, showing whether they are free, tentative, busy, or out of the office."
+        },
+
+        // --- SECTION 4: CALENDAR OPERATIONS, RECURRENCE & SHARING ---
+        {
+            q: "[SIMULATION] When working inside a webmail interface like Gmail, which icon must you select first to open the quick launcher menu containing the Google Calendar link?",
+            a: ["The Settings Gear icon", "The Search Bar option", "The Google Apps grid icon (9 dots)", "The Create button"],
+            cor: 2,
+            exp: "To open the calendar directly from Gmail, you select the Google Apps icon grid at the top right and then select the Calendar app."
+        },
+        {
+            q: "You manage a standing weekly team sync every Monday morning. Instead of creating a new calendar slot manually every single week, which configuration option should you adjust?",
+            a: ["Change visibility to public", "Click the 'Does not repeat' button to configure a recurring appointment", "Convert the appointment into a custom Task", "Modify the default time zone parameters"],
+            cor: 1,
+            exp: "Clicking the 'Does not repeat' button opens options to configure recurring patterns or set custom intervals for ongoing schedules."
+        },
+        {
+            q: "You need to make your work calendar available to the public internet so external clients can view your basic schedule via a web page or URL. Which configuration is required?",
+            a: ["Exporting your source code via a local script", "Setting your calendar visibility settings to Public", "Converting all appointments into local tasks", "Subscribing to an external interest profile"],
+            cor: 1,
+            exp: "Choosing to make a calendar public saves the calendar structure to the internet, giving you an accessible URL or code to embed in a web page."
+        },
+        {
+            q: "A coworker shares their calendar with you via email. What action must you take to display their schedule alongside your own inside Google Calendar?",
+            a: ["Copy and paste their user source code into your settings", "Click the 'View Your Calendar' link directly inside the email notification", "Re-route your local network firewall configurations", "Delete your existing personal calendar data"],
+            cor: 1,
+            exp: "Clicking the 'View Your Calendar' link within the confirmation email automatically updates your interface, adding their schedule to your account."
+        },
+        {
+            q: "Once a colleague's calendar is added to your account layout, how can you quickly identify which appointments belong to them versus your own?",
+            a: ["Their entries flash continuously on your display interface", "Their appointments appear in a distinctly different color than yours", "Their appointments can only be seen when you log out of your system profile", "Their appointments are automatically listed inside your local task manager"],
+            cor: 1,
+            exp: "Shared external calendars and appointments are rendered using distinct colors to help you easily differentiate between multiple individuals' schedules."
+        },
+
+        // --- SECTION 5: CALENDAR SUBSCRIPTIONS & TASKS ---
+        {
+            q: "You have too many overlapping schedules on your screen because a colleague's shared calendar is currently displayed. How can you hide their schedule temporarily without completely deleting it?",
+            a: ["Clear your local browser autofill entries", "Uncheck the checkbox next to that person's name in the calendar sidebar", "Toggle your browser to private incognito mode", "Change your Windows settings profile to global execution"],
+            cor: 1,
+            exp: "To turn off the visible display of another user's shared calendar, you simply uncheck the checkbox designated next to their name."
+        },
+        {
+            q: "You want to follow an official corporate product launch timeline hosted on an external website. Which feature allows you to link that live internet schedule into your personal setup?",
+            a: ["Creating an offline document backup", "Subscribing to a calendar via 'Browse calendars of interest'", "Writing a macro in Visual Basic for Applications", "Configuring an Advanced Privacy Firewall layer"],
+            cor: 1,
+            exp: "By expanding 'Other calendars' and selecting 'Browse calendars of interest', you can subscribe directly to public schedules hosted across the web."
+        },
+        {
+            q: "What is the primary operational distinction between a calendar Event and a calendar Task?",
+            a: ["Tasks are only meant for global hardware items", "Tasks act as action reminders that include an explicit deadline or completion status", "Events require local source code modifications to run", "Tasks are automatically broadcasted publicly over a local network connection"],
+            cor: 1,
+            exp: "Tasks are distinct items set up as explicit action reminders for specific items you must perform with a strict tracking deadline."
+        },
+        {
+            q: "[SIMULATION] You have created a new item in your Task manager. Which visual control interface element must you click to open advanced options, add sub-steps, or input custom descriptive notes?",
+            a: ["The Settings Gear icon", "The Search engine dropdown field", "The Pencil icon located to the right of the task text", "The Start menu icon button"],
+            cor: 2,
+            exp: "Clicking the edit pencil icon at the right of a task line expands options to add specific operational parameters and notes."
+        },
+
+        // --- SECTION 6: AUTOMATED METHODS (SCRIPTS, PROGRAMS, MACROS, VBA) ---
+        {
+            q: "What term describes a set of background computer instructions that are written to execute automatically when a specific user action is initiated?",
+            a: ["A display port", "An internet firewall ruleset", "A script", "A hardware slider control"],
+            cor: 2,
+            exp: "Actions on a computer often occur using scripts, which are defined sets of operational instructions that run automatically when an action triggers them."
+        },
+        {
+            q: "Software developers write software instructions in a human-readable format. What is the technical term for this uncompiled, editable text block?",
+            a: ["Macro blocks", "Source code", "Hardware settings", "Synchronized cloud backups"],
+            cor: 1,
+            exp: "Developers use programming languages to construct instructions and calculations in a human-readable form known specifically as source code."
+        },
+        {
+            q: "You regularly perform the exact same repetitive formatting sequence on spreadsheet files. Which feature allows you to record these steps once and replay them with a single command?",
+            a: ["An AutoFill plugin configuration", "A Macro execution utility", "A profile-specific hardware override", "An Infrastructure service model"],
+            cor: 1,
+            exp: "A macro refers to a recorded group of actions or commands that can be executed instantly with a single shortcut command to handle repetitive tasks."
+        },
+        {
+            q: "Which specialized programming language serves as the underlying engine to build, edit, and run advanced automated macros inside Microsoft 365 core applications?",
+            a: ["HyperText Markup Language (HTML)", "JavaScript Engine Core v8", "Visual Basic for Applications (VBA)", "Structured Query Language (SQL)"],
+            cor: 2,
+            exp: "Visual Basic for Applications (VBA) provides the foundational programming language components that drive macro recording and execution inside Microsoft 365 apps."
+        },
+
+        // --- SECTION 7: CLOUD COMPUTING CONCEPTS (SaaS, IaaS, PaaS) ---
+        {
+            q: "In standard cloud computing terminology, what is the role of a 'Client' system versus a 'Server' system?",
+            a: ["Clients provide physical laser printing, while servers manage system brightness sliders", "Clients request services and access resources, while servers supply services and grant permissions", "Clients write the underlying source code, while servers record local application macros", "Clients handle global hardware modifications, while servers process profile-specific settings"],
+            cor: 1,
+            exp: "Client systems request services and access resources over a network connection, whereas server systems supply those services and manage access permissions."
+        },
+        {
+            q: "Your enterprise chooses to pay a monthly fee to access web-based email clients hosted on external servers rather than hosting local email software on-premise. What is this architecture called?",
+            a: ["Local script execution", "A hosted service infrastructure", "A profile-specific hardware driver", "An AutoCorrect algorithm configuration"],
+            cor: 1,
+            exp: "A hosted service is provided by external servers located outside your immediate local network, letting companies pay subscription fees to run modern utilities without server hardware overhead."
+        },
+        {
+            type: "matching",
+            q: "Match each primary cloud computing service model to its correct operational definition.",
+            pairs: [
+                { term: "Software as a Service (SaaS)", definition: "The most common model; applications are completely hosted by a provider and accessed over a network connection." },
+                { term: "Infrastructure as a Service (IaaS)", definition: "Provides virtualized computing resources, memory, and raw server hardware leased as on-demand services." },
+                { term: "Platform as a Service (PaaS)", definition: "An extension providing developers configured system environments to build, run, and test applications." }
+            ]
+        },
+        {
+            q: "A developer needs an environment with specific pre-configured operating systems and server software stacks to build a new software application. Which cloud layer model fits this requirement best?",
+            a: ["Software as a Service (SaaS)", "Platform as a Service (PaaS)", "Infrastructure as a Service (IaaS)", "Local Hardware Adjustment Layers"],
+            cor: 1,
+            exp: "Platform as a Service (PaaS) provides developers with software environments and underlying configurations required to construct new applications."
+        },
+
+        // --- SECTION 8: CLOUD BENEFITS & BROWSER COMPLETION TOOLS ---
+        {
+            q: "How does cloud computing help an organization significantly reduce its internal hardware procurement and upkeep costs?",
+            a: ["It automatically increases physical processor speeds measured in Gigahertz", "Older or slower hardware can remain highly productive since data processing occurs remotely", "It eliminates the need for any local network video connections or monitors", "It forces all local operating systems to drop profile-specific configuration tabs"],
+            cor: 1,
+            exp: "Cloud computing reduces hardware costs by letting companies distribute older or slower hardware to workforces while keeping them productive due to minimal local storage and execution demands."
+        },
+        {
+            q: "You lose your internet connection mid-flight but can still read and edit your cloud files because your machine syncs an identical copy to your local storage drive automatically. Which benefit does this describe?",
+            a: ["Built-in server hardware backup", "Ultra-high server proctor security layers", "Local access to synchronized user files", "Automated platform microcode compilation"],
+            cor: 2,
+            exp: "Most hosted cloud services maintain synchronized local copies of your files to ensure seamless document access even when an active internet connection drops."
+        },
+        {
+            q: "What browser feature is explicitly designed to speed up user form entries by automatically completing whole sentences as you type?",
+            a: ["AutoCorrect utility layers", "AutoComplete browser tools", "AutoFill payment systems", "Hardware brightness regulators"],
+            cor: 1,
+            exp: "The AutoComplete browser feature can automatically complete a sentence as you type, increasing your speed by learning text preferences over time."
+        },
+        {
+            q: "Where must a developer navigate inside Microsoft Edge to modify form memory, password savers, and personal data entries?",
+            a: ["Start Menu -> System Settings -> Sound Matrix Panel", "Advanced settings panel within the Privacy and Services section", "Google Apps icon matrix dropdown selection grid", "Printers & scanners interface management wizard"],
+            cor: 1,
+            exp: "In Microsoft Edge, automated form text completion parameters are accessed via the Advanced settings panel within the Privacy and Services section."
+        },
+        {
+            q: "Which tool is commonly integrated directly into smartphones to predict spelling and swap out mistyped characters on the fly?",
+            a: ["AutoFill database fields", "AutoComplete network systems", "AutoCorrect text prediction engines", "Macro tracking script panels"],
+            cor: 2,
+            exp: "The AutoCorrect feature automatically fixes words by predicting typing text, a tool commonly integrated into mobile smartphone layouts."
+        },
+
+        // --- SECTION 9: HARDWARE ADJUSTMENTS (MONITOR & SOUND) ---
+        {
+            q: "You need to increase the display contrast or change your display screen illumination level. What path takes you to these settings?",
+            a: ["Start button -> Settings -> System -> Display", "Gmail -> Google apps icon -> Other calendars menu option", "Chrome -> Settings -> Autofill forms sub-tab", "Start button -> Control Panel -> VBA Macros window"],
+            cor: 0,
+            exp: "Hardware component parameters like monitors, displays, and audio controllers are accessed by clicking Start -> Settings -> System."
+        },
+        {
+            q: "What does the term 'Color' specifically describe when adjusting your system monitor parameters through the built-in Windows display slider?",
+            a: ["The physical pixel dimensions of the monitor case", "The contrast or intensity level of colors rendered on-screen", "The conversion rate of digital video ports to analog streams", "The total count of connected external video out display adapters"],
+            cor: 1,
+            exp: "The text defines monitor 'color' adjustments as referring to contrast, which controls how intense colors look on your display screen."
+        },
+        {
+            q: "You are operating your laptop in a dark workspace. Which specific display option should you toggle to make the panel less bright and reduce eye strain?",
+            a: ["Set application default print layout to landscape", "Enable the integrated Night light option", "Re-route system firewalls to public networks", "Increase the processor speed parameter to maximum"],
+            cor: 1,
+            exp: "The Night light feature changes screen illumination levels to make displays less bright when using computing devices in dark environments."
+        },
+
+        // --- SECTION 10: CORE PRINTER CONCEPTS & SETTINGS ---
+        {
+            q: "A home office user needs an inexpensive printer that outputs high-quality text documents and graphics at a modest speed of several pages per minute. Which option is best?",
+            a: ["An industrial network laser printer", "An inkjet-type printer", "A high-speed wide-format line plotter", "A standalone thermal micro-scanner"],
+            cor: 1,
+            exp: "Inkjet printers are lower in cost, offer good print quality, and output several pages per minute, making them ideal for simple home setups."
+        },
+        {
+            q: "An office team requires a heavy-duty, shared printing setup with multiple trays capable of feeding various paper dimensions for booklets and flow charts. Which option is best?",
+            a: ["A basic personal inkjet printer", "A network-connected laser printer", "A compact desktop photo printer", "An analog plot-cabling machine"],
+            cor: 1,
+            exp: "Laser printers handle large print volumes for multiple network users and come with multiple paper trays for varying dimensions like booklets or charts."
+        },
+        {
+            q: "What is the standard hardware interface cable used to plug a new local desktop printer directly into a personal computer system?",
+            a: ["An HDMI display connector", "A standard USB cable", "A Cat 6a twisted ethernet cable", "A VGA analog video port adapter"],
+            cor: 1,
+            exp: "To connect a new physical printer directly to your personal computer system, you use a standard Universal Serial Bus (USB) cable."
+        },
+        {
+            q: "How does modern Windows OS handle driver setup when a new, standard peripheral printer is plugged into an active USB slot?",
+            a: ["It blocks system operation until a script is manually written in VBA", "It comes pre-loaded with hundreds of drivers and automatically loads them upon detection", "It converts the local profile structure into an Infrastructure service model", "It routes user visibility into an open public cloud container structure"],
+            cor: 1,
+            exp: "Windows comes pre-loaded with hundreds of device drivers and automatically loads them once a new printer connection is detected."
+        },
+        {
+            type: "ordering",
+            q: "Order the steps chronologically to change your default system printer using the Windows Settings application layer.",
+            items: [
+                "Open the 'Printers & scanners' option located within system settings.",
+                "Select your preferred target printer from the active device list.",
+                "Click the 'Manage' button option.",
+                "Click the 'Set as default' command link option."
+            ],
+            cor: [0, 1, 2, 3]
+        },
+
+        // --- SECTION 11: PROCESSORS & PORTS (VGA, DVI, HDMI, SPEED) ---
+        {
+            q: "What is the technical name for the silicon microprocessing chip that handles all calculations and logical system instructions within a computer?",
+            a: ["Graphics Processing Unit (GPU)", "Central Processing Unit (CPU)", "Visual Basic Application (VBA)", "Infrastructure as a Service (IaaS)"],
+            cor: 1,
+            exp: "The Central Processing Unit (CPU), or processor, is the silicon chip that performs the calculations and logical operations inside a computer."
+        },
+        {
+            q: "Processor performance and clock oscillation cycle frequencies are calculated using which base scientific unit of measurement?",
+            a: ["Bytes per second (Bps)", "Hertz (Hz)", "Feet or Meters (ft/m)", "Total Layer Pools"],
+            cor: 1,
+            exp: "Processor speeds are measured using units called hertz, which represent cycles or oscillations per second as current passes through the chip."
+        },
+        {
+            type: "matching",
+            q: "Match each processor frequency abbreviation metric to its exact numeric multiplier value.",
+            pairs: [
+                { term: "Kilohertz (KHz)", definition: "One thousand (1,000) cycles per second." },
+                { term: "Megahertz (MHz)", definition: "One million (1,000,000) cycles per second." },
+                { term: "Gigahertz (GHz)", definition: "One billion (1,000,000,000) cycles per second." },
+                { term: "Terahertz (THz)", definition: "One trillion (1,000,000,000,000) cycles per second." }
+            ]
+        },
+        {
+            q: "A user is buying a new laptop and notices the internal processor clock metrics fall within the 2 GHz to 3 GHz range. How is this standard classified?",
+            a: ["It indicates an outdated server model stack from early 1990", "It represents a standard operational speed range for most modern laptop systems", "It means the machine requires external liquid cooling processing configurations", "It proves the system can only support basic analog VGA ports without data translation"],
+            cor: 1,
+            exp: "The text states that while desktop machines hover around 3 to 4 GHz, most standard laptops include processors in the 2 GHz to 3 GHz speed range."
+        },
+        {
+            q: "Which specific processor runs alongside the main CPU to accelerate the processing of complex matrix data needed to render videos, movies, and video games?",
+            a: ["Visual Basic Application Script Engine", "Graphics Processing Unit (GPU)", "Network Laser Printer Interface Driver", "AutoComplete System Processing Layer"],
+            cor: 1,
+            exp: "The Graphics Processing Unit (GPU) is a specialized processor programmed to handle rich graphic computations, videos, and game data alongside the CPU."
+        },
+        {
+            q: "You are setting up an external display layout. Which group lists standard video ports available on computer systems?",
+            a: ["SaaS, IaaS, PaaS", "VGA, DVI, HDMI", "Cat 5, Cat 5e, Cat 6", "KHz, MHz, GHz"],
+            cor: 1,
+            exp: "Standard computer video out configurations include Video Graphics Adapter (VGA), Digital Video Interface (DVI), and High-Definition Multimedia Interface (HDMI)."
+        },
+        {
+            q: "You need to plug an HDMI monitor cable into a computer that only has an older DVI slot. What accessory must be used to bridge this physical connection?",
+            a: ["An automated VBA execution macro script", "A signal conversion port adapter", "A local network firewall routing proxy", "A Category 5e internet patch cable"],
+            cor: 1,
+            exp: "If a monitor's input ports do not match a computer's video output ports, you must use a port adapter to convert signals between the formats."
+        },
+        {
+            q: "Which device class generally excludes built-in external physical video out display ports, separating it from standard laptops or tablets?",
+            a: ["Modern Desktop Gaming Rigs", "Most Smartphones", "All-In-One Office Systems", "Enterprise Presentation Projectors"],
+            cor: 1,
+            exp: "Laptops and tablets usually include video out ports to extend displays, but most standard cellular smartphones do not carry these ports."
+        },
+
+        // --- SECTION 12: NETWORKING, CABLING & STANDARDS (ETHERNET) ---
+        {
+            type: "matching",
+            q: "Match each standard Ethernet protocol type to its exact maximum data transmission speed threshold.",
+            pairs: [
+                { term: "10Base-T Ethernet", definition: "Transmits network data at a maximum speed of 10Mbps." },
+                { term: "Fast Ethernet", definition: "Transmits network data at a maximum speed of 100Mbps." },
+                { term: "Gigabit Ethernet", definition: "Transmits network data at a maximum speed of 1Gbps." }
+            ]
+        },
+        {
+            q: "Why do enterprise networks prefer wired Ethernet connections over wireless Wi-Fi setups for transmitting highly sensitive client documents?",
+            a: ["Wired setups run completely inside system macro structures", "Wired networks are faster, more stable, and ideal for high-volume, secure data transmission", "Wired connection speeds are measured using Terahertz cycles", "Wired networks eliminate the need to configure any local operating system user profiles"],
+            cor: 1,
+            exp: "Ethernet networks are more stable and secure than wireless options, making them ideal for transmitting sensitive information and running high-volume streams."
+        },
+        {
+            q: "What is the standard maximum recommended physical distance limit for standard Ethernet copper wire cable installations before structural signal loss happens?",
+            a: ["50 feet (15 meters)", "300 feet (100 meters)", "1,200 feet (400 meters)", "3,000 feet (1,000 meters)"],
+            cor: 1,
+            exp: "Standard numerical twisted-pair Ethernet cables are manufactured to reliably transmit signals over a maximum cable length of roughly 300 feet (100 meters)."
+        },
+        {
+            type: "ordering",
+            q: "Arrange the physical Ethernet copper cable category standards sequentially from lowest data transfer capability up to the highest speed standard.",
+            items: [
+                "Category 5 (Cat 5) - Caps out at 10Mbps and 100Mbps bandwidth limits.",
+                "Category 5e (Cat 5e) - Enhances speeds up to 1Gbps capabilities safely.",
+                "Category 6 (Cat 6) - Expands transmission throughput boundaries up to 10Gbps bounds."
+            ],
+            cor: [0, 1, 2]
+        },
+        {
+            q: "What performance enhancement sets Category 6a (Cat 6a) cabling apart from standard Category 6 (Cat 6) installations?",
+            a: ["It changes the local system sound properties automatically", "It is designed with specialized physical insulation to minimize signal interference", "It extends the length limit past 5,000 feet without a switch", "It converts data parameters directly into SaaS cloud service blocks"],
+            cor: 1,
+            exp: "Category 6a features identical maximum speeds to Cat 6 (10Gbps) but is engineered with tighter shielding to reduce data signal interference."
+        }
     ]
 };
 // ==========================================

@@ -742,7 +742,6 @@ function startApp(selectedMode) {
     mode = selectedMode;
     
     if (moduleKey === "full_level1") {
-        // Automatically grabs any key in allModules that starts with "l1_"
         let megaPool = [];
         Object.keys(allModules).forEach(key => {
             if (key.startsWith('l1_')) {
@@ -750,11 +749,10 @@ function startApp(selectedMode) {
             }
         });
         shuffle(megaPool);
-        activeQuestions = megaPool.slice(0, 75); // Standardized to 75 questions
+        activeQuestions = megaPool.slice(0, 75); 
         timeLeft = 3000; 
     } 
     else if (moduleKey === "full_level2") {
-        // Automatically grabs any key in allModules that starts with "l2_"
         let megaPool = [];
         Object.keys(allModules).forEach(key => {
             if (key.startsWith('l2_')) {
@@ -766,12 +764,10 @@ function startApp(selectedMode) {
         timeLeft = 3000;
     } 
     else {
-        // Standard single-module selection
         activeQuestions = shuffle([...allModules[moduleKey]]);
         timeLeft = 3000; 
     }
 
-    // Standard initialization
     document.getElementById('setup-screen').classList.add('hidden');
     document.getElementById('exam-container').classList.remove('hidden');
     document.getElementById('module-title').innerText = document.getElementById('module-select').selectedOptions[0].text;
@@ -780,43 +776,20 @@ function startApp(selectedMode) {
     score = 0;
     flaggedQuestions = [];
     isReviewMode = false;
+    userAnswers = new Array(activeQuestions.length).fill(null); 
+    
     startTimer();
     loadQuestion();
-   
-    userAnswers = new Array(activeQuestions.length).fill(null); 
-    updateNavGrid(); // Create the grid
-    loadQuestion();
+    updateNavGrid();
 }
 
-function selectOption(index) {
-    userAnswers[currentQ] = index; // Save the choice
-    updateNavGrid();
-    
-    // In Training mode, get immediate feedback
-    if (mode === 'training') {
-        showFeedback(index);
-    } else {
-        // In testing mode, visually highlight the selected button
-        const buttons = document.querySelectorAll('#options-container button');
-        buttons.forEach((btn, i) => {
-            btn.style.border = (i === index) ? "2px solid #0056b3" : "1px solid #e2e8f0";
-            btn.style.background = (i === index) ? "#e8f0fe" : "white";
-        });
-    }
-}
 function loadQuestion() {
     const q = activeQuestions[currentQ];
     const optionsContainer = document.getElementById('options-container');
     const interactiveContainer = document.getElementById('interactive-container');
     const feedback = document.getElementById('feedback');
-    selectedIdx = userAnswers[currentQ];
 
-    // UI Reset
-    document.getElementById('q-number').innerText = `Question ${currentQ + 1} of ${activeQuestions.length}`;
-    document.getElementById('q-text').innerText = q.q;
-    const progress = ((currentQ + 1) / activeQuestions.length) * 100;
-    document.getElementById('progress-fill').style.width = progress + '%';
-
+    // 1. UI Cleanup - Crucial to prevent duplication
     optionsContainer.innerHTML = '';
     interactiveContainer.innerHTML = '';
     optionsContainer.classList.add('hidden');
@@ -824,42 +797,33 @@ function loadQuestion() {
     feedback.classList.add('hidden');
     document.getElementById('next-btn').classList.add('hidden');
     document.getElementById('submit-btn').classList.remove('hidden');
-    
-    // Logic Reset
-    selectedIdx = null;
+
+    // 2. Set Header Info
+    document.getElementById('q-number').innerText = `Question ${currentQ + 1} of ${activeQuestions.length}`;
+    document.getElementById('q-text').innerText = q.q;
+    const progress = ((currentQ + 1) / activeQuestions.length) * 100;
+    document.getElementById('progress-fill').style.width = progress + '%';
+
+    // 3. Restore State
+    selectedIdx = userAnswers[currentQ]; // Load saved answer
     userSelection = [];
     userPairs = {};
     activeTerm = null;
 
-    // SMART LOADER: MCQ
+    // 4. Load content based on type
     if (!q.type || q.type === "mcq") {
         optionsContainer.classList.remove('hidden');
         q.a.forEach((opt, index) => {
             const btn = document.createElement('button');
             btn.innerText = opt;
             
-            // Highlight if already answered
+            // Re-apply styles if this was already answered
             if (index === selectedIdx) {
                 btn.style.background = '#0056b3';
                 btn.style.color = 'white';
+                btn.style.borderColor = '#0056b3';
             }
             
-            btn.onclick = () => selectMCQ(index, btn);
-            optionsContainer.appendChild(btn);
-        });
-    }
-
-    // Flag UI
-    const flagBtn = document.getElementById('flag-btn');
-    flagBtn.textContent = flaggedQuestions.includes(currentQ) ? "Unflag Question" : "Flag for Review";
-    flagBtn.style.background = flaggedQuestions.includes(currentQ) ? "#ffc107" : "white";
-
-    // SMART LOADER: Check Type
-    if (!q.type || q.type === "mcq") {
-        optionsContainer.classList.remove('hidden');
-        q.a.forEach((opt, index) => {
-            const btn = document.createElement('button');
-            btn.innerText = opt;
             btn.onclick = () => selectMCQ(index, btn);
             optionsContainer.appendChild(btn);
         });
@@ -870,41 +834,39 @@ function loadQuestion() {
         interactiveContainer.classList.remove('hidden');
         renderMatching(q);
     }
-    if (userAnswers[currentQ] !== null) {
-        const buttons = document.querySelectorAll('#options-container button');
-        buttons[userAnswers[currentQ]].style.borderColor = "#0056b3";
-    }
+
+    // 5. Flag UI Update
+    const flagBtn = document.getElementById('flag-btn');
+    flagBtn.textContent = flaggedQuestions.includes(currentQ) ? "Unflag Question" : "Flag for Review";
+    flagBtn.style.background = flaggedQuestions.includes(currentQ) ? "#ffc107" : "white";
+
     updateNavGrid();
 }
 
-// --- MCQ Logic ---
 function selectMCQ(idx, btn) {
-    selectedIdx = idx; // Used for scoring
-    userAnswers[currentQ] = idx; // Saves for the Nav Pane
-    document.querySelectorAll('#options-container button').forEach(b => {
-        b.style.background = 'white';
-        b.style.color = 'black';
-    });
-    btn.style.background = '#0056b3';
-    btn.style.color = 'white';
-    // UI Feedback
-    document.querySelectorAll('#options-container button').forEach(b => {
+    selectedIdx = idx; 
+    userAnswers[currentQ] = idx; // Save choice to the array
+
+    // UI Feedback: Reset all buttons then highlight selected
+    const allButtons = document.querySelectorAll('#options-container button');
+    allButtons.forEach(b => {
         b.style.background = 'white';
         b.style.color = 'black';
         b.style.borderColor = '#e2e8f0';
     });
+    
     btn.style.background = '#0056b3';
     btn.style.color = 'white';
-    
-    updateNavGrid(); // Updates the pane colors immediately
+    btn.style.borderColor = '#0056b3';
+
+    updateNavGrid(); // Turn the box blue immediately
 }
 
-// --- Ordering Logic ---
 function renderOrdering(q) {
     const container = document.getElementById('interactive-container');
-    const shuffledItems = shuffle([...q.items]);
+    const itemsToRender = shuffle([...q.items]);
     
-    shuffledItems.forEach(item => {
+    itemsToRender.forEach(item => {
         const div = document.createElement('div');
         div.className = "interactive-item";
         div.innerText = item;
@@ -913,12 +875,12 @@ function renderOrdering(q) {
             userSelection.push(this.innerText);
             this.classList.add('selected');
             this.innerHTML = `<span class="order-number">${userSelection.length}</span> ${this.innerText}`;
+            // For complex types, you could save userSelection to userAnswers here if desired
         };
         container.appendChild(div);
     });
 }
 
-// --- Matching Logic ---
 function renderMatching(q) {
     const container = document.getElementById('interactive-container');
     container.innerHTML = `<div class="matching-grid"><div class="match-column" id="terms"></div><div class="match-column" id="defs"></div></div>`;
@@ -1040,14 +1002,6 @@ function showReviewScreen() {
     });
 }
 
-function goToFlagged(idx) {
-    currentQ = idx;
-    isReviewMode = true;
-    document.getElementById('review-screen').classList.add('hidden');
-    document.getElementById('exam-container').classList.remove('hidden');
-    loadQuestion();
-}
-
 function submitExam() {
     clearInterval(timerInterval);
     document.getElementById('review-screen').classList.add('hidden');
@@ -1061,13 +1015,13 @@ function submitExam() {
     `;
 }
 
-// Bridge function to connect the HTML button to the logic
 function nextQuestion() {
     processNextStep();
 }
 
 function updateNavGrid() {
     const grid = document.getElementById('q-grid');
+    if(!grid) return;
     grid.innerHTML = '';
     
     activeQuestions.forEach((_, idx) => {
@@ -1086,8 +1040,8 @@ function updateNavGrid() {
 function jumpToQuestion(idx) {
     currentQ = idx;
     loadQuestion();
-    updateNavGrid();
 }
+
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js');
 }

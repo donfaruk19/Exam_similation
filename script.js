@@ -1000,7 +1000,7 @@ const allModules = {
             q: "You need to plug an HDMI monitor cable into a computer that only has an older DVI slot. What accessory must be used to bridge this physical connection?",
             a: ["An automated VBA execution macro script", "A signal conversion port adapter", "A local network firewall routing proxy", "A Category 5e internet patch cable"],
             cor: 1,
-            exp: "If a monitor's input ports do not match a computer's video output ports, you must use a port adapter to convert signals between the formats."
+            exp: "If a monitor's input formats do not match a computer's video output ports, you must use a port adapter to convert signals between the formats."
         },
         {
             q: "Which device class generally excludes built-in external physical video out display ports, separating it from standard laptops or tablets?",
@@ -1089,8 +1089,9 @@ const UI = {
 // ENCAPSULATED TRANSACTION STATE CONTROLLER
 // ==========================================
 class ExamSession {
-    constructor(questions) {
+    constructor(questions, mode = 'training') {
         this.questions = questions;
+        this.mode = mode; // 'training' or 'testing'
         this.currentIdx = 0;
         this.userAnswers = new Array(questions.length).fill(null);
         this.flags = [];
@@ -1098,10 +1099,10 @@ class ExamSession {
         this.timeLeft = CONFIG.EXAM_TIME_SECONDS;
         
         // Complex Question State Containers
-        this.currentSelection = null; // MCQ tracking
-        this.userPairs = {};          // Matching tracking
-        this.userSequence = [];       // Ordering tracking
-        this.userCategories = {};     // Categorization tracking
+        this.currentSelection = null; 
+        this.userPairs = {};          
+        this.userSequence = [];       
+        this.userCategories = {};     
     }
 
     resetInteractiveStates() {
@@ -1131,7 +1132,7 @@ function checkResume() {
         const saved = localStorage.getItem(CONFIG.STORAGE_KEY);
         if (!saved) return;
         const state = JSON.parse(saved);
-        if (state && Date.now() - state.timestamp < 3600000) { // Valid within 1 hour
+        if (state && Date.now() - state.timestamp < 3600000) { 
             if (confirm("An incomplete exam session was found. Would you like to resume?")) {
                 rebuildSession(state);
             } else {
@@ -1143,6 +1144,10 @@ function checkResume() {
     }
 }
 
+/**
+ * CORE INTERFACE HUB TRIGGER FUNCTION
+ * Safely handles click routines initialized by index.html template triggers
+ */
 function startExam() {
     const selectedModule = UI.moduleSelect.value;
     const pool = allModules[selectedModule];
@@ -1152,14 +1157,24 @@ function startExam() {
         return;
     }
 
+    // Capture dynamic mode check configuration from radio inputs safely
+    let currentMode = 'training';
+    const modeElements = document.getElementsByName('mode');
+    for (let i = 0; i < modeElements.length; i++) {
+        if (modeElements[i].checked) {
+            currentMode = modeElements[i].value;
+            break;
+        }
+    }
+
     if (UI.loadingOverlay) UI.loadingOverlay.classList.remove('hidden');
 
     setTimeout(() => {
-        // DYNAMIC QUESTION POOL LOGIC DEFENSE
         const totalToLoad = Math.min(CONFIG.TOTAL_EXAM_QUESTIONS, pool.length);
         const randomizedPool = shuffle([...pool]).slice(0, totalToLoad);
 
-        session = new ExamSession(randomizedPool);
+        // Instantiate core operational controller with dynamic user mode
+        session = new ExamSession(randomizedPool, currentMode);
         
         saveStateToStorage(selectedModule);
 
@@ -1192,6 +1207,7 @@ function saveStateToStorage(moduleKey) {
             timestamp: Date.now(),
             sessionData: {
                 questions: session.questions,
+                mode: session.mode,
                 currentIdx: session.currentIdx,
                 userAnswers: session.userAnswers,
                 flags: session.flags,
@@ -1211,7 +1227,6 @@ function saveStateToStorage(moduleKey) {
 function loadQuestion() {
     if (!session) return;
     
-    // Clear display structures and reset temporary buffers
     UI.feedback.classList.add('hidden');
     UI.optionsContainer.innerHTML = '';
     UI.interactiveContainer.innerHTML = '';
@@ -1220,7 +1235,6 @@ function loadQuestion() {
     const q = session.getCurrentQuestion();
     UI.qText.innerText = `${session.currentIdx + 1}. ${q.q}`;
     
-    // Manage dynamic flag control interface state
     if (session.flags.includes(session.currentIdx)) {
         UI.flagBtn.innerText = "🚩 Flagged";
         UI.flagBtn.classList.add('active');
@@ -1229,16 +1243,25 @@ function loadQuestion() {
         UI.flagBtn.classList.remove('active');
     }
 
-    // Lock controls if question state was previously submitted
-    if (session.isLocked[session.currentIdx]) {
+    // GMETRIX BEHAVIOR LAYERING
+    if (session.mode === 'testing') {
+        // Testing mode acts as a fluid continuous tracker - submission buttons hide
         UI.submitBtn.classList.add('hidden');
         UI.nextBtn.classList.remove('hidden');
+        UI.nextBtn.innerText = (session.currentIdx === session.questions.length - 1) ? "Finish & Review" : "Next Question";
     } else {
-        UI.submitBtn.classList.remove('hidden');
-        UI.nextBtn.classList.add('hidden');
+        // Training Mode shows clear validation constraints per-item
+        UI.nextBtn.innerText = "Next Question";
+        if (session.isLocked[session.currentIdx]) {
+            UI.submitBtn.classList.add('hidden');
+            UI.nextBtn.classList.remove('hidden');
+            revealTrainingFeedback(q);
+        } else {
+            UI.submitBtn.classList.remove('hidden');
+            UI.nextBtn.classList.add('hidden');
+        }
     }
 
-    // ROUTING CONTROLLER PARSER (Accommodates extensions automatically)
     if (q.type === 'ordering') {
         UI.interactiveContainer.classList.remove('hidden');
         renderOrdering(q);
@@ -1267,14 +1290,16 @@ function renderMCQ(q) {
         btn.innerText = option;
         btn.setAttribute('role', 'radio');
         btn.setAttribute('aria-checked', 'false');
-        btn.setAttribute('tabindex', '0');
 
         if (historicalAnswer !== null && idx === historicalAnswer) {
             btn.classList.add('selected');
             btn.setAttribute('aria-checked', 'true');
         }
 
-        if (!session.isLocked[session.currentIdx]) {
+        // Action routines scale down if item is locked under training constraints
+        const canInteract = (session.mode === 'testing') || (!session.isLocked[session.currentIdx]);
+
+        if (canInteract) {
             btn.onclick = () => {
                 document.querySelectorAll('.option-btn').forEach(b => {
                     b.classList.remove('selected');
@@ -1283,6 +1308,12 @@ function renderMCQ(q) {
                 btn.classList.add('selected');
                 btn.setAttribute('aria-checked', 'true');
                 session.currentSelection = idx;
+                
+                // Silently write value to answers matrix instantly if in Testing mode
+                if (session.mode === 'testing') {
+                    session.userAnswers[session.currentIdx] = idx;
+                    updateNavGrid();
+                }
             };
         } else {
             btn.disabled = true;
@@ -1296,7 +1327,7 @@ function renderMCQ(q) {
 // --- COMPLEX SEQUENCE ENGINE (ORDERING) ---
 function renderOrdering(q) {
     const historical = session.userAnswers[session.currentIdx];
-    const isLocked = session.isLocked[session.currentIdx];
+    const isLocked = (session.mode === 'training' && session.isLocked[session.currentIdx]);
     
     session.userSequence = historical ? [...historical] : [];
 
@@ -1307,7 +1338,6 @@ function renderOrdering(q) {
         const el = document.createElement('div');
         el.className = 'interactive-item';
         el.innerText = item;
-        el.setAttribute('tabindex', '0');
 
         const stepBadge = document.createElement('span');
         stepBadge.className = 'step-badge';
@@ -1330,6 +1360,7 @@ function renderOrdering(q) {
                     session.userSequence.push(idx);
                 }
                 session.userAnswers[session.currentIdx] = session.userSequence.length ? [...session.userSequence] : null;
+                if (session.mode === 'testing') updateNavGrid();
                 renderOrdering(q);
             };
         } else {
@@ -1344,18 +1375,15 @@ function renderOrdering(q) {
 // --- COMPLEX MATRIX ENGINE (MATCHING) ---
 function renderMatching(q) {
     const historical = session.userAnswers[session.currentIdx];
-    const isLocked = session.isLocked[session.currentIdx];
+    const isLocked = (session.mode === 'training' && session.isLocked[session.currentIdx]);
 
-    if (historical) {
-        session.userPairs = { ...historical };
-    }
+    if (historical) session.userPairs = { ...historical };
 
     const wrapper = document.createElement('div');
     wrapper.className = 'matching-matrix';
 
     let selectedTerm = null;
 
-    // Display Terms Left Column
     const leftCol = document.createElement('div');
     leftCol.className = 'matrix-column';
     q.pairs.forEach((pair, idx) => {
@@ -1363,9 +1391,7 @@ function renderMatching(q) {
         termBtn.className = 'matrix-btn term-btn';
         termBtn.innerText = pair.term;
 
-        if (session.userPairs[pair.term]) {
-            termBtn.classList.add('paired');
-        }
+        if (session.userPairs[pair.term]) termBtn.classList.add('paired');
 
         if (!isLocked) {
             termBtn.onclick = () => {
@@ -1379,11 +1405,8 @@ function renderMatching(q) {
         leftCol.appendChild(termBtn);
     });
 
-    // Display Definitions Right Column
     const rightCol = document.createElement('div');
     rightCol.className = 'matrix-column';
-    
-    // Prevent answer pattern recognition by freezing or ordering definitions explicitly
     const renderedDefs = q.pairs.map(p => p.definition);
 
     renderedDefs.forEach(def => {
@@ -1391,7 +1414,6 @@ function renderMatching(q) {
         defBtn.className = 'matrix-btn def-btn';
         defBtn.innerText = def;
 
-        // Visual match line validation tracking display
         Object.keys(session.userPairs).forEach(t => {
             if (session.userPairs[t] === def) {
                 defBtn.classList.add('paired');
@@ -1407,8 +1429,6 @@ function renderMatching(q) {
                     alert("Please click a source term from the left column first.");
                     return;
                 }
-                
-                // Unpair definition if previously claimed
                 Object.keys(session.userPairs).forEach(t => {
                     if (session.userPairs[t] === def) delete session.userPairs[t];
                 });
@@ -1416,6 +1436,7 @@ function renderMatching(q) {
                 session.userPairs[selectedTerm] = def;
                 session.userAnswers[session.currentIdx] = { ...session.userPairs };
                 
+                if (session.mode === 'testing') updateNavGrid();
                 selectedTerm = null;
                 renderMatching(q);
             };
@@ -1433,7 +1454,7 @@ function renderMatching(q) {
 // --- EXTENSIBLE INTERACTIVE CLASSIFICATION ENGINE (CATEGORIZATION) ---
 function renderCategorization(q) {
     const historical = session.userAnswers[session.currentIdx];
-    const isLocked = session.isLocked[session.currentIdx];
+    const isLocked = (session.mode === 'training' && session.isLocked[session.currentIdx]);
 
     if (historical && typeof historical === 'object') {
         session.userCategories = { ...historical };
@@ -1444,7 +1465,6 @@ function renderCategorization(q) {
     const catContainer = document.createElement('div');
     catContainer.className = 'category-container';
 
-    // Build functional processing drop targets
     q.categories.forEach(cat => {
         const bucket = document.createElement('div');
         bucket.className = 'cat-bucket';
@@ -1460,6 +1480,7 @@ function renderCategorization(q) {
             const itemName = e.dataTransfer.getData('text/plain');
             session.userCategories[itemName] = cat;
             session.userAnswers[session.currentIdx] = { ...session.userCategories };
+            if (session.mode === 'testing') updateNavGrid();
             renderCategorization(q);
         };
         catContainer.appendChild(bucket);
@@ -1476,13 +1497,11 @@ function renderCategorization(q) {
         const itemNode = document.createElement('div');
         itemNode.className = 'interactive-item';
         itemNode.innerText = item.name;
-        itemNode.setAttribute('tabindex', '0');
 
         if (!isLocked) {
             itemNode.setAttribute('draggable', 'true');
             itemNode.ondragstart = (e) => e.dataTransfer.setData('text/plain', item.name);
             
-            // Mobile Interaction Strategy (Fallback Multi-Tap Distribution Routing)
             itemNode.onclick = () => {
                 const assigned = session.userCategories[item.name];
                 if (!assigned) {
@@ -1496,13 +1515,13 @@ function renderCategorization(q) {
                     }
                 }
                 session.userAnswers[session.currentIdx] = { ...session.userCategories };
+                if (session.mode === 'testing') updateNavGrid();
                 renderCategorization(q);
             };
         } else {
             itemNode.classList.add('disabled');
         }
 
-        // Allocate placement position dynamically across active viewports
         if (session.userCategories[item.name]) {
             const id = `bucket-${session.userCategories[item.name].replace(/\s+/g, '')}`;
             const targetBucket = document.getElementById(id);
@@ -1519,34 +1538,38 @@ function renderCategorization(q) {
 function checkAnswer() {
     if (!session) return;
     const q = session.getCurrentQuestion();
-    let isCorrect = false;
 
-    // Evaluate response variations based on processing schema
-    if (q.type === 'ordering') {
-        const ans = session.userAnswers[session.currentIdx];
-        isCorrect = ans && ans.length === q.items.length && ans.every((val, i) => val === q.cor[i]);
-    } else if (q.type === 'matching') {
-        const ans = session.userAnswers[session.currentIdx];
-        if (ans) {
-            isCorrect = q.pairs.every(p => ans[p.term] === p.definition);
-        }
-    } else if (q.type === 'categorization') {
-        const ans = session.userAnswers[session.currentIdx];
-        if (ans) {
-            isCorrect = q.items.every(item => ans[item.name] === item.category);
-        }
-    } else {
+    if (q.type !== 'ordering' && q.type !== 'matching' && q.type !== 'categorization') {
         if (session.currentSelection === null) {
             alert("Please make a selection before submitting your response.");
             return;
         }
         session.userAnswers[session.currentIdx] = session.currentSelection;
-        isCorrect = (session.currentSelection === q.cor);
     }
 
     session.isLocked[session.currentIdx] = true;
-    
-    // Inject contextual accessibility descriptions directly into feedback fields
+    revealTrainingFeedback(q);
+
+    UI.submitBtn.classList.add('hidden');
+    UI.nextBtn.classList.remove('hidden');
+    updateNavGrid();
+}
+
+function revealTrainingFeedback(q) {
+    let isCorrect = false;
+    if (q.type === 'ordering') {
+        const ans = session.userAnswers[session.currentIdx];
+        isCorrect = ans && ans.length === q.items.length && ans.every((val, i) => val === q.cor[i]);
+    } else if (q.type === 'matching') {
+        const ans = session.userAnswers[session.currentIdx];
+        if (ans) isCorrect = q.pairs.every(p => ans[p.term] === p.definition);
+    } else if (q.type === 'categorization') {
+        const ans = session.userAnswers[session.currentIdx];
+        if (ans) isCorrect = q.items.every(item => ans[item.name] === item.category);
+    } else {
+        isCorrect = (session.userAnswers[session.currentIdx] === q.cor);
+    }
+
     UI.feedback.classList.remove('hidden');
     if (isCorrect) {
         UI.feedback.className = "feedback-box correct-box";
@@ -1555,10 +1578,6 @@ function checkAnswer() {
         UI.feedback.className = "feedback-box wrong-box";
         UI.feedback.innerText = `Incorrect. ${q.exp}`;
     }
-
-    UI.submitBtn.classList.add('hidden');
-    UI.nextBtn.classList.remove('hidden');
-    updateNavGrid();
 }
 
 function nextQuestion() {
@@ -1566,7 +1585,6 @@ function nextQuestion() {
         session.currentIdx++;
         loadQuestion();
     } else {
-        // Automatically direct user to review screen upon terminal item exhaustion
         showReviewScreen();
     }
 }
@@ -1574,7 +1592,7 @@ function nextQuestion() {
 function jumpToQuestion(idx) {
     if (!session || idx < 0 || idx >= session.questions.length) return;
     session.currentIdx = idx;
-    document.getElementById('review-screen').classList.add('hidden');
+    UI.reviewScreen.classList.add('hidden');
     UI.examContainer.classList.remove('hidden');
     loadQuestion();
 }
@@ -1692,7 +1710,6 @@ function updateNavGrid() {
     session.questions.forEach((_, idx) => {
         const box = document.createElement('div');
         box.className = 'q-box';
-        box.setAttribute('role', 'listitem');
         
         if (idx === session.currentIdx) box.classList.add('current');
         if (session.userAnswers[idx] !== null) box.classList.add('answered');
@@ -1710,6 +1727,5 @@ function updateProgress() {
     if (UI.progressFill) UI.progressFill.style.width = `${currentPct}%`;
     if (UI.progressBar) {
         UI.progressBar.setAttribute('aria-valuenow', currentPct);
-        UI.progressBar.setAttribute('aria-label', `Progress: ${currentPct}% Complete`);
     }
 }

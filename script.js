@@ -853,6 +853,12 @@ function loadQuestion() {
         UI.nextBtn.innerText = (session.currentIdx === session.questions.length - 1) ? "Review Exam" : "Next Question";
     }
 
+    if (q.image) {
+    const img = document.createElement('img');
+    img.src = q.image;
+    img.className = "question-image"; // Add styling in CSS for width: 100%
+    UI.qText.after(img);
+}
     if (!q.type || q.type === 'mcq') renderMCQ(q);
     else if (q.type === 'ordering') renderOrdering(q);
     else if (q.type === 'matching') renderMatching(q);
@@ -950,6 +956,53 @@ function renderMatching(q) {
     render();
 }
 
+function renderCategorization(q) {
+    UI.interactive.classList.remove('hidden');
+    let userSort = session.getAnswer() || {}; // { "Keyboard": "Input" }
+
+    const render = () => {
+        UI.interactive.innerHTML = `
+            <div class="category-container">
+                ${q.categories.map(cat => `
+                    <div class="cat-bucket" data-cat="${cat}">
+                        <h4>${cat}</h4>
+                        <div id="items-${cat}"></div>
+                    </div>
+                `).join('')}
+            </div>
+            <div id="unassigned-items" class="item-pool"></div>
+        `;
+
+        q.items.forEach(item => {
+            const div = document.createElement('div');
+            div.className = "interactive-item";
+            div.innerText = item.name;
+            
+            // If already assigned, put in bucket; otherwise, put in pool
+            if (userSort[item.name]) {
+                document.getElementById(`items-${userSort[item.name]}`).appendChild(div);
+            } else {
+                document.getElementById('unassigned-items').appendChild(div);
+            }
+
+            div.onclick = () => {
+                // Logic to rotate through categories when clicked
+                let current = userSort[item.name];
+                let nextIdx = q.categories.indexOf(current) + 1;
+                
+                if (nextIdx >= q.categories.length) {
+                    delete userSort[item.name]; // Move back to pool
+                } else {
+                    userSort[item.name] = q.categories[nextIdx];
+                }
+                
+                session.setAnswer({...userSort});
+                render();
+            };
+        });
+    };
+    render();
+}
 // 7. NAVIGATION & RESULTS
 function checkAnswer() {
     if (session.mode !== 'training') return;

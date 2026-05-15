@@ -216,12 +216,15 @@ button:disabled {
     flex-direction: column;
     gap: 12px;
     margin: 20px 0;
+    width: 100%; /* Ensure it takes full width */
 }
 
 #options-container button {
     text-align: left;
-    justify-content: flex-start;
+    width: 100%;
+    min-height: 50px; /* Gives buttons a consistent size */
     padding: 15px 20px;
+    display: block; /* Ensures they stack vertically correctly */
 }
 
 /* --- Interactive Question Styling (Matching & Ordering) --- */

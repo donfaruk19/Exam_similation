@@ -12,9 +12,9 @@ document.onkeydown = function(e) {
     if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false; 
 }
 
-// =====================
-// allModules Questions
-// =====================
+// ==========================================
+// EXTENSIBLE QUIZ MODULE STORAGE
+// ==========================================
 const allModules = {
     l1_lesson1: [
     { q: "What is the definition of an Operating System (OS)?", a: ["A collection of mechanical parts", "A program that manages hardware and controls communication between apps and hardware", "A set of tools for editing photos", "The physical casing of a computer"], cor: 1, exp: "The OS is the software that manages hardware and facilitates communication between hardware and applications." },
@@ -662,7 +662,7 @@ const allModules = {
     ],
     //----- Beginnning of Level Two -----
     l2_lesson8: [
-        // --- SECTION 1: GLOBAL & PROFILE-SPECIFIC SETTINGS / WINDOWS SETTINGS APP ---
+        // --- GLOBAL & PROFILE SETTINGS / WINDOWS SETTINGS APP ---
         {
             q: "You need to change a setting on a Windows computer. Which type of setting generally relates directly to hardware and affects every user account on the system?",
             a: ["Profile-specific settings", "Global settings", "Application-specific preferences", "Temporary container configurations"],
@@ -695,8 +695,7 @@ const allModules = {
                 { term: "Profile-Specific Settings", definition: "Tied directly to an individual user account and does not modify other environments." }
             ]
         },
-
-        // --- SECTION 2: BROWSER PREFERENCES AND SETTINGS ---
+        // --- BROWSER PREFERENCES AND SETTINGS ---
         {
             q: "Which specific utility should be deployed to defend a Local Area Network (LAN) from unauthorized, unwanted incoming internet traffic?",
             a: ["Antivirus software", "Network Firewall", "Local Web Browser Extensions", "Operating System AutoCorrect"],
@@ -710,7 +709,7 @@ const allModules = {
             exp: "Antivirus software protects the local operating system from threats like viruses, Trojans, and spyware."
         },
         {
-            q: "[SIMULATION] You click the 'Customize and Control' three-dot icon in Google Chrome. Which designated menu category must you choose to alter the browser's default search engine or autofill behaviors?",
+            q: "You click the 'Customize and Control' three-dot icon in Google Chrome. Which designated menu category must you choose to alter the browser's default search engine or autofill behaviors?",
             a: ["History", "Downloads", "Settings", "More Tools"],
             cor: 2,
             exp: "To customize web browser preferences such as search engines, autofill, or default behaviors, you must choose 'Settings' from the control menu."
@@ -727,8 +726,7 @@ const allModules = {
             cor: 1,
             exp: "Customized browser settings vary in exact location, layout, and nomenclature depending on the specific web browser being utilized."
         },
-
-        // --- SECTION 3: USING A DIGITAL CALENDAR (CONCEPTS & CREATION) ---
+        // --- DIGITAL CALENDAR CONCEPTS ---
         {
             q: "You need to block out an hour on your calendar for an individual task. No other personnel or shared equipment are involved. What type of calendar entry should be created?",
             a: ["A meeting request", "An appointment", "An all-day event", "A collaborative task"],
@@ -762,10 +760,9 @@ const allModules = {
             cor: 2,
             exp: "Colored bars represent a user's chosen availability configurations, showing whether they are free, tentative, busy, or out of the office."
         },
-
-        // --- SECTION 4: CALENDAR OPERATIONS, RECURRENCE & SHARING ---
+        // --- CALENDAR MANAGEMENT & RECURRENCE ---
         {
-            q: "[SIMULATION] When working inside a webmail interface like Gmail, which icon must you select first to open the quick launcher menu containing the Google Calendar link?",
+            q: "When working inside a webmail interface like Gmail, which icon must you select first to open the quick launcher menu containing the Google Calendar link?",
             a: ["The Settings Gear icon", "The Search Bar option", "The Google Apps grid icon (9 dots)", "The Create button"],
             cor: 2,
             exp: "To open the calendar directly from Gmail, you select the Google Apps icon grid at the top right and then select the Calendar app."
@@ -794,8 +791,7 @@ const allModules = {
             cor: 1,
             exp: "Shared external calendars and appointments are rendered using distinct colors to help you easily differentiate between multiple individuals' schedules."
         },
-
-        // --- SECTION 5: CALENDAR SUBSCRIPTIONS & TASKS ---
+        // --- SUBSCRIPTIONS & TASKS ---
         {
             q: "You have too many overlapping schedules on your screen because a colleague's shared calendar is currently displayed. How can you hide their schedule temporarily without completely deleting it?",
             a: ["Clear your local browser autofill entries", "Uncheck the checkbox next to that person's name in the calendar sidebar", "Toggle your browser to private incognito mode", "Change your Windows settings profile to global execution"],
@@ -815,13 +811,12 @@ const allModules = {
             exp: "Tasks are distinct items set up as explicit action reminders for specific items you must perform with a strict tracking deadline."
         },
         {
-            q: "[SIMULATION] You have created a new item in your Task manager. Which visual control interface element must you click to open advanced options, add sub-steps, or input custom descriptive notes?",
+            q: "You have created a new item in your Task manager. Which visual control interface element must you click to open advanced options, add sub-steps, or input custom descriptive notes?",
             a: ["The Settings Gear icon", "The Search engine dropdown field", "The Pencil icon located to the right of the task text", "The Start menu icon button"],
             cor: 2,
             exp: "Clicking the edit pencil icon at the right of a task line expands options to add specific operational parameters and notes."
         },
-
-        // --- SECTION 6: AUTOMATED METHODS (SCRIPTS, PROGRAMS, MACROS, VBA) ---
+        // --- AUTOMATED METHODS ---
         {
             q: "What term describes a set of background computer instructions that are written to execute automatically when a specific user action is initiated?",
             a: ["A display port", "An internet firewall ruleset", "A script", "A hardware slider control"],
@@ -846,8 +841,7 @@ const allModules = {
             cor: 2,
             exp: "Visual Basic for Applications (VBA) provides the foundational programming language components that drive macro recording and execution inside Microsoft 365 apps."
         },
-
-        // --- SECTION 7: CLOUD COMPUTING CONCEPTS (SaaS, IaaS, PaaS) ---
+        // --- CLOUD COMPUTING CONCEPTS ---
         {
             q: "In standard cloud computing terminology, what is the role of a 'Client' system versus a 'Server' system?",
             a: ["Clients provide physical laser printing, while servers manage system brightness sliders", "Clients request services and access resources, while servers supply services and grant permissions", "Clients write the underlying source code, while servers record local application macros", "Clients handle global hardware modifications, while servers process profile-specific settings"],
@@ -875,8 +869,7 @@ const allModules = {
             cor: 1,
             exp: "Platform as a Service (PaaS) provides developers with software environments and underlying configurations required to construct new applications."
         },
-
-        // --- SECTION 8: CLOUD BENEFITS & BROWSER COMPLETION TOOLS ---
+        // --- CLOUD BENEFITS & BROWSER COMPLETION TOOLS ---
         {
             q: "How does cloud computing help an organization significantly reduce its internal hardware procurement and upkeep costs?",
             a: ["It automatically increases physical processor speeds measured in Gigahertz", "Older or slower hardware can remain highly productive since data processing occurs remotely", "It eliminates the need for any local network video connections or monitors", "It forces all local operating systems to drop profile-specific configuration tabs"],
@@ -907,8 +900,7 @@ const allModules = {
             cor: 2,
             exp: "The AutoCorrect feature automatically fixes words by predicting typing text, a tool commonly integrated into mobile smartphone layouts."
         },
-
-        // --- SECTION 9: HARDWARE ADJUSTMENTS (MONITOR & SOUND) ---
+        // --- HARDWARE ADJUSTMENTS (MONITOR & SOUND) ---
         {
             q: "You need to increase the display contrast or change your display screen illumination level. What path takes you to these settings?",
             a: ["Start button -> Settings -> System -> Display", "Gmail -> Google apps icon -> Other calendars menu option", "Chrome -> Settings -> Autofill forms sub-tab", "Start button -> Control Panel -> VBA Macros window"],
@@ -927,8 +919,7 @@ const allModules = {
             cor: 1,
             exp: "The Night light feature changes screen illumination levels to make displays less bright when using computing devices in dark environments."
         },
-
-        // --- SECTION 10: CORE PRINTER CONCEPTS & SETTINGS ---
+        // --- CORE PRINTER CONCEPTS & SETTINGS ---
         {
             q: "A home office user needs an inexpensive printer that outputs high-quality text documents and graphics at a modest speed of several pages per minute. Which option is best?",
             a: ["An industrial network laser printer", "An inkjet-type printer", "A high-speed wide-format line plotter", "A standalone thermal micro-scanner"],
@@ -964,8 +955,7 @@ const allModules = {
             ],
             cor: [0, 1, 2, 3]
         },
-
-        // --- SECTION 11: PROCESSORS & PORTS (VGA, DVI, HDMI, SPEED) ---
+        // --- PROCESSORS & PORTS ---
         {
             q: "What is the technical name for the silicon microprocessing chip that handles all calculations and logical system instructions within a computer?",
             a: ["Graphics Processing Unit (GPU)", "Central Processing Unit (CPU)", "Visual Basic Application (VBA)", "Infrastructure as a Service (IaaS)"],
@@ -1018,8 +1008,7 @@ const allModules = {
             cor: 1,
             exp: "Laptops and tablets usually include video out ports to extend displays, but most standard cellular smartphones do not carry these ports."
         },
-
-        // --- SECTION 12: NETWORKING, CABLING & STANDARDS (ETHERNET) ---
+        // --- NETWORKING & CABLING STANDARDS ---
         {
             type: "matching",
             q: "Match each standard Ethernet protocol type to its exact maximum data transmission speed threshold.",
@@ -1059,368 +1048,517 @@ const allModules = {
         }
     ]
 };
-// ==========================================
 
-// 1. CONFIGURATION
+// ==========================================
+// CORE ENGINE CONFIGURATION WRAPPER
+// ==========================================
 const CONFIG = {
-    PASS_SCORE: 70,
-    TOTAL_EXAM_QUESTIONS: 75,
-    DEFAULT_TIME: 3000, 
-    WARNING_TIME: 300,
-    STORAGE_KEY: 'ic3_sim_session'
+    TOTAL_EXAM_QUESTIONS: 50,
+    EXAM_TIME_SECONDS: 3000, // 50 Minutes
+    WARNING_TIME: 300,        // 5 Minutes (Timer turns red)
+    PASS_SCORE: 70,           // Passing threshold %
+    STORAGE_KEY: 'IC3_Simulator_State'
 };
 
-// 2. UI MANAGER
+// ==========================================
+// CENTRAL CACHED CONTROLS DICTIONARY (DOM)
+// ==========================================
 const UI = {
-    setup: document.getElementById('setup-screen'),
-    exam: document.getElementById('exam-container'),
-    review: document.getElementById('review-screen'),
-    result: document.getElementById('result-screen'),
+    setupScreen: document.getElementById('setup-screen'),
+    examContainer: document.getElementById('exam-container'),
+    reviewScreen: document.getElementById('review-screen'),
+    resultScreen: document.getElementById('result-screen'),
+    moduleSelect: document.getElementById('module-select'),
+    loadingOverlay: document.getElementById('loading-overlay'),
     qText: document.getElementById('q-text'),
-    qNum: document.getElementById('q-number'),
-    options: document.getElementById('options-container'),
-    interactive: document.getElementById('interactive-container'),
+    optionsContainer: document.getElementById('options-container'),
+    interactiveContainer: document.getElementById('interactive-container'),
     feedback: document.getElementById('feedback'),
-    progress: document.getElementById('progress-fill'),
-    timer: document.getElementById('exam-timer'),
+    timer: document.getElementById('timer'),
+    progressBar: document.getElementById('progress-bar'),
+    progressFill: document.getElementById('progress-fill'),
+    submitBtn: document.getElementById('submit-btn'),
+    nextBtn: document.getElementById('next-btn'),
+    flagBtn: document.getElementById('flag-btn'),
     navGrid: document.getElementById('q-grid'),
     reviewList: document.getElementById('review-list'),
-    flagBtn: document.getElementById('flag-btn'),
-    submitBtn: document.getElementById('submit-btn'),
-    nextBtn: document.getElementById('next-btn')
+    finalScore: document.getElementById('final-score')
 };
 
-// 3. TIMER CLASS
-class ExamTimer {
-    constructor(duration, onTick, onComplete) {
-        this.duration = duration;
-        this.timeLeft = duration;
-        this.onTick = onTick;
-        this.onComplete = onComplete;
-        this.interval = null;
-    }
-
-    start(startTime = null) {
-        if (startTime !== null) this.timeLeft = startTime;
-        clearInterval(this.interval);
-        this.interval = setInterval(() => {
-            this.timeLeft--;
-            this.onTick(this.timeLeft);
-            if (this.timeLeft <= 0) {
-                this.stop();
-                this.onComplete();
-            }
-        }, 1000);
-    }
-
-    stop() { clearInterval(this.interval); }
-}
-
-// 4. EXAM SESSION CLASS (With Persistence)
+// ==========================================
+// ENCAPSULATED TRANSACTION STATE CONTROLLER
+// ==========================================
 class ExamSession {
-    constructor(questions, mode, resumeData = null) {
+    constructor(questions) {
         this.questions = questions;
-        this.mode = mode;
+        this.currentIdx = 0;
+        this.userAnswers = new Array(questions.length).fill(null);
+        this.flags = [];
+        this.isLocked = new Array(questions.length).fill(false);
+        this.timeLeft = CONFIG.EXAM_TIME_SECONDS;
         
-        if (resumeData) {
-            this.currentIdx = resumeData.currentIdx;
-            this.userAnswers = resumeData.userAnswers;
-            this.flags = resumeData.flags;
-        } else {
-            this.currentIdx = 0;
-            this.userAnswers = new Array(questions.length).fill(null);
-            this.flags = [];
-        }
+        // Complex Question State Containers
+        this.currentSelection = null; // MCQ tracking
+        this.userPairs = {};          // Matching tracking
+        this.userSequence = [];       // Ordering tracking
+        this.userCategories = {};     // Categorization tracking
     }
 
-    save() {
-        const data = {
-            questions: this.questions,
-            mode: this.mode,
-            currentIdx: this.currentIdx,
-            userAnswers: this.userAnswers,
-            flags: this.flags,
-            timeLeft: timer ? timer.timeLeft : CONFIG.DEFAULT_TIME
-        };
-        localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(data));
+    resetInteractiveStates() {
+        this.currentSelection = null;
+        this.userPairs = {};
+        this.userSequence = [];
+        this.userCategories = {};
     }
 
-    clearSave() {
-        localStorage.removeItem(CONFIG.STORAGE_KEY);
+    getCurrentQuestion() {
+        return this.questions[this.currentIdx];
     }
+}
 
-    setAnswer(val) { 
-        this.userAnswers[this.currentIdx] = val; 
-        this.save();
-    }
+let session = null;
+let timerInterval = null;
 
-    getAnswer(idx = this.currentIdx) { return this.userAnswers[idx]; }
+// ==========================================
+// ENGINE CONTEXT INITIALIZATION PIPELINE
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+    checkResume();
+});
 
-    toggleFlag() {
-        const idx = this.currentIdx;
-        if (this.flags.includes(idx)) this.flags = this.flags.filter(i => i !== idx);
-        else this.flags.push(idx);
-        this.save();
-    }
-
-    calculateScore() {
-        let score = 0;
-        this.questions.forEach((q, i) => {
-            const ans = this.userAnswers[i];
-            if (!ans) return;
-            if (q.type === 'matching') {
-                if (q.pairs.every(p => ans[p.term] === p.definition)) score++;
-            } else if (q.type === 'ordering') {
-                if (JSON.stringify(ans) === JSON.stringify(q.cor)) score++;
+function checkResume() {
+    try {
+        const saved = localStorage.getItem(CONFIG.STORAGE_KEY);
+        if (!saved) return;
+        const state = JSON.parse(saved);
+        if (state && Date.now() - state.timestamp < 3600000) { // Valid within 1 hour
+            if (confirm("An incomplete exam session was found. Would you like to resume?")) {
+                rebuildSession(state);
             } else {
-                if (ans === q.cor) score++;
+                localStorage.removeItem(CONFIG.STORAGE_KEY);
             }
-        });
-        return score;
+        }
+    } catch (e) {
+        console.warn("localStorage environment is restricted or unavailable.", e);
     }
 }
 
-let session, timer;
-
-// 5. CORE FUNCTIONS
-function startApp(mode) {
-    const moduleKey = document.getElementById('module-select').value;
-    let pool = [];
-
-    if (moduleKey.includes('full')) {
-        const prefix = moduleKey === 'full_level1' ? 'l1_' : 'l2_';
-        Object.keys(allModules).forEach(key => {
-            if (key.startsWith(prefix)) pool.push(...allModules[key]);
-        });
-        pool = shuffle(pool).slice(0, CONFIG.TOTAL_EXAM_QUESTIONS);
-    } else {
-        pool = shuffle([...allModules[moduleKey]]);
-    }
-
-    initSession(pool, mode);
-}
-
-function initSession(questions, mode, resumeData = null) {
-    session = new ExamSession(questions, mode, resumeData);
-    timer = new ExamTimer(CONFIG.DEFAULT_TIME, updateTimerUI, () => {
-        alert("Time is up!");
-        showReviewScreen();
-    });
-
-    UI.setup.classList.add('hidden');
-    UI.exam.classList.remove('hidden');
+function startExam() {
+    const selectedModule = UI.moduleSelect.value;
+    const pool = allModules[selectedModule];
     
-    const startTime = resumeData ? resumeData.timeLeft : CONFIG.DEFAULT_TIME;
-    timer.start(startTime);
+    if (!pool || pool.length === 0) {
+        alert("Error: The selected structural module is empty or not registered.");
+        return;
+    }
+
+    if (UI.loadingOverlay) UI.loadingOverlay.classList.remove('hidden');
+
+    setTimeout(() => {
+        // DYNAMIC QUESTION POOL LOGIC DEFENSE
+        const totalToLoad = Math.min(CONFIG.TOTAL_EXAM_QUESTIONS, pool.length);
+        const randomizedPool = shuffle([...pool]).slice(0, totalToLoad);
+
+        session = new ExamSession(randomizedPool);
+        
+        saveStateToStorage(selectedModule);
+
+        if (UI.loadingOverlay) UI.loadingOverlay.classList.add('hidden');
+        UI.setupScreen.classList.add('hidden');
+        UI.examContainer.classList.remove('hidden');
+
+        startTimer();
+        loadQuestion();
+    }, 400);
+}
+
+function rebuildSession(state) {
+    const pool = allModules[state.module];
+    if (!pool) return;
+    session = new ExamSession([]);
+    Object.assign(session, state.sessionData);
+    
+    UI.setupScreen.classList.add('hidden');
+    UI.examContainer.classList.remove('hidden');
+    startTimer();
     loadQuestion();
 }
 
-function checkResume() {
-    const saved = localStorage.getItem(CONFIG.STORAGE_KEY);
-    if (saved) {
-        const data = JSON.parse(saved);
-        if (confirm("Resume your previous unfinished exam?")) {
-            initSession(data.questions, data.mode, data);
-        } else {
-            localStorage.removeItem(CONFIG.STORAGE_KEY);
-        }
+function saveStateToStorage(moduleKey) {
+    try {
+        if (!session) return;
+        const backupPayload = {
+            module: moduleKey,
+            timestamp: Date.now(),
+            sessionData: {
+                questions: session.questions,
+                currentIdx: session.currentIdx,
+                userAnswers: session.userAnswers,
+                flags: session.flags,
+                isLocked: session.isLocked,
+                timeLeft: session.timeLeft
+            }
+        };
+        localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(backupPayload));
+    } catch (e) {
+        console.warn("Failed syncing backup state payload to localStorage.", e);
     }
 }
 
+// ==========================================
+// CORE WORKSPACE QUESTION RENDERING ENGINES
+// ==========================================
 function loadQuestion() {
-    const q = session.questions[session.currentIdx];
-    UI.options.innerHTML = '';
-    UI.interactive.innerHTML = '';
-    UI.feedback.classList.add('hidden');
-    UI.options.classList.add('hidden');
-    UI.interactive.classList.add('hidden');
+    if (!session) return;
     
-    UI.qNum.innerText = `Question ${session.currentIdx + 1} of ${session.questions.length}`;
-    UI.qText.innerText = q.q;
-    UI.progress.style.width = `${((session.currentIdx + 1) / session.questions.length) * 100}%`;
-
-    UI.flagBtn.textContent = session.flags.includes(session.currentIdx) ? "Unflag Question" : "Flag for Review";
-    UI.flagBtn.style.background = session.flags.includes(session.currentIdx) ? "#ffc107" : "white";
-
-    if (session.mode === 'training') {
-        UI.submitBtn.classList.remove('hidden');
-        UI.nextBtn.classList.add('hidden');
+    // Clear display structures and reset temporary buffers
+    UI.feedback.classList.add('hidden');
+    UI.optionsContainer.innerHTML = '';
+    UI.interactiveContainer.innerHTML = '';
+    UI.interactiveContainer.classList.add('hidden');
+    
+    const q = session.getCurrentQuestion();
+    UI.qText.innerText = `${session.currentIdx + 1}. ${q.q}`;
+    
+    // Manage dynamic flag control interface state
+    if (session.flags.includes(session.currentIdx)) {
+        UI.flagBtn.innerText = "🚩 Flagged";
+        UI.flagBtn.classList.add('active');
     } else {
+        UI.flagBtn.innerText = "Flag for Review";
+        UI.flagBtn.classList.remove('active');
+    }
+
+    // Lock controls if question state was previously submitted
+    if (session.isLocked[session.currentIdx]) {
         UI.submitBtn.classList.add('hidden');
         UI.nextBtn.classList.remove('hidden');
-        UI.nextBtn.innerText = (session.currentIdx === session.questions.length - 1) ? "Review Exam" : "Next Question";
+    } else {
+        UI.submitBtn.classList.remove('hidden');
+        UI.nextBtn.classList.add('hidden');
     }
 
-    if (q.image) {
-    const img = document.createElement('img');
-    img.src = q.image;
-    img.className = "question-image"; // Add styling in CSS for width: 100%
-    UI.qText.after(img);
-}
-    if (!q.type || q.type === 'mcq') renderMCQ(q);
-    else if (q.type === 'ordering') renderOrdering(q);
-    else if (q.type === 'matching') renderMatching(q);
+    // ROUTING CONTROLLER PARSER (Accommodates extensions automatically)
+    if (q.type === 'ordering') {
+        UI.interactiveContainer.classList.remove('hidden');
+        renderOrdering(q);
+    } else if (q.type === 'matching') {
+        UI.interactiveContainer.classList.remove('hidden');
+        renderMatching(q);
+    } else if (q.type === 'categorization') {
+        UI.interactiveContainer.classList.remove('hidden');
+        renderCategorization(q);
+    } else {
+        renderMCQ(q);
+    }
 
     updateNavGrid();
-    session.save(); // Save current index position
+    updateProgress();
 }
 
-// 6. RENDERERS
+// --- STANDARD CHOICE ENGINE (MCQ) ---
 function renderMCQ(q) {
-    UI.options.classList.remove('hidden');
-    const saved = session.getAnswer();
+    const historicalAnswer = session.userAnswers[session.currentIdx];
+    session.currentSelection = historicalAnswer;
 
-    q.a.forEach((opt, i) => {
+    q.a.forEach((option, idx) => {
         const btn = document.createElement('button');
-        btn.innerText = opt;
-        if (i === saved) btn.classList.add('selected-btn'); 
-        btn.onclick = () => {
-            session.setAnswer(i);
-            document.querySelectorAll('#options-container button').forEach(b => b.classList.remove('selected-btn'));
-            btn.classList.add('selected-btn');
-            updateNavGrid();
-            if(session.mode === 'training') checkAnswer();
-        };
-        UI.options.appendChild(btn);
+        btn.className = 'option-btn';
+        btn.innerText = option;
+        btn.setAttribute('role', 'radio');
+        btn.setAttribute('aria-checked', 'false');
+        btn.setAttribute('tabindex', '0');
+
+        if (historicalAnswer !== null && idx === historicalAnswer) {
+            btn.classList.add('selected');
+            btn.setAttribute('aria-checked', 'true');
+        }
+
+        if (!session.isLocked[session.currentIdx]) {
+            btn.onclick = () => {
+                document.querySelectorAll('.option-btn').forEach(b => {
+                    b.classList.remove('selected');
+                    b.setAttribute('aria-checked', 'false');
+                });
+                btn.classList.add('selected');
+                btn.setAttribute('aria-checked', 'true');
+                session.currentSelection = idx;
+            };
+        } else {
+            btn.disabled = true;
+            if (idx === q.cor) btn.classList.add('correct-glow');
+            if (historicalAnswer === idx && historicalAnswer !== q.cor) btn.classList.add('wrong-glow');
+        }
+        UI.optionsContainer.appendChild(btn);
     });
 }
 
+// --- COMPLEX SEQUENCE ENGINE (ORDERING) ---
 function renderOrdering(q) {
-    UI.interactive.classList.remove('hidden');
-    let currentOrder = session.getAnswer() || [];
+    const historical = session.userAnswers[session.currentIdx];
+    const isLocked = session.isLocked[session.currentIdx];
     
-    const renderItems = () => {
-        UI.interactive.innerHTML = '';
-        q.items.forEach(item => {
-            const div = document.createElement('div');
-            div.className = "interactive-item";
-            const pos = currentOrder.indexOf(item);
-            if (pos !== -1) {
-                div.classList.add('selected');
-                div.innerHTML = `<span class="order-number">${pos + 1}</span> ${item}`;
-            } else {
-                div.innerText = item;
-            }
-            div.onclick = () => {
-                const idx = currentOrder.indexOf(item);
-                if (idx > -1) currentOrder.splice(idx, 1);
-                else currentOrder.push(item);
-                session.setAnswer(currentOrder.length > 0 ? [...currentOrder] : null);
-                renderItems();
-                updateNavGrid();
-            };
-            UI.interactive.appendChild(div);
-        });
-    };
-    renderItems();
-}
+    session.userSequence = historical ? [...historical] : [];
 
-function renderMatching(q) {
-    UI.interactive.classList.remove('hidden');
-    let pairs = session.getAnswer() || {};
-    let activeTerm = null;
+    const wrapper = document.createElement('div');
+    wrapper.className = 'ordering-wrapper';
 
-    const render = () => {
-        UI.interactive.innerHTML = '<div class="matching-grid"><div class="match-column" id="terms"></div><div class="match-column" id="defs"></div></div>';
-        q.pairs.forEach(p => {
-            const tDiv = document.createElement('div');
-            tDiv.className = `interactive-item ${pairs[p.term] ? 'paired' : ''} ${activeTerm === p.term ? 'selected' : ''}`;
-            tDiv.innerText = p.term;
-            tDiv.onclick = () => { 
-                if (pairs[p.term]) delete pairs[p.term];
-                activeTerm = p.term; 
-                session.setAnswer(Object.keys(pairs).length > 0 ? {...pairs} : null);
-                render(); 
-                updateNavGrid();
-            };
-            document.getElementById('terms').appendChild(tDiv);
+    q.items.forEach((item, idx) => {
+        const el = document.createElement('div');
+        el.className = 'interactive-item';
+        el.innerText = item;
+        el.setAttribute('tabindex', '0');
 
-            const dDiv = document.createElement('div');
-            const isPaired = Object.values(pairs).includes(p.definition);
-            dDiv.className = `interactive-item ${isPaired ? 'paired' : ''}`;
-            dDiv.innerText = p.definition;
-            dDiv.onclick = () => {
-                if (activeTerm && !isPaired) {
-                    pairs[activeTerm] = p.definition;
-                    activeTerm = null;
-                    session.setAnswer({...pairs});
-                    render();
-                    updateNavGrid();
-                }
-            };
-            document.getElementById('defs').appendChild(dDiv);
-        });
-    };
-    render();
-}
+        const stepBadge = document.createElement('span');
+        stepBadge.className = 'step-badge';
+        
+        let matchIdx = session.userSequence.indexOf(idx);
+        if (matchIdx !== -1) {
+            el.classList.add('selected');
+            stepBadge.innerText = matchIdx + 1;
+        } else {
+            stepBadge.innerText = '-';
+        }
+        el.prepend(stepBadge);
 
-function renderCategorization(q) {
-    UI.interactive.classList.remove('hidden');
-    let userSort = session.getAnswer() || {}; // { "Keyboard": "Input" }
-
-    const render = () => {
-        UI.interactive.innerHTML = `
-            <div class="category-container">
-                ${q.categories.map(cat => `
-                    <div class="cat-bucket" data-cat="${cat}">
-                        <h4>${cat}</h4>
-                        <div id="items-${cat}"></div>
-                    </div>
-                `).join('')}
-            </div>
-            <div id="unassigned-items" class="item-pool"></div>
-        `;
-
-        q.items.forEach(item => {
-            const div = document.createElement('div');
-            div.className = "interactive-item";
-            div.innerText = item.name;
-            
-            // If already assigned, put in bucket; otherwise, put in pool
-            if (userSort[item.name]) {
-                document.getElementById(`items-${userSort[item.name]}`).appendChild(div);
-            } else {
-                document.getElementById('unassigned-items').appendChild(div);
-            }
-
-            div.onclick = () => {
-                // Logic to rotate through categories when clicked
-                let current = userSort[item.name];
-                let nextIdx = q.categories.indexOf(current) + 1;
-                
-                if (nextIdx >= q.categories.length) {
-                    delete userSort[item.name]; // Move back to pool
+        if (!isLocked) {
+            el.onclick = () => {
+                let currentPos = session.userSequence.indexOf(idx);
+                if (currentPos !== -1) {
+                    session.userSequence.splice(currentPos, 1);
                 } else {
-                    userSort[item.name] = q.categories[nextIdx];
+                    session.userSequence.push(idx);
+                }
+                session.userAnswers[session.currentIdx] = session.userSequence.length ? [...session.userSequence] : null;
+                renderOrdering(q);
+            };
+        } else {
+            el.classList.add('disabled');
+            if (q.cor[idx] === idx) el.classList.add('correct-glow');
+        }
+        wrapper.appendChild(el);
+    });
+    UI.interactiveContainer.appendChild(wrapper);
+}
+
+// --- COMPLEX MATRIX ENGINE (MATCHING) ---
+function renderMatching(q) {
+    const historical = session.userAnswers[session.currentIdx];
+    const isLocked = session.isLocked[session.currentIdx];
+
+    if (historical) {
+        session.userPairs = { ...historical };
+    }
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'matching-matrix';
+
+    let selectedTerm = null;
+
+    // Display Terms Left Column
+    const leftCol = document.createElement('div');
+    leftCol.className = 'matrix-column';
+    q.pairs.forEach((pair, idx) => {
+        const termBtn = document.createElement('button');
+        termBtn.className = 'matrix-btn term-btn';
+        termBtn.innerText = pair.term;
+
+        if (session.userPairs[pair.term]) {
+            termBtn.classList.add('paired');
+        }
+
+        if (!isLocked) {
+            termBtn.onclick = () => {
+                document.querySelectorAll('.term-btn').forEach(b => b.classList.remove('active'));
+                selectedTerm = pair.term;
+                termBtn.classList.add('active');
+            };
+        } else {
+            termBtn.disabled = true;
+        }
+        leftCol.appendChild(termBtn);
+    });
+
+    // Display Definitions Right Column
+    const rightCol = document.createElement('div');
+    rightCol.className = 'matrix-column';
+    
+    // Prevent answer pattern recognition by freezing or ordering definitions explicitly
+    const renderedDefs = q.pairs.map(p => p.definition);
+
+    renderedDefs.forEach(def => {
+        const defBtn = document.createElement('button');
+        defBtn.className = 'matrix-btn def-btn';
+        defBtn.innerText = def;
+
+        // Visual match line validation tracking display
+        Object.keys(session.userPairs).forEach(t => {
+            if (session.userPairs[t] === def) {
+                defBtn.classList.add('paired');
+                const indicator = document.createElement('small');
+                indicator.innerText = ` [Paired]`;
+                defBtn.appendChild(indicator);
+            }
+        });
+
+        if (!isLocked) {
+            defBtn.onclick = () => {
+                if (!selectedTerm) {
+                    alert("Please click a source term from the left column first.");
+                    return;
                 }
                 
-                session.setAnswer({...userSort});
-                render();
+                // Unpair definition if previously claimed
+                Object.keys(session.userPairs).forEach(t => {
+                    if (session.userPairs[t] === def) delete session.userPairs[t];
+                });
+
+                session.userPairs[selectedTerm] = def;
+                session.userAnswers[session.currentIdx] = { ...session.userPairs };
+                
+                selectedTerm = null;
+                renderMatching(q);
             };
-        });
-    };
-    render();
+        } else {
+            defBtn.disabled = true;
+        }
+        rightCol.appendChild(defBtn);
+    });
+
+    wrapper.appendChild(leftCol);
+    wrapper.appendChild(rightCol);
+    UI.interactiveContainer.appendChild(wrapper);
 }
-// 7. NAVIGATION & RESULTS
+
+// --- EXTENSIBLE INTERACTIVE CLASSIFICATION ENGINE (CATEGORIZATION) ---
+function renderCategorization(q) {
+    const historical = session.userAnswers[session.currentIdx];
+    const isLocked = session.isLocked[session.currentIdx];
+
+    if (historical && typeof historical === 'object') {
+        session.userCategories = { ...historical };
+    } else if (!historical) {
+        session.userCategories = {};
+    }
+
+    const catContainer = document.createElement('div');
+    catContainer.className = 'category-container';
+
+    // Build functional processing drop targets
+    q.categories.forEach(cat => {
+        const bucket = document.createElement('div');
+        bucket.className = 'cat-bucket';
+        bucket.setAttribute('data-category', cat);
+        bucket.innerHTML = `<h4>${cat}</h4><div class="bucket-content" id="bucket-${cat.replace(/\s+/g, '')}"></div>`;
+        
+        bucket.ondragover = (e) => { e.preventDefault(); if (!isLocked) bucket.classList.add('drag-over'); };
+        bucket.ondragleave = () => bucket.classList.remove('drag-over');
+        bucket.ondrop = (e) => {
+            e.preventDefault();
+            bucket.classList.remove('drag-over');
+            if (isLocked) return;
+            const itemName = e.dataTransfer.getData('text/plain');
+            session.userCategories[itemName] = cat;
+            session.userAnswers[session.currentIdx] = { ...session.userCategories };
+            renderCategorization(q);
+        };
+        catContainer.appendChild(bucket);
+    });
+
+    UI.interactiveContainer.appendChild(catContainer);
+
+    const pool = document.createElement('div');
+    pool.className = 'item-pool';
+    pool.innerHTML = '<p style="width:100%; font-size:0.8rem; color:#718096; margin-bottom:8px;">Touch or drag items into target buckets:</p>';
+    UI.interactiveContainer.appendChild(pool);
+
+    q.items.forEach(item => {
+        const itemNode = document.createElement('div');
+        itemNode.className = 'interactive-item';
+        itemNode.innerText = item.name;
+        itemNode.setAttribute('tabindex', '0');
+
+        if (!isLocked) {
+            itemNode.setAttribute('draggable', 'true');
+            itemNode.ondragstart = (e) => e.dataTransfer.setData('text/plain', item.name);
+            
+            // Mobile Interaction Strategy (Fallback Multi-Tap Distribution Routing)
+            itemNode.onclick = () => {
+                const assigned = session.userCategories[item.name];
+                if (!assigned) {
+                    session.userCategories[item.name] = q.categories[0];
+                } else {
+                    const currentIdx = q.categories.indexOf(assigned);
+                    if (currentIdx === q.categories.length - 1) {
+                        delete session.userCategories[item.name];
+                    } else {
+                        session.userCategories[item.name] = q.categories[currentIdx + 1];
+                    }
+                }
+                session.userAnswers[session.currentIdx] = { ...session.userCategories };
+                renderCategorization(q);
+            };
+        } else {
+            itemNode.classList.add('disabled');
+        }
+
+        // Allocate placement position dynamically across active viewports
+        if (session.userCategories[item.name]) {
+            const id = `bucket-${session.userCategories[item.name].replace(/\s+/g, '')}`;
+            const targetBucket = document.getElementById(id);
+            if (targetBucket) targetBucket.appendChild(itemNode);
+        } else {
+            pool.appendChild(itemNode);
+        }
+    });
+}
+
+// ==========================================
+// FORM EVALUATION & REAL-TIME GRADING RULES
+// ==========================================
 function checkAnswer() {
-    if (session.mode !== 'training') return;
-    const q = session.questions[session.currentIdx];
-    const ans = session.getAnswer();
-    if (ans === null) return alert("Select an answer!");
-
+    if (!session) return;
+    const q = session.getCurrentQuestion();
     let isCorrect = false;
-    if (!q.type || q.type === "mcq") isCorrect = (ans === q.cor);
-    else if (q.type === "ordering") isCorrect = JSON.stringify(ans) === JSON.stringify(q.cor);
-    else if (q.type === "matching") isCorrect = q.pairs.every(p => ans[p.term] === p.definition);
 
+    // Evaluate response variations based on processing schema
+    if (q.type === 'ordering') {
+        const ans = session.userAnswers[session.currentIdx];
+        isCorrect = ans && ans.length === q.items.length && ans.every((val, i) => val === q.cor[i]);
+    } else if (q.type === 'matching') {
+        const ans = session.userAnswers[session.currentIdx];
+        if (ans) {
+            isCorrect = q.pairs.every(p => ans[p.term] === p.definition);
+        }
+    } else if (q.type === 'categorization') {
+        const ans = session.userAnswers[session.currentIdx];
+        if (ans) {
+            isCorrect = q.items.every(item => ans[item.name] === item.category);
+        }
+    } else {
+        if (session.currentSelection === null) {
+            alert("Please make a selection before submitting your response.");
+            return;
+        }
+        session.userAnswers[session.currentIdx] = session.currentSelection;
+        isCorrect = (session.currentSelection === q.cor);
+    }
+
+    session.isLocked[session.currentIdx] = true;
+    
+    // Inject contextual accessibility descriptions directly into feedback fields
     UI.feedback.classList.remove('hidden');
-    UI.feedback.innerHTML = `
-        <div style="padding:15px; border-radius:8px; background:${isCorrect?'#d4edda':'#f8d7da'}; color:${isCorrect?'#155724':'#721c24'}">
-            <strong>${isCorrect ? 'Correct!' : 'Incorrect.'}</strong><br>${q.exp}
-        </div>
-    `;
+    if (isCorrect) {
+        UI.feedback.className = "feedback-box correct-box";
+        UI.feedback.innerText = `Correct! ${q.exp}`;
+    } else {
+        UI.feedback.className = "feedback-box wrong-box";
+        UI.feedback.innerText = `Incorrect. ${q.exp}`;
+    }
+
     UI.submitBtn.classList.add('hidden');
     UI.nextBtn.classList.remove('hidden');
+    updateNavGrid();
 }
 
 function nextQuestion() {
@@ -1428,88 +1566,150 @@ function nextQuestion() {
         session.currentIdx++;
         loadQuestion();
     } else {
+        // Automatically direct user to review screen upon terminal item exhaustion
         showReviewScreen();
     }
 }
 
+function jumpToQuestion(idx) {
+    if (!session || idx < 0 || idx >= session.questions.length) return;
+    session.currentIdx = idx;
+    document.getElementById('review-screen').classList.add('hidden');
+    UI.examContainer.classList.remove('hidden');
+    loadQuestion();
+}
+
+// ==========================================
+// REVIEW PANEL ORCHESTRATION PIPELINES
+// ==========================================
 function showReviewScreen() {
-    UI.exam.classList.add('hidden');
-    UI.review.classList.remove('hidden');
+    UI.examContainer.classList.add('hidden');
+    UI.reviewScreen.classList.remove('hidden');
     UI.reviewList.innerHTML = '';
 
-    session.questions.forEach((_, i) => {
-        const item = document.createElement('div');
-        item.className = "interactive-item review-box";
-        const isAnswered = session.userAnswers[i] !== null;
-        const isFlagged = session.flags.includes(i);
-
-        item.innerHTML = `
-            <span><strong>Question ${i + 1}</strong></span>
-            <span>
-                ${isFlagged ? '<span style="color:#b7791f">🚩 Flagged</span> ' : ''} 
-                ${isAnswered ? '<span style="color:green">✅ Answered</span>' : '<span style="color:red">❌ Unanswered</span>'}
-            </span>
+    session.questions.forEach((q, idx) => {
+        const card = document.createElement('div');
+        card.className = `review-card ${session.userAnswers[idx] !== null ? 'filled' : 'empty'}`;
+        
+        const isFlagged = session.flags.includes(idx);
+        card.innerHTML = `
+            <span><strong>Question ${idx + 1}</strong>: ${q.q.substring(0, 60)}...</span>
+            <div>
+                <span>${session.userAnswers[idx] !== null ? '✅ Answered' : '❌ Unanswered'}</span>
+                ${isFlagged ? '<span style="margin-left:10px;">🚩 Flagged</span>' : ''}
+            </div>
         `;
-        item.onclick = () => {
-            session.currentIdx = i;
-            UI.review.classList.add('hidden');
-            UI.exam.classList.remove('hidden');
-            loadQuestion();
-        };
-        UI.reviewList.appendChild(item);
+        card.onclick = () => jumpToQuestion(idx);
+        UI.reviewList.appendChild(card);
     });
 }
 
 function submitExam() {
-    if (!confirm("Are you sure you want to submit? This will clear your progress.")) return;
-    
-    timer.stop();
-    const finalScore = session.calculateScore();
-    const percent = Math.round((finalScore / session.questions.length) * 100);
-    
-    session.clearSave(); // Clear local storage upon final submission
-    
-    UI.review.classList.add('hidden');
-    UI.result.classList.remove('hidden');
-    document.getElementById('final-score').innerHTML = `
-        <h2 style="color: ${percent >= CONFIG.PASS_SCORE ? 'green' : 'red'}; font-size:2rem;">
-            ${percent >= CONFIG.PASS_SCORE ? 'PASSED' : 'FAILED'}
+    clearInterval(timerInterval);
+    try {
+        localStorage.removeItem(CONFIG.STORAGE_KEY);
+    } catch (e) {}
+
+    UI.reviewScreen.classList.add('hidden');
+    UI.examContainer.classList.add('hidden');
+    UI.resultScreen.classList.remove('hidden');
+
+    let finalScore = 0;
+    session.questions.forEach((q, idx) => {
+        const ans = session.userAnswers[idx];
+        if (q.type === 'ordering') {
+            if (ans && ans.length === q.items.length && ans.every((v, i) => v === q.cor[i])) finalScore++;
+        } else if (q.type === 'matching') {
+            if (ans && q.pairs.every(p => ans[p.term] === p.definition)) finalScore++;
+        } else if (q.type === 'categorization') {
+            if (ans && q.items.every(item => ans[item.name] === item.category)) finalScore++;
+        } else {
+            if (ans === q.cor) finalScore++;
+        }
+    });
+
+    const calculatedPercentage = Math.round((finalScore / session.questions.length) * 100);
+    const hasPassed = calculatedPercentage >= CONFIG.PASS_SCORE;
+
+    UI.finalScore.innerHTML = `
+        <h2 style="color: ${hasPassed ? '#2f855a' : '#c53030'}; font-size:2.5rem; margin-bottom:10px;">
+            ${hasPassed ? 'PASSED' : 'FAILED'}
         </h2>
-        <h1 style="font-size:3rem;">${percent}%</h1>
-        <p style="font-size:1.2rem; color:#4a5568;">Correct: ${finalScore} / ${session.questions.length}</p>
+        <h1 style="font-size:4rem; font-weight:700; color:#2d3748; margin-bottom:15px;">${calculatedPercentage}%</h1>
+        <p style="font-size:1.2rem; color:#4a5568;">Required: ${CONFIG.PASS_SCORE}% | Scored: ${finalScore} out of ${session.questions.length} correct items.</p>
     `;
 }
 
+// ==========================================
+// SYSTEM SUBSIDIARY UTILITIES (SHUFFLE/TIME)
+// ==========================================
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+function startTimer() {
+    if (timerInterval) clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+        if (!session) return;
+        session.timeLeft--;
+        
+        const m = Math.floor(session.timeLeft / 60);
+        const s = session.timeLeft % 60;
+        UI.timer.innerText = `Time: ${m}:${s < 10 ? '0' : ''}${s}`;
+        
+        if (session.timeLeft < CONFIG.WARNING_TIME) {
+            UI.timer.style.color = '#e53e3e';
+            UI.timer.style.fontWeight = '700';
+        }
+
+        if (session.timeLeft <= 0) {
+            clearInterval(timerInterval);
+            alert("Time has expired. Your exam will now be submitted automatically.");
+            submitExam();
+        }
+    }, 1000);
+}
+
+function toggleFlag() {
+    if (!session) return;
+    const current = session.currentIdx;
+    const pos = session.flags.indexOf(current);
+    if (pos !== -1) {
+        session.flags.splice(pos, 1);
+    } else {
+        session.flags.push(current);
+    }
+    loadQuestion();
+}
+
 function updateNavGrid() {
+    if (!session) return;
     UI.navGrid.innerHTML = '';
-    session.questions.forEach((_, i) => {
+    session.questions.forEach((_, idx) => {
         const box = document.createElement('div');
         box.className = 'q-box';
-        if (i === session.currentIdx) box.classList.add('current');
-        if (session.userAnswers[i] !== null) box.classList.add('answered');
-        if (session.flags.includes(i)) box.classList.add('flagged');
-        box.innerText = i + 1;
-        box.onclick = () => { session.currentIdx = i; loadQuestion(); };
+        box.setAttribute('role', 'listitem');
+        
+        if (idx === session.currentIdx) box.classList.add('current');
+        if (session.userAnswers[idx] !== null) box.classList.add('answered');
+        if (session.flags.includes(idx)) box.classList.add('flagged');
+        
+        box.innerText = idx + 1;
+        box.onclick = () => jumpToQuestion(idx);
         UI.navGrid.appendChild(box);
     });
 }
 
-function updateTimerUI(seconds) {
-    const m = Math.floor(seconds / 60);
-    const s = seconds % 60;
-    UI.timer.innerText = `Time: ${m}:${s < 10 ? '0' : ''}${s}`;
-    if (seconds < CONFIG.WARNING_TIME) {
-        UI.timer.style.color = '#e53e3e';
-        UI.timer.style.background = '#fff5f5';
+function updateProgress() {
+    if (!session || session.questions.length === 0) return;
+    const currentPct = Math.round(((session.currentIdx + 1) / session.questions.length) * 100);
+    if (UI.progressFill) UI.progressFill.style.width = `${currentPct}%`;
+    if (UI.progressBar) {
+        UI.progressBar.setAttribute('aria-valuenow', currentPct);
+        UI.progressBar.setAttribute('aria-label', `Progress: ${currentPct}% Complete`);
     }
-}
-
-function shuffle(arr) { return arr.sort(() => Math.random() - 0.5); }
-function toggleFlag() { session.toggleFlag(); loadQuestion(); }
-
-// INITIALIZE
-window.onload = checkResume;
-
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js');
 }

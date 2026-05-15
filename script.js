@@ -809,6 +809,7 @@ function loadQuestion() {
     const optionsContainer = document.getElementById('options-container');
     const interactiveContainer = document.getElementById('interactive-container');
     const feedback = document.getElementById('feedback');
+    selectedIdx = userAnswers[currentQ];
 
     // UI Reset
     document.getElementById('q-number').innerText = `Question ${currentQ + 1} of ${activeQuestions.length}`;
@@ -829,6 +830,24 @@ function loadQuestion() {
     userSelection = [];
     userPairs = {};
     activeTerm = null;
+
+    // SMART LOADER: MCQ
+    if (!q.type || q.type === "mcq") {
+        optionsContainer.classList.remove('hidden');
+        q.a.forEach((opt, index) => {
+            const btn = document.createElement('button');
+            btn.innerText = opt;
+            
+            // Highlight if already answered
+            if (index === selectedIdx) {
+                btn.style.background = '#0056b3';
+                btn.style.color = 'white';
+            }
+            
+            btn.onclick = () => selectMCQ(index, btn);
+            optionsContainer.appendChild(btn);
+        });
+    }
 
     // Flag UI
     const flagBtn = document.getElementById('flag-btn');
@@ -860,13 +879,24 @@ function loadQuestion() {
 
 // --- MCQ Logic ---
 function selectMCQ(idx, btn) {
-    selectedIdx = idx;
+    selectedIdx = idx; // Used for scoring
+    userAnswers[currentQ] = idx; // Saves for the Nav Pane
     document.querySelectorAll('#options-container button').forEach(b => {
         b.style.background = 'white';
         b.style.color = 'black';
     });
     btn.style.background = '#0056b3';
     btn.style.color = 'white';
+    // UI Feedback
+    document.querySelectorAll('#options-container button').forEach(b => {
+        b.style.background = 'white';
+        b.style.color = 'black';
+        b.style.borderColor = '#e2e8f0';
+    });
+    btn.style.background = '#0056b3';
+    btn.style.color = 'white';
+    
+    updateNavGrid(); // Updates the pane colors immediately
 }
 
 // --- Ordering Logic ---
@@ -977,22 +1007,37 @@ function toggleFlag() {
 function showReviewScreen() {
     document.getElementById('exam-container').classList.add('hidden');
     document.getElementById('review-screen').classList.remove('hidden');
-    document.getElementById('flag-count').textContent = flaggedQuestions.length;
+    
     const list = document.getElementById('review-list');
-    list.innerHTML = '';
+    list.innerHTML = '<h3>Exam Summary</h3>';
 
-    if (flaggedQuestions.length === 0) {
-        list.innerHTML = '<p>No questions flagged. You are ready to submit.</p>';
-    } else {
-        flaggedQuestions.sort((a, b) => a - b).forEach(idx => {
-            const item = document.createElement('div');
-            item.className = "interactive-item";
-            item.style.marginBottom = "5px";
-            item.innerHTML = `<strong>Question ${idx + 1}</strong> - Click to review`;
-            item.onclick = () => goToFlagged(idx);
-            list.appendChild(item);
-        });
-    }
+    activeQuestions.forEach((_, idx) => {
+        const item = document.createElement('div');
+        item.className = "interactive-item";
+        item.style.display = "flex";
+        item.style.justifyContent = "space-between";
+        item.style.marginBottom = "8px";
+        item.style.padding = "10px";
+
+        const isAnswered = userAnswers[idx] !== null;
+        const isFlagged = flaggedQuestions.includes(idx);
+
+        item.innerHTML = `
+            <span><strong>Question ${idx + 1}</strong></span>
+            <span>
+                ${isFlagged ? '<span style="color:#b7791f">🚩 Flagged</span>' : ''} 
+                ${isAnswered ? '<span style="color:green">✅ Answered</span>' : '<span style="color:red">❌ Unanswered</span>'}
+            </span>
+        `;
+        
+        item.onclick = () => {
+            currentQ = idx;
+            document.getElementById('review-screen').classList.add('hidden');
+            document.getElementById('exam-container').classList.remove('hidden');
+            loadQuestion();
+        };
+        list.appendChild(item);
+    });
 }
 
 function goToFlagged(idx) {

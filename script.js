@@ -1098,19 +1098,6 @@ class ExamSession {
         this.flags = [];
         this.isLocked = new Array(questions.length).fill(false);
         this.timeLeft = CONFIG.EXAM_TIME_SECONDS;
-        
-        // Complex Question State Containers
-        this.currentSelection = null; 
-        this.userPairs = {};          
-        this.userSequence = [];       
-        this.userCategories = {};     
-    }
-
-    resetInteractiveStates() {
-        this.currentSelection = null;
-        this.userPairs = {};
-        this.userSequence = [];
-        this.userCategories = {};
     }
 
     getCurrentQuestion() {
@@ -1120,6 +1107,7 @@ class ExamSession {
 
 let session = null;
 let timerInterval = null;
+window.activeMatchTerm = null; // Global tracker for matching interaction
 
 // ==========================================
 // ENGINE CONTEXT INITIALIZATION PIPELINE
@@ -1145,38 +1133,48 @@ function checkResume() {
     }
 }
 
-/**
- * CORE INTERFACE HUB TRIGGER FUNCTION
- * Safely handles click routines initialized by index.html template triggers
- */
 function startExam() {
     const selectedModule = UI.moduleSelect.value;
-    const pool = allModules[selectedModule];
-    
-    if (!pool || pool.length === 0) {
-        alert("Error: The selected structural module is empty or not registered.");
-        return;
+    let compiledQuestions = [];
+
+    // GMETRIX STYLE COMPREHENSIVE EXAM COMPILER (Full Level Aggregation)
+    if (selectedModule.includes('full')) {
+        const prefix = selectedModule.includes('l1') || selectedModule.includes('level1') ? 'l1_' : 'l2_';
+        
+        // Harvest all questions from all lessons in the level and tag them
+        for (const [key, questions] of Object.entries(allModules)) {
+            if (key.startsWith(prefix)) {
+                let taggedQs = questions.map(q => ({ ...q, sourceLesson: key }));
+                compiledQuestions.push(...taggedQs);
+            }
+        }
+        
+        // Shuffle and extract exactly 50 questions
+        compiledQuestions = shuffle(compiledQuestions).slice(0, CONFIG.TOTAL_EXAM_QUESTIONS);
+    } else {
+        // Standard single lesson selection
+        const pool = allModules[selectedModule];
+        if (!pool || pool.length === 0) {
+            alert("Error: The selected structural module is empty or not registered.");
+            return;
+        }
+        // Tag with lesson name for breakdown report
+        compiledQuestions = shuffle([...pool]).map(q => ({ ...q, sourceLesson: selectedModule }));
     }
 
-    // Capture dynamic mode check configuration from radio inputs safely
+    if (compiledQuestions.length === 0) return alert("Compilation failed. No questions available.");
+
+    // Capture dynamic mode check configuration
     let currentMode = 'training';
     const modeElements = document.getElementsByName('mode');
     for (let i = 0; i < modeElements.length; i++) {
-        if (modeElements[i].checked) {
-            currentMode = modeElements[i].value;
-            break;
-        }
+        if (modeElements[i].checked) { currentMode = modeElements[i].value; break; }
     }
 
     if (UI.loadingOverlay) UI.loadingOverlay.classList.remove('hidden');
 
     setTimeout(() => {
-        const totalToLoad = Math.min(CONFIG.TOTAL_EXAM_QUESTIONS, pool.length);
-        const randomizedPool = shuffle([...pool]).slice(0, totalToLoad);
-
-        // Instantiate core operational controller with dynamic user mode
-        session = new ExamSession(randomizedPool, currentMode);
-        
+        session = new ExamSession(compiledQuestions, currentMode);
         saveStateToStorage(selectedModule);
 
         if (UI.loadingOverlay) UI.loadingOverlay.classList.add('hidden');
@@ -1189,11 +1187,8 @@ function startExam() {
 }
 
 function rebuildSession(state) {
-    const pool = allModules[state.module];
-    if (!pool) return;
     session = new ExamSession([]);
     Object.assign(session, state.sessionData);
-    
     UI.setupScreen.classList.add('hidden');
     UI.examContainer.classList.remove('hidden');
     startTimer();
@@ -1218,7 +1213,7 @@ function saveStateToStorage(moduleKey) {
         };
         localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(backupPayload));
     } catch (e) {
-        console.warn("Failed syncing backup state payload to localStorage.", e);
+        console.warn("Failed syncing backup state payload.", e);
     }
 }
 
@@ -1231,10 +1226,19 @@ function loadQuestion() {
     UI.feedback.classList.add('hidden');
     UI.optionsContainer.innerHTML = '';
     UI.interactiveContainer.innerHTML = '';
-    UI.interactiveContainer.classList.add('hidden');
     
     const q = session.getCurrentQuestion();
+    const qType = q.type || 'mcq';
     UI.qText.innerText = `${session.currentIdx + 1}. ${q.q}`;
+    
+    // Toggle containers
+    if (['mcq', 'multi', 'yesno'].includes(qType)) {
+        UI.optionsContainer.classList.remove('hidden');
+        UI.interactiveContainer.classList.add('hidden');
+    } else {
+        UI.optionsContainer.classList.add('hidden');
+        UI.interactiveContainer.classList.remove('hidden');
+    }
     
     if (session.flags.includes(session.currentIdx)) {
         UI.flagBtn.innerText = "🚩 Flagged";
@@ -1244,14 +1248,11 @@ function loadQuestion() {
         UI.flagBtn.classList.remove('active');
     }
 
-    // GMETRIX BEHAVIOR LAYERING
     if (session.mode === 'testing') {
-        // Testing mode acts as a fluid continuous tracker - submission buttons hide
         UI.submitBtn.classList.add('hidden');
         UI.nextBtn.classList.remove('hidden');
         UI.nextBtn.innerText = (session.currentIdx === session.questions.length - 1) ? "Finish & Review" : "Next Question";
     } else {
-        // Training Mode shows clear validation constraints per-item
         UI.nextBtn.innerText = "Next Question";
         if (session.isLocked[session.currentIdx]) {
             UI.submitBtn.classList.add('hidden');
@@ -1263,58 +1264,36 @@ function loadQuestion() {
         }
     }
 
-    if (q.type === 'ordering') {
-        UI.interactiveContainer.classList.remove('hidden');
-        renderOrdering(q);
-    } else if (q.type === 'matching') {
-        UI.interactiveContainer.classList.remove('hidden');
-        renderMatching(q);
-    } else if (q.type === 'categorization') {
-        UI.interactiveContainer.classList.remove('hidden');
-        renderCategorization(q);
-    } else {
-        renderMCQ(q);
-    }
+    // TYPE ROUTER
+    if (qType === 'mcq') renderMCQ(q);
+    if (qType === 'multi') renderMulti(q);
+    if (qType === 'yesno') renderYesNo(q);
+    if (qType === 'ordering') renderOrdering(q);
+    if (qType === 'matching') renderMatching(q);
+    if (qType === 'categorization') renderCategorization(q);
 
     updateNavGrid();
     updateProgress();
+    saveStateToStorage(session.questions[0].sourceLesson); // Auto-save
 }
 
-// --- STANDARD CHOICE ENGINE (MCQ) ---
+// --- 1. STANDARD CHOICE ENGINE (MCQ) ---
 function renderMCQ(q) {
     const historicalAnswer = session.userAnswers[session.currentIdx];
-    session.currentSelection = historicalAnswer;
+    const isLocked = session.mode === 'training' && session.isLocked[session.currentIdx];
 
     q.a.forEach((option, idx) => {
         const btn = document.createElement('button');
         btn.className = 'option-btn';
         btn.innerText = option;
-        btn.setAttribute('role', 'radio');
-        btn.setAttribute('aria-checked', 'false');
 
-        if (historicalAnswer !== null && idx === historicalAnswer) {
-            btn.classList.add('selected');
-            btn.setAttribute('aria-checked', 'true');
-        }
+        if (historicalAnswer === idx) btn.classList.add('selected');
 
-        // Action routines scale down if item is locked under training constraints
-        const canInteract = (session.mode === 'testing') || (!session.isLocked[session.currentIdx]);
-
-        if (canInteract) {
+        if (!isLocked) {
             btn.onclick = () => {
-                document.querySelectorAll('.option-btn').forEach(b => {
-                    b.classList.remove('selected');
-                    b.setAttribute('aria-checked', 'false');
-                });
-                btn.classList.add('selected');
-                btn.setAttribute('aria-checked', 'true');
-                session.currentSelection = idx;
-                
-                // Silently write value to answers matrix instantly if in Testing mode
-                if (session.mode === 'testing') {
-                    session.userAnswers[session.currentIdx] = idx;
-                    updateNavGrid();
-                }
+                session.userAnswers[session.currentIdx] = idx;
+                if (session.mode === 'testing') updateNavGrid();
+                loadQuestion();
             };
         } else {
             btn.disabled = true;
@@ -1325,12 +1304,95 @@ function renderMCQ(q) {
     });
 }
 
-// --- COMPLEX SEQUENCE ENGINE (ORDERING) ---
+// --- 2. MULTI-SELECT ENGINE (Select 2, 3, or 4) ---
+function renderMulti(q) {
+    const historical = session.userAnswers[session.currentIdx] || [];
+    const isLocked = session.mode === 'training' && session.isLocked[session.currentIdx];
+
+    const instruction = document.createElement('p');
+    instruction.style.color = "#3182ce";
+    instruction.style.fontWeight = "bold";
+    instruction.innerText = `(Select exactly ${q.required || q.cor.length} options)`;
+    UI.optionsContainer.appendChild(instruction);
+
+    q.a.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.innerHTML = `<input type="checkbox" ${historical.includes(idx) ? 'checked' : ''} style="margin-right:10px; pointer-events:none;"> ${opt}`;
+        
+        if (historical.includes(idx)) btn.classList.add('selected');
+
+        if (!isLocked) {
+            btn.onclick = () => {
+                let newAns = [...historical];
+                if (newAns.includes(idx)) {
+                    newAns = newAns.filter(val => val !== idx);
+                } else {
+                    if (newAns.length < (q.required || q.cor.length)) newAns.push(idx);
+                }
+                session.userAnswers[session.currentIdx] = newAns;
+                if (session.mode === 'testing') updateNavGrid();
+                loadQuestion();
+            };
+        } else {
+            btn.disabled = true;
+            if (q.cor.includes(idx)) btn.classList.add('correct-glow');
+        }
+        UI.optionsContainer.appendChild(btn);
+    });
+}
+
+// --- 3. YES/NO MATRIX ENGINE ---
+function renderYesNo(q) {
+    const historical = session.userAnswers[session.currentIdx] || {};
+    const isLocked = session.mode === 'training' && session.isLocked[session.currentIdx];
+
+    q.statements.forEach((stmt, idx) => {
+        const row = document.createElement('div');
+        row.style.display = "flex";
+        row.style.justifyContent = "space-between";
+        row.style.alignItems = "center";
+        row.style.padding = "15px";
+        row.style.background = "#f7fafc";
+        row.style.border = "1px solid #e2e8f0";
+        row.style.borderRadius = "8px";
+        row.style.marginBottom = "10px";
+        
+        if (isLocked) {
+            const isRowCorrect = historical[idx] === q.cor[idx];
+            row.style.borderColor = isRowCorrect ? '#38a169' : '#e53e3e';
+            row.style.background = isRowCorrect ? '#f0fff4' : '#fff5f5';
+        }
+
+        row.innerHTML = `
+            <span style="flex:1; font-weight:500;">${stmt}</span>
+            <div style="display:flex; gap:15px;">
+                <label style="cursor:${isLocked?'not-allowed':'pointer'}">
+                    <input type="radio" name="yn_${idx}" ${historical[idx] === true ? 'checked' : ''} ${isLocked?'disabled':''}> Yes
+                </label>
+                <label style="cursor:${isLocked?'not-allowed':'pointer'}">
+                    <input type="radio" name="yn_${idx}" ${historical[idx] === false ? 'checked' : ''} ${isLocked?'disabled':''}> No
+                </label>
+            </div>
+        `;
+
+        if (!isLocked) {
+            row.querySelectorAll('input[type="radio"]').forEach((radio, radioIdx) => {
+                radio.onchange = () => {
+                    historical[idx] = radioIdx === 0; // 0 is Yes, 1 is No
+                    session.userAnswers[session.currentIdx] = { ...historical };
+                    if (session.mode === 'testing') updateNavGrid();
+                };
+            });
+        }
+        UI.optionsContainer.appendChild(row);
+    });
+}
+
+// --- 4. SEQUENCE ENGINE (ORDERING) ---
 function renderOrdering(q) {
-    const historical = session.userAnswers[session.currentIdx];
-    const isLocked = (session.mode === 'training' && session.isLocked[session.currentIdx]);
-    
-    session.userSequence = historical ? [...historical] : [];
+    const historical = session.userAnswers[session.currentIdx] || [];
+    const isLocked = session.mode === 'training' && session.isLocked[session.currentIdx];
 
     const wrapper = document.createElement('div');
     wrapper.className = 'ordering-wrapper';
@@ -1343,7 +1405,7 @@ function renderOrdering(q) {
         const stepBadge = document.createElement('span');
         stepBadge.className = 'step-badge';
         
-        let matchIdx = session.userSequence.indexOf(idx);
+        let matchIdx = historical.indexOf(idx);
         if (matchIdx !== -1) {
             el.classList.add('selected');
             stepBadge.innerText = matchIdx + 1;
@@ -1354,69 +1416,60 @@ function renderOrdering(q) {
 
         if (!isLocked) {
             el.onclick = () => {
-                let currentPos = session.userSequence.indexOf(idx);
-                if (currentPos !== -1) {
-                    session.userSequence.splice(currentPos, 1);
-                } else {
-                    session.userSequence.push(idx);
-                }
-                session.userAnswers[session.currentIdx] = session.userSequence.length ? [...session.userSequence] : null;
+                let currentPos = historical.indexOf(idx);
+                let newSeq = [...historical];
+                if (currentPos !== -1) newSeq.splice(currentPos, 1);
+                else newSeq.push(idx);
+                
+                session.userAnswers[session.currentIdx] = newSeq.length ? newSeq : null;
                 if (session.mode === 'testing') updateNavGrid();
-                renderOrdering(q);
+                loadQuestion();
             };
         } else {
             el.classList.add('disabled');
-            if (q.cor[idx] === idx) el.classList.add('correct-glow');
+            if (q.cor && q.cor[idx] === idx) el.classList.add('correct-glow');
         }
         wrapper.appendChild(el);
     });
     UI.interactiveContainer.appendChild(wrapper);
 }
 
-// --- COMPLEX MATRIX ENGINE (MATCHING) ---
+// --- 5. MATRIX ENGINE (MATCHING - DUPLICATION FIXED) ---
 function renderMatching(q) {
-    const historical = session.userAnswers[session.currentIdx];
-    const isLocked = (session.mode === 'training' && session.isLocked[session.currentIdx]);
+    const historical = session.userAnswers[session.currentIdx] || {};
+    const isLocked = session.mode === 'training' && session.isLocked[session.currentIdx];
 
-    if (historical) session.userPairs = { ...historical };
+    UI.interactiveContainer.innerHTML = '<div class="matching-matrix" id="match-matrix"></div>';
+    const matrix = document.getElementById('match-matrix');
 
-    const wrapper = document.createElement('div');
-    wrapper.className = 'matching-matrix';
+    const leftCol = document.createElement('div'); leftCol.className = 'matrix-column';
+    const rightCol = document.createElement('div'); rightCol.className = 'matrix-column';
 
-    let selectedTerm = null;
-
-    const leftCol = document.createElement('div');
-    leftCol.className = 'matrix-column';
-    q.pairs.forEach((pair, idx) => {
+    q.pairs.forEach((pair) => {
         const termBtn = document.createElement('button');
         termBtn.className = 'matrix-btn term-btn';
         termBtn.innerText = pair.term;
 
-        if (session.userPairs[pair.term]) termBtn.classList.add('paired');
+        if (historical[pair.term]) termBtn.classList.add('paired');
+        if (window.activeMatchTerm === pair.term) termBtn.classList.add('active');
 
         if (!isLocked) {
             termBtn.onclick = () => {
-                document.querySelectorAll('.term-btn').forEach(b => b.classList.remove('active'));
-                selectedTerm = pair.term;
-                termBtn.classList.add('active');
+                window.activeMatchTerm = (window.activeMatchTerm === pair.term) ? null : pair.term;
+                loadQuestion();
             };
-        } else {
-            termBtn.disabled = true;
-        }
+        } else { termBtn.disabled = true; }
         leftCol.appendChild(termBtn);
     });
 
-    const rightCol = document.createElement('div');
-    rightCol.className = 'matrix-column';
     const renderedDefs = q.pairs.map(p => p.definition);
-
     renderedDefs.forEach(def => {
         const defBtn = document.createElement('button');
         defBtn.className = 'matrix-btn def-btn';
         defBtn.innerText = def;
 
-        Object.keys(session.userPairs).forEach(t => {
-            if (session.userPairs[t] === def) {
+        Object.keys(historical).forEach(t => {
+            if (historical[t] === def) {
                 defBtn.classList.add('paired');
                 const indicator = document.createElement('small');
                 indicator.innerText = ` [Paired]`;
@@ -1426,42 +1479,30 @@ function renderMatching(q) {
 
         if (!isLocked) {
             defBtn.onclick = () => {
-                if (!selectedTerm) {
-                    alert("Please click a source term from the left column first.");
-                    return;
-                }
-                Object.keys(session.userPairs).forEach(t => {
-                    if (session.userPairs[t] === def) delete session.userPairs[t];
-                });
-
-                session.userPairs[selectedTerm] = def;
-                session.userAnswers[session.currentIdx] = { ...session.userPairs };
+                if (!window.activeMatchTerm) return alert("Select a term on the left first.");
+                
+                // Remove if already paired elsewhere
+                Object.keys(historical).forEach(t => { if (historical[t] === def) delete historical[t]; });
+                
+                historical[window.activeMatchTerm] = def;
+                session.userAnswers[session.currentIdx] = { ...historical };
+                window.activeMatchTerm = null;
                 
                 if (session.mode === 'testing') updateNavGrid();
-                selectedTerm = null;
-                renderMatching(q);
+                loadQuestion();
             };
-        } else {
-            defBtn.disabled = true;
-        }
+        } else { defBtn.disabled = true; }
         rightCol.appendChild(defBtn);
     });
 
-    wrapper.appendChild(leftCol);
-    wrapper.appendChild(rightCol);
-    UI.interactiveContainer.appendChild(wrapper);
+    matrix.appendChild(leftCol);
+    matrix.appendChild(rightCol);
 }
 
-// --- EXTENSIBLE INTERACTIVE CLASSIFICATION ENGINE (CATEGORIZATION) ---
+// --- 6. CLASSIFICATION ENGINE (CATEGORIZATION) ---
 function renderCategorization(q) {
-    const historical = session.userAnswers[session.currentIdx];
-    const isLocked = (session.mode === 'training' && session.isLocked[session.currentIdx]);
-
-    if (historical && typeof historical === 'object') {
-        session.userCategories = { ...historical };
-    } else if (!historical) {
-        session.userCategories = {};
-    }
+    const historical = session.userAnswers[session.currentIdx] || {};
+    const isLocked = session.mode === 'training' && session.isLocked[session.currentIdx];
 
     const catContainer = document.createElement('div');
     catContainer.className = 'category-container';
@@ -1469,21 +1510,7 @@ function renderCategorization(q) {
     q.categories.forEach(cat => {
         const bucket = document.createElement('div');
         bucket.className = 'cat-bucket';
-        bucket.setAttribute('data-category', cat);
         bucket.innerHTML = `<h4>${cat}</h4><div class="bucket-content" id="bucket-${cat.replace(/\s+/g, '')}"></div>`;
-        
-        bucket.ondragover = (e) => { e.preventDefault(); if (!isLocked) bucket.classList.add('drag-over'); };
-        bucket.ondragleave = () => bucket.classList.remove('drag-over');
-        bucket.ondrop = (e) => {
-            e.preventDefault();
-            bucket.classList.remove('drag-over');
-            if (isLocked) return;
-            const itemName = e.dataTransfer.getData('text/plain');
-            session.userCategories[itemName] = cat;
-            session.userAnswers[session.currentIdx] = { ...session.userCategories };
-            if (session.mode === 'testing') updateNavGrid();
-            renderCategorization(q);
-        };
         catContainer.appendChild(bucket);
     });
 
@@ -1491,7 +1518,6 @@ function renderCategorization(q) {
 
     const pool = document.createElement('div');
     pool.className = 'item-pool';
-    pool.innerHTML = '<p style="width:100%; font-size:0.8rem; color:#718096; margin-bottom:8px;">Touch or drag items into target buckets:</p>';
     UI.interactiveContainer.appendChild(pool);
 
     q.items.forEach(item => {
@@ -1500,31 +1526,23 @@ function renderCategorization(q) {
         itemNode.innerText = item.name;
 
         if (!isLocked) {
-            itemNode.setAttribute('draggable', 'true');
-            itemNode.ondragstart = (e) => e.dataTransfer.setData('text/plain', item.name);
-            
             itemNode.onclick = () => {
-                const assigned = session.userCategories[item.name];
+                const assigned = historical[item.name];
                 if (!assigned) {
-                    session.userCategories[item.name] = q.categories[0];
+                    historical[item.name] = q.categories[0];
                 } else {
                     const currentIdx = q.categories.indexOf(assigned);
-                    if (currentIdx === q.categories.length - 1) {
-                        delete session.userCategories[item.name];
-                    } else {
-                        session.userCategories[item.name] = q.categories[currentIdx + 1];
-                    }
+                    if (currentIdx === q.categories.length - 1) delete historical[item.name];
+                    else historical[item.name] = q.categories[currentIdx + 1];
                 }
-                session.userAnswers[session.currentIdx] = { ...session.userCategories };
+                session.userAnswers[session.currentIdx] = { ...historical };
                 if (session.mode === 'testing') updateNavGrid();
-                renderCategorization(q);
+                loadQuestion();
             };
-        } else {
-            itemNode.classList.add('disabled');
-        }
+        } else { itemNode.classList.add('disabled'); }
 
-        if (session.userCategories[item.name]) {
-            const id = `bucket-${session.userCategories[item.name].replace(/\s+/g, '')}`;
+        if (historical[item.name]) {
+            const id = `bucket-${historical[item.name].replace(/\s+/g, '')}`;
             const targetBucket = document.getElementById(id);
             if (targetBucket) targetBucket.appendChild(itemNode);
         } else {
@@ -1534,19 +1552,18 @@ function renderCategorization(q) {
 }
 
 // ==========================================
-// FORM EVALUATION & REAL-TIME GRADING RULES
+// EVALUATION & GRADING PIPELINES
 // ==========================================
 function checkAnswer() {
     if (!session) return;
     const q = session.getCurrentQuestion();
+    const qType = q.type || 'mcq';
+    const ans = session.userAnswers[session.currentIdx];
 
-    if (q.type !== 'ordering' && q.type !== 'matching' && q.type !== 'categorization') {
-        if (session.currentSelection === null) {
-            alert("Please make a selection before submitting your response.");
-            return;
-        }
-        session.userAnswers[session.currentIdx] = session.currentSelection;
-    }
+    // Validation checks before submission
+    if (qType === 'mcq' && ans === null) return alert("Please select an answer.");
+    if (qType === 'multi' && (!ans || ans.length < (q.required || q.cor.length))) return alert("Please select the required number of options.");
+    if (qType === 'yesno' && (!ans || Object.keys(ans).length < q.statements.length)) return alert("Please answer Yes or No for all statements.");
 
     session.isLocked[session.currentIdx] = true;
     revealTrainingFeedback(q);
@@ -1557,28 +1574,29 @@ function checkAnswer() {
 }
 
 function revealTrainingFeedback(q) {
-    let isCorrect = false;
-    if (q.type === 'ordering') {
-        const ans = session.userAnswers[session.currentIdx];
-        isCorrect = ans && ans.length === q.items.length && ans.every((val, i) => val === q.cor[i]);
-    } else if (q.type === 'matching') {
-        const ans = session.userAnswers[session.currentIdx];
-        if (ans) isCorrect = q.pairs.every(p => ans[p.term] === p.definition);
-    } else if (q.type === 'categorization') {
-        const ans = session.userAnswers[session.currentIdx];
-        if (ans) isCorrect = q.items.every(item => ans[item.name] === item.category);
-    } else {
-        isCorrect = (session.userAnswers[session.currentIdx] === q.cor);
-    }
+    let isCorrect = gradeQuestion(q, session.userAnswers[session.currentIdx]);
 
     UI.feedback.classList.remove('hidden');
     if (isCorrect) {
         UI.feedback.className = "feedback-box correct-box";
-        UI.feedback.innerText = `Correct! ${q.exp}`;
+        UI.feedback.innerText = `Correct! ${q.exp || ''}`;
     } else {
         UI.feedback.className = "feedback-box wrong-box";
-        UI.feedback.innerText = `Incorrect. ${q.exp}`;
+        UI.feedback.innerText = `Incorrect. ${q.exp || ''}`;
     }
+}
+
+function gradeQuestion(q, ans) {
+    const qType = q.type || 'mcq';
+    if (!ans) return false;
+
+    if (qType === 'mcq') return ans === q.cor;
+    if (qType === 'multi') return ans.length === q.cor.length && [...ans].sort().every((v, i) => v === [...q.cor].sort()[i]);
+    if (qType === 'yesno') return q.cor.every((correctVal, i) => ans[i] === correctVal);
+    if (qType === 'ordering') return ans.length === q.items.length && ans.every((val, i) => val === q.cor[i]);
+    if (qType === 'matching') return q.pairs.every(p => ans[p.term] === p.definition);
+    if (qType === 'categorization') return q.items.every(item => ans[item.name] === item.category);
+    return false;
 }
 
 function nextQuestion() {
@@ -1599,7 +1617,7 @@ function jumpToQuestion(idx) {
 }
 
 // ==========================================
-// REVIEW PANEL ORCHESTRATION PIPELINES
+// COMPREHENSIVE RESULTS & BREAKDOWN ENGINE
 // ==========================================
 function showReviewScreen() {
     UI.examContainer.classList.add('hidden');
@@ -1607,14 +1625,17 @@ function showReviewScreen() {
     UI.reviewList.innerHTML = '';
 
     session.questions.forEach((q, idx) => {
+        const isAnswered = session.userAnswers[idx] !== null && 
+                           (typeof session.userAnswers[idx] !== 'object' || Object.keys(session.userAnswers[idx]).length > 0);
+        
         const card = document.createElement('div');
-        card.className = `review-card ${session.userAnswers[idx] !== null ? 'filled' : 'empty'}`;
+        card.className = `review-card ${isAnswered ? 'filled' : 'empty'}`;
         
         const isFlagged = session.flags.includes(idx);
         card.innerHTML = `
             <span><strong>Question ${idx + 1}</strong>: ${q.q.substring(0, 60)}...</span>
             <div>
-                <span>${session.userAnswers[idx] !== null ? '✅ Answered' : '❌ Unanswered'}</span>
+                <span>${isAnswered ? '✅ Answered' : '❌ Unanswered'}</span>
                 ${isFlagged ? '<span style="margin-left:10px;">🚩 Flagged</span>' : ''}
             </div>
         `;
@@ -1625,38 +1646,66 @@ function showReviewScreen() {
 
 function submitExam() {
     clearInterval(timerInterval);
-    try {
-        localStorage.removeItem(CONFIG.STORAGE_KEY);
-    } catch (e) {}
+    try { localStorage.removeItem(CONFIG.STORAGE_KEY); } catch (e) {}
 
     UI.reviewScreen.classList.add('hidden');
     UI.examContainer.classList.add('hidden');
     UI.resultScreen.classList.remove('hidden');
 
     let finalScore = 0;
+    let lessonStats = {};
+
     session.questions.forEach((q, idx) => {
-        const ans = session.userAnswers[idx];
-        if (q.type === 'ordering') {
-            if (ans && ans.length === q.items.length && ans.every((v, i) => v === q.cor[i])) finalScore++;
-        } else if (q.type === 'matching') {
-            if (ans && q.pairs.every(p => ans[p.term] === p.definition)) finalScore++;
-        } else if (q.type === 'categorization') {
-            if (ans && q.items.every(item => ans[item.name] === item.category)) finalScore++;
-        } else {
-            if (ans === q.cor) finalScore++;
-        }
+        const isCorrect = gradeQuestion(q, session.userAnswers[idx]);
+        if (isCorrect) finalScore++;
+
+        // Aggregate stats for Breakdown Report
+        const lesson = q.sourceLesson || 'General Knowledge';
+        const friendlyLessonName = formatLessonName(lesson);
+
+        if (!lessonStats[friendlyLessonName]) lessonStats[friendlyLessonName] = { total: 0, correct: 0 };
+        lessonStats[friendlyLessonName].total++;
+        if (isCorrect) lessonStats[friendlyLessonName].correct++;
     });
 
     const calculatedPercentage = Math.round((finalScore / session.questions.length) * 100);
     const hasPassed = calculatedPercentage >= CONFIG.PASS_SCORE;
+
+    // Generate Breakdown HTML
+    let breakdownHTML = `<h3 style="margin-top:25px; border-bottom:2px solid #e2e8f0; padding-bottom:10px; color:#2d3748;">Objective Performance Breakdown</h3><div style="margin-top:10px;">`;
+    for (const [lesson, stats] of Object.entries(lessonStats)) {
+        const lPercent = Math.round((stats.correct / stats.total) * 100);
+        breakdownHTML += `
+            <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #edf2f7; font-size:0.95rem;">
+                <span style="font-weight:600; color:#4a5568;">${lesson.toUpperCase()}</span>
+                <span style="color: ${lPercent >= 70 ? '#38a169' : '#e53e3e'}; font-weight:bold;">
+                    ${lPercent}% (${stats.correct}/${stats.total})
+                </span>
+            </div>
+        `;
+    }
+    breakdownHTML += `</div>`;
 
     UI.finalScore.innerHTML = `
         <h2 style="color: ${hasPassed ? '#2f855a' : '#c53030'}; font-size:2.5rem; margin-bottom:10px;">
             ${hasPassed ? 'PASSED' : 'FAILED'}
         </h2>
         <h1 style="font-size:4rem; font-weight:700; color:#2d3748; margin-bottom:15px;">${calculatedPercentage}%</h1>
-        <p style="font-size:1.2rem; color:#4a5568;">Required: ${CONFIG.PASS_SCORE}% | Scored: ${finalScore} out of ${session.questions.length} correct items.</p>
+        <p style="font-size:1.1rem; color:#4a5568;">Required: ${CONFIG.PASS_SCORE}% | Scored: ${finalScore} out of ${session.questions.length} correct items.</p>
+        <div style="text-align: left; background: #f7fafc; padding: 20px; border-radius: 8px; margin-top:20px; border: 1px solid #e2e8f0;">
+            ${breakdownHTML}
+        </div>
     `;
+}
+
+function formatLessonName(key) {
+    const map = {
+        'l1_lesson1': 'L1: Technology Basics', 'l1_lesson2': 'L1: Digital Citizenship',
+        'l1_lesson3': 'L1: Information Management', 'l1_lesson4': 'L1: Content Creation',
+        'l1_lesson5': 'L1: Communication', 'l1_lesson6': 'L1: Collaboration',
+        'l1_lesson7': 'L1: Safety and Security', 'l2_lesson8': 'L2: Technology Basics'
+    };
+    return map[key] || key;
 }
 
 // ==========================================
@@ -1697,23 +1746,23 @@ function toggleFlag() {
     if (!session) return;
     const current = session.currentIdx;
     const pos = session.flags.indexOf(current);
-    if (pos !== -1) {
-        session.flags.splice(pos, 1);
-    } else {
-        session.flags.push(current);
-    }
+    if (pos !== -1) session.flags.splice(pos, 1);
+    else session.flags.push(current);
     loadQuestion();
 }
 
 function updateNavGrid() {
     if (!session) return;
     UI.navGrid.innerHTML = '';
-    session.questions.forEach((_, idx) => {
+    session.questions.forEach((q, idx) => {
         const box = document.createElement('div');
         box.className = 'q-box';
         
+        const ans = session.userAnswers[idx];
+        const isAnswered = ans !== null && (typeof ans !== 'object' || Object.keys(ans).length > 0);
+
         if (idx === session.currentIdx) box.classList.add('current');
-        if (session.userAnswers[idx] !== null) box.classList.add('answered');
+        if (isAnswered) box.classList.add('answered');
         if (session.flags.includes(idx)) box.classList.add('flagged');
         
         box.innerText = idx + 1;
@@ -1726,7 +1775,5 @@ function updateProgress() {
     if (!session || session.questions.length === 0) return;
     const currentPct = Math.round(((session.currentIdx + 1) / session.questions.length) * 100);
     if (UI.progressFill) UI.progressFill.style.width = `${currentPct}%`;
-    if (UI.progressBar) {
-        UI.progressBar.setAttribute('aria-valuenow', currentPct);
-    }
+    if (UI.progressBar) UI.progressBar.setAttribute('aria-valuenow', currentPct);
 }

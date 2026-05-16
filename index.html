@@ -9,6 +9,7 @@
     <link rel="manifest" href="manifest.json">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="script.js" defer></script>
 </head>
 <body>
 
@@ -34,9 +35,23 @@
                         <option value="l1_lesson7">L1M7: Safety and Security</option>
                     </optgroup>
                     <optgroup label="Level 2: Working Knowledge">
-                        <option value="l2_lesson8">L2M8: Technology Basics (50 Qs)</option>
+                        <option value="l2_lesson8">L2M8: Technology Basics 2</option>
                     </optgroup>
                 </select>
+            </div>
+
+            <div class="menu-section">
+                <label>2. Choose Simulator Mode:</label>
+                <div class="mode-options-group" style="margin-top: 8px; display: flex; gap: 15px;">
+                    <label style="font-weight: normal; cursor: pointer;">
+                        <input type="radio" name="mode" value="training" checked style="margin-right: 5px;"> 
+                        Training Mode (Immediate Feedback)
+                    </label>
+                    <label style="font-weight: normal; cursor: pointer;">
+                        <input type="radio" name="mode" value="testing" style="margin-right: 5px;"> 
+                        Testing Mode (Exam Timing)
+                    </label>
+                </div>
             </div>
 
             <button type="button" id="start-btn" onclick="startExam()">Start Examination</button>

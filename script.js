@@ -1,17 +1,18 @@
 /**
- * IC3 GS6 EXAM SIMULATOR - Refactored Edition
- * Created by Donfaruk19
+ * IC3 GS6 EXAM SIMULATOR - ARCHITECTURAL ENGINE
+ * Developed by: Donfaruk19
+ * Optimized for: WCAG Accessibility (ARIA), Touch Interfaces, and Dynamic Module Scaling
+ * Feature Integration: Dual Mode Routing Engine (Training & Testing Profiles)
  */
 
-// Disable Right-Click and Inspect Element (Basic Protection)
+// Basic Intellectual Property and Context View Isolation Protection Layers
 document.addEventListener('contextmenu', event => event.preventDefault());
 document.onkeydown = function(e) {
-    if(e.keyCode == 123) return false; 
-    if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false;
-    if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) return false;
-    if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false; 
-}
-
+    if (e.keyCode == 123) return false; 
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false;
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) return false;
+    if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false; 
+};
 // ==========================================
 // EXTENSIBLE QUIZ MODULE STORAGE
 // ==========================================
@@ -661,6 +662,68 @@ const allModules = {
         { type: "matching", q: "Match Backup Strategy:", pairs: [{term: "Full Backup", definition: "Copies every file"}, {term: "Incremental", definition: "Only copies new changes"}, {term: "Off-site", definition: "Stored in a different building"}], exp: "Ensuring data can be recovered after failure." }
     ],
     //----- Beginnning of Level Two -----
+    l2_lesson8: [
+        // --- GLOBAL & PROFILE SETTINGS / WINDOWS SETTINGS APP ---
+        {
+            q: "You need to change a setting on a Windows computer. Which type of setting generally relates directly to hardware and affects every user account on the system?",
+            a: ["Profile-specific settings", "Global settings", "Application-specific preferences", "Temporary container configurations"],
+            cor: 1,
+            exp: "According to the guide, global settings affect all user accounts on the system and are generally related to hardware."
+        },
+        {
+            q: "A user wants to change their personal background image and lock screen colors. How is this type of setting classified?",
+            a: ["Global hardware setting", "System-wide override", "Profile-specific setting", "Kernel configuration"],
+            cor: 2,
+            exp: "Profile-specific settings are tied to an individual user's profile, such as personal backgrounds or lock screens, rather than affecting the entire system hardware."
+        },
+        {
+            q: "What is the official step-by-step mouse navigation sequence required to open the primary Windows Settings app?",
+            a: ["Click Start, and then click Settings", "Right-click Taskbar, and click Properties", "Open File Explorer, and select Network Settings", "Click Start, select Control Panel, and choose Registry"],
+            cor: 0,
+            exp: "To configure commonly-accessed options, you click the Start button and then select the Settings icon."
+        },
+        {
+            q: "When navigating the main interface of the Windows Settings application, which method is available to quickly locate an obscure setting without browsing categories?",
+            a: ["Pressing F5 to refresh the navigation panel", "Using the provided 'Find a setting' search box", "Opening the system Command Prompt window", "Double-clicking on the window title bar"],
+            cor: 1,
+            exp: "The Windows Settings app allows you to either browse designated categories or utilize the 'Find a setting' search box directly."
+        },
+        {
+            type: "matching",
+            q: "Match each administrative setting type to its core system behavioral characteristic.",
+            pairs: [
+                { term: "Global Settings", definition: "Affects all user accounts on the system and generally relates to hardware components." },
+                { term: "Profile-Specific Settings", definition: "Tied directly to an individual user account and does not modify other environments." }
+            ]
+        },
+        // --- BROWSER PREFERENCES AND SETTINGS ---
+        {
+            q: "Which specific utility should be deployed to defend a Local Area Network (LAN) from unauthorized, unwanted incoming internet traffic?",
+            a: ["Antivirus software", "Network Firewall", "Local Web Browser Extensions", "Operating System AutoCorrect"],
+            cor: 1,
+            exp: "Firewalls protect a Local Area Network (LAN) from unwanted network traffic originating from public untrusted networks."
+        },
+        {
+            q: "Your system keeps catching hidden spyware, trojans, and worms. Which tool is primarily designed to actively run background scans and protect the local OS file system from these specific threats?",
+            a: ["A network firewall rule", "Antivirus software", "An AutoFill form manager", "A browser default search filter"],
+            cor: 1,
+            exp: "Antivirus software protects the local operating system from threats like viruses, Trojans, and spyware."
+        },
+        {
+            q: "You click the 'Customize and Control' three-dot icon in Google Chrome. Which designated menu category must you choose to alter the browser's default search engine or autofill behaviors?",
+            a: ["History", "Downloads", "Settings", "More Tools"],
+            cor: 2,
+            exp: "To customize web browser preferences such as search engines, autofill, or default behaviors, you must choose 'Settings' from the control menu."
+        },
+        {
+            q: "You want to clear your saved address entries and automated payment forms from a browser session. Under which specific settings sub-panel are these data completion preferences grouped?",
+            a: ["Appearance settings", "Default browser configurations", "On startup configurations", "Autofill settings"],
+            cor: 3,
+            exp: "Options like Autofill handle the saving and automatic entering of form information such as login credentials, addresses, and credit cards."
+        },
+        {
+            q: "True or False: Web browser settings look identical, share the exact same names, and are located in the same structural configurations across all available web browsers.",
+    ],
     l2_lesson8: [
         // --- GLOBAL & PROFILE SETTINGS / WINDOWS SETTINGS APP ---
         {

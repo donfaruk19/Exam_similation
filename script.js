@@ -18,7 +18,7 @@ document.onkeydown = function(e) {
 // ==========================================
 const allModules = {
     l1_lesson1: [
-        // --- 1. OPERATING SYSTEM CONCEPTS ---
+        // --- 1. OPERATING SYSTEM & SOFTWARE CONCEPTS ---
         {
             type: "mcq",
             q: "What is the definition of an Operating System (OS)?",
@@ -27,15 +27,25 @@ const allModules = {
             exp: "The Operating System is the central program that manages communication, coordinates tasks, and controls hardware devices."
         },
         {
+            type: "matching",
+            q: "Match the software terminology to its correct definition:",
+            pairs: [
+                { term: "Program", definition: "A sequence of instructions that guides a computer through tasks." },
+                { term: "Code", definition: "Individual lines of instruction within a program." },
+                { term: "Software", definition: "General term for any program that makes a computer run." }
+            ],
+            exp: "Programs are made of code; software is the umbrella term for all programs including the OS."
+        },
+        {
             type: "yesno",
             q: "Evaluate the following statements regarding Operating System Versions and Editions:",
             statements: [
-                "An OS 'Version' refers to the specific code-base used to develop it (e.g., Windows 7, Windows 10).",
-                "An OS 'Edition' determines which features are available (e.g., Home, Professional, Enterprise).",
-                "Versions and Editions are the exact same thing."
+                "An OS 'Version' refers to the specific code-base used to develop it (e.g., Windows 10).",
+                "An OS 'Edition' determines which specific features are available (e.g., Home vs. Pro).",
+                "Versions and Editions are exactly the same thing."
             ],
             cor: [true, true, false],
-            exp: "Version refers to the core code-base (Windows 10), while Edition refers to the feature package (Pro vs Home)."
+            exp: "Version refers to the core build/release, while Edition refers to the feature package purchased."
         },
         {
             type: "categorization",
@@ -45,1389 +55,3652 @@ const allModules = {
                 { name: "Windows 10", category: "Desktop OS" },
                 { name: "Android", category: "Mobile OS" },
                 { name: "iOS", category: "Mobile OS" },
-                { name: "OS for specific medical equipment", category: "Embedded OS" }
+                { name: "Medical Equipment Software", category: "Embedded OS" },
+                { name: "macOS", category: "Desktop OS" }
             ],
-            exp: "Desktops use Windows/Mac, handhelds use Mobile OS, and specialized machines use Embedded OS."
+            exp: "Desktops use Windows/Mac; handhelds use Mobile OS; specialized machines use Embedded OS."
         },
-        
-        // --- 2. BROWSER CONCEPTS ---
+        {
+            type: "categorization",
+            q: "Categorize the licensing type for these Operating Systems:",
+            categories: ["Proprietary (Closed)", "Open-Source"],
+            items: [
+                { name: "Windows 10", category: "Proprietary (Closed)" },
+                { name: "Linux", category: "Open-Source" },
+                { name: "macOS", category: "Proprietary (Closed)" },
+                { name: "iOS", category: "Proprietary (Closed)" }
+            ],
+            exp: "Proprietary software is owned by a company; Open-Source code can be modified and shared by anyone."
+        },
+        {
+            type: "mcq",
+            q: "What does EULA stand for in software installation?",
+            a: ["Electronic User Legal Agreement", "End User License Agreement", "Enterprise Utility Loading Access", "Every User Listing Array"],
+            cor: 1,
+            exp: "The EULA contains the rules regarding what you are permitted to do with the software."
+        },
+
+        // --- 2. BROWSER CONCEPTS & NAVIGATION ---
         {
             type: "multi",
             q: "Which of the following are considered popular Web Browsers? (Select 3)",
             a: ["Microsoft Edge", "Windows 10", "Google Chrome", "Mozilla Firefox", "Linux"],
             cor: [0, 2, 3],
             required: 3,
-            exp: "Edge, Chrome, and Firefox are web browsers. Windows 10 and Linux are Operating Systems."
+            exp: "Edge, Chrome, and Firefox are browsers. Windows 10 and Linux are Operating Systems."
         },
         {
             type: "matching",
-            q: "Match the standard Windows window control button to its exact function:",
+            q: "Match the standard window control button to its exact function:",
             pairs: [
-                { term: "Minimize", definition: "Temporarily collapses the window to the taskbar." },
+                { term: "Minimize", definition: "Collapses the window to the taskbar." },
                 { term: "Maximize", definition: "Displays the window full screen." },
-                { term: "Restore Down", definition: "Restores the window to the size it was before it was maximized." },
-                { term: "Close", definition: "Closes the window completely." }
+                { term: "Restore Down", definition: "Returns the window to its previous size." },
+                { term: "Close", definition: "Exits the program or window." }
             ],
-            exp: "These controls are located at the top right of standard browser and application windows."
+            exp: "These controls are standard in almost all Windows-based application windows."
         },
         {
             type: "ordering",
             q: "Arrange the steps to duplicate an active browser tab:",
             items: [
-                "Select 'Duplicate tab' from the pop-up menu.",
-                "Hover your mouse over the active tab at the top of the browser.",
-                "Right-click the active tab."
+                "Right-click the active tab at the top of the browser.",
+                "Select 'Duplicate' (or 'Duplicate tab') from the menu.",
+                "The new identical tab appears next to the original."
             ],
-            cor: [1, 2, 0],
-            exp: "To duplicate, hover over the tab, right-click to open the context menu, and select Duplicate."
+            cor: [0, 1, 2],
+            exp: "Right-clicking a tab provides the option to duplicate it."
+        },
+        {
+            type: "yesno",
+            q: "Evaluate these statements about Browsing Elements:",
+            statements: [
+                "The Address Bar is used to type a specific URL.",
+                "The Search Bar is used to find information using keywords.",
+                "The 'Home' button always takes you to Google.com."
+            ],
+            cor: [true, true, false],
+            exp: "Address bars are for URLs; Search bars are for keywords. The Home button goes to whatever page the user sets as home."
         },
         {
             type: "yesno",
             q: "Evaluate these statements about Hyperlinks:",
             statements: [
-                "When you point the mouse over a hyperlink, it changes to a pointing hand icon.",
-                "Hyperlinks can only be text, never images.",
-                "A hyperlink can link to a different page on the same website or a completely different website."
+                "The cursor usually changes to a pointing hand icon over a link.",
+                "Hyperlinks can only be text, not images.",
+                "Hyperlinks can link to files, web pages, or email addresses."
             ],
             cor: [true, false, true],
-            exp: "Hyperlinks change the cursor to a hand and can be text, images, icons, or specific screen areas."
+            exp: "Links can be text, images, or icons, and the cursor changes to a hand when hovering."
         },
 
-        // --- 3. USER ACCOUNTS & WINDOWS NAVIGATION ---
+        // --- 3. USER ACCOUNTS & WINDOWS SETTINGS ---
         {
             type: "categorization",
-            q: "Categorize the permissions granted to these User Account types:",
+            q: "Categorize the permissions for these User Account types:",
             categories: ["Administrator", "Standard User"],
             items: [
-                { name: "Can make changes affecting all other users", category: "Administrator" },
-                { name: "Created automatically when Windows is installed", category: "Administrator" },
-                { name: "Cannot change security settings", category: "Standard User" },
-                { name: "Cannot access files created by other users", category: "Standard User" }
+                { name: "Can change security settings for all users", category: "Administrator" },
+                { name: "Can install apps that affect the whole system", category: "Administrator" },
+                { name: "Can only change their own password/picture", category: "Standard User" },
+                { name: "Cannot access other users' files", category: "Standard User" }
             ],
-            exp: "Administrators have full system control, while Standard users are restricted to protect the system and privacy."
+            exp: "Administrators have full system control; Standard users are restricted for security."
         },
         {
             type: "mcq",
-            q: "What does the concept of a 'Single Sign-on Account' (like a Microsoft Account) allow you to do?",
-            a: ["It forces you to create a new password for every single app you use.", "It validates who you are across multiple services and devices using one set of credentials.", "It prevents you from logging into public computers.", "It disables the need for a password entirely."],
+            q: "What is a 'Single Sign-on Account' (like a Microsoft Account)?",
+            a: ["An account that only works on one computer", "An account that validates identity across multiple services and devices", "An account that doesn't require a password", "An account used only for email"],
             cor: 1,
-            exp: "Single sign-on validates your identity across various platforms and devices without needing multiple accounts."
+            exp: "Single sign-on allows one set of credentials to access various apps and sync settings across devices."
         },
         {
             type: "matching",
-            q: "Match the Windows Taskbar element to its correct description:",
+            q: "Match the Windows Taskbar element to its description:",
             pairs: [
-                { term: "Task View", definition: "Shows small windows of running apps and commands for virtual Desktops." },
-                { term: "Notification Area", definition: "Displays time, date, volume control, and network status." },
-                { term: "Show Desktop", definition: "Point at this button to make open windows transparent or click to minimize all." }
+                { term: "Task View", definition: "Shows small windows of running apps and virtual desktops." },
+                { term: "Notification Area", definition: "Displays time, date, volume, and network status." },
+                { term: "Show Desktop", definition: "Thin button at the far right to minimize all windows." }
             ],
-            exp: "These are core elements located on the Windows 10 Taskbar."
+            exp: "These are core functional areas of the Windows 10 Taskbar."
         },
-        
+        {
+            type: "matching",
+            q: "Match the Session option to its effect:",
+            pairs: [
+                { term: "Lock", definition: "Hides your desktop behind a login screen but keeps apps running." },
+                { term: "Sign out", definition: "Closes all apps and ends your session, but leaves computer on." },
+                { term: "Restart", definition: "Closes all apps and reboots the Operating System." }
+            ],
+            exp: "Locking is for short breaks; Signing out is for when another user needs the computer."
+        },
+
         // --- 4. MOBILE NAVIGATION GESTURES ---
         {
             type: "matching",
-            q: "Match the Mobile OS touch gesture to its physical action:",
+            q: "Match the Mobile gesture to its action:",
             pairs: [
-                { term: "Tap", definition: "Lightly touch items with your fingertip to select." },
-                { term: "Touch and Hold", definition: "Maintain contact to drag a widget or open a pop-up menu." },
-                { term: "Swipe or Slide", definition: "Lightly drag your finger vertically or horizontally to scroll." },
-                { term: "Pinch and Spread", definition: "Move two fingers together or apart to zoom in or out." }
+                { term: "Tap", definition: "Used to select an item or open an app." },
+                { term: "Touch and Hold", definition: "Used to drag items or open secondary menus." },
+                { term: "Swipe", definition: "Used to scroll through lists or pages." },
+                { term: "Pinch / Spread", definition: "Used to zoom in or out on photos or maps." }
             ],
-            exp: "These four gestures are the foundation of navigating touch-based Mobile Operating Systems."
+            exp: "These are the four fundamental gestures for touch-screen navigation."
         },
 
         // --- 5. HARDWARE: INPUT & OUTPUT ---
         {
             type: "categorization",
-            q: "Categorize the following computer hardware devices:",
+            q: "Categorize these hardware devices:",
             categories: ["Input Device", "Output Device"],
             items: [
                 { name: "Keyboard", category: "Input Device" },
                 { name: "Microphone", category: "Input Device" },
                 { name: "Monitor", category: "Output Device" },
                 { name: "Printer", category: "Output Device" },
-                { name: "Speakers", category: "Output Device" }
+                { name: "Speakers", category: "Output Device" },
+                { name: "Mouse", category: "Input Device" }
             ],
-            exp: "Input devices send data into the computer. Output devices display or produce data from the computer."
+            exp: "Input sends data to the computer; Output receives data from the computer."
         },
         {
             type: "matching",
-            q: "Match the specific keyboard key category to its description:",
+            q: "Match the keyboard key category to its description:",
             pairs: [
-                { term: "Modifier Keys", definition: "Used in combination with other keys for shortcuts (e.g., Ctrl, Alt, Windows Key)." },
-                { term: "Function Keys", definition: "Keys labeled F1 through F12 that perform special commands." },
-                { term: "Numeric Keypad", definition: "A calculator-like grid of numbers toggled by the NumLock key." }
+                { term: "Modifier Keys", definition: "Ctrl, Alt, and Shift; used in combination with other keys." },
+                { term: "Function Keys", definition: "F1 through F12; used for specific shortcut commands." },
+                { term: "Numeric Keypad", definition: "Grid of numbers toggled by the NumLock key." }
             ],
-            exp: "Standard keyboards are divided into specific zones for different interaction types."
+            exp: "Keyboards are organized into functional zones for efficiency."
         },
         {
             type: "multi",
-            q: "Which of the following actions can typically be performed using a standard computer mouse? (Select 3)",
-            a: ["Left Drag", "Right Drag", "Pinch to Zoom", "Using the Scroll Wheel", "Printing a document directly"],
+            q: "Which actions can typically be performed with a standard mouse? (Select 3)",
+            a: ["Left Click / Drag", "Right Click", "Pinch to Zoom", "Scroll Wheel navigation", "Biometric Scanning"],
             cor: [0, 1, 3],
             required: 3,
-            exp: "A mouse supports left drag, right drag, and scroll wheel actions. Pinch to zoom is a touch gesture."
+            exp: "A mouse supports clicking, dragging, and scrolling. Pinching is for touch screens."
         },
         {
             type: "mcq",
-            q: "How do you 'activate' or open an item using a laptop Touchpad?",
-            a: ["Tap the touchpad once", "Tap the touchpad twice in quick succession (or double-click the left button)", "Press the CTRL key while touching", "Swipe three fingers"],
+            q: "When using a laptop Touchpad, how do you typically 'double-click' to open a file?",
+            a: ["Tap the touchpad once", "Tap the touchpad twice quickly", "Hold three fingers on the pad", "Swipe left"],
             cor: 1,
-            exp: "Tapping once selects the item; tapping twice in quick succession activates or opens it."
-        },
-        {
-            type: "yesno",
-            q: "Evaluate these statements about Touch Screens:",
-            statements: [
-                "Touch screens act as both an input and an output device.",
-                "Entering long paragraphs of text on a touch screen is faster and more comfortable than a physical keyboard.",
-                "Touch screens present virtual keyboards to the user for typing."
-            ],
-            cor: [true, false, true],
-            exp: "Touch screens output the display and input your touches, but typing long texts on them can become uncomfortable."
+            exp: "Tapping twice quickly on a touchpad mimics the double-click of a physical mouse."
         },
         {
             type: "mcq",
-            q: "When purchasing a Monitor, what does 'Resolution' refer to?",
-            a: ["The physical weight of the monitor", "The measurement of sharpness and clarity of the displayed images", "The length of the power cable", "The volume of the built-in speakers"],
+            q: "What does 'Resolution' refer to in regards to a Monitor?",
+            a: ["The size of the power cable", "The sharpness and clarity of images (measured in pixels)", "The weight of the screen", "The amount of power it consumes"],
             cor: 1,
-            exp: "Resolution measures the sharpness and clarity of the image, which is a major factor in the monitor's price."
+            exp: "Higher resolution means more pixels, resulting in a clearer and sharper image."
         },
         {
             type: "multi",
-            q: "Which of the following are common types of Printers? (Select 3)",
+            q: "Identify common types of Printers described in the lesson: (Select 3)",
             a: ["Inkjet", "Laser", "Stylus", "All-in-one", "Ethernet"],
             cor: [0, 1, 3],
             required: 3,
-            exp: "Inkjet, Laser, and All-in-one are printer types. Stylus is an input pen, and Ethernet is a cable."
+            exp: "Inkjet, Laser, and All-in-one (Print/Scan/Copy) are the primary printer types."
         },
 
         // --- 6. PORTS & CONNECTORS ---
         {
             type: "matching",
-            q: "Match the Audio Port color code to its standard device connection:",
+            q: "Match the Audio Port color to the device it connects:",
             pairs: [
-                { term: "Pink Port", definition: "Microphone" },
-                { term: "Light Blue Port", definition: "Line In (e.g., CD Player)" },
-                { term: "Lime Green Port", definition: "Line Out (e.g., Speakers or Headphones)" }
+                { term: "Pink", definition: "Microphone" },
+                { term: "Lime Green", definition: "Speakers or Headphones (Line Out)" },
+                { term: "Light Blue", definition: "CD Player or other audio source (Line In)" }
             ],
-            exp: "Audio ports are color-coded: Pink is for mic input, Lime Green is for audio output."
-        },
-        {
-            type: "categorization",
-            q: "Categorize the following standard connection ports:",
-            categories: ["Video Port", "Network Port"],
-            items: [
-                { name: "VGA", category: "Video Port" },
-                { name: "HDMI", category: "Video Port" },
-                { name: "DVI", category: "Video Port" },
-                { name: "RJ-45 / Ethernet", category: "Network Port" }
-            ],
-            exp: "VGA, DVI, and HDMI are used to send video output to monitors and projectors."
+            exp: "Audio ports on PC cases are color-coded based on industry standards."
         },
         {
             type: "matching",
-            q: "Match the USB version to its standard speed and usual color coding:",
+            q: "Match the USB version to its standard color code:",
             pairs: [
-                { term: "USB 2.0", definition: "Top speed of 480Mbps; usually black or white." },
-                { term: "USB 3.0", definition: "Theoretical top speed of 5Gbps; usually blue." },
-                { term: "USB 3.1 Generation 2", definition: "Speeds up to 10Gbps; usually teal blue." }
+                { term: "USB 2.0", definition: "Black or White" },
+                { term: "USB 3.0", definition: "Blue" },
+                { term: "USB 3.1 Gen 2", definition: "Teal Blue" }
             ],
-            exp: "USB technology has evolved to support faster data transfer speeds, marked by port colors."
+            exp: "Port colors help users identify the maximum speed of the USB connection."
+        },
+        {
+            type: "multi",
+            q: "Which of the following are standard Video Ports? (Select 3)",
+            a: ["HDMI", "VGA", "RJ-45", "DVI", "PS/2"],
+            cor: [0, 1, 3],
+            required: 3,
+            exp: "HDMI, VGA, and DVI are for video. RJ-45 is for network; PS/2 is for old mice/keyboards."
+        },
+        {
+            type: "yesno",
+            q: "Evaluate these statements about modern connectors:",
+            statements: [
+                "USB-C connectors are 'reversible' (can be plugged in either way).",
+                "HDMI carries both high-definition video AND audio signals.",
+                "VGA is the newest and most powerful video connection available."
+            ],
+            cor: [true, true, false],
+            exp: "USB-C is reversible and HDMI carries audio; VGA is an older, analog-only technology."
         },
         {
             type: "ordering",
-            q: "Arrange the chronological steps required to pair a Bluetooth accessory to a device:",
+            q: "Arrange the steps to pair a Bluetooth device:",
             items: [
-                "Select the accessory from the list of nearby devices on your screen.",
-                "Turn on Bluetooth on your device.",
-                "Put the accessory into discovery (pairing) mode.",
-                "Enter the PIN code if prompted to finalize pairing."
+                "Turn on Bluetooth on your computer/phone.",
+                "Put the accessory (headphones/mouse) into pairing mode.",
+                "Select the accessory name from the list on your screen.",
+                "Enter a PIN code if prompted to finish."
             ],
-            cor: [1, 2, 0, 3],
-            exp: "Bluetooth must be active on both devices, and the accessory must be discoverable before it can be selected."
+            cor: [0, 1, 2, 3],
+            exp: "The host must be 'listening' and the accessory 'visible' for pairing to work."
         },
 
         // --- 7. MEMORY & STORAGE ---
         {
             type: "categorization",
-            q: "Categorize the following memory types based on volatility:",
-            categories: ["Non-Volatile (Permanent)", "Volatile (Temporary)"],
+            q: "Categorize the following memory types:",
+            categories: ["Volatile (Temporary)", "Non-Volatile (Permanent)"],
             items: [
-                { name: "ROM (Read-only memory)", category: "Non-Volatile (Permanent)" },
-                { name: "Hard Disks / SSDs", category: "Non-Volatile (Permanent)" },
-                { name: "RAM (Random-access memory)", category: "Volatile (Temporary)" }
+                { name: "RAM (Random Access Memory)", category: "Volatile (Temporary)" },
+                { name: "ROM (Read Only Memory)", category: "Non-Volatile (Permanent)" },
+                { name: "Hard Disk Drive (HDD)", category: "Non-Volatile (Permanent)" },
+                { name: "Solid State Drive (SSD)", category: "Non-Volatile (Permanent)" }
             ],
-            exp: "RAM is volatile and loses data when powered off. ROM and storage drives retain data permanently."
+            exp: "RAM loses its contents when power is lost; storage drives and ROM keep data permanently."
         },
         {
             type: "mcq",
-            q: "What is the primary physical difference between a traditional Hard Disk Drive (HDD) and a Solid State Drive (SSD)?",
-            a: ["SSDs hold less data than HDDs.", "SSDs do not have any moving parts and use flash memory chips.", "HDDs use optical lasers instead of magnets.", "SSDs require an internet connection to work."],
+            q: "What is the main physical difference between an HDD and an SSD?",
+            a: ["HDDs are smaller", "SSDs have no moving parts and use flash memory", "HDDs use lasers to read data", "SSDs are slower but cheaper"],
             cor: 1,
-            exp: "Traditional HDDs use spinning magnetic platters, while SSDs use interconnected flash memory chips with no moving parts."
+            exp: "SSDs use chips (flash memory) and have no moving parts, making them faster and more durable than spinning HDDs."
+        },
+        {
+            type: "ordering",
+            q: "Arrange the units of data storage from SMALLEST to LARGEST:",
+            items: [
+                "Bit",
+                "Byte",
+                "Kilobyte (KB)",
+                "Megabyte (MB)",
+                "Gigabyte (GB)",
+                "Terabyte (TB)"
+            ],
+            cor: [0, 1, 2, 3, 4, 5],
+            exp: "8 bits make a byte; roughly 1000 units make the next level up (KB to MB to GB)."
         },
         {
             type: "matching",
-            q: "Match the storage media to its description:",
+            q: "Match the storage media to its common usage:",
             pairs: [
-                { term: "Flash Drive (Thumb Drive)", definition: "Portable mass storage device that uses a USB connector." },
-                { term: "SD Card", definition: "Small, high-capacity flash storage commonly used in cameras and phones." },
-                { term: "Optical Disc", definition: "CDs and DVDs read by lasers." }
+                { term: "SD Card", definition: "Used in digital cameras and smartphones." },
+                { term: "USB Flash Drive", definition: "Portable 'thumb' drive for easy file transfer." },
+                { term: "Cloud Storage", definition: "Storing files on remote servers over the internet." }
             ],
-            exp: "These represent different form factors for portable data storage."
-        },
-        {
-            type: "yesno",
-            q: "Evaluate these statements about Optical Drives:",
-            statements: [
-                "A CD-ROM drive can write (burn) data onto a blank disc.",
-                "An optical writer (burner drive) uses special software to write data onto a disc.",
-                "Newer laptops frequently omit built-in optical drives to save space."
-            ],
-            cor: [false, true, true],
-            exp: "A basic CD-ROM drive can only READ data. You need an optical writer/burner to write data."
+            exp: "These represent the most common ways we save and move data today."
         },
 
-        // --- 8. OS TYPES & CLASSIFICATIONS ---
-        {
-            type: "matching",
-            q: "Match the Mobile Operating System to its developer/characteristics:",
-            pairs: [
-                { term: "Android", definition: "From Google; based on Linux and is open-source." },
-                { term: "iOS", definition: "From Apple; closed-source, proprietary, and derived from OS X." },
-                { term: "Windows 10 Mobile", definition: "From Microsoft; no longer supported." }
-            ],
-            exp: "Android and iOS are the two dominant mobile operating systems today."
-        },
-        {
-            type: "multi",
-            q: "Which of the following are considered 'Distributions' (Distros) of the Linux Operating System? (Select 3)",
-            a: ["Ubuntu", "CentOS", "Windows", "Elementary OS", "Mojave"],
-            cor: [0, 1, 3],
-            required: 3,
-            exp: "Ubuntu, CentOS, and Elementary OS are Linux distributions. Windows is Microsoft; Mojave is Mac OS X."
-        },
+        // --- 8. NETWORKING CONCEPTS ---
         {
             type: "mcq",
-            q: "Which operating system was one of the earliest created, originally designed for large mainframe computers and servers?",
-            a: ["Windows 10", "Android", "UNIX", "iOS"],
-            cor: 2,
-            exp: "UNIX is one of the earliest operating systems, laying the groundwork for many modern OS infrastructures."
+            q: "What is the difference between a LAN and a WAN?",
+            a: ["LAN is for long distances; WAN is for one building", "LAN is for a local area (home/office); WAN covers large areas (cities/countries)", "LAN is only wireless; WAN is only wired", "There is no difference"],
+            cor: 1,
+            exp: "LAN (Local Area Network) is small scale; WAN (Wide Area Network) connects LANs across distances."
         },
-
-        // --- 9. NETWORKING CONCEPTS ---
         {
             type: "categorization",
-            q: "Categorize the maximum data transmission speeds of these Ethernet Cables:",
-            categories: ["Up to 1Gbps", "Up to 10Gbps"],
+            q: "Categorize the maximum speed of these Ethernet cables:",
+            categories: ["1 Gbps", "10 Gbps"],
             items: [
-                { name: "Cat 5e", category: "Up to 1Gbps" },
-                { name: "Cat 6", category: "Up to 10Gbps" },
-                { name: "Cat 6a", category: "Up to 10Gbps" }
+                { name: "Cat 5e", category: "1 Gbps" },
+                { name: "Cat 6", category: "10 Gbps" },
+                { name: "Cat 6a", category: "10 Gbps" }
             ],
-            exp: "Cat 5e tops out at 1Gbps. Cat 6 and 6a support speeds up to 10Gbps."
+            exp: "Cat 5e is standard Gigabit; Cat 6 and above support 10 Gigabit speeds."
         },
         {
             type: "matching",
-            q: "Match the Ethernet networking standard to its specific speed rating:",
+            q: "Match the Ethernet speed name to its numerical value:",
             pairs: [
-                { term: "Gigabit Ethernet", definition: "Moves data at 1Gbps" },
-                { term: "Fast Ethernet", definition: "Moves data at 100Mbps" },
-                { term: "10Base-T Ethernet", definition: "Moves data at 10Mbps" }
+                { term: "Gigabit Ethernet", definition: "1000 Mbps (1 Gbps)" },
+                { term: "Fast Ethernet", definition: "100 Mbps" },
+                { term: "10Base-T", definition: "10 Mbps" }
             ],
-            exp: "These are the three standard speeds for Ethernet network cabling."
+            exp: "These are the three standard historical speeds of Ethernet networking."
         },
         {
             type: "yesno",
-            q: "Evaluate these statements about Wireless Connections (Wi-Fi):",
+            q: "Evaluate these statements about Wireless (Wi-Fi) networking:",
             statements: [
-                "An Ad-hoc network connects devices directly to each other without a router.",
-                "An Infrastructure network connects devices through a router or access point.",
-                "Ad-hoc networks are highly secure and recommended for business use."
+                "Infrastructure mode uses a central router or Access Point.",
+                "Ad-hoc mode connects devices directly to each other without a router.",
+                "Ad-hoc networks are more secure than Infrastructure networks."
             ],
             cor: [true, true, false],
-            exp: "Ad-hoc networks are highly insecure and generally do not provide internet access."
+            exp: "Infrastructure is the standard home/office setup; Ad-hoc is direct but often insecure."
         },
         {
             type: "ordering",
-            q: "Order the steps to connect a Windows 10 computer to an Infrastructure Wi-Fi Network:",
+            q: "Order the steps to connect to a Wi-Fi network in Windows 10:",
             items: [
-                "Click the network icon in the taskbar to display available networks.",
-                "Select the desired network from the list and click Connect.",
-                "Type the network security key (passkey) in the box.",
-                "Click Next to authenticate with the router."
+                "Click the Network icon in the taskbar notification area.",
+                "Select the correct Network Name (SSID) from the list.",
+                "Click Connect and enter the Security Key (password).",
+                "Verify the status says 'Connected, secured'."
             ],
             cor: [0, 1, 2, 3],
-            exp: "You must view the list, select your target, input the password, and authenticate."
+            exp: "You must find the signal, identify the specific network, and provide credentials."
         },
         {
             type: "mcq",
-            q: "When troubleshooting a network, you use the ipconfig tool and see your IP address is '169.254.1.10'. What does this mean?",
-            a: ["Your internet is working perfectly at maximum speed.", "The system has not received a valid IP address from the broadband router.", "Your computer is infected with a Trojan.", "Your Bluetooth is turned off."],
+            q: "While troubleshooting, you see your IP address is 169.254.0.1. What does this indicate?",
+            a: ["You are connected to the high-speed fiber internet", "Your computer failed to get a valid IP from the router (APIPA)", "Your firewall is blocking all traffic", "Your computer is in Airplane mode"],
             cor: 1,
-            exp: "A 169.254.x.x address is an APIPA address, meaning the computer failed to communicate with the router."
+            exp: "A 169.254.x.x address (APIPA) means the computer cannot talk to the router's DHCP server."
         },
         {
             type: "ordering",
-            q: "If your computer has a valid IP address but still cannot connect to the internet, order the steps to reboot your network hardware:",
+            q: "Order the steps for a proper network power cycle (reboot):",
             items: [
-                "Turn the modem and broadband router off for one minute.",
-                "Restart the modem and wait for it to be fully up and running.",
-                "Restart the broadband router.",
-                "Restart the computer."
+                "Turn off the modem, router, and computer.",
+                "Turn on the Modem and wait for it to fully connect.",
+                "Turn on the Router and wait for its lights to stabilize.",
+                "Turn on the computer and test the connection."
             ],
             cor: [0, 1, 2, 3],
-            exp: "Always power cycle the source (modem) before the distributor (router), then reboot the end device."
+            exp: "Always start from the internet source (modem) and work inward toward the computer."
         },
 
-        // --- 10. SOFTWARE & APPS ---
+        // --- 9. SOFTWARE TYPES & DEPLOYMENT ---
         {
             type: "categorization",
-            q: "Categorize the software deployment models:",
-            categories: ["Locally-Installed Software", "Cloud-Based Software"],
+            q: "Categorize the software deployment model:",
+            categories: ["Locally-Installed", "Cloud-Based (SaaS)"],
             items: [
-                { name: "Installed and runs directly on the device's hard drive", category: "Locally-Installed Software" },
-                { name: "Runs on a dedicated server and accessed via the Internet", category: "Cloud-Based Software" },
-                { name: "Software as a Service (SaaS)", category: "Cloud-Based Software" }
+                { name: "Runs directly from the device hard drive", category: "Locally-Installed" },
+                { name: "Accessed via a web browser over the internet", category: "Cloud-Based (SaaS)" },
+                { name: "Google Docs", category: "Cloud-Based (SaaS)" },
+                { name: "Microsoft Word (Desktop version)", category: "Locally-Installed" }
             ],
-            exp: "Local software relies on device hardware; Cloud software relies on remote servers and internet."
+            exp: "Local software stays on your disk; Cloud software lives on the provider's servers."
         },
         {
             type: "matching",
-            q: "Match the Application Program category to its primary function:",
+            q: "Match the App category to the correct software example:",
             pairs: [
-                { term: "Word Processing", definition: "Create, edit, format, and print text documents (e.g., Microsoft Word)." },
-                { term: "Spreadsheet", definition: "Perform calculations, analyze data, and produce charts (e.g., Excel)." },
-                { term: "Graphic Design", definition: "Create logos, posters, and vector images (e.g., Adobe Illustrator)." },
-                { term: "Presentation", definition: "Share information in the form of a slide show (e.g., PowerPoint)." }
+                { term: "Word Processing", definition: "Microsoft Word / Google Docs" },
+                { term: "Spreadsheet", definition: "Microsoft Excel / Google Sheets" },
+                { term: "Presentation", definition: "PowerPoint / Google Slides" },
+                { term: "Web Browser", definition: "Chrome / Edge / Firefox" }
             ],
-            exp: "These represent the core productivity software categories."
+            exp: "These categories define the primary function of the productivity software."
         },
         {
             type: "multi",
-            q: "Which of the following applications are part of the Google Workspace Web Apps? (Select 3)",
-            a: ["Google Docs", "Microsoft Word", "Google Sheets", "Keynote", "Google Slides"],
-            cor: [0, 2, 4],
+            q: "Which of these are characteristics of a Chromebook? (Select 3)",
+            a: ["Runs on Chrome OS", "Primarily designed for cloud-based apps", "Typically has 7-9 hours of battery life", "Requires a very expensive hardware setup", "Runs only Apple software"],
+            cor: [0, 1, 2],
             required: 3,
-            exp: "Docs, Sheets, and Slides are Google's cloud-based productivity web apps."
+            exp: "Chromebooks are low-power, cloud-focused devices running Google's Chrome OS."
         },
         {
             type: "matching",
-            q: "Match the App Store to the platform it operates on:",
+            q: "Match the App Store to its platform:",
             pairs: [
-                { term: "Google Play Store", definition: "Android devices" },
-                { term: "App Store", definition: "Apple iOS devices" },
-                { term: "Windows Store", definition: "Windows 10 desktops and devices" }
+                { term: "Google Play Store", definition: "Android" },
+                { term: "App Store", definition: "iOS (Apple)" },
+                { term: "Microsoft Store", definition: "Windows 10" }
             ],
-            exp: "App stores are digital platforms for distributing software tailored to specific operating systems."
-        },
-        {
-            type: "categorization",
-            q: "Categorize the licensing type of the software:",
-            categories: ["Proprietary (Closed-Source)", "Open-Source"],
-            items: [
-                { name: "Windows 10", category: "Proprietary (Closed-Source)" },
-                { name: "Linux", category: "Open-Source" },
-                { name: "Mac OS X", category: "Proprietary (Closed-Source)" },
-                { name: "Users can study, change, and distribute the code freely", category: "Open-Source" }
-            ],
-            exp: "Proprietary software code is hidden and owned by a company. Open-source code is free to modify."
-        },
-        {
-            type: "mcq",
-            q: "When installing software, you are asked to agree to the EULA. What does EULA stand for?",
-            a: ["Electronic User Legal Agreement", "End User License Agreement", "Enterprise Utility Loading App", "External Universal Local Access"],
-            cor: 1,
-            exp: "The EULA contains the rules regarding what you are and are not permitted to do with the software."
-        },
-        {
-            type: "ordering",
-            q: "Order the standard steps for installing an app from a Mobile App Store:",
-            items: [
-                "Open the app store and use the Search bar to find the app.",
-                "Tap the app in the list to open its detail page.",
-                "Click 'Install' to download and install the app.",
-                "Click the 'Open' button once installation is complete."
-            ],
-            cor: [0, 1, 2, 3],
-            exp: "You search, view details, authorize the installation, and then launch the app."
+            exp: "Each major operating system has its own curated digital storefront."
         },
 
-        // --- 11. DEVICE FORM FACTORS ---
+        // --- 10. COMPUTER TYPES & HISTORY ---
+        {
+            type: "mcq",
+            q: "Which computer type features the PC internal components integrated into the same case as the monitor?",
+            a: ["Laptop", "Tower Desktop", "All-in-One Computer", "Mainframe"],
+            cor: 2,
+            exp: "All-in-One PCs save space by combining the screen and the system unit."
+        },
+        {
+            type: "mcq",
+            q: "Which operating system was originally developed for mainframes and is known for its stability and security?",
+            a: ["Windows 95", "UNIX", "MS-DOS", "Android"],
+            cor: 1,
+            exp: "UNIX is one of the oldest and most stable operating systems, forming the basis for Linux and macOS."
+        },
         {
             type: "multi",
-            q: "Which of the following are characteristics of a Chromebook? (Select 3)",
-            a: ["Runs on the Chrome OS operating system", "Designed primarily to run cloud-based applications", "Considerably more expensive than standard laptops", "Uses less power with 7 to 9 hours of battery life", "Does not have a physical keyboard"],
-            cor: [0, 1, 3],
-            required: 3,
-            exp: "Chromebooks run Chrome OS for cloud apps, have long battery life, and are relatively inexpensive."
+            q: "Which of these are popular Linux 'Distributions' (versions)? (Select 2)",
+            a: ["Ubuntu", "CentOS", "Windows 10 Pro", "macOS Catalina"],
+            cor: [0, 1],
+            required: 2,
+            exp: "Ubuntu and CentOS are versions of Linux; the others are proprietary OSs."
         },
         {
-            type: "categorization",
-            q: "Categorize the types of Tablets based on their Operating System characteristics:",
-            categories: ["Desktop-based OS Tablet", "Mobile-based OS Tablet"],
-            items: [
-                { name: "Thicker, heavier, and requires more cooling", category: "Desktop-based OS Tablet" },
-                { name: "Can run full Microsoft Desktop Applications", category: "Desktop-based OS Tablet" },
-                { name: "Lighter, runs cooler, and offers longer battery life", category: "Mobile-based OS Tablet" },
-                { name: "Runs ONLY mobile apps", category: "Mobile-based OS Tablet" }
+            type: "yesno",
+            q: "Evaluate these statements about modern hardware:",
+            statements: [
+                "Laptops are designed to be portable and run on battery power.",
+                "Tablets are thin, touch-screen devices that lack a physical keyboard.",
+                "Smartphones are primarily used for voice calls and cannot run apps."
             ],
-            exp: "Desktop-based tablets act like full PCs. Mobile-based tablets act like large smartphones."
+            cor: [true, true, false],
+            exp: "Smartphones are fully functional pocket computers that run a wide variety of apps."
+        },
+        {
+            type: "matching",
+            q: "Match the resolution term to its pixel count:",
+            pairs: [
+                { term: "Full HD (1080p)", definition: "1920 x 1080 pixels" },
+                { term: "4K (Ultra HD)", definition: "3840 x 2160 pixels" },
+                { term: "SD (Standard Def)", definition: "640 x 480 pixels" }
+            ],
+            exp: "Resolution is always expressed as Horizontal pixels x Vertical pixels."
+        },
+        {
+            type: "multi",
+            q: "When calling an ISP for technical support, what information should you have ready? (Select 2)",
+            a: ["Your current IP address", "Your browser history", "Your connection speed", "Your desktop wallpaper"],
+            cor: [0, 2],
+            required: 2,
+            exp: "Technical support needs your network identity (IP) and performance data (speed) to help."
         },
         {
             type: "mcq",
-            q: "Which hardware setup features a PC case (containing the hard drive and memory) integrated directly into the monitor itself?",
-            a: ["Standard Desktop PC", "All-in-One Computer", "Mainframe Server", "Router"],
+            q: "What is the primary function of a Motherboard?",
+            a: ["To provide power to the monitor", "To act as the main circuit board that connects all hardware components", "To store the user's photos and videos", "To cool down the CPU"],
             cor: 1,
-            exp: "All-in-One computers combine the monitor and the system unit into a single sleek device."
-        },
-        {
-            type: "mcq",
-            q: "Which handheld device combines the features of a standard cell phone with a personal computer?",
-            a: ["Chromebook", "Smart Phone", "Tablet", "Macintosh"],
-            cor: 1,
-            exp: "Smart Phones merge cellular communication with computer processing and app ecosystems."
+            exp: "The motherboard is the backbone that allows the CPU, RAM, and all other hardware to communicate."
         }
     ],
     l1_lesson2: [
-        { q: "What constitutes your 'Digital Identity'?", a: ["Only your profile picture", "Your profile plus all posts, likes, and people you follow", "Only the websites you visit in private mode", "Your physical ID card"], cor: 1, exp: "Your digital identity is the combination of your profile and all your online actions." },
-        { q: "What is a 'Digital Footprint'?", a: ["A record of your physical steps", "A permanent record of the 'steps' you take online", "A temporary file that deletes itself", "A type of secure password"], cor: 1, exp: "A digital footprint is a permanent record of your online activity that others can follow." },
-        { q: "Why do employers check your digital footprints?", a: ["To steal your data", "To see if you are good at games", "To assess your character and personal brand", "To check your internet speed"], cor: 2, exp: "Employers and schools check online accounts to see who you are as a person." },
-        { q: "Which of these is a positive way to manage your digital reputation?", a: ["Posting angry comments", "Liking every post you see", "Promoting a positive personal brand", "Hiding your name everywhere"], cor: 2, exp: "You should actively promote a positive brand every time you post online." },
-        { q: "What is 'Netiquette'?", a: ["A new internet browser", "The rules for professional and respectful online behavior", "A type of social media site", "An internet security software"], cor: 1, exp: "Netiquette is the set of rules for behaving properly and respectfully online." },
-        { q: "Which of the following is a rule of Netiquette?", a: ["Use ALL CAPS to be heard", "Share private photos of friends", "Keep messages brief and to the point", "Ignore emails from strangers"], cor: 2, exp: "Good netiquette involves being concise and respectful of people's time." },
-        { q: "In digital communication, what does 'Flaming' mean?", a: ["Reporting a bug", "Expressing a strong opinion without insults", "Posting angry or insulting messages", "Deleting your account"], cor: 2, exp: "Flaming is the act of posting offensive or hostile messages." },
-        { q: "What is 'Cyberbullying'?", a: ["A type of computer virus", "Using technology to harass, threaten, or humiliate someone", "Blocking someone you don't like", "Sending a work email"], cor: 1, exp: "Cyberbullying is repeated, intentional harm inflicted through technology." },
-        { q: "If you receive an inappropriate or bullying message, what is the first step you should take?", a: ["Reply with an insult", "Delete it immediately", "Keep a record or screenshot as evidence", "Forward it to everyone"], cor: 2, exp: "You must save evidence of inappropriate behavior to report it effectively." },
-        { q: "What is 'Cyberstalking'?", a: ["Adding a friend on Facebook", "Repeatedly using electronic communication to harass or frighten someone", "Searching for a celebrity's age", "Buying followers"], cor: 1, exp: "Cyberstalking is a serious form of harassment used to frighten others." },
-        { q: "Which behavior involves creating a fake identity to trick others?", a: ["Trolling", "Catfishing", "Phishing", "Vlogging"], cor: 1, exp: "Catfishing is the practice of setting up a fake online persona to deceive people." },
-        { q: "What is an 'Internet Troll'?", a: ["A software developer", "A person who starts arguments or upsets people for fun", "A secure router", "A viral video"], cor: 1, exp: "Trolls post inflammatory content just to provoke a reaction." },
-        { q: "How should you respond to a troll?", a: ["Argue with them", "Ignore them and do not 'feed' the behavior", "Ask them to be friends", "Send them your password"], cor: 1, exp: "Trolls want a reaction; ignoring them is usually the best response." },
-        { q: "What is 'Inappropriate Content'?", a: ["A long news article", "Content that is upsetting, offensive, or unsuitable for the audience", "An ad for a new phone", "A tutorial video"], cor: 1, exp: "Content that causes distress or is offensive is considered inappropriate." },
-        { q: "What does 'Blocking' a user do?", a: ["Deletes their account", "Prevents them from contacting you or seeing your profile", "Reports them to the police", "Slows down their internet"], cor: 1, exp: "Blocking is a tool to stop a specific person from interacting with you." },
-        { q: "Why is it important to check 'Privacy Settings' on social media?", a: ["To change the theme color", "To control who can see your information and posts", "To make the app run faster", "To save battery"], cor: 1, exp: "Privacy settings help you manage who has access to your digital identity." },
-        { q: "What is 'Identity Theft'?", a: ["Forgetting your password", "When someone steals your personal info to commit fraud", "Changing your profile name", "Using a fake name on a game"], cor: 1, exp: "Identity theft occurs when someone uses your data (like SSN) illegally." },
-        { q: "Which of these is a risk of sharing your location (Geotagging) online?", a: ["It makes photos look better", "It allows strangers to know exactly where you are", "It uses too much data", "It deletes the photo"], cor: 1, exp: "Geotagging can reveal your physical location to people you don't know." },
-        { q: "What does 'Authenticating' information mean?", a: ["Deleting old files", "Verifying that information is true and from a reliable source", "Translating a website", "Copying a link"], cor: 1, exp: "Authentication is the process of checking if information or a user is genuine." },
-        { q: "Which of the following indicates a website might be 'Biased'?", a: ["It has many pictures", "The tone is persuasive or exaggerated rather than factual", "It loads very quickly", "It is written in English"], cor: 1, exp: "Bias is often shown through a persuasive, unbalanced, or sarcastic tone." },
-        { q: "Why should you check the 'Author' of a blog or wiki?", a: ["To see if they are famous", "Because anyone can contribute regardless of qualifications", "To send them an email", "To see their photo"], cor: 1, exp: "Blogs and wikis allow anyone to write; checking the author helps verify expertise." },
-        { q: "What is the benefit of a 'Verified' account (Blue Checkmark)?", a: ["It gives you free internet", "It proves the account actually belongs to the person it claims to be", "It hides your posts", "It makes you an admin"], cor: 1, exp: "Verification helps prevent catfishing and identity fraud." },
-        { q: "What is a 'Vlog'?", a: ["A voice-only blog", "A video blog", "A secure data log", "A viral photo"], cor: 1, exp: "A vlog is a blog where the primary medium is video." },
-        { q: "What is a 'Microblog'?", a: ["A very long article", "A social media site for short updates (like X/Twitter)", "A tiny computer", "A private diary"], cor: 1, exp: "Microblogs are for short, frequent posts." },
-        { q: "Which of these is 'Public' information?", a: ["Your private messages", "Your banking password", "Comments you leave on a public news post", "Your browser history"], cor: 2, exp: "Public comments can be seen and recorded by anyone." },
-        { q: "What is a 'Social Media Influencer'?", a: ["A hacker", "Someone with the power to affect the interests of an audience", "An employee of Facebook", "A viral video"], cor: 1, exp: "Influencers use their large following to shape opinions." },
-        { q: "True or False: Deleting a post removes it from the internet forever.", a: ["True", "False"], cor: 1, exp: "False. Others may have screenshotted or archived the post." },
-        { q: "Which is a sign of a professional email?", a: ["Using slang", "Using a clear subject line and professional greeting", "Writing in all lowercase", "Including many emojis"], cor: 1, exp: "Clear subjects and greetings are core parts of professional netiquette." },
-        { q: "What should you check to see if a website is updated regularly?", a: ["The font size", "The 'Last Updated' date or copyright year", "The number of images", "The scroll bar"], cor: 1, exp: "The date indicates if the information is current or obsolete." },
-        { q: "What is the danger of an 'Echo Chamber' online?", a: ["It makes your computer echo", "You only see information that confirms your existing beliefs", "It speeds up your feed", "It blocks all ads"], cor: 1, exp: "Echo chambers prevent you from seeing balanced, diverse viewpoints." },
-        { q: "Which of these is 'Sensitive Information'?", a: ["Your favorite food", "Your Social Security Number", "Your pet's name", "Your city"], cor: 1, exp: "Sensitive data like SSNs can be used for identity theft." },
-        { q: "What does 'Digital Reputation' mean?", a: ["How fast your computer is", "The opinion people have of you based on your online behavior", "How many followers you have", "Your gaming rank"], cor: 1, exp: "Reputation is the collective public opinion of your online presence." },
-        { q: "What is 'Digital Literacy'?", a: ["Buying new gadgets", "The ability to find, evaluate, and communicate information through typing", "Writing a book on a computer", "Playing video games"], cor: 1, exp: "Digital literacy involves effectively using and evaluating digital tools." },
-        { q: "What is 'Copyright'?", a: ["The right to copy anything", "Legal protection for original works", "A type of printer", "A website password"], cor: 1, exp: "Copyright protects the creators of original content." },
-        { q: "What is 'Fair Use'?", a: ["Using software without paying", "Limited use of copyrighted material without permission for education/news", "Sharing passwords with friends", "A free trial"], cor: 1, exp: "Fair use allows small portions of work to be used for things like teaching or reporting." },
-        { q: "What is 'Plagiarism'?", a: ["A medical condition", "Using someone else's work or ideas as your own", "Backing up your files", "A type of virus"], cor: 1, exp: "Plagiarism is failing to give credit to the original creator." },
-        { q: "How can you avoid plagiarism?", a: ["By changing two words in a sentence", "By citing your sources", "By using a different font", "By not putting your name on it"], cor: 1, exp: "Citing sources gives proper credit to the author." },
-        { q: "Which of these is a reliable source for a research paper?", a: ["An anonymous blog", "A peer-reviewed journal or government site (.gov)", "A social media comment", "A wiki with no sources"], cor: 1, exp: ".gov, .edu, and peer-reviewed sites are generally reliable." },
-        { q: "What does '.edu' in a URL usually represent?", a: ["A commercial business", "An educational institution", "A government agency", "A non-profit"], cor: 1, exp: ".edu is reserved for schools and universities." },
-        { q: "What does '.gov' in a URL represent?", a: ["A gaming site", "A government organization", "A global business", "A personal blog"], cor: 1, exp: ".gov sites are official government pages." },
-        { q: "What is a 'Creative Commons' license?", a: ["A license that costs $100", "A way for creators to grant permission to use their work", "A type of social media account", "A copyright violation"], cor: 1, exp: "Creative Commons lets creators specify how others can use their work for free." },
-        { q: "Which is a sign of an unsecure website?", a: ["It has a lock icon", "It uses 'http://' instead of 'https://'", "It has a search bar", "It is written in English"], cor: 1, exp: "The 's' in https stands for Secure." },
-        { q: "What is 'Clickbait'?", a: ["A tool for fishing", "Sensationalized headlines designed to make you click", "A secure link", "A software update"], cor: 1, exp: "Clickbait often uses misleading titles to get views." },
-        { q: "What is 'Cyber Hygiene'?", a: ["Cleaning your keyboard", "Practices to maintain security and health online", "Washing your hands after using a mouse", "Deleting old photos"], cor: 1, exp: "Cyber hygiene involves regular steps like changing passwords and updating software." },
-        { q: "Why should you use 'Strong Passwords'?", a: ["To make them easy to remember", "To prevent hackers from guessing them", "To save space", "To speed up login"], cor: 1, exp: "Strong passwords use a mix of characters to increase security." },
-        { q: "What is a 'Password Manager'?", a: ["A person who remembers passwords", "A software that stores and encrypts your passwords", "A notebook", "A type of keyboard"], cor: 1, exp: "Password managers help you use unique, strong passwords for every site." },
-        { q: "What is 'Two-Factor Authentication'?", a: ["Logging in twice", "Using a password plus a second code (like from a text)", "Using two different browsers", "Sharing a password with a friend"], cor: 1, exp: "2FA adds an extra layer of protection." },
-        { q: "What is 'Social Engineering'?", a: ["A degree in sociology", "Manipulating people into giving up confidential info", "Building a social network", "Fixing a computer"], cor: 1, exp: "Social engineering tricks people instead of hacking software." },
-        { q: "Which of these is a common 'Phishing' tactic?", a: ["A software update notification", "An email claiming you won a prize and asking for bank info", "A friend's birthday post", "A search result"], cor: 1, exp: "Phishing uses 'bait' to steal your information." },
-        { q: "What is 'Malware'?", a: ["A type of computer hardware", "Malicious software designed to damage or disable computers", "A software for drawing", "A brand of laptop"], cor: 1, exp: "Malware includes viruses, worms, and spyware." },
-        { q: "What is 'Spyware'?", a: ["A game about secret agents", "Software that secretly records your activity", "A type of webcam", "A screen recording tool"], cor: 1, exp: "Spyware monitors your actions without your knowledge." },
-        { q: "What is 'Ransomware'?", a: ["Software that is free", "Malware that locks your files until you pay money", "A type of memory", "A cloud backup"], cor: 1, exp: "Ransomware holds your data hostage." },
-        { q: "Which of these is a safe way to handle a suspicious link?", a: ["Click it to see where it goes", "Hover over it to see the actual URL without clicking", "Forward it to a friend to check", "Bookmark it"], cor: 1, exp: "Hovering allows you to see the true destination of a link safely." },
-        { q: "What is a 'VPN'?", a: ["A very private network", "A Virtual Private Network that encrypts your internet traffic", "A type of router", "A video player"], cor: 1, exp: "VPNs provide privacy and security on public networks." },
-        { q: "Why is 'Digital Citizenship' important?", a: ["It helps you win games", "It ensures a safe and respectful community online", "It makes you famous", "It makes your computer last longer"], cor: 1, exp: "Digital citizenship creates a better internet for everyone." },
-        { q: "Which gesture is common for scrolling on a smartphone?", a: ["Pinch", "Swipe", "Double-tap", "Shake"], cor: 1, exp: "Swiping is the standard way to scroll through content." },
-        { q: "What is the 'Rule of Thirds' in digital photos?", a: ["Having three people in every photo", "A composition guide for making images more interesting", "Taking three photos of everything", "Dividing the cost of a camera"], cor: 1, exp: "The rule of thirds is a visual design principle." },
-        { q: "What is 'Media Literacy'?", a: ["Reading a lot of books", "The ability to analyze and evaluate various forms of communication", "Being a journalist", "Repairing a TV"], cor: 1, exp: "Media literacy helps you understand the messages behind what you see." },
-        { q: "What is 'Data Privacy'?", a: ["Hiding your computer", "The right to control how your personal data is collected and used", "Deleting your emails", "Using a fake name"], cor: 1, exp: "Data privacy is about your rights regarding your personal information." },
-        { q: "What is 'Encryption'?", a: ["Deleting a file", "Scrambling data so only authorized parties can read it", "A type of font", "A computer repair"], cor: 1, exp: "Encryption protects data from being read by hackers." },
-        { q: "What is a 'Digital Divide'?", a: ["A crack in a tablet screen", "The gap between those with access to technology and those without", "A software update", "A type of network cable"], cor: 1, exp: "The digital divide refers to inequality in tech access." },
-        { q: "Which of these is an example of 'Online Collaboration'?", a: ["Working alone on a document", "Multiple people editing a Google Doc at once", "Sending a letter", "Printing a report"], cor: 1, exp: "Collaboration tools allow real-time teamwork online." },
-        { q: "What is 'Salami Slicing' in cybercrime?", a: ["A type of cooking", "Stealing tiny amounts of money from many accounts", "Cutting a computer cable", "A virus that deletes files"], cor: 1, exp: "Salami slicing is a fraud technique involving small, unnoticeable thefts." },
-        { q: "Which of these is a 'Secure' password?", a: ["Password123", "Your birthday", "A long phrase with symbols and numbers (e.g., Blue!Sky#44)", "Your name"], cor: 2, exp: "Complexity and length make a password secure." },
-        { q: "What is 'Over-sharing'?", a: ["Giving a friend a snack", "Posting too much personal or sensitive info online", "Sending a large file", "Having too many followers"], cor: 1, exp: "Over-sharing can damage your reputation or lead to security risks." },
-        { q: "What is a 'Botnet'?", a: ["A network of robots", "A group of infected computers controlled by a hacker", "A fast internet connection", "A social media site"], cor: 1, exp: "Botnets are used to launch large-scale cyberattacks." },
-        { q: "What is 'Adware'?", a: ["Free software", "Software that automatically displays unwanted advertisements", "A program for making ads", "A virus that steals files"], cor: 1, exp: "Adware is often bundled with free software to generate revenue." },
-        { q: "What is 'E-waste'?", a: ["Electronic trash (old phones, computers)", "A virus", "A deleted email", "A slow computer"], cor: 0, exp: "E-waste must be recycled properly to protect the environment." },
-        { q: "Which button do you use to report a post on social media?", a: ["Like", "Share", "Report/Flag", "Comment"], cor: 2, exp: "Reporting alerts the platform to inappropriate content." },
-        { q: "What is 'Cloud Computing'?", a: ["Weather forecasting", "Storing and accessing data over the internet instead of locally", "A type of CPU", "A wireless mouse"], cor: 1, exp: "Cloud computing relies on internet-based servers." },
-        { q: "What is 'Streaming'?", a: ["Downloading a file permanently", "Listening or watching content in real-time over the internet", "A type of water cooling", "Sending an email"], cor: 1, exp: "Streaming allows you to view content without downloading the whole file first." },
-        { q: "Which of these is a 'Search Operator'?", a: ["The search button", "Quotes around a phrase (e.g., 'IC3 Exam')", "A keyboard", "A mouse"], cor: 1, exp: "Operators like quotes help narrow down search results." },
-        { q: "What is 'Metadata'?", a: ["A large file", "Data that provides information about other data (like a photo's date)", "A computer virus", "A secure password"], cor: 1, exp: "Metadata describes the characteristics of a file." },
-        { q: "Which is a sign of 'Digital Wellbeing'?", a: ["Spending 10 hours a day on your phone", "Setting screen time limits and taking breaks", "Checking notifications every minute", "Never turning your computer off"], cor: 1, exp: "Digital wellbeing is about maintaining a healthy balance with tech." },
-        { q: "What should you do before selling an old smartphone?", a: ["Just turn it off", "Perform a factory reset to wipe all personal data", "Delete your favorite apps", "Take the battery out"], cor: 1, exp: "A factory reset ensures your private data isn't stolen by the next owner." },
-        { type: "matching", q: "Match Digital Identity Terms:", pairs: [{term: "Digital Footprint", definition: "Permanent record of online activity"}, {term: "Digital Reputation", definition: "How others perceive you online"}, {term: "Netiquette", definition: "Proper online behavior code"}], exp: "Footprints determine your reputation over time." },
-        { type: "ordering", q: "Responding to Cyberbullying:", items: ["Don't respond", "Save Screenshots", "Report to Authority"], cor: ["Don't respond", "Save Screenshots", "Report to Authority"], exp: "Disengage, document, and report." },
-        { type: "matching", q: "Match Privacy Terms:", pairs: [{term: "2FA", definition: "Two-step verification"}, {term: "Cookies", definition: "Track site preferences"}, {term: "Incognito", definition: "Browsing without history saving"}], exp: "2FA secures accounts; cookies remember you; incognito hides history." },
-        { type: "ordering", q: "Source Reliability (High to Low):", items: [".gov Website", ".org Website", "Personal Blog", "Anonymous Forum"], cor: [".gov Website", ".org Website", "Personal Blog", "Anonymous Forum"], exp: "Official and academic sources rank highest." },
-        { type: "matching", q: "Match the Online Behavior:", pairs: [{term: "Flaming", definition: "Posting hostile messages"}, {term: "Trolling", definition: "Intentionally provoking others"}, {term: "Phishing", definition: "Deceptive emails to steal info"}], exp: "These represent negative or dangerous online behaviors." },
-        { type: "ordering", q: "Evaluating an Online Profile:", items: ["Check profile photo", "Read 'About' section", "Look for verified badge", "Search for external news"], cor: ["Check profile photo", "Read 'About' section", "Look for verified badge", "Search for external news"], exp: "Verification should follow a logical investigative order." },
-        { type: "matching", q: "Match the Protection Method:", pairs: [{term: "Strong Password", definition: "Mix of letters, numbers, and symbols"}, {term: "Privacy Settings", definition: "Limits who sees your posts"}, {term: "Digital Wellness", definition: "Balancing online and offline time"}], exp: "Security and wellness are both parts of being a good digital citizen." },
-        { type: "ordering", q: "Steps to secure a Social Account:", items: ["Create unique password", "Enable 2FA", "Review app permissions", "Set profile to private"], cor: ["Create unique password", "Enable 2FA", "Review app permissions", "Set profile to private"], exp: "Security first, then privacy tuning." },
-        { type: "matching", q: "Match Digital Rights Concepts:", pairs: [{term: "Freedom of Speech", definition: "Right to express opinions"}, {term: "Intellectual Property", definition: "Ownership of creative works"}, {term: "Data Privacy", definition: "Control over personal information"}], exp: "Digital citizenship involves understanding your rights and responsibilities." },
-        { type: "ordering", q: "Developing a Personal Brand:", items: ["Identify your skills", "Choose a professional username", "Post helpful content", "Network with peers"], cor: ["Identify your skills", "Choose a professional username", "Post helpful content", "Network with peers"], exp: "Brand building is a progressive process." },
-        { type: "matching", q: "Match the Communication Type:", pairs: [{term: "Formal", definition: "Professional emails to teachers"}, {term: "Informal", definition: "Texting friends"}, {term: "Public", definition: "Posting on a social media wall"}], exp: "Tone must match the audience and platform." },
-        { type: "ordering", q: "Order of reporting a scam:", items: ["Stop communication", "Take screenshots", "Notify the platform", "Inform local authorities"], cor: ["Stop communication", "Take screenshots", "Notify the platform", "Inform local authorities"], exp: "Halt the threat first, then document and report." },
-        { type: "matching", q: "Match User Type:", pairs: [{term: "Subscriber", definition: "Follows a specific account"}, {term: "Moderator", definition: "Enforces rules in a group"}, {term: "Administrator", definition: "Has full control over a site"}], exp: "Roles define what a user can do in a digital space." },
-        { type: "ordering", q: "Steps for a balanced Digital Diet:", items: ["Track screen time", "Set daily limits", "Schedule tech-free hours", "Evaluate your mood"], cor: ["Track screen time", "Set daily limits", "Schedule tech-free hours", "Evaluate your mood"], exp: "Monitoring leads to effective limit setting." },
-        { type: "matching", q: "Match Identity Protection:", pairs: [{term: "Biometrics", definition: "Fingerprint or Face ID"}, {term: "VPN", definition: "Hides your IP address"}, {term: "Firewall", definition: "Monitors network traffic"}], exp: "These tools guard your digital identity and data." }
+        // --- 1. DIGITAL IDENTITY & FOOTPRINT ---
+        {
+            type: "mcq",
+            q: "What is the best definition of a 'Digital Footprint'?",
+            a: ["The physical weight of a computer", "A permanent record of all your activities, postings, and uploads online", "The speed at which you type on a keyboard", "A temporary list of websites visited in one hour"],
+            cor: 1,
+            exp: "Your digital footprint is the permanent trail of data you leave behind whenever you perform actions online."
+        },
+        {
+            type: "matching",
+            q: "Match the footprint type to the correct example:",
+            pairs: [
+                { term: "Active Footprint", definition: "Posting a photo on Instagram or sending an email." },
+                { term: "Passive Footprint", definition: "A website collecting your IP address and location without you knowing." },
+                { term: "Digital Identity", definition: "The combination of your profile and all your online activity." }
+            ],
+            exp: "Active footprints are intentional; passive footprints happen in the background."
+        },
+        {
+            type: "yesno",
+            q: "Evaluate these statements about your Digital Identity:",
+            statements: [
+                "Your digital identity is permanent and difficult to delete.",
+                "Only the things you post yourself contribute to your reputation.",
+                "Potential employers often check social media to learn about candidates."
+            ],
+            cor: [true, false, true],
+            exp: "Your identity includes what others post about you, and it is highly visible to employers and schools."
+        },
+        {
+            type: "multi",
+            q: "Which of the following contribute to your 'Personal Brand' online? (Select 3)",
+            a: ["The groups you join on LinkedIn", "The people you follow on Twitter/X", "The physical brand of your laptop", "The 'likes' and comments you leave on posts", "The brightness of your monitor"],
+            cor: [0, 1, 3],
+            required: 3,
+            exp: "Associations, followers, and interactions all shape how others perceive your character."
+        },
+        {
+            type: "mcq",
+            q: "Why is it important to manage your digital reputation early in life?",
+            a: ["Because digital records are temporary", "Because schools and employers use it to assess your character", "To ensure you get more followers", "To increase your internet speed"],
+            cor: 1,
+            exp: "Admissions boards and employers use your digital history to help decide if you are a good fit for their organization."
+        },
+
+        // --- 2. ONLINE BEHAVIOR & NETIQUETTE ---
+        {
+            type: "matching",
+            q: "Match the negative digital behavior to its description:",
+            pairs: [
+                { term: "Cyberbullying", definition: "Using digital devices to harass, threaten, or humiliate someone." },
+                { term: "Flaming", definition: "Posting an insulting or hostile message online." },
+                { term: "Trolling", definition: "Starting arguments or upsetting people to distract or provoke." }
+            ],
+            exp: "These terms describe different ways users interact negatively in digital environments."
+        },
+        {
+            type: "categorization",
+            q: "Categorize these actions as Good or Bad Netiquette:",
+            categories: ["Good Netiquette", "Bad Netiquette"],
+            items: [
+                { name: "Using ALL CAPS for every sentence", category: "Bad Netiquette" },
+                { name: "Checking your tone before hitting send", category: "Good Netiquette" },
+                { name: "Respecting others' privacy", category: "Good Netiquette" },
+                { name: "Posting embarrassing photos of others without permission", category: "Bad Netiquette" }
+            ],
+            exp: "Netiquette is the set of informal rules for polite behavior online."
+        },
+        {
+            type: "ordering",
+            q: "What is the recommended sequence of steps if you are a victim of cyberbullying?",
+            items: [
+                "Do not respond or retaliate to the bully.",
+                "Save evidence (screenshots) of the behavior.",
+                "Block the person who is performing the bullying.",
+                "Report the incident to a trusted adult or authority."
+            ],
+            cor: [0, 1, 2, 3],
+            exp: "Avoid escalating the situation, document it, and seek help immediately."
+        },
+        {
+            type: "multi",
+            q: "What should you consider before sharing a post? (Select 3)",
+            a: ["Is the information true?", "Will this hurt someone's feelings?", "How many 'likes' will it get?", "Is it appropriate for all audiences?", "Will it make me look famous?"],
+            cor: [0, 1, 3],
+            required: 3,
+            exp: "Truth, kindness, and appropriateness are the foundations of responsible sharing."
+        },
+        {
+            type: "yesno",
+            q: "True or False: Deleting a post removes it completely from the internet.",
+            statements: [
+                "The post is gone forever immediately.",
+                "Others may have already taken screenshots of the post.",
+                "The server hosting the site may keep a backup of the data."
+            ],
+            cor: [false, true, true],
+            exp: "Once something is online, you lose control over who sees or saves it."
+        },
+
+        // --- 3. EVALUATING ONLINE INFORMATION (RESEARCH) ---
+        {
+            type: "mcq",
+            q: "What does 'Bias' mean in the context of research?",
+            a: ["A website that loads very fast", "A prejudice in favor of or against one thing, person, or group", "The length of an article", "The number of images on a page"],
+            cor: 1,
+            exp: "Bias indicates a lack of objectivity, where information is presented to favor a specific perspective."
+        },
+        {
+            type: "matching",
+            q: "Match the domain extension to its typical purpose:",
+            pairs: [
+                { term: ".gov", definition: "Governmental organizations" },
+                { term: ".edu", definition: "Educational institutions (Universities)" },
+                { term: ".org", definition: "Non-profit or professional organizations" },
+                { term: ".com", definition: "Commercial businesses" }
+            ],
+            exp: "Domain extensions provide clues about the source and intent of the website."
+        },
+        {
+            type: "categorization",
+            q: "Categorize these website elements based on their impact on credibility:",
+            categories: ["Increases Credibility", "Decreases Credibility"],
+            items: [
+                { name: "Clearly cited sources and references", category: "Increases Credibility" },
+                { name: "Heavy use of advertisements and pop-ups", category: "Decreases Credibility" },
+                { name: "The author is an expert in the field", category: "Increases Credibility" },
+                { name: "Frequent spelling and grammar errors", category: "Decreases Credibility" }
+            ],
+            exp: "Professionalism, expertise, and transparency increase trust in a source."
+        },
+        {
+            type: "multi",
+            q: "Which 'C's' of research help determine if a source is reliable? (Select 3)",
+            a: ["Currency (Is it up to date?)", "Color (Is it pretty?)", "Credibility (Who wrote it?)", "Coverage (Is it detailed?)", "Cost (Is it expensive?)"],
+            cor: [0, 2, 3],
+            required: 3,
+            exp: "Reliable research focuses on how recent, trustworthy, and thorough the information is."
+        },
+        {
+            type: "mcq",
+            q: "When viewing a Wiki or a Blog, why must you be cautious?",
+            a: ["They are always owned by the government", "Authors do not need specific qualifications to contribute", "They are not accessible on mobile devices", "They only contain images"],
+            cor: 1,
+            exp: "Wikis and blogs can be edited by anyone, meaning the information may be opinion-based or inaccurate."
+        },
+
+        // --- 4. PRIVACY & SECURITY ---
+        {
+            type: "yesno",
+            q: "Evaluate these statements about Social Media Privacy:",
+            statements: [
+                "Setting a profile to 'Private' means nobody can ever see your posts.",
+                "Privacy settings should be checked regularly as platforms change their rules.",
+                "Third-party apps often request access to your profile data."
+            ],
+            cor: [false, true, true],
+            exp: "Privacy settings limit visibility but don't guarantee total secrecy; always monitor your settings."
+        },
+        {
+            type: "mcq",
+            q: "What is 'Two-Factor Authentication' (2FA)?",
+            a: ["Using two different passwords for the same site", "A security process requiring two different forms of identification", "Logging in from two computers at once", "A way to speed up your login time"],
+            cor: 1,
+            exp: "2FA adds a layer of security by requiring a password plus a second code (usually sent to a phone)."
+        },
+        {
+            type: "matching",
+            q: "Match the term to its privacy risk:",
+            pairs: [
+                { term: "Geotagging", definition: "Sharing your exact physical location within a photo's metadata." },
+                { term: "Oversharing", definition: "Posting sensitive personal details that could be used for identity theft." },
+                { term: "Data Mining", definition: "Companies collecting your personal info to sell to advertisers." }
+            ],
+            exp: "Managing what you share helps protect your physical safety and your data."
+        },
+
+        // --- 5. INTELLECTUAL PROPERTY & ETHICS ---
+        {
+            type: "mcq",
+            q: "What is 'Plagiarism'?",
+            a: ["Taking a photo of a sunset", "Using someone else's work or ideas without giving them credit", "Sharing a link to a news story", "Buying a legal copy of a software"],
+            cor: 1,
+            exp: "Plagiarism is an ethical violation where you present others' work as your own."
+        },
+        {
+            type: "multi",
+            q: "Which of the following are protected by Copyright? (Select 3)",
+            a: ["Music and Lyrics", "Ideas that haven't been written down", "Books and Articles", "Original Photographs", "A common fact like 'The sky is blue'"],
+            cor: [0, 2, 3],
+            required: 3,
+            exp: "Copyright protects original creative works once they are in a fixed form."
+        },
+
+        // --- 6. ADVANCED REPUTATION & IDENTITY ---
+        {
+            type: "categorization",
+            q: "Categorize the following as Positive or Negative Digital Footprints:",
+            categories: ["Positive Impact", "Negative Impact"],
+            items: [
+                { name: "Volunteering for a charity mentioned in a news article", category: "Positive Impact" },
+                { name: "Being tagged in a video showing illegal activity", category: "Negative Impact" },
+                { name: "Writing a professional blog about technology", category: "Positive Impact" },
+                { name: "Using profanity in a public forum", category: "Negative Impact" }
+            ],
+            exp: "Your actions and associations define your professional and personal reputation."
+        },
+        {
+            type: "mcq",
+            q: "If you find information on a website that seems biased or sarcastic, what is the best course of action?",
+            a: ["Share it immediately", "Cross-reference it with other reliable sources", "Assume it is true because it is online", "Report the website to the police"],
+            cor: 1,
+            exp: "Verifying information across multiple sources helps filter out bias and misinformation."
+        },
+        {
+            type: "yesno",
+            q: "Regarding 'Tone' in digital communication:",
+            statements: [
+                "Sarcasm is easy to understand in text format.",
+                "Professional communication should remain objective and factual.",
+                "Using humor is always effective and never misunderstood."
+            ],
+            cor: [false, true, false],
+            exp: "Tone is hard to convey in text; professional writing should be clear and avoid easily misunderstood humor/sarcasm."
+        },
+        {
+            type: "ordering",
+            q: "Order these steps for checking the credibility of an online article:",
+            items: [
+                "Check the author's credentials and expertise.",
+                "Identify the date the article was published or updated.",
+                "Look for supporting evidence or citations.",
+                "Analyze the tone for potential bias or commercial influence."
+            ],
+            cor: [0, 1, 2, 3],
+            exp: "A systematic approach ensures you evaluate all aspects of a source's reliability."
+        },
+        {
+            type: "mcq",
+            q: "Which of the following is a sign of 'Commercial Bias'?",
+            a: ["The site provides a list of sources", "The site only presents information that encourages you to buy a product", "The site is written by a professor", "The site ends in .gov"],
+            cor: 1,
+            exp: "Commercial bias occurs when information is skewed to favor a sale or profit."
+        },
+        {
+            type: "multi",
+            q: "What are common reasons people 'Troll' others online? (Select 2)",
+            a: ["To provide helpful technical support", "To gain attention or feel powerful", "To disrupt meaningful conversation", "To strictly follow netiquette"],
+            cor: [1, 2],
+            required: 2,
+            exp: "Trolls aim to provoke emotional responses and disrupt communities."
+        },
+        {
+            type: "mcq",
+            q: "What does the term 'Oversharing' typically lead to?",
+            a: ["Increased computer performance", "Higher risks of identity theft or physical danger", "Better internet connectivity", "Automatic software updates"],
+            cor: 1,
+            exp: "Oversharing gives malicious actors the information they need to impersonate you or find you."
+        },
+        {
+            type: "matching",
+            q: "Match the citation element to its purpose:",
+            pairs: [
+                { term: "Author Name", definition: "Credits the creator of the work." },
+                { term: "Publication Date", definition: "Shows how current the information is." },
+                { term: "URL / Web Address", definition: "Allows others to find the source themselves." }
+            ],
+            exp: "Proper citations include these key elements to ensure transparency."
+        },
+        {
+            type: "yesno",
+            q: "Evaluate these statements about Online Communities:",
+            statements: [
+                "You should always use your real full name and address as your username.",
+                "Moderators help enforce rules within digital spaces.",
+                "Reporting inappropriate behavior helps keep the community safe."
+            ],
+            cor: [false, true, true],
+            exp: "Protecting your private identity is key; moderators and reporting systems maintain order."
+        },
+        {
+            type: "mcq",
+            q: "Which of these is the most 'Objective' statement?",
+            a: ["Windows is the best operating system ever.", "The Windows 10 OS was released in July 2015.", "Everyone loves using Windows 10.", "Windows 10 has a very ugly interface."],
+            cor: 1,
+            exp: "Objective statements are based on facts that can be proven, not opinions or feelings."
+        },
+        {
+            type: "mcq",
+            q: "What is 'Digital Citizenship'?",
+            a: ["The ability to build a computer from parts", "The responsible and ethical use of technology and the internet", "A passport used for digital travel", "The total number of people living in a smart city"],
+            cor: 1,
+            exp: "Digital citizenship involves understanding your rights and responsibilities in a connected world."
+        },
+        {
+            type: "multi",
+            q: "Identify signs of a possible 'Phishing' attempt: (Select 2)",
+            a: ["An email with urgent, threatening language", "A website with a valid .gov domain", "A request for your password via a suspicious link", "A message from a verified friend saying 'Hello'"],
+            cor: [0, 2],
+            required: 2,
+            exp: "Phishing uses urgency and fake links to steal sensitive information."
+        },
+        {
+            type: "categorization",
+            q: "Categorize these as Primary or Secondary sources:",
+            categories: ["Primary Source", "Secondary Source"],
+            items: [
+                { name: "An original diary entry from a historical figure", category: "Primary Source" },
+                { name: "A textbook summarizing historical events", category: "Secondary Source" },
+                { name: "A first-hand video recording of an event", category: "Primary Source" },
+                { name: "An encyclopedia article", category: "Secondary Source" }
+            ],
+            exp: "Primary sources are direct evidence; secondary sources analyze or summarize primary ones."
+        },
+        {
+            type: "matching",
+            q: "Match the research term to its meaning:",
+            pairs: [
+                { term: "Objectivity", definition: "The ability to present information without being influenced by personal feelings." },
+                { term: "Currency", definition: "The timeliness of information." },
+                { term: "Authenticity", definition: "The quality of being genuine and not a fake." }
+            ],
+            exp: "These are critical standards for high-quality information."
+        },
+        {
+            type: "yesno",
+            q: "Can a website with many ads still be reliable?",
+            statements: [
+                "Yes, if the content is backed by cited scientific evidence.",
+                "No, advertisements automatically make all info false.",
+                "Yes, but you must look harder for potential commercial bias."
+            ],
+            cor: [true, false, true],
+            exp: "Ads don't always mean false info, but they signal a need for more careful evaluation."
+        },
+        {
+            type: "mcq",
+            q: "What should you do if you accidentally find inappropriate content online?",
+            a: ["Save it to your desktop", "Close the tab or window immediately", "Share the link with friends to warn them", "Try to find the person who posted it"],
+            cor: 1,
+            exp: "The safest response is to leave the site and, if necessary, report it to a parent or teacher."
+        },
+        {
+            type: "ordering",
+            q: "Order these levels of information reliability from MOST to LEAST reliable:",
+            items: [
+                "Peer-reviewed academic journal",
+                "Official government report (.gov)",
+                "Mainstream news organization",
+                "Anonymous social media post"
+            ],
+            cor: [0, 1, 2, 3],
+            exp: "Sources with strict editing and verification processes are the most reliable."
+        },
+        {
+            type: "mcq",
+            q: "What is a 'Social Media Profile'?",
+            a: ["A file that stores your internet history", "A representation of yourself on a specific digital platform", "A type of antivirus software", "The physical screen of your phone"],
+            cor: 1,
+            exp: "A profile is your digital 'identity card' for a specific website or app."
+        },
+        {
+            type: "multi",
+            q: "Which actions help protect your digital reputation? (Select 3)",
+            a: ["Setting social media to private", "Thinking before you post", "Deleting your browser history regularly", "Searching your own name to see what appears", "Posting every thought you have instantly"],
+            cor: [0, 1, 3],
+            required: 3,
+            exp: "Privacy, thoughtfulness, and monitoring are key to a healthy digital reputation."
+        },
+        {
+            type: "mcq",
+            q: "What does 'Anonymity' mean in a digital context?",
+            a: ["Being well-known by everyone", "The state of being unknown or unidentifiable", "Having a very long password", "Using a computer in a public library"],
+            cor: 1,
+            exp: "Anonymity allows people to interact online without revealing their true identity."
+        },
+        {
+            type: "yesno",
+            q: "Does anonymity excuse bad behavior?",
+            statements: [
+                "Yes, because no one knows who you are.",
+                "No, ethical rules still apply even if you are anonymous.",
+                "No, because technical trails can often reveal your true identity anyway."
+            ],
+            cor: [false, true, true],
+            exp: "Anonymity does not change moral responsibilities, and it is rarely 100% untraceable."
+        },
+        {
+            type: "matching",
+            q: "Match the online risk to the safety action:",
+            pairs: [
+                { term: "Identity Theft", definition: "Use strong, unique passwords and 2FA." },
+                { term: "Physical Danger", definition: "Never share your home address or current location." },
+                { term: "Reputational Damage", definition: "Avoid posting content that shows illegal or rude behavior." }
+            ],
+            exp: "Specific actions can mitigate specific digital risks."
+        },
+        {
+            type: "mcq",
+            q: "Why should you check the 'About Us' page on a website?",
+            a: ["To see how many employees they have", "To understand the organization's mission and potential biases", "To find the website's color code", "To download the site's logo"],
+            cor: 1,
+            exp: "The 'About Us' page reveals who is behind the information and what their goals are."
+        },
+        {
+            type: "multi",
+            q: "Identify features of 'Reliable' information: (Select 2)",
+            a: ["It is balanced and considers multiple viewpoints", "It uses many exclamation points and angry words", "It is supported by evidence and facts", "It was written over 20 years ago"],
+            cor: [0, 2],
+            required: 2,
+            exp: "Balance and factual support are hallmarks of quality information."
+        },
+        {
+            type: "mcq",
+            q: "What is 'Fair Use' in copyright law?",
+            a: ["The right to steal any software you want", "A legal doctrine allowing limited use of copyrighted material without permission", "The rule that all internet content is free", "The price you pay for a movie ticket"],
+            cor: 1,
+            exp: "Fair use allows small portions of work to be used for things like education, news, or criticism."
+        },
+        {
+            type: "categorization",
+            q: "Categorize these as Intellectual Property or Not:",
+            categories: ["Intellectual Property", "Not Intellectual Property"],
+            items: [
+                { name: "A patented invention", category: "Intellectual Property" },
+                { name: "A trademarked logo", category: "Intellectual Property" },
+                { name: "The idea of 'gravity'", category: "Not Intellectual Property" },
+                { name: "A public domain book from 1850", category: "Not Intellectual Property" }
+            ],
+            exp: "Intellectual property refers to creations of the mind that have legal protections."
+        },
+        {
+            type: "yesno",
+            q: "Evaluate these statements about Online Citations:",
+            statements: [
+                "Citing sources makes your own work look weaker.",
+                "Citing sources helps your readers find more information.",
+                "Citing sources protects you from accusations of plagiarism."
+            ],
+            cor: [false, true, true],
+            exp: "Citations strengthen your work by proving you have done research and are acting ethically."
+        },
+        {
+            type: "mcq",
+            q: "What is the primary danger of a 'Single Source' research approach?",
+            a: ["It is too fast", "You may only see one biased perspective", "It saves too much paper", "The information will be too accurate"],
+            cor: 1,
+            exp: "Using only one source limits your understanding and increases the risk of following biased information."
+        },
+        {
+            type: "multi",
+            q: "Which factors can influence a website's ranking in search engines? (Select 2)",
+            a: ["The amount of money the owner pays for ads", "The quality and relevance of the content", "The color of the website's background", "The age of the person searching"],
+            cor: [0, 1],
+            required: 2,
+            exp: "Search rankings are influenced by both paid advertising and organic quality metrics."
+        },
+        {
+            type: "mcq",
+            q: "What is a 'Digital Persona'?",
+            a: ["A robot that browses the web", "The version of yourself you present to the online world", "A type of computer virus", "A password manager"],
+            cor: 1,
+            exp: "A persona is the specific 'character' or image you project through your digital interactions."
+        },
+        {
+            type: "mcq",
+            q: "Which of these is a 'Fact'?",
+            a: ["Math is the hardest subject.", "The capital of France is Paris.", "The beach is better than the mountains.", "Blue is a beautiful color."],
+            cor: 1,
+            exp: "Facts are objective truths that remain true regardless of personal opinion."
+        },
+        {
+            type: "mcq",
+            q: "If an author is not listed on a website, what should you do?",
+            a: ["Assume the website is written by the government", "Look for an 'About Us' or 'Contact' page to identify the organization", "Assume the information is 100% false", "Make up a name for the author"],
+            cor: 1,
+            exp: "The organization responsible for the site often acts as the 'author' if no individual is named."
+        },
+        {
+            type: "yesno",
+            q: "Is information on social media usually fact-checked?",
+            statements: [
+                "Yes, everything on Facebook is verified by scientists.",
+                "No, most social media platforms allow users to post whatever they want.",
+                "Some platforms have added 'fact-check' labels to viral posts."
+            ],
+            cor: [false, true, true],
+            exp: "Social media is largely unverified, though some platforms now attempt to flag obvious misinformation."
+        },
+        {
+            type: "multi",
+            q: "Why might someone create a 'Fake' digital identity? (Select 2)",
+            a: ["To protect their privacy in dangerous situations", "To strictly follow the law", "To deceive or scam others", "To increase their hardware performance"],
+            cor: [0, 2],
+            required: 2,
+            exp: "Fake identities can be used for both protection (privacy) and harm (deception)."
+        },
+        {
+            type: "mcq",
+            q: "What is the final step in the research process?",
+            a: ["Deleting all your notes", "Citing your sources and reviewing your findings", "Buying a new computer", "Changing your email password"],
+            cor: 1,
+            exp: "Closing the loop with citations and review ensures the integrity of your work."
+        }
     ],
     l1_lesson3: [
-        { q: "Which type of website allows users to add, edit, or rearrange information collaboratively?", a: ["Blog", "Wiki", "Podcast", "Portal"], cor: 1, exp: "Wiki sites provide tools for individuals to collaboratively edit information." },
-        { q: "What does RSS stand for in the context of news feeds?", a: ["Remote Site Security", "Read Simple Scripts", "Real Simple Syndication", "Rapid System Search"], cor: 2, exp: "RSS (Real Simple Syndication) delivers current news stories as they occur." },
-        { q: "Which URL domain is used specifically for schools and universities?", a: [".com", ".gov", ".edu", ".org"], cor: 2, exp: ".edu is the top-level domain for educational institutions." },
-        { q: "What is a 'Search Engine'?", a: ["A software that edits videos", "A website used to search for information on the World Wide Web", "A computer hardware part", "An internet browser"], cor: 1, exp: "Search engines are designed to help users find information across the internet." },
-        { q: "Which search operator should you use to find an exact phrase?", a: ["Parentheses ()", "Minus sign -", "Quotation marks \"\"", "Asterisk *"], cor: 2, exp: "Quotation marks search for the exact words in the exact order." },
-        { q: "To exclude a specific word from your search results, which symbol do you use?", a: ["+", "*", "-", "@"], cor: 2, exp: "The minus sign (-) removes results containing that specific word." },
-        { q: "What is the purpose of the 'OR' Boolean operator?", a: ["To exclude results", "To find pages that contain either of the terms", "To find pages containing both terms", "To check spelling"], cor: 1, exp: "OR expands the search to include either search term." },
-        { q: "Which operator is used to find pages that contain ALL specified words?", a: ["OR", "NOT", "AND", "BUT"], cor: 2, exp: "AND narrows results to pages containing all search terms." },
-        { q: "What character acts as a 'Wildcard' to replace words or letters in a search?", a: ["#", "*", "&", "%"], cor: 1, exp: "The asterisk (*) is used as a wildcard symbol." },
-        { q: "Which symbol is used for a Hashtag to categorize topics on social media?", a: ["@", "#", "$", "!"], cor: 1, exp: "The number sign (#) is used as a hashtag." },
-        { q: "What is a 'Handle' in digital communication?", a: ["A password", "A unique username preceded by @", "A type of hardware", "A web browser"], cor: 1, exp: "A handle is your social media username (e.g., @CertPort)." },
-        { q: "Which browser tool helps you find a specific word inside a long article or document?", a: ["Refresh button", "The 'Find' tool (Ctrl+F)", "History tab", "Bookmarks"], cor: 1, exp: "Ctrl + F (Find) allows you to search for specific text within a page." },
-        { q: "What is 'Public Domain'?", a: ["Content everyone has to pay for", "Works not protected by intellectual property laws whose copyright has expired", "Private files on a server", "A government secret"], cor: 1, exp: "Public Domain works are free to use because copyright protection has ended." },
-        { q: "How long does copyright usually last after an author's death?", a: ["10 years", "25 years", "50 years", "70 years"], cor: 3, exp: "Standard copyright lasts 70 years after the death of the last surviving author." },
-        { q: "What is 'Creative Commons'?", a: ["A social media site", "A non-profit providing licenses to share creative works legally", "A type of internet browser", "An office supply store"], cor: 1, exp: "Creative Commons licenses help owners manage permissions for sharing their work." },
-        { q: "True or False: Information found on a Wiki is always qualified and accurate.", a: ["True", "False"], cor: 1, exp: "False. Anyone can contribute to a Wiki regardless of their qualifications." },
-        { q: "What is 'Fair Use'?", a: ["Stealing software", "Limited use of copyrighted material for education, news, or research", "A free trial", "Sharing Netflix passwords"], cor: 1, exp: "Fair use allows restricted use of copyrighted content without permission for specific purposes." },
-        { q: "What is 'Plagiarism'?", a: ["Backing up data", "Using someone else's work or ideas without giving credit", "A type of computer virus", "A network error"], cor: 1, exp: "Plagiarism is taking credit for work that is not yours." },
-        { q: "Which of these is a way to refine an online search?", a: ["Turning off the monitor", "Using filters like 'Image Size' or 'Date'", "Deleting the browser", "Restarting the router"], cor: 1, exp: "Search filters (size, date, type) help narrow down specific information." },
-        { q: "What is a 'Podcast'?", a: ["A type of printer", "A digital audio file available for download or streaming", "A live TV broadcast", "A computer monitor"], cor: 1, exp: "Podcasts are digital audio/video series distributed online." },
-        { q: "Which domain extension is used for non-profit organizations?", a: [".gov", ".edu", ".org", ".com"], cor: 2, exp: ".org is typically used by non-profit organizations." },
-        { q: "When researching, what does 'Bias' refer to?", a: ["How fast a site loads", "A persuasive or unbalanced tone in the information", "The color of the website", "The number of links"], cor: 1, exp: "Bias indicates a lack of objectivity in the presented information." },
-        { q: "What should you check to see if website information is current?", a: ["The 'Last Updated' date", "The font style", "The site's URL length", "The number of pictures"], cor: 0, exp: "The 'Last Updated' or copyright date indicates how current the info is." },
-        { q: "Which key combination opens the 'Find' bar in a browser?", a: ["Ctrl + S", "Ctrl + F", "Alt + F4", "Ctrl + P"], cor: 1, exp: "Ctrl + F is the universal shortcut for 'Find'." },
-        { q: "Why is it important to check the author of a blog?", a: ["To see if they are rich", "To determine if they have the qualifications to provide expert advice", "To find their home address", "To see their profile picture"], cor: 1, exp: "Blog authors do not need qualifications, so their expertise must be verified." },
-        { q: "Which symbol is used to combine two different search terms into one result?", a: ["-", "+", "AND", "OR"], cor: 2, exp: "AND requires both terms to be present in the results." },
-        { q: "What does the .gov extension tell you about a source?", a: ["It is a commercial store", "It is an official government website", "It is a personal blog", "It is an education site"], cor: 1, exp: ".gov sites are official government-run sources." },
-        { q: "What is the benefit of using the 'Site:' operator in a search?", a: ["It speeds up the internet", "It searches for results only within a specific website", "It blocks all ads", "It creates a new website"], cor: 1, exp: "The 'site:' operator limits results to a single domain (e.g., site:nasa.gov)." },
-        { q: "True or False: Using a Creative Commons license means you lose your copyright.", a: ["True", "False"], cor: 1, exp: "False. CC licenses work alongside copyright to manage permissions." },
-        { q: "What is 'Attribution' in Creative Commons?", a: ["A type of file size", "Giving credit to the original creator", "Selling the work", "Deleting the work"], cor: 1, exp: "Attribution (BY) requires users to credit the original author." },
-        { q: "Which search operator is best for finding a missing word in a famous quote?", a: ["Minus sign", "Asterisk (*)", "Plus sign", "At symbol"], cor: 1, exp: "The asterisk (*) acts as a placeholder for unknown words." },
-        { q: "If a website has many grammatical errors, what does that suggest?", a: ["It is a modern style", "It may not be a reliable or professional source", "It is a fast website", "It is a government site"], cor: 1, exp: "Poor grammar and spelling are often signs of an unreliable source." },
-        { q: "What is a 'Blog'?", a: ["A search engine", "A website where individuals share comments or information on specific topics", "A computer virus", "A type of hardware"], cor: 1, exp: "Blogs are online journals or information pages." },
-        { q: "Which of these is a social networking site?", a: ["Google Search", "Facebook", "Microsoft Word", "BIOS"], cor: 1, exp: "Facebook is a primary example of a social networking site." },
-        { q: "What is the purpose of 'Image Search Filters'?", a: ["To edit the image", "To find images by size, color, or usage rights", "To print the image", "To delete the image"], cor: 1, exp: "Filters allow you to find images that meet specific criteria like 'Labeled for reuse'." },
-        { q: "Which tool allows you to see the latest news from several sites in one place?", a: ["An RSS Reader", "A Calculator", "A Printer", "A Monitor"], cor: 0, exp: "RSS readers aggregate feeds from multiple news sources." },
-        { q: "What is 'Intellectual Property'?", a: ["A physical building", "Creations of the mind protected by law (music, art, code)", "A type of RAM", "A computer case"], cor: 1, exp: "IP refers to original creations that have legal protection." },
-        { q: "Which operator would you use to search for: cars NOT red?", a: ["cars +red", "cars -red", "cars OR red", "cars *red"], cor: 1, exp: "The minus sign (-) excludes the word following it." },
-        { q: "What is the 'Top-Level Domain' (TLD)?", a: ["The start of a URL (www)", "The end of a URL (.com, .org)", "The middle of a URL", "The search bar"], cor: 1, exp: "The TLD is the extension at the end of the web address." },
-        { q: "Why should you use more than one search engine?", a: ["To get different results and a wider perspective", "To break the computer", "To use more data", "To see more ads"], cor: 0, exp: "Different search engines use different algorithms and index different parts of the web." },
-        { q: "What does the lock icon in the address bar signify?", a: ["The site is broken", "The connection is encrypted and secure (HTTPS)", "The site is for children", "The site is private"], cor: 1, exp: "The lock icon indicates a secure HTTPS connection." },
-        { q: "Which button in a browser returns you to the previous page?", a: ["Refresh", "Home", "Back", "Forward"], cor: 2, exp: "The Back button takes you to the last page you viewed." },
-        { q: "What is 'Citing a Source'?", a: ["Deleting a link", "Formally noting where you found a piece of information", "Copying a whole book", "Buying a book"], cor: 1, exp: "Citing gives credit and allows others to find the original source." },
-        { q: "What is the danger of using 'Outdated' information?", a: ["It makes the computer slow", "It can lead to incorrect conclusions or decisions", "It changes your password", "It uses too much RAM"], cor: 1, exp: "Information that is no longer current may be factually wrong." },
-        { q: "How do you search for 'Weather in New York' using a phrase?", a: ["Weather New York", "\"Weather in New York\"", "Weather - New York", "Weather * New York"], cor: 1, exp: "Using quotes treats the phrase as a single unit." },
-        { q: "Which operator is most helpful for finding definitions?", a: ["Minus sign", "Quotes", "Asterisk", "Define:"], cor: 3, exp: "Many search engines support 'Define:' to show meanings immediately." },
-        { q: "What is a 'Digital Library'?", a: ["A room full of books", "An online collection of digital objects like text, images, and video", "A computer store", "A type of hard drive"], cor: 1, exp: "Digital libraries store and provide access to digital media." },
-        { q: "What is 'Media Bias'?", a: ["A type of screen glitch", "The selection of events and stories that are reported and how they are covered", "The speed of a video stream", "The size of a newspaper"], cor: 1, exp: "Media bias involves reporting that favors one perspective over another." },
-        { q: "True or False: Every website on the internet is monitored for truth.", a: ["True", "False"], cor: 1, exp: "False. Anyone can post anything; truth is not guaranteed." },
-        { q: "What is the purpose of a 'Site Map'?", a: ["To find a physical location", "A list of all pages on a website to help with navigation", "A type of GPS", "A weather map"], cor: 1, exp: "Site maps provide an overview of a website's structure." },
-        { q: "Which search operator is used for social media handles?", a: ["#", "@", "!", "$"], cor: 1, exp: "The @ symbol is used to mention or find user handles." },
-        { q: "What is 'Non-Commercial' in Creative Commons?", a: ["You can't use it at all", "You can use it but not to make money", "You must pay for it", "It is only for TV commercials"], cor: 1, exp: "NC (Non-Commercial) means you cannot use the work for profit." },
-        { q: "What is 'No Derivatives' in Creative Commons?", a: ["You can't use it", "You can use it but you cannot change or edit it", "You must change it", "It is free to edit"], cor: 1, exp: "ND (No Derivatives) means the work must be shared in its original form." },
-        { q: "Which URL would likely be the most reliable for medical facts?", a: ["www.besthealth.com", "www.nih.gov", "www.myopinion.blog", "www.wiki-health.org"], cor: 1, exp: ".gov sites (like National Institutes of Health) are highly reliable." },
-        { q: "What is an 'Online Database'?", a: ["A list of names in a notebook", "A structured collection of data accessible via the internet", "A computer virus", "A type of CPU"], cor: 1, exp: "Databases allow for organized storage and retrieval of info." },
-        { q: "What is 'Content Curation'?", a: ["Deleting all files", "Gathering and organizing online content around a specific topic", "Hacking a website", "Buying a new laptop"], cor: 1, exp: "Curation involves selecting and presenting the best content for an audience." },
-        { q: "What is a 'Primary Source'?", a: ["A summary of a book", "An original document or firsthand account of an event", "A review of a movie", "A textbook"], cor: 1, exp: "Primary sources are direct evidence from the time of an event." },
-        { q: "What is a 'Secondary Source'?", a: ["An original letter", "Information that was created later by someone who did not experience it firsthand", "A witness statement", "A raw data file"], cor: 1, exp: "Secondary sources interpret or analyze primary sources." },
-        { q: "Which key moves you down one screen in a long document?", a: ["Home", "End", "Page Down", "Insert"], cor: 2, exp: "Page Down moves the view further down the page." },
-        { q: "What is the 'Home' button in a web browser?", a: ["Closes the browser", "Takes you to a pre-set starting page", "Opens your email", "Turns off the computer"], cor: 1, exp: "The Home button returns you to your designated homepage." },
-        { q: "What does 'Syndication' mean?", a: ["Protecting a site from viruses", "Publishing content across multiple sites or platforms simultaneously", "Deleting a social media account", "A type of internet cable"], cor: 1, exp: "Syndication allows content to be shared widely across different channels." },
-        { q: "Which button stops a page from continuing to load?", a: ["Refresh", "Stop (X)", "Forward", "Home"], cor: 1, exp: "The Stop button (often an X) halts the loading process." },
-        { q: "What is 'Digital Content'?", a: ["Any data that exists in a digital form", "Only physical books", "Only hardware parts", "Paper documents"], cor: 0, exp: "Digital content includes text, images, videos, and audio files." },
-        { q: "Which operator is best for finding results from a specific country (e.g., .uk)?", a: ["site:.uk", "-.uk", "@.uk", "country:.uk"], cor: 0, exp: "The site: operator can be used with country codes." },
-        { q: "What is 'Intellectual Property Theft'?", a: ["Losing your laptop", "Using copyrighted material without permission or payment", "Forgetting a password", "Downloading a free app"], cor: 1, exp: "IP theft is the illegal use of protected creative works." },
-        { q: "What is 'Commercial Bias'?", a: ["When a site is too fast", "When information is influenced by the desire to sell a product", "When a site has no ads", "A type of browser setting"], cor: 1, exp: "Commercial bias prioritizes profit over objectivity." },
-        { q: "What is the purpose of 'Bibliographies'?", a: ["To make a book longer", "To list the sources used in a piece of work", "To provide the author's biography", "To check for viruses"], cor: 1, exp: "Bibliographies document all research sources." },
-        { q: "Which of these is a 'Media Form'?", a: ["Text", "Video", "Audio", "All of the above"], cor: 3, exp: "Media can exist as text, video, audio, and images." },
-        { q: "What is 'Fact-Checking'?", a: ["Buying a new book", "The process of verifying the accuracy of information", "Changing the color of a font", "Deleting a browser"], cor: 1, exp: "Fact-checking ensures that claims are backed by evidence." },
-        { q: "How can you tell if an image is copyrighted?", a: ["It always has a big red mark", "Look for a copyright symbol © or check the source information", "All images on Google are free", "It will not open"], cor: 1, exp: "Always assume an image is copyrighted unless stated otherwise." },
-        { q: "What is 'Public Record'?", a: ["A secret document", "Information that is not considered confidential and is available to the public", "A private diary", "A banking password"], cor: 1, exp: "Public records are documents or pieces of info that are not private." },
-        { q: "What is a 'Direct Quote'?", a: ["Writing a summary", "The exact words spoken or written by someone else", "A type of internet link", "A search engine"], cor: 1, exp: "Direct quotes must be placed in quotation marks and cited." },
-        { q: "What is a 'Paraphrase'?", a: ["Copying word-for-word", "Rewriting someone else's ideas in your own words", "Deleting a sentence", "A type of password"], cor: 1, exp: "Paraphrasing still requires a source citation even if the words are yours." },
-        { q: "Which search tool is best for finding scholarly articles?", a: ["Social Media", "Google Scholar", "YouTube", "A personal blog"], cor: 1, exp: "Scholarly search engines focus on peer-reviewed and academic papers." },
-        { q: "What is the primary goal of Information Management?", a: ["To buy more hard drives", "To make sure information is accurate, organized, and accessible", "To delete all old emails", "To browse social media"], cor: 1, exp: "Effective management ensures data is useful and reachable." },
-        { type: "matching", q: "Match Search Operators:", pairs: [{term: "Quotes \" \"", definition: "Exact phrase search"}, {term: "Minus -", definition: "Exclude a keyword"}, {term: "Site:", definition: "Search specific domain"}], exp: "Operators filter results for accuracy." },
-        { type: "ordering", q: "Refining Search Criteria:", items: ["Animal", "Mammal", "Dog", "Golden Retriever"], cor: ["Animal", "Mammal", "Dog", "Golden Retriever"], exp: "Moving from general to specific narrows results." },
-        { type: "matching", q: "Match Licensing Terms:", pairs: [{term: "Copyright", definition: "Exclusive owner rights"}, {term: "Public Domain", definition: "Free for all use"}, {term: "Creative Commons", definition: "Flexible usage licenses"}], exp: "Copyright protects; Public domain is open; CC is a middle ground." },
-        { type: "ordering", q: "Using Search Filters (Order):", items: ["Enter keywords", "Click 'Images' tab", "Select 'Tools'", "Filter by 'Size'"], cor: ["Enter keywords", "Click 'Images' tab", "Select 'Tools'", "Filter by 'Size'"], exp: "Filter tools are usually applied after the initial category selection." },
-        { type: "matching", q: "Match Information Sources:", pairs: [{term: "Wiki", definition: "Collaborative knowledge base"}, {term: "Blog", definition: "Personal journal or commentary"}, {term: "Podcast", definition: "Audio-based digital broadcast"}], exp: "Format determines how information is consumed." },
-        { type: "ordering", q: "Citing a Source (Logical Flow):", items: ["Find the author", "Note the publication date", "Copy the URL", "Format in APA/MLA style"], cor: ["Find the author", "Note the publication date", "Copy the URL", "Format in APA/MLA style"], exp: "Information gathering precedes final formatting." },
-        { type: "matching", q: "Match Browsing Terms:", pairs: [{term: "URL", definition: "The web address of a site"}, {term: "Hyperlink", definition: "Clickable text that jumps to a page"}, {term: "Browser", definition: "Software used to access the web"}], exp: "Fundamental tools for navigating the internet." },
-        { type: "ordering", q: "Steps to Bookmark a Site:", items: ["Navigate to the page", "Click the Star icon", "Select a folder", "Click 'Done'"], cor: ["Navigate to the page", "Click the Star icon", "Select a folder", "Click 'Done'"], exp: "The standard workflow for most modern browsers." },
-        { type: "matching", q: "Match Search Engine Features:", pairs: [{term: "Autofill", definition: "Predicts your search query"}, {term: "Snippet", definition: "Small preview of site content"}, {term: "Index", definition: "The database of all web pages"}], exp: "Engines use these to make searching faster and easier." },
-        { type: "ordering", q: "Fact-Checking a News Story:", items: ["Read the headline", "Check the source date", "Look for other sources", "Confirm author expertise"], cor: ["Read the headline", "Check the source date", "Look for other sources", "Confirm author expertise"], exp: "Cross-referencing is key to validating information." },
-        { type: "matching", q: "Match Content Rights:", pairs: [{term: "Fair Use", definition: "Legal exception for education/news"}, {term: "Attribution", definition: "Giving credit to the creator"}, {term: "Plagiarism", definition: "Taking work as your own"}], exp: "Legal and ethical use of content is critical in IC3 GS6." },
-        { type: "ordering", q: "Refining results with AND/OR:", items: ["Search 'Apples'", "Search 'Apples AND Oranges'", "Search 'Apples AND Oranges AND Price'"], cor: ["Search 'Apples'", "Search 'Apples AND Oranges'", "Search 'Apples AND Oranges AND Price'"], exp: "Adding Boolean operators narrows the scope." },
-        { type: "matching", q: "Match Metadata Types:", pairs: [{term: "Hashtags", definition: "Keywords preceded by #"}, {term: "Handles", definition: "Usernames preceded by @"}, {term: "Tags", definition: "Internal labels for files"}], exp: "Metadata helps organize and find digital content." },
-        { type: "ordering", q: "Workflow to download a PDF:", items: ["Click the download link", "Choose a save location", "Wait for transfer", "Open from the folder"], cor: ["Click the download link", "Choose a save location", "Wait for transfer", "Open from the folder"], exp: "Standard file acquisition process." },
-        { type: "matching", q: "Match Domain Suffixes:", pairs: [{term: ".edu", definition: "Educational institutions"}, {term: ".gov", definition: "Government agencies"}, {term: ".com", definition: "Commercial businesses"}], exp: "Suffixes indicate the nature of the organization." }
+        // --- 1. TYPES OF WEBSITES & SOURCES ---
+        {
+            type: "matching",
+            q: "Match the website type to its primary purpose:",
+            pairs: [
+                { term: "Business Site", definition: "Describes products/services and handles online purchases." },
+                { term: "Government Site", definition: "Provides official forms, laws, and department information." },
+                { term: "Wiki Site", definition: "Allows users to collaboratively add, edit, or rearrange content." },
+                { term: "Social Media", definition: "Enables subscribers to share media and chat in real-time." }
+            ],
+            exp: "Different websites serve specific professional, social, or collaborative functions."
+        },
+        {
+            type: "mcq",
+            q: "What is the primary characteristic of a 'Blog'?",
+            a: ["It is a search engine like Google", "It is a site where individuals share comments and experiences on specific topics", "It is only for downloading government forms", "It is a private database for large corporations"],
+            cor: 1,
+            exp: "Blogs (Web Logs) are platforms for personal or topical commentary, often organized chronologically."
+        },
+        {
+            type: "categorization",
+            q: "Categorize these platforms based on their primary content type:",
+            categories: ["Multimedia Sharing", "Reference/News"],
+            items: [
+                { name: "YouTube", category: "Multimedia Sharing" },
+                { name: "RSS Feeds", category: "Reference/News" },
+                { name: "Instagram", category: "Multimedia Sharing" },
+                { name: "Online Encyclopedias", category: "Reference/News" }
+            ],
+            exp: "Multimedia sites focus on visuals/audio, while news/reference sites focus on information delivery."
+        },
+        {
+            type: "mcq",
+            q: "What does 'RSS' stand for in news-related websites?",
+            a: ["Real Simple Syndication", "Random Source Search", "Rapid System Stream", "Remote Site Synchronization"],
+            cor: 0,
+            exp: "RSS allows users to receive current news updates and stories as they occur."
+        },
+        {
+            type: "yesno",
+            q: "Evaluate these statements about Website Content:",
+            statements: [
+                "Educational websites (.edu) are always free of bias.",
+                "Government websites provide downloadable files and official forms.",
+                "Wikis are the most reliable source for scientific facts because anyone can edit them."
+            ],
+            cor: [false, true, false],
+            exp: "Government sites are for official data; Wikis and Educational sites still require critical evaluation for accuracy or bias."
+        },
+
+        // --- 2. SEARCH ENGINES VS. BROWSERS ---
+        {
+            type: "mcq",
+            q: "What is the fundamental difference between a Web Browser and a Search Engine?",
+            a: ["A browser is a website; a search engine is a hardware device", "A browser is software used to access the web; a search engine is a tool used to find information within the web", "They are exactly the same thing", "A search engine is needed to turn on the computer"],
+            cor: 1,
+            exp: "You use a browser (like Chrome) to visit a search engine (like Google)."
+        },
+        {
+            type: "multi",
+            q: "Which of the following are examples of Search Engines? (Select 3)",
+            a: ["Google", "Bing", "Safari", "Yahoo!", "Microsoft Edge"],
+            cor: [0, 1, 3],
+            required: 3,
+            exp: "Google, Bing, and Yahoo! are search engines. Safari and Edge are browsers."
+        },
+        {
+            type: "matching",
+            q: "Match the search tool to its description:",
+            pairs: [
+                { term: "Keywords", definition: "Specific words or phrases used to define what you are looking for." },
+                { term: "Search Index", definition: "A massive database of web pages compiled by a search engine." },
+                { term: "Filters", definition: "Tools that narrow results by date, size, or file type." }
+            ],
+            exp: "Search engines use keywords to query their index and provide filters to refine the results."
+        },
+
+        // --- 3. ADVANCED SEARCH STRATEGIES (BOOLEAN & SYNTAX) ---
+        {
+            type: "mcq",
+            q: "When searching, what is the effect of putting a phrase in 'Quotation Marks'?",
+            a: ["The search engine will ignore those words", "The search engine will find results that contain that exact phrase in that exact order", "The search engine will translate the phrase", "The search engine will find synonyms for those words"],
+            cor: 1,
+            exp: "Quotes are used for exact match searches."
+        },
+        {
+            type: "matching",
+            q: "Match the Boolean Operator to its function:",
+            pairs: [
+                { term: "AND", definition: "Finds results that contain BOTH terms." },
+                { term: "OR", definition: "Finds results that contain EITHER term." },
+                { term: "NOT", definition: "Excludes results containing the specified term." }
+            ],
+            exp: "Boolean operators help broaden or narrow your search logic."
+        },
+        {
+            type: "mcq",
+            q: "In search syntax, what does the Asterisk (*) symbol represent?",
+            a: ["A spelling error", "A wildcard that acts as a placeholder for any word or letter", "An excluded word", "An important keyword"],
+            cor: 1,
+            exp: "Wildcards (*) are useful when you don't know the full name or phrase you are searching for."
+        },
+        {
+            type: "multi",
+            q: "Which actions can help narrow down your search results? (Select 3)",
+            a: ["Using more specific keywords", "Using Boolean operators", "Searching in all caps", "Applying date filters", "Typing the URL in the search box"],
+            cor: [0, 1, 3],
+            required: 3,
+            exp: "Specific keywords, logic (AND/NOT), and filters (Date/Type) are the best ways to refine results."
+        },
+        {
+            type: "ordering",
+            q: "Order the steps for a successful research session:",
+            items: [
+                "Define the specific question or topic.",
+                "Identify keywords and potential Boolean operators.",
+                "Execute the search in a search engine.",
+                "Evaluate the results for credibility and relevance."
+            ],
+            cor: [0, 1, 2, 3],
+            exp: "Planning keywords before searching leads to more efficient results."
+        },
+        {
+            type: "mcq",
+            q: "If you search for 'Jaguar NOT Car', what will the results likely focus on?",
+            a: ["Luxury vehicles", "The animal (big cat)", "The Jacksonville Jaguars football team", "Car repair manuals"],
+            cor: 1,
+            exp: "The 'NOT' operator excludes the term 'Car' from the search results."
+        },
+
+        // --- 4. SOCIAL MEDIA TOOLS & METADATA ---
+        {
+            type: "matching",
+            q: "Match the social media symbol to its name:",
+            pairs: [
+                { term: "#", definition: "Hashtag" },
+                { term: "@", definition: "Handle / Username" }
+            ],
+            exp: "Hashtags are for topics; Handles are for specific users."
+        },
+        {
+            type: "mcq",
+            q: "What is the primary purpose of a 'Hashtag'?",
+            a: ["To send a private message", "To categorize or group content by a specific topic", "To change the font color of a post", "To block a user"],
+            cor: 1,
+            exp: "Hashtags make it easier for users to find all posts related to a specific subject."
+        },
+        {
+            type: "yesno",
+            q: "Regarding social media navigation:",
+            statements: [
+                "A 'Handle' is a unique username used to identify a person.",
+                "Hashtags can only be used on Twitter.",
+                "You can search for hashtags to find trending news."
+            ],
+            cor: [true, false, true],
+            exp: "Handles identify users, and hashtags are universal across most platforms for tracking trends."
+        },
+
+        // --- 5. INTELLECTUAL PROPERTY & COPYRIGHT ---
+        {
+            type: "mcq",
+            q: "What is 'Intellectual Property'?",
+            a: ["Physical land owned by a company", "Creations of the mind, such as inventions, art, or logos", "The price of a software license", "A computer's processing power"],
+            cor: 1,
+            exp: "Intellectual property (IP) refers to intangible creations that have legal protection."
+        },
+        {
+            type: "mcq",
+            q: "When does 'Copyright' typically begin?",
+            a: ["As soon as you think of an idea", "As soon as the work is fixed in a tangible form (written, recorded, etc.)", "Only after you pay a lawyer", "Only after it is published in a book"],
+            cor: 1,
+            exp: "Copyright is automatic once the work is recorded or written down."
+        },
+        {
+            type: "mcq",
+            q: "For a single author, how long does copyright protection usually last?",
+            a: ["10 years after the work is created", "50 years after the author's death", "70 years after the author's death", "Forever"],
+            cor: 2,
+            exp: "Standard copyright is 70 years after the death of the creator (or the last surviving creator)."
+        },
+        {
+            type: "categorization",
+            q: "Categorize these based on their legal usage status:",
+            categories: ["Public Domain", "Copyright Protected"],
+            items: [
+                { name: "A book published in 1850", category: "Public Domain" },
+                { name: "A song released on the radio yesterday", category: "Copyright Protected" },
+                { name: "Government documents/works", category: "Public Domain" },
+                { name: "A professional photograph on a blog", category: "Copyright Protected" }
+            ],
+            exp: "Public domain works are free for all; copyright works require permission or fair use."
+        },
+        {
+            type: "mcq",
+            q: "What does it mean if a work is in the 'Public Domain'?",
+            a: ["It is owned by the general public but you must pay to use it", "It is not protected by intellectual property laws and is free for anyone to use", "It is only available in public libraries", "It is owned by a search engine"],
+            cor: 1,
+            exp: "Public domain items can be used, shared, and modified by anyone without permission."
+        },
+        {
+            type: "multi",
+            q: "Which of the following are protected by Copyright? (Select 3)",
+            a: ["Music and Lyrics", "Architectural designs", "Individual facts and data", "Computer software code", "Short common phrases"],
+            cor: [0, 1, 3],
+            required: 3,
+            exp: "Creative works like music, architecture, and code are protected. Facts and common phrases are not."
+        },
+        {
+            type: "mcq",
+            q: "What is 'Fair Use'?",
+            a: ["The right to copy an entire textbook for free", "A legal doctrine allowing limited use of copyrighted material without permission for purposes like education or news", "The rule that everything on the internet is free", "A type of software license for businesses"],
+            cor: 1,
+            exp: "Fair use allows for small, transformative, or educational uses of copyrighted material."
+        },
+
+        // --- 6. LICENSING & CREATIVE COMMONS ---
+        {
+            type: "mcq",
+            q: "What is 'Creative Commons'?",
+            a: ["A search engine for artists", "A non-profit organization that provides standardized licenses for sharing creative work", "A social media site for designers", "A government agency that arrests plagiarists"],
+            cor: 1,
+            exp: "Creative Commons (CC) helps creators specify exactly how others are allowed to use their work."
+        },
+        {
+            type: "matching",
+            q: "Match the Creative Commons license restriction to its meaning:",
+            pairs: [
+                { term: "Attribution (BY)", definition: "You must give credit to the original creator." },
+                { term: "Non-Commercial (NC)", definition: "You cannot use the work for profit." },
+                { term: "No Derivatives (ND)", definition: "You cannot change or alter the original work." },
+                { term: "ShareAlike (SA)", definition: "New works must be shared under the same license." }
+            ],
+            exp: "CC licenses use these components to build specific permissions for users."
+        },
+        {
+            type: "yesno",
+            q: "Does a Creative Commons license replace Copyright?",
+            statements: [
+                "Yes, the author gives up all their rights.",
+                "No, the author still owns the copyright but grants specific permissions.",
+                "No, CC licenses work alongside copyright law."
+            ],
+            cor: [false, true, true],
+            exp: "CC licenses are a way for copyright owners to manage permissions, not give up ownership."
+        },
+        {
+            type: "mcq",
+            q: "If you see a 'CC-BY-NC' license on a photo, can you use it on your personal, non-money-making blog?",
+            a: ["No, it is private", "Yes, as long as you give credit to the author", "Yes, but only if you pay the author", "No, unless you get written permission first"],
+            cor: 1,
+            exp: "CC-BY-NC means Attribution (Credit) and Non-Commercial (No profit)."
+        },
+
+        // --- 7. CITATIONS & ETHICS ---
+        {
+            type: "mcq",
+            q: "Why is it important to 'Cite' your sources in research?",
+            a: ["To make your bibliography look longer", "To give credit to the original author and avoid plagiarism", "To make the search engine work faster", "Because it is required by the computer's OS"],
+            cor: 1,
+            exp: "Citing sources ensures academic and professional integrity."
+        },
+        {
+            type: "ordering",
+            q: "Order the components of a standard website citation (from start to finish):",
+            items: [
+                "Author or Organization Name",
+                "Title of the Article or Page",
+                "Name of the Website",
+                "URL and Date Accessed"
+            ],
+            cor: [0, 1, 2, 3],
+            exp: "Citations generally follow a pattern of Who, What, Where, and When."
+        },
+        {
+            type: "multi",
+            q: "When evaluating a source, which factors should you check for? (Select 2)",
+            a: ["The author's credentials", "The background color of the site", "The date the information was last updated", "How many people 'liked' the post"],
+            cor: [0, 2],
+            required: 2,
+            exp: "Expertise and currency (date) are critical for determining reliability."
+        },
+
+        // --- 8. ADVANCED SEARCH & EVALUATION ---
+        {
+            type: "mcq",
+            q: "What does the term 'Currency' refer to in research evaluation?",
+            a: ["The type of money used to buy the information", "The timeliness or date of the information", "The country where the info was written", "The speed of the internet connection"],
+            cor: 1,
+            exp: "Currency means checking if the information is still up-to-date and relevant."
+        },
+        {
+            type: "mcq",
+            q: "Which of these is a 'Secondary Source'?",
+            a: ["An original scientific experiment log", "A textbook summary of scientific discoveries", "A raw video of a space launch", "A personal interview with an astronaut"],
+            cor: 1,
+            exp: "Secondary sources interpret, analyze, or summarize primary (original) data."
+        },
+        {
+            type: "yesno",
+            q: "Regarding search results ranking:",
+            statements: [
+                "The first result on Google is always the most accurate.",
+                "Companies can pay for their websites to appear at the top as 'Ads'.",
+                "Search ranking can be influenced by how many other sites link to a page."
+            ],
+            cor: [false, true, true],
+            exp: "Ranking involves both paid advertising and organic algorithms; the top result isn't always the most truthful."
+        },
+        {
+            type: "mcq",
+            q: "What is the best way to find a specific PDF file about 'Global Warming'?",
+            a: ["Search for 'Global Warming'", "Search for 'Global Warming filetype:pdf'", "Search for 'Global Warming PDF'", "Type 'PDF' in the browser address bar"],
+            cor: 1,
+            exp: "Using the 'filetype:' operator is the most efficient way to find specific document formats."
+        },
+        {
+            type: "matching",
+            q: "Match the search term to its function:",
+            pairs: [
+                { term: "Search Phrase", definition: "A sequence of words typed into a search engine." },
+                { term: "Snippet", definition: "The short description of a webpage shown in search results." },
+                { term: "URL", definition: "The unique address used to find a specific page on the web." }
+            ],
+            exp: "These components make up the basic experience of using a search engine."
+        },
+        {
+            type: "mcq",
+            q: "If a website has no listed author, what is the best alternative for a citation?",
+            a: ["Use 'Anonymous'", "Use the name of the organization that owns the website", "Do not cite the source at all", "Make up a likely name"],
+            cor: 1,
+            exp: "The corporate or organizational author is used if no individual is named."
+        },
+        {
+            type: "multi",
+            q: "Which of these are characteristics of a 'Public Domain' work? (Select 2)",
+            a: ["You can modify the work however you like", "You must pay a royalty to use it", "The copyright has expired", "It is only for government use"],
+            cor: [0, 2],
+            required: 2,
+            exp: "Public domain works are unrestricted because their legal protections have ended."
+        },
+        {
+            type: "mcq",
+            q: "Which search would find information about either 'Dolphins' or 'Whales'?",
+            a: ["Dolphins AND Whales", "Dolphins NOT Whales", "Dolphins OR Whales", "Dolphins * Whales"],
+            cor: 2,
+            exp: "OR expands the search to include pages containing either term."
+        },
+        {
+            type: "yesno",
+            q: "Evaluate these statements about Copyright:",
+            statements: [
+                "Facts cannot be copyrighted.",
+                "Ideas inside your head are automatically copyrighted.",
+                "Copyright protects the way an idea is expressed."
+            ],
+            cor: [true, false, true],
+            exp: "Copyright protects expression (writing/recording), not raw ideas or facts."
+        },
+        {
+            type: "mcq",
+            q: "What is the danger of using 'Wildcards' too often?",
+            a: ["The search engine will crash", "You may get too many irrelevant results", "It is illegal in some countries", "It slows down your computer's RAM"],
+            cor: 1,
+            exp: "Wildcards are broad, so using them without specific keywords can lead to an overwhelming amount of data."
+        },
+        {
+            type: "matching",
+            q: "Match the intellectual property term to its definition:",
+            pairs: [
+                { term: "Trademark", definition: "Protects logos, brand names, and slogans." },
+                { term: "Patent", definition: "Protects new inventions and technical processes." },
+                { term: "Copyright", definition: "Protects creative works like books, art, and music." }
+            ],
+            exp: "There are different types of IP protection for different types of creations."
+        },
+        {
+            type: "mcq",
+            q: "What is 'Plagiarism' in a digital context?",
+            a: ["Downloading a file too quickly", "Copying and pasting digital content into your work without credit", "Using a search engine without a license", "Deleting someone else's files"],
+            cor: 1,
+            exp: "Plagiarism is an ethical theft of ideas or expression."
+        },
+        {
+            type: "multi",
+            q: "What information can you find in a search result 'Snippet'? (Select 2)",
+            a: ["The full text of the entire website", "A brief summary of the page content", "Highlighted keywords from your search", "The user's private password"],
+            cor: [1, 2],
+            required: 2,
+            exp: "Snippets help you decide if a page is worth clicking by showing a summary and keyword context."
+        },
+        {
+            type: "mcq",
+            q: "Why do search engines use 'Spiders' or 'Crawlers'?",
+            a: ["To fix broken hardware", "To scan the internet and build an index of web pages", "To infect computers with viruses", "To monitor user browsing history"],
+            cor: 1,
+            exp: "Crawlers are automated scripts that discover new and updated pages for the search engine's database."
+        },
+        {
+            type: "yesno",
+            q: "Can you use a copyrighted image if you find it on Google Images?",
+            statements: [
+                "Yes, if it is on Google, it is free for everyone.",
+                "No, Google is a search engine, not a library of free photos.",
+                "You should use the 'Usage Rights' filter to find images you can legally use."
+            ],
+            cor: [false, true, true],
+            exp: "Just because an image is 'searchable' does not mean it is free to use."
+        },
+        {
+            type: "mcq",
+            q: "What is the purpose of the 'Attribution' (BY) requirement in Creative Commons?",
+            a: ["To ensure the user pays for the work", "To ensure the original creator gets credit for their work", "To allow the user to claim they created it", "To prevent the work from being shared"],
+            cor: 1,
+            exp: "Attribution is the most common CC requirement, ensuring the creator is acknowledged."
+        },
+        {
+            type: "categorization",
+            q: "Categorize these as primary or secondary search criteria:",
+            categories: ["Primary Criteria", "Secondary (Refinement)"],
+            items: [
+                { name: "Main Keywords", category: "Primary Criteria" },
+                { name: "File Type (.docx, .pdf)", category: "Secondary (Refinement)" },
+                { name: "Exact Phrase (Quotes)", category: "Secondary (Refinement)" },
+                { name: "Topic Subject", category: "Primary Criteria" }
+            ],
+            exp: "You start with broad topics (primary) and use specific tools (secondary) to drill down."
+        },
+        {
+            type: "mcq",
+            q: "Which domain extension is most likely to contain academic research papers?",
+            a: [".com", ".net", ".edu", ".biz"],
+            cor: 2,
+            exp: ".edu domains are reserved for higher education institutions."
+        },
+        {
+            type: "multi",
+            q: "Which of these are Boolean operators? (Select 3)",
+            a: ["BUT", "AND", "OR", "NOT", "WITH"],
+            cor: [1, 2, 3],
+            required: 3,
+            exp: "AND, OR, and NOT are the three standard Boolean operators used in database and web searching."
+        },
+        {
+            type: "mcq",
+            q: "What is the best way to exclude a specific word from your search results?",
+            a: ["Put the word in quotes", "Place a minus sign (-) or 'NOT' before the word", "Type the word in capital letters", "Add an asterisk after the word"],
+            cor: 1,
+            exp: "The minus sign (e.g., -recipe) or the NOT operator excludes unwanted topics."
+        },
+        {
+            type: "ordering",
+            q: "Order the steps to check if an image is in the Public Domain:",
+            items: [
+                "Locate the image on its original website.",
+                "Check for a copyright symbol (©) or license notice.",
+                "Look for the creation date and author's death date.",
+                "Verify if it is a government-produced work (often public domain)."
+            ],
+            cor: [0, 1, 2, 3],
+            exp: "Verification requires checking both the license and the age/origin of the work."
+        },
+        {
+            type: "mcq",
+            q: "What does the 'ShareAlike' (SA) restriction mean?",
+            a: ["You cannot share the work with anyone", "If you modify the work, you must license it under the same terms as the original", "You must share the profit you make from the work", "You can only share the work on social media"],
+            cor: 1,
+            exp: "ShareAlike ensures that modified versions of a work remain as open as the original."
+        },
+        {
+            type: "mcq",
+            q: "What is the primary objective of Information Management?",
+            a: ["To delete as much data as possible", "To effectively organize, store, and find information to make decisions", "To speed up a computer's CPU", "To increase the cost of internet service"],
+            cor: 1,
+            exp: "Information management is about the efficiency and ethics of handling data."
+        }
     ],
     l1_lesson4: [
-        { q: "What is a 'Template' in Microsoft Office?", a: ["A type of computer virus", "A pre-designed document used to create new ones quickly", "A blank white page", "The save button"], cor: 1, exp: "Templates are standard forms or documents with pre-designed elements." },
-        { q: "Which view in Office applications allows you to manage files (Save, Print, Share)?", a: ["Edit View", "Review View", "Backstage View", "Web View"], cor: 2, exp: "Backstage View contains commands that relate to the entire file." },
-        { q: "What is the purpose of a 'ScreenTip'?", a: ["To clean the monitor", "To identify a button and its function when hovering", "To change the screen brightness", "To show a video tutorial"], cor: 1, exp: "Hovering over a button displays a ScreenTip identifying the command." },
-        { q: "Which keyboard shortcut is used to 'Undo' an action?", a: ["Ctrl + Y", "Ctrl + Z", "Ctrl + U", "Ctrl + X"], cor: 1, exp: "Ctrl + Z is the universal shortcut to undo the last action." },
-        { q: "Which keyboard shortcut is used to 'Redo' an action?", a: ["Ctrl + R", "Ctrl + Z", "Ctrl + Y", "Ctrl + P"], cor: 2, exp: "Ctrl + Y is used to redo an action that was undone." },
-        { q: "What does the 'Find and Replace' tool do?", a: ["Deletes the entire document", "Locates specific text and replaces it with new text", "Changes the font color", "Saves the file"], cor: 1, exp: "Find and Replace automates the process of updating specific words throughout a file." },
-        { q: "In Word, what is the default file extension?", a: [".txt", ".pdf", ".docx", ".xlsx"], cor: 2, exp: "Microsoft Word documents use the .docx extension." },
-        { q: "Which feature allows you to see how a document will look on paper before printing?", a: ["Draft View", "Print Preview", "Outline View", "Read Mode"], cor: 1, exp: "Print Preview shows the layout as it will appear when printed." },
-        { q: "What is the shortcut to 'Save' a document?", a: ["Ctrl + S", "Ctrl + V", "Ctrl + P", "Ctrl + N"], cor: 0, exp: "Ctrl + S is the shortcut for Save." },
-        { q: "Which command should you use to save a copy of a file with a NEW name?", a: ["Save", "Export", "Save As", "Share"], cor: 2, exp: "Save As allows you to create a separate copy with a different name or location." },
-        { q: "What is the shortcut to 'Print' a document?", a: ["Ctrl + P", "Ctrl + Shift + P", "Alt + P", "Ctrl + Print"], cor: 0, exp: "Ctrl + P opens the print dialog." },
-        { q: "In PowerPoint, what is a single page of a presentation called?", a: ["Sheet", "Frame", "Slide", "Canvas"], cor: 2, exp: "Individual pages in a presentation are called slides." },
-        { q: "Which PowerPoint view is best for seeing all slides as thumbnails?", a: ["Slide Show", "Slide Sorter", "Notes Page", "Reading View"], cor: 1, exp: "Slide Sorter allows you to see all slides and rearrange them easily." },
-        { q: "What is a 'Placeholder' in PowerPoint?", a: ["A blank slide", "A box with dotted borders where you enter text or images", "A type of transition", "The file name"], cor: 1, exp: "Placeholders hold specific content like titles, body text, or charts." },
-        { q: "Which key starts a PowerPoint slide show from the beginning?", a: ["F1", "F5", "F10", "F12"], cor: 1, exp: "F5 is the shortcut to start a presentation from slide one." },
-        { q: "What is a 'Transition' in PowerPoint?", a: ["Moving a picture", "The visual effect between two slides", "Changing the font size", "A way to save the file"], cor: 1, exp: "Transitions are the animations that occur when moving from one slide to the next." },
-        { q: "What is an 'Animation' in PowerPoint?", a: ["The movement of objects ON a slide", "Moving from slide 1 to slide 2", "Printing the slides", "The background color"], cor: 0, exp: "Animations control the movement of text, images, or shapes on a single slide." },
-        { q: "What does 'AutoSave' do?", a: ["Deletes old files", "Saves your changes automatically to the cloud every few seconds", "Prints the file automatically", "Checks for spelling errors"], cor: 1, exp: "AutoSave prevents data loss by saving work in real-time to OneDrive or SharePoint." },
-        { q: "Why is it important to 'Back Up' your work?", a: ["To make the computer faster", "To ensure you have a copy if the original is lost or damaged", "To hide files from others", "To reduce file size"], cor: 1, exp: "Backups protect your data from hardware failure or accidental deletion." },
-        { q: "What is a 'Cloud Backup'?", a: ["Saving a file to a USB", "Saving files to remote servers via the internet", "Printing a hard copy", "Saving to the Desktop"], cor: 1, exp: "Cloud backups (like OneDrive) allow access from any device with internet." },
-        { q: "Which of these is an example of an 'Attribute' of text?", a: ["File size", "Bold, Italic, and Underline", "The keyboard used", "The computer brand"], cor: 1, exp: "Attributes describe the style or appearance of text." },
-        { q: "What is 'Portrait' orientation?", a: ["Wide layout", "Tall layout (vertical)", "Circular layout", "Diagonal layout"], cor: 1, exp: "Portrait is taller than it is wide; it is the default for most documents." },
-        { q: "What is 'Landscape' orientation?", a: ["Vertical layout", "Horizontal layout (wide)", "Square layout", "Small layout"], cor: 1, exp: "Landscape is wider than it is tall." },
-        { q: "What does 'Scaling' do in printing?", a: ["Changes the color of the ink", "Adjusts the document size to fit on a specific number of sheets", "Deletes the margins", "Turns the printer off"], cor: 1, exp: "Scaling allows you to shrink or enlarge the content for the physical paper." },
-        { q: "What is a PDF (Portable Document Format)?", a: ["A type of video file", "A file format that preserves layout and design across all devices", "A Word document that can be edited easily", "An internet browser"], cor: 1, exp: "PDFs ensure the document looks the same on any computer without needing the original app." },
-        { q: "Which program is used to view PDF files?", a: ["Excel", "Adobe Reader", "PowerPoint", "Notepad"], cor: 1, exp: "Adobe Reader is a common application for viewing PDFs." },
-        { q: "In Word, what is the 'Ribbon'?", a: ["A physical piece of string", "The area at the top containing tabs and command groups", "The scroll bar", "The status bar at the bottom"], cor: 1, exp: "The Ribbon organizes all features into tabs like Home, Insert, and Layout." },
-        { q: "Which tab would you click to change the page margins?", a: ["Home", "Insert", "Layout", "View"], cor: 2, exp: "The Layout tab contains page setup options like margins and orientation." },
-        { q: "Which tab is used to add a Table or a Picture?", a: ["File", "Home", "Insert", "Design"], cor: 2, exp: "The Insert tab is used to add elements that are not plain text." },
-        { q: "What is a 'Font'?", a: ["A type of printer", "A set of characters with a specific design/style", "A paper size", "A saving method"], cor: 1, exp: "Fonts like Arial or Calibri define the look of the text." },
-        { q: "What does the 'Format Painter' do?", a: ["Draws a picture", "Copies the formatting of one piece of text and applies it to another", "Changes the page color", "Deletes text"], cor: 1, exp: "Format Painter saves time by duplicating styles (bold, color, size) across text." },
-        { q: "Which alignment places text evenly between the left and right margins?", a: ["Align Left", "Align Right", "Center", "Justify"], cor: 2, exp: "Center alignment places the text in the middle of the page." },
-        { q: "Which alignment makes the text flush against both the left and right margins?", a: ["Center", "Align Left", "Justify", "Indent"], cor: 2, exp: "Justify adds spacing between words so both edges of the paragraph are straight." },
-        { q: "What is 'Line Spacing'?", a: ["The space between letters", "The vertical space between lines of text in a paragraph", "The space between two pages", "The margin size"], cor: 1, exp: "Line spacing (like Single or Double) affects the vertical density of text." },
-        { q: "What is a 'Bullet' in a document?", a: ["A weapon", "A small symbol used to introduce items in a list", "A type of font", "A page break"], cor: 1, exp: "Bullets are used to organize unordered lists." },
-        { q: "Which key is used to create a new paragraph?", a: ["Space", "Tab", "Enter", "Shift"], cor: 2, exp: "Pressing Enter moves the cursor to a new line and starts a new paragraph." },
-        { q: "How do you select an entire word quickly?", a: ["Single-click it", "Double-click it", "Triple-click it", "Right-click it"], cor: 1, exp: "Double-clicking selects the word; triple-clicking usually selects the paragraph." },
-        { q: "What does 'Checking Spelling' identify?", a: ["Words not in the dictionary", "Factually incorrect information", "Your email address", "The file size"], cor: 0, exp: "Spell check flags words it doesn't recognize (typos or proper names)." },
-        { q: "What is 'Grammar Check'?", a: ["A tool to find synonyms", "A tool that identifies errors in sentence structure and punctuation", "A tool that translates text", "A tool to change fonts"], cor: 1, exp: "Grammar check looks for mistakes like subject-verb agreement." },
-        { q: "Which feature allows you to put a specific piece of text at the top of every page?", a: ["Footer", "Margin", "Header", "Note"], cor: 2, exp: "Headers appear at the top of every page; footers appear at the bottom." },
-        { q: "What is 'Citing' a source?", a: ["Deleting a quote", "Giving credit to the original author within your content", "Copying a whole website", "Buying a book"], cor: 1, exp: "Citations ensure proper credit is given and avoid plagiarism." },
-        { q: "What is a 'Hyperlink'?", a: ["A very fast internet connection", "Text or an image that you click to jump to another location or website", "A type of font", "A secure password"], cor: 1, exp: "Hyperlinks connect different pieces of digital content." },
-        { q: "In PowerPoint, which view is used to present your work to an audience?", a: ["Normal View", "Slide Show View", "Reading View", "Master View"], cor: 1, exp: "Slide Show view fills the screen with your slides for presentation." },
-        { q: "What is the 'Notes Pane' in PowerPoint used for?", a: ["Drawing pictures", "Entering speaker notes that only the presenter can see", "Writing the main content", "Hiding slides"], cor: 1, exp: "Speaker notes help the presenter remember talking points." },
-        { q: "Which feature makes an object on a slide 'Fly In' from the side?", a: ["Transition", "Animation", "Template", "Design Idea"], cor: 1, exp: "Animations are applied to specific objects to control how they appear or move." },
-        { q: "How do you advance to the next slide during a presentation?", a: ["Press the Escape key", "Click the mouse or press the Spacebar", "Press F1", "Turn off the monitor"], cor: 1, exp: "Clicking or pressing Space moves the presentation forward." },
-        { q: "What happens when you 'Export' a document as a PDF?", a: ["The original Word file is deleted", "A new version of the file is created in PDF format", "The file is sent to the printer", "The file is uploaded to the internet"], cor: 1, exp: "Exporting creates a new file in a different format without changing the original." },
-        { q: "Which setting allows you to print on both sides of a sheet of paper?", a: ["Portrait", "Collated", "Duplex (Print on Both Sides)", "Grayscale"], cor: 2, exp: "Duplex printing saves paper by using both sides." },
-        { q: "What does 'Collated' mean when printing multiple copies?", a: ["Printing all page 1s, then all page 2s", "Printing the full document in order (1,2,3) before starting the next set", "Printing in black and white", "Stapling the pages"], cor: 1, exp: "Collated printing keeps the sets of documents in the correct order." },
-        { q: "What is 'Grayscale' printing?", a: ["Printing very fast", "Printing using only shades of black and white", "Printing with large fonts", "Printing on gray paper"], cor: 1, exp: "Grayscale saves color ink/toner by using only black ink." },
-        { q: "Which shortcut opens a BLANK new document?", a: ["Ctrl + B", "Ctrl + N", "Ctrl + O", "Ctrl + M"], cor: 1, exp: "Ctrl + N stands for New." },
-        { q: "Which shortcut 'Opens' an existing file?", a: ["Ctrl + E", "Ctrl + O", "Ctrl + X", "Ctrl + G"], cor: 1, exp: "Ctrl + O stands for Open." },
-        { q: "What is the 'Status Bar'?", a: ["The bar at the top with the name", "The bar at the bottom showing page count and word count", "A type of menu", "A virus scanner"], cor: 1, exp: "The Status Bar provides real-time information about your document." },
-        { q: "Which key is used to indent the first line of a paragraph?", a: ["Enter", "Shift", "Tab", "Alt"], cor: 2, exp: "The Tab key moves the cursor to the next tab stop (usually 0.5 inches)." },
-        { q: "What is 'Thesaurus' in Word used for?", a: ["Checking spelling", "Finding synonyms (words with similar meanings)", "Counting words", "Printing the file"], cor: 1, exp: "The Thesaurus helps improve vocabulary by suggesting alternative words." },
-        { q: "What is 'Margin'?", a: ["The space between two letters", "The white space between the edge of the paper and the text", "The header text", "The font size"], cor: 1, exp: "Margins define the printable area of the page." },
-        { q: "Which of these is a valid way to 'Share' a file from Office?", a: ["Emailing it as an attachment", "Sharing a link to OneDrive", "Copying it to a USB drive", "All of the above"], cor: 3, exp: "Digital content can be shared via email, cloud links, or physical media." },
-        { q: "What is a 'Version History'?", a: ["A list of all users who have the file", "A record of previous versions of a file that you can restore", "The date the software was made", "A type of printer"], cor: 1, exp: "Cloud-stored files allow you to go back to an earlier version if you make a mistake." },
-        { q: "What does 'Read Only' mode mean?", a: ["You cannot open the file", "You can view the file but cannot make or save changes to it", "The file is read out loud by the computer", "The file is a PDF"], cor: 1, exp: "Read Only status protects a document from being edited." },
-        { q: "What is the purpose of 'Page Numbers'?", a: ["To make the document longer", "To help organize and reference pages in a document", "To count the words", "To check the ink level"], cor: 1, exp: "Page numbers are essential for navigation in multi-page documents." },
-        { q: "What is a 'Theme' in Office?", a: ["A song that plays", "A set of colors, fonts, and effects that give a document a consistent look", "The file's name", "A password"], cor: 1, exp: "Themes allow you to change the entire look of a file with one click." },
-        { q: "Which key allows you to select multiple non-adjacent slides in PowerPoint?", a: ["Shift", "Alt", "Ctrl", "Tab"], cor: 2, exp: "Holding Ctrl allows you to click and select specific items that are not next to each other." },
-        { q: "What is 'Co-authoring'?", a: ["Two people writing separate books", "Multiple people editing the same document at the same time", "Copying someone else's work", "Writing a book about yourself"], cor: 1, exp: "Cloud applications allow real-time collaboration (co-authoring)." },
-        { q: "Which of these describes 'Hard Copy'?", a: ["A file on a USB", "A document printed on paper", "A password", "A computer screen"], cor: 1, exp: "Hard copy is the physical version of digital content." },
-        { q: "What is 'Soft Copy'?", a: ["A printed paper", "The digital version of a document", "A soft keyboard", "A fuzzy mousepad"], cor: 1, exp: "Soft copy refers to the electronic version of a file." },
-        { q: "Why should you 'Sign Out' of an Office account on a public computer?", a: ["To save battery", "To prevent others from accessing your files and personal info", "To make the computer faster", "To update the software"], cor: 1, exp: "Signing out is crucial for digital security and privacy." },
-        { q: "What is 'Attribution'?", a: ["Changing a file name", "Acknowledging the creator of a work you are using", "Deleting a file", "Selling a file"], cor: 1, exp: "Attribution is the act of giving credit to the source of information." },
-        { q: "What is 'Footnote'?", a: ["A note at the end of the document", "A note at the bottom of the page providing more info or a citation", "The page number", "A header"], cor: 1, exp: "Footnotes provide details or citations at the bottom of the specific page." },
-        { q: "What is an 'Endnote'?", a: ["A note at the bottom of the page", "A note at the end of the entire document or section", "The last slide", "The save button"], cor: 1, exp: "Endnotes collect all citations/notes at the very end of the file." },
-        { q: "Which shortcut 'Cuts' the selected item to the clipboard?", a: ["Ctrl + C", "Ctrl + V", "Ctrl + X", "Ctrl + Z"], cor: 2, exp: "Ctrl + X removes the item from the page and puts it in the clipboard." },
-        { q: "Which shortcut 'Copies' the selected item?", a: ["Ctrl + X", "Ctrl + C", "Ctrl + P", "Ctrl + V"], cor: 1, exp: "Ctrl + C copies the item without removing it." },
-        { q: "What is 'Landscape' printing used for most often?", a: ["Letters", "Spreadsheets or wide charts", "Envelopes", "Novels"], cor: 1, exp: "Landscape provides more horizontal space for wide data." },
-        { q: "What does 'Print to PDF' do?", a: ["Sends a document to a physical printer", "Creates a digital PDF file instead of a paper copy", "Prints a photo of a PDF", "Deletes the printer"], cor: 1, exp: "Printing to PDF is a way to 'Save As' a PDF from any program." },
-        { q: "What is the 'Quick Access Toolbar'?", a: ["The Start Menu", "A customizable toolbar for frequently used commands", "The Taskbar", "The Recycle Bin"], cor: 1, exp: "It is usually at the very top of the window and holds shortcuts like Save and Undo." },
-        { q: "Which key is used to exit a PowerPoint Slide Show?", a: ["Enter", "Esc", "Tab", "Shift"], cor: 1, exp: "The Escape (Esc) key stops the presentation and returns to the edit screen." },
-        { type: "matching", q: "Match Word UI Elements:", pairs: [{term: "Ribbon", definition: "Main command center tabs"}, {term: "Quick Access", definition: "Custom shortcut buttons"}, {term: "Status Bar", definition: "Page and word count info"}], exp: "UI elements organize features for productivity." },
-        { type: "ordering", q: "Steps to Save as PDF:", items: ["Click File", "Choose Save As", "Select PDF format", "Click Save"], cor: ["Click File", "Choose Save As", "Select PDF format", "Click Save"], exp: "PDF conversion happens within the Save As menu." },
-        { type: "matching", q: "Match Layout Terms:", pairs: [{term: "Portrait", definition: "Vertical page orientation"}, {term: "Landscape", definition: "Horizontal page orientation"}, {term: "Margins", definition: "White space around edges"}], exp: "Orientation and margins define the print area." },
-        { type: "ordering", q: "Formatting a Paragraph:", items: ["Select the text", "Change font type", "Apply bold styling", "Adjust line spacing"], cor: ["Select the text", "Change font type", "Apply bold styling", "Adjust line spacing"], exp: "Selection must occur before formatting can be applied." },
-        { type: "matching", q: "Match Content Features:", pairs: [{term: "Header", definition: "Text at top of every page"}, {term: "Footer", definition: "Text at bottom of every page"}, {term: "Caption", definition: "Label for a picture or table"}], exp: "These help organize long documents." },
-        { type: "ordering", q: "Creating a Presentation:", items: ["Choose a template", "Add a title slide", "Insert new slides", "Apply transitions"], cor: ["Choose a template", "Add a title slide", "Insert new slides", "Apply transitions"], exp: "Logical flow for building slide decks." },
-        { type: "matching", q: "Match Image Wrap Settings:", pairs: [{term: "In Line", definition: "Image sits like a word"}, {term: "Square", definition: "Text flows around the box"}, {term: "Tight", definition: "Text flows around the image shape"}], exp: "Wrap settings control how text interacts with visuals." },
-        { type: "ordering", q: "Printing a Document:", items: ["Select Print option", "Choose the printer", "Set page range", "Click Print button"], cor: ["Select Print option", "Choose the printer", "Set page range", "Click Print button"], exp: "The configuration steps before the final execution." },
-        { type: "matching", q: "Match Keyboard Shortcuts:", pairs: [{term: "Ctrl + S", definition: "Save document"}, {term: "Ctrl + P", definition: "Print document"}, {term: "Ctrl + Z", definition: "Undo last action"}], exp: "Essential productivity shortcuts." },
-        { type: "ordering", q: "Sharing a File:", items: ["Click Share button", "Enter email address", "Set permissions (View/Edit)", "Click Send"], cor: ["Click Share button", "Enter email address", "Set permissions (View/Edit)", "Click Send"], exp: "Cloud-based collaboration workflow." },
-        { type: "matching", q: "Match Document Views:", pairs: [{term: "Print Layout", definition: "Standard editing view"}, {term: "Read Mode", definition: "Optimized for viewing"}, {term: "Web Layout", definition: "Shows how it looks online"}], exp: "Views change how content is displayed." },
-        { type: "ordering", q: "Inserting a Table:", items: ["Click Insert tab", "Select Table", "Choose rows/columns", "Enter data"], cor: ["Click Insert tab", "Select Table", "Choose rows/columns", "Enter data"], exp: "Process for adding structured data." },
-        { type: "matching", q: "Match Font Styles:", pairs: [{term: "Serif", definition: "Fonts with small 'feet'"}, {term: "Sans Serif", definition: "Clean fonts without 'feet'"}, {term: "Script", definition: "Handwritten style fonts"}], exp: "Typography choices impact readability." },
-        { type: "ordering", q: "Spell Check Process:", items: ["Identify red underline", "Right-click word", "Select correct spelling", "Click Ignore if correct"], cor: ["Identify red underline", "Right-click word", "Select correct spelling", "Click Ignore if correct"], exp: "Standard error correction workflow." },
-        { type: "matching", q: "Match Backup Methods:", pairs: [{term: "Cloud", definition: "OneDrive / Google Drive"}, {term: "Physical", definition: "USB Flash Drive"}, {term: "Version History", definition: "Restoring older file drafts"}], exp: "Safeguarding work is a core GS6 objective." }
+        // --- 1. WORD PROCESSING BASICS ---
+        {
+            type: "mcq",
+            q: "What is a 'Template' in a word processor?",
+            a: ["A virus that deletes files", "A pre-designed document with preset layouts and formatting", "A tool used to print on both sides of the paper", "The physical keyboard of the computer"],
+            cor: 1,
+            exp: "Templates provide a starting point with professional layouts, saving time on design."
+        },
+        {
+            type: "matching",
+            q: "Match the formatting tool to its function:",
+            pairs: [
+                { term: "Bold", definition: "Makes text thicker to stand out." },
+                { term: "Italic", definition: "Slants text, often used for titles or emphasis." },
+                { term: "Underline", definition: "Places a horizontal line beneath the text." },
+                { term: "Strikethrough", definition: "Draws a line through the middle of the text." }
+            ],
+            exp: "These character formatting options help emphasize specific parts of a document."
+        },
+        {
+            type: "categorization",
+            q: "Categorize these commands based on where they are usually found:",
+            categories: ["Home Tab", "Backstage View"],
+            items: [
+                { name: "Font Size & Color", category: "Home Tab" },
+                { name: "Save As & Print", category: "Backstage View" },
+                { name: "Text Alignment", category: "Home Tab" },
+                { name: "Open & New", category: "Backstage View" }
+            ],
+            exp: "The Home tab contains editing tools; the Backstage view (File menu) contains file management tools."
+        },
+        {
+            type: "mcq",
+            q: "Which feature automatically corrects common spelling errors as you type?",
+            a: ["AutoPrint", "AutoCorrect", "AutoSave", "AutoLayout"],
+            cor: 1,
+            exp: "AutoCorrect fixes small typos and capitalization errors instantly."
+        },
+        {
+            type: "yesno",
+            q: "Evaluate these statements about 'Cut, Copy, and Paste':",
+            statements: [
+                "'Copy' removes the original text from the document.",
+                "'Cut' places the selected item on the Clipboard.",
+                "You can paste the same item multiple times."
+            ],
+            cor: [false, true, true],
+            exp: "Copy leaves the original; Cut removes it; both store the item on the Clipboard for repeated pasting."
+        },
+
+        // --- 2. PRESENTATION BASICS (POWERPOINT) ---
+        {
+            type: "mcq",
+            q: "In PowerPoint, what is a 'Transition'?",
+            a: ["An animation applied to a specific image", "The visual effect that occurs when moving from one slide to the next", "The sound played during a video", "A way to change the font of the entire deck"],
+            cor: 1,
+            exp: "Transitions affect the movement between slides; Animations affect objects on a single slide."
+        },
+        {
+            type: "multi",
+            q: "Which of the following are standard PowerPoint 'Views'? (Select 3)",
+            a: ["Normal View", "Slide Sorter View", "Format View", "Reading View", "Database View"],
+            cor: [0, 1, 3],
+            required: 3,
+            exp: "Normal, Slide Sorter, and Reading are common views used to organize and check presentations."
+        },
+        {
+            type: "matching",
+            q: "Match the PowerPoint feature to its purpose:",
+            pairs: [
+                { term: "Slide Master", definition: "The top slide that controls the theme and layout for all slides." },
+                { term: "Speaker Notes", definition: "Hidden text used by the presenter during a speech." },
+                { term: "Animations", definition: "Visual effects applied to individual items like text or images." }
+            ],
+            exp: "The Slide Master ensures consistency, while notes and animations help the delivery."
+        },
+        {
+            type: "ordering",
+            q: "Order the steps to create a simple presentation:",
+            items: [
+                "Select a Design Theme or Template.",
+                "Add a Title to the first slide.",
+                "Insert new slides and add content (text/images).",
+                "Apply Transitions and proofread the content."
+            ],
+            cor: [0, 1, 2, 3],
+            exp: "Starting with a design ensures a cohesive look before adding specific content."
+        },
+        {
+            type: "mcq",
+            q: "What is the primary purpose of 'Speaker Notes'?",
+            a: ["To show the audience what to say", "To provide the presenter with cues and reminders during a show", "To print large posters", "To record audio for the slide"],
+            cor: 1,
+            exp: "Speaker Notes are visible only to the presenter (in Presenter View) and not to the audience."
+        },
+
+        // --- 3. REFERENCING & ATTRIBUTION ---
+        {
+            type: "mcq",
+            q: "What is 'Plagiarism'?",
+            a: ["Saving a file as a PDF", "Passing off someone else's work or ideas as your own", "Using a template from Microsoft Word", "Printing a document in landscape mode"],
+            cor: 1,
+            exp: "Plagiarism is an ethical and often legal violation involving the theft of intellectual property."
+        },
+        {
+            type: "matching",
+            q: "Match the citation term to its definition:",
+            pairs: [
+                { term: "Attribution", definition: "Giving credit to the creator of a work." },
+                { term: "Bibliography", definition: "A list of all sources used at the end of a document." },
+                { term: "Citation", definition: "A specific note within the text identifying the source." }
+            ],
+            exp: "These terms describe the different ways we acknowledge the work of others."
+        },
+        {
+            type: "yesno",
+            q: "Is it necessary to cite 'Common Knowledge'?",
+            statements: [
+                "Yes, you must cite that the Earth is round.",
+                "No, facts that are widely known do not require a citation.",
+                "Yes, you should always cite everything, including your own name."
+            ],
+            cor: [false, true, false],
+            exp: "Common knowledge (e.g., 'The sun rises in the east') does not require citation."
+        },
+        {
+            type: "multi",
+            q: "What information is usually required for a proper website citation? (Select 3)",
+            a: ["The author or organization name", "The date the information was accessed", "The computer's serial number", "The URL (web address)", "The font used on the page"],
+            cor: [0, 1, 3],
+            required: 3,
+            exp: "Author, date, and location (URL) are the essential building blocks of a citation."
+        },
+        {
+            type: "mcq",
+            q: "Which of the following is an example of 'Fair Use'?",
+            a: ["Copying a whole movie and selling it", "Using a small quote from a book for a school book report", "Using a photographer's image for a company logo without paying", "Downloading a cracked version of software"],
+            cor: 1,
+            exp: "Fair Use allows limited use of copyrighted material for educational or critical purposes."
+        },
+
+        // --- 4. SAVING & BACKING UP WORK ---
+        {
+            type: "mcq",
+            q: "What is the difference between 'Save' and 'Save As'?",
+            a: ["They are exactly the same", "Save updates the current file; Save As allows you to create a new version or change the file type", "Save As is only for printing", "Save only works on the cloud"],
+            cor: 1,
+            exp: "Use 'Save As' when you want to rename a file, change its location, or change its format."
+        },
+        {
+            type: "matching",
+            q: "Match the file extension to the correct application:",
+            pairs: [
+                { term: ".docx", definition: "Microsoft Word Document" },
+                { term: ".pptx", definition: "Microsoft PowerPoint Presentation" },
+                { term: ".pdf", definition: "Portable Document Format (Universal)" },
+                { term: ".txt", definition: "Plain Text (No formatting)" }
+            ],
+            exp: "Extensions tell the operating system which program to use to open the file."
+        },
+        {
+            type: "mcq",
+            q: "What is 'AutoSave'?",
+            a: ["A feature that automatically prints your work every hour", "A tool that continuously saves your changes to the cloud in real-time", "A way to hide files from other users", "A tool that deletes old files automatically"],
+            cor: 1,
+            exp: "AutoSave (found in Office 365/OneDrive) prevents data loss by saving every edit as it happens."
+        },
+        {
+            type: "categorization",
+            q: "Categorize these storage methods:",
+            categories: ["Local Storage", "Cloud Storage"],
+            items: [
+                { name: "USB Flash Drive", category: "Local Storage" },
+                { name: "OneDrive", category: "Cloud Storage" },
+                { name: "Internal Hard Drive (C:)", category: "Local Storage" },
+                { name: "Google Drive", category: "Cloud Storage" }
+            ],
+            exp: "Local storage is physical hardware you can touch; cloud storage is online."
+        },
+        {
+            type: "multi",
+            q: "Why should you maintain a 'Backup' of your files? (Select 2)",
+            a: ["In case your computer's hardware fails", "To make the computer run faster", "In case a file is accidentally deleted or corrupted", "To prevent others from reading your work"],
+            cor: [0, 2],
+            required: 2,
+            exp: "Backups are insurance against hardware failure and human error."
+        },
+
+        // --- 5. PRINTING CONCEPTS ---
+        {
+            type: "mcq",
+            q: "What does 'Portrait Orientation' mean?",
+            a: ["The page is wider than it is tall", "The page is taller than it is wide", "The page is printed in black and white only", "The page is printed on both sides"],
+            cor: 1,
+            exp: "Portrait is vertical (like a letter); Landscape is horizontal."
+        },
+        {
+            type: "matching",
+            q: "Match the printing term to its meaning:",
+            pairs: [
+                { term: "Margins", definition: "The white space around the edges of a page." },
+                { term: "Collate", definition: "Organizing printed pages in the correct numerical order." },
+                { term: "Scaling", definition: "Shrinking or enlarging content to fit the paper." }
+            ],
+            exp: "These settings control the final physical appearance of your document."
+        },
+        {
+            type: "mcq",
+            q: "What is a 'PDF' file primarily used for?",
+            a: ["Editing complex 3D graphics", "Sharing documents so they look the same on any device and cannot be easily changed", "Creating large databases", "Speeding up the internet"],
+            cor: 1,
+            exp: "PDF (Portable Document Format) preserves layout and design across different platforms."
+        },
+        {
+            type: "yesno",
+            q: "Evaluate these printing statements:",
+            statements: [
+                "Print Preview allows you to see how the document will look before using ink.",
+                "You can choose to print only specific pages instead of the whole document.",
+                "Scaling a document to fit 2 pages onto 1 sheet changes the original file permanently."
+            ],
+            cor: [true, true, false],
+            exp: "Previewing and selecting pages saves resources; scaling only affects the printout, not the file."
+        },
+        {
+            type: "mcq",
+            q: "If you want to print a draft of a 20-slide presentation using the least amount of paper, which setting should you use?",
+            a: ["Print one slide per page", "Print Handouts (e.g., 6 or 9 slides per page)", "Print in high definition color", "Print in Portrait orientation only"],
+            cor: 1,
+            exp: "Handouts allow you to condense multiple slides onto a single sheet of paper."
+        },
+
+        // --- 6. ADVANCED UI & EDITING ---
+        {
+            type: "mcq",
+            q: "What is the 'Ribbon' in Microsoft Office?",
+            a: ["A physical string attached to the mouse", "The tabbed toolbar at the top of the window containing commands", "A type of printer cable", "The scroll bar on the right side"],
+            cor: 1,
+            exp: "The Ribbon organizes commands into tabs (Home, Insert, Layout, etc.) for easy access."
+        },
+        {
+            type: "multi",
+            q: "Which features help you check for errors in a document? (Select 2)",
+            a: ["The Thesaurus", "The Spell & Grammar Checker", "The Print Preview", "The Format Painter"],
+            cor: [0, 1],
+            required: 2,
+            exp: "Spell check finds typos, and the Thesaurus helps improve word choice."
+        },
+        {
+            type: "mcq",
+            q: "How do you access the 'Backstage View' in Word or PowerPoint?",
+            a: ["Double-click the middle of the page", "Click the 'File' tab", "Press the Spacebar five times", "Right-click the desktop"],
+            cor: 1,
+            exp: "The File tab opens the Backstage view for management tasks like saving and printing."
+        },
+        {
+            type: "mcq",
+            q: "What does the 'Undo' command do?",
+            a: ["Deletes the entire file", "Reverses the last action you performed", "Repeats the last action", "Saves the file to the cloud"],
+            cor: 1,
+            exp: "Undo (Ctrl+Z) is essential for fixing mistakes quickly."
+        },
+        {
+            type: "matching",
+            q: "Match the alignment to its description:",
+            pairs: [
+                { term: "Left Align", definition: "Text is flush with the left margin." },
+                { term: "Center Align", definition: "Text is positioned equally between margins." },
+                { term: "Right Align", definition: "Text is flush with the right margin." },
+                { term: "Justified", definition: "Text is spread evenly between both margins." }
+            ],
+            exp: "Alignment determines how text sits between the left and right edges of the page."
+        },
+        {
+            type: "mcq",
+            q: "Which file format is 'Plain Text' and contains no images or formatting?",
+            a: [".docx", ".pptx", ".txt", ".pdf"],
+            cor: 2,
+            exp: ".txt files are basic and can be opened by almost any text-editing program."
+        },
+        {
+            type: "mcq",
+            q: "What happens when you 'Export' a file as a PDF?",
+            a: ["The original Word file is deleted", "A new version of the file is created in PDF format", "The file is sent to the printer automatically", "The text is translated into another language"],
+            cor: 1,
+            exp: "Exporting creates a separate copy in a different format while keeping the original intact."
+        },
+        {
+            type: "multi",
+            q: "Which of these can be inserted into a PowerPoint slide? (Select 3)",
+            a: ["Videos", "Images and Icons", "The physical CPU", "Charts and Tables", "The computer's battery"],
+            cor: [0, 1, 3],
+            required: 3,
+            exp: "Presentations are multimedia tools; you can include video, images, and data visualizations."
+        },
+        {
+            type: "mcq",
+            q: "What is the purpose of the 'Clipboard'?",
+            a: ["To hold a piece of paper on your desk", "A temporary storage area for items that have been cut or copied", "To organize your email inbox", "To speed up the computer's fan"],
+            cor: 1,
+            exp: "The Clipboard acts as a 'waiting room' for data you want to move or copy."
+        },
+        {
+            type: "yesno",
+            q: "Can you edit a file while it is in 'Print Preview'?",
+            statements: [
+                "Yes, you can type new text directly in the preview.",
+                "No, you must return to the Edit screen to make changes.",
+                "You can change some settings like margins, but not the text itself."
+            ],
+            cor: [false, true, true],
+            exp: "Print Preview is for viewing; you must exit it to change the actual content of the document."
+        },
+        {
+            type: "mcq",
+            q: "What is 'Version History'?",
+            a: ["A list of every computer you have ever owned", "A feature that allows you to view and restore older versions of a cloud-saved file", "A way to check the history of a search engine", "A type of antivirus software"],
+            cor: 1,
+            exp: "Version history is useful if you make a mistake and need to go back to how the file looked yesterday."
+        },
+        {
+            type: "categorization",
+            q: "Categorize these based on their effect on a presentation:",
+            categories: ["Visual Interest", "Organization"],
+            items: [
+                { name: "Adding Transitions", category: "Visual Interest" },
+                { name: "Using Sections to group slides", category: "Organization" },
+                { name: "Inserting a Chart", category: "Visual Interest" },
+                { name: "Arranging Slide Order", category: "Organization" }
+            ],
+            exp: "Design elements add visual appeal; slide sorting and sections add logical structure."
+        },
+        {
+            type: "mcq",
+            q: "What is the 'Footer' of a document?",
+            a: ["The title at the top of the page", "Information that appears at the bottom of every page", "The first paragraph of a book", "A list of definitions"],
+            cor: 1,
+            exp: "Headers (top) and Footers (bottom) are used for page numbers, dates, and author names."
+        },
+        {
+            type: "matching",
+            q: "Match the shortcut to the action:",
+            pairs: [
+                { term: "Ctrl + S", definition: "Save the current file." },
+                { term: "Ctrl + P", definition: "Open the Print menu." },
+                { term: "Ctrl + C", definition: "Copy the selection." },
+                { term: "Ctrl + V", definition: "Paste the selection." }
+            ],
+            exp: "Shortcuts increase efficiency by allowing you to perform actions without using the mouse."
+        },
+        {
+            type: "mcq",
+            q: "Which tab would you use to change the margins or orientation of a Word document?",
+            a: ["Insert", "Home", "Layout", "Review"],
+            cor: 2,
+            exp: "The Layout tab contains page setup options like margins, orientation, and size."
+        },
+        {
+            type: "multi",
+            q: "What should you check before clicking 'Print'? (Select 2)",
+            a: ["If the correct printer is selected", "The current battery level of your phone", "The number of copies you need", "The desktop wallpaper color"],
+            cor: [0, 2],
+            required: 2,
+            exp: "Checking the printer destination and quantity prevents wasted ink and paper."
+        },
+        {
+            type: "mcq",
+            q: "What does 'Scaling' a print job mean?",
+            a: ["Changing the color of the text", "Adjusting the size of the content to fit a specific paper size", "Measuring the weight of the paper", "Increasing the speed of the printer"],
+            cor: 1,
+            exp: "Scaling allows you to fit large documents onto smaller sheets (like A4)."
+        },
+        {
+            type: "yesno",
+            q: "Does a 'Save As' command delete your original file?",
+            statements: [
+                "Yes, it replaces the old file with the new one.",
+                "No, it creates a second, separate file.",
+                "Only if you give the new file the exact same name and location."
+            ],
+            cor: [false, true, true],
+            exp: "Save As creates a copy; it only replaces the original if you overwrite it intentionally."
+        },
+        {
+            type: "mcq",
+            q: "What is the primary benefit of using 'Cloud Storage' for work?",
+            a: ["It makes the files larger", "It allows you to access your work from any device with an internet connection", "It prevents you from needing a password", "It only works on Apple computers"],
+            cor: 1,
+            exp: "Cloud storage offers mobility and easy collaboration across different devices."
+        },
+        {
+            type: "multi",
+            q: "Which of these are forms of 'Intellectual Property'? (Select 2)",
+            a: ["A unique computer program you wrote", "A rock you found in the park", "A song you composed", "A standard desk chair"],
+            cor: [0, 2],
+            required: 2,
+            exp: "IP covers original creations like software, music, and art."
+        },
+        {
+            type: "ordering",
+            q: "Order these steps for quoting a source in an essay:",
+            items: [
+                "Copy the exact words from the source.",
+                "Place quotation marks around the text.",
+                "Add an in-text citation (e.g., Author Name).",
+                "Add the full source details to the Bibliography."
+            ],
+            cor: [0, 1, 2, 3],
+            exp: "Proper quoting requires mechanical accuracy and legal attribution."
+        },
+        {
+            type: "mcq",
+            q: "In PowerPoint, where do you find 'Themes'?",
+            a: ["Insert Tab", "Design Tab", "Transitions Tab", "View Tab"],
+            cor: 1,
+            exp: "The Design tab houses themes that apply colors, fonts, and effects to the whole presentation."
+        },
+        {
+            type: "mcq",
+            q: "What is 'Duplex Printing'?",
+            a: ["Printing in two different colors", "Printing on both sides of a single sheet of paper", "Printing two copies at once", "Printing very quickly"],
+            cor: 1,
+            exp: "Duplex (two-sided) printing is an effective way to save paper."
+        },
+        {
+            type: "matching",
+            q: "Match the 'Review' feature to its use:",
+            pairs: [
+                { term: "Word Count", definition: "Tells you how many words are in the document." },
+                { term: "Thesaurus", definition: "Finds synonyms (similar words) for a selected word." },
+                { term: "Grammar Check", definition: "Identifies potential errors in sentence structure." }
+            ],
+            exp: "The Review tab helps refine and polish the quality of your writing."
+        },
+        {
+            type: "mcq",
+            q: "What is the 'Status Bar' in Microsoft Word?",
+            a: ["The area at the bottom showing page count and word count", "The bar where you type the file name", "The menu for selecting fonts", "The button for closing the app"],
+            cor: 0,
+            exp: "The status bar at the bottom provides quick information about the document's state."
+        },
+        {
+            type: "mcq",
+            q: "When would you use 'Landscape' orientation?",
+            a: ["For a standard business letter", "For a wide table, chart, or certificate", "For a narrow poem", "To save ink"],
+            cor: 1,
+            exp: "Landscape provides more horizontal space, which is better for wide visuals."
+        },
+        {
+            type: "multi",
+            q: "Identify benefits of 'PDF' format: (Select 2)",
+            a: ["The layout stays the same on any screen", "It allows everyone to edit the text for free", "It is widely accepted for official forms and resumes", "It increases the file size significantly"],
+            cor: [0, 2],
+            required: 2,
+            exp: "PDFs are professional, consistent, and widely compatible."
+        },
+        {
+            type: "yesno",
+            q: "Is 'Saving to the Cloud' a form of backup?",
+            statements: [
+                "Yes, because the file exists on a remote server.",
+                "No, because you still only have one copy if you don't sync properly.",
+                "Yes, it protects your data if your local computer is stolen or broken."
+            ],
+            cor: [true, false, true],
+            exp: "Cloud storage is a powerful backup tool because it keeps data off your physical device."
+        },
+        {
+            type: "mcq",
+            q: "What is the 'ScreenTip' feature in Office?",
+            a: ["A way to clean your monitor", "A small box that appears when you hover over a button to explain what it does", "A type of virus warning", "A shortcut to the internet"],
+            cor: 1,
+            exp: "ScreenTips help users learn the interface by providing labels for icons."
+        },
+        {
+            type: "mcq",
+            q: "Which of the following is an 'Acceptable Practice' when using digital content?",
+            a: ["Citing all sources used in your work", "Using an image without checking its license", "Copying a whole blog post and putting your name on it", "Sharing a paid software license with 10 friends"],
+            cor: 0,
+            exp: "Citing sources is the only ethical and professional choice when using others' content."
+        }
     ],
     l1_lesson5: [
-        { q: "What is an online journal where a creator posts articles and others comment?", a: ["Wiki", "Blog", "Podcast", "Portal"], cor: 1, exp: "Blogs are online journals used for sharing opinions and information on specific topics." },
-        { q: "What is the term for the amount of visitors a blog or website receives?", a: ["Bandwidth", "Traffic", "Streaming", "Ping"], cor: 1, exp: "Traffic refers to the volume of users visiting a digital platform." },
-        { q: "What does 'RSS' (Real Simple Syndication) allow users to do?", a: ["Chat in real-time", "Subscribe to and receive automatic updates from websites", "Edit a wiki", "Post a video"], cor: 1, exp: "RSS feeds notify subscribers of new content as it occurs." },
-        { q: "Which medium is described as 'radio on demand'?", a: ["Blog", "Streaming", "Podcast", "SMS"], cor: 2, exp: "Podcasts are digital audio or video series available for download or streaming." },
-        { q: "What is 'Streaming'?", a: ["Downloading a file completely before playing", "Receiving and playing media content simultaneously", "Sending an email attachment", "Deleting temporary files"], cor: 1, exp: "Streaming allows you to intake media while it is being delivered over the internet." },
-        { q: "Which platform is specifically mentioned as welcoming 'vlogs'?", a: ["Excel", "YouTube", "Wikipedia", "Outlook"], cor: 1, exp: "YouTube is a primary platform for video blogs (vlogs)." },
-        { q: "What is a 'Wiki'?", a: ["A private email server", "A collaborative website where anyone can add or edit content", "A type of podcast", "A hardware component"], cor: 1, exp: "Wikis enable collective information management and editing." },
-        { q: "To interact with someone in a digital environment, what is generally required first?", a: ["A credit card", "An account for access", "A printer", "A new monitor"], cor: 1, exp: "Most digital environments require a user account to post or interact." },
-        { q: "Which email command sends a reply ONLY to the original sender?", a: ["Reply to All", "Forward", "Reply", "Bcc"], cor: 2, exp: "The 'Reply' function goes back only to the person who sent the message." },
-        { q: "What does 'Cc' stand for in an email?", a: ["Computer Copy", "Carbon Copy", "Contact Creator", "Correct Content"], cor: 1, exp: "Cc is used to send a copy to someone for informational purposes." },
-        { q: "Which field should you use to send a copy of an email without other recipients knowing?", a: ["To", "Cc", "Bcc", "Subject"], cor: 2, exp: "Bcc (Blind Carbon Copy) hides the recipient's address from everyone else." },
-        { q: "What does 'Forward' do in email communication?", a: ["Sends a copy of a received message to a new person", "Deletes the message", "Replies to everyone in the thread", "Moves the message to the trash"], cor: 0, exp: "Forwarding sends a copy of the existing message to a different recipient." },
-        { q: "What should you do before posting comments on a social network?", a: ["Use all capital letters", "Be thoughtful and consider how it reflects on your identity", "Include your home address", "Nothing, it's anonymous"], cor: 1, exp: "Online posts reflect your digital identity and reputation." },
-        { q: "When viewing diverse opinions online, what is the best practice?", a: ["Respond in a negative manner", "Be inclusive and demonstrate respect", "Judge the author immediately", "Report every post you disagree with"], cor: 1, exp: "Respect and inclusivity are key to professional digital citizenship." },
-        { q: "What is 'Digital Communication'?", a: ["Face-to-face talking", "Exchanging info through electronic formats", "Writing a letter by hand", "Reading a paper book"], cor: 1, exp: "Digital communication involves sharing info via devices and networks." },
-        { q: "Which tool is best for real-time (synchronous) communication?", a: ["Email", "Instant Messaging (IM)", "Blog post", "Wiki edit"], cor: 1, exp: "IM allows for instant, back-and-forth conversation." },
-        { q: "True or False: Authors of blogs and wikis always have expert qualifications.", a: ["True", "False"], cor: 1, exp: "False. Anyone can contribute to blogs or wikis, so credibility must be checked." },
-        { q: "What is a common use for the 'To' field in an email?", a: ["To hide the sender", "To identify the primary recipient(s)", "To list people who don't need to reply", "To add an attachment"], cor: 1, exp: "The 'To' field is for the people the message is directly intended for." },
-        { q: "Why should you use 'inclusive language' online?", a: ["To make the email shorter", "To demonstrate respect for a variety of cultures and beliefs", "To bypass spam filters", "To hide your identity"], cor: 1, exp: "Inclusive language fosters a respectful and professional digital environment." },
-        { q: "What is the main advantage of a Podcast over live radio?", a: ["It requires more battery", "It can be listened to on-demand at any time", "It is always in 3D", "It doesn't use the internet"], cor: 1, exp: "Podcasts offer flexibility to listen whenever the user chooses." },
-        { q: "In email, what is a 'Thread'?", a: ["A type of cable", "A sequence of messages forming a conversation", "A security virus", "A font style"], cor: 1, exp: "Threads group related email replies together." },
-        { q: "Which of these is a form of digital expression?", a: ["Vlogging", "Podcasting", "Posting on social media", "All of the above"], cor: 3, exp: "All these methods allow individuals to express ideas digitally." },
-        { q: "What is a 'Vlog'?", a: ["A voice log", "A video-based blog", "A virus log", "A vertical log"], cor: 1, exp: "Vlogs use video as the primary medium for journaling or reporting." },
-        { q: "What is 'Netiquette'?", a: ["Internet speed", "The rules for polite and correct behavior online", "A type of web browser", "Network security software"], cor: 1, exp: "Netiquette is the etiquette of the internet." },
-        { q: "Which action is most likely to help your digital reputation?", a: ["Posting angry comments", "Sharing helpful, respectful content", "Oversharing private details", "Ignoring all messages"], cor: 1, exp: "Positive interaction builds a strong digital reputation." },
-        { q: "What does the '@' symbol in an email address do?", a: ["Encrypts the message", "Separates the username from the domain name", "Identifies the subject", "Marks the message as urgent"], cor: 1, exp: "The @ symbol is the standard separator for email addresses." },
-        { q: "What is a 'Handle' in social media?", a: ["The mouse", "Your unique username (e.g., @User)", "A private message", "A type of link"], cor: 1, exp: "A handle identifies you uniquely on a social platform." },
-        { q: "What should you check to verify a blog's authority?", a: ["The background color", "The author's credentials and site traffic", "The number of images", "The length of the URL"], cor: 1, exp: "Authority is determined by the author's expertise and site reliability." },
-        { q: "If you want to reply to everyone listed in an email, which button do you use?", a: ["Reply", "Forward", "Reply to All", "Send"], cor: 2, exp: "Reply to All includes everyone in the To and Cc fields." },
-        { q: "What is an 'Attachment' in communication?", a: ["An emoji", "A file sent along with an email or IM", "The subject line", "A user profile"], cor: 1, exp: "Attachments allow you to share external files like PDFs or images." },
-        { q: "Which is a characteristic of a Wiki?", a: ["Only one person can write on it", "It is always factually perfect", "It allows collaborative editing by many users", "It is a type of hardware"], cor: 2, exp: "Collaborative editing is the core feature of a wiki." },
-        { q: "What does it mean if a blog has high 'Traffic'?", a: ["It is blocked", "It has many visitors", "It is very slow", "It has many typos"], cor: 1, exp: "High traffic means the blog is popular or widely read." },
-        { q: "What is a 'Syndicated' feed?", a: ["A deleted feed", "Content delivered automatically to subscribers (like RSS)", "A paid advertisement", "A private message"], cor: 1, exp: "Syndicated feeds push updates to users automatically." },
-        { q: "Why is 'Bcc' useful for privacy?", a: ["It makes the email smaller", "Recipients cannot see each other's email addresses", "It encrypts the text", "It blocks spam"], cor: 1, exp: "Bcc prevents the disclosure of the recipient list." },
-        { q: "When is 'Forward' most appropriate?", a: ["When you want to reply to the sender", "When you want to share a received message with a third party", "When you want to delete a message", "When you are angry"], cor: 1, exp: "Forwarding passes information to someone not originally on the email." },
-        { q: "What is a 'Social Network'?", a: ["A group of physical computers", "An online platform for building social relations and sharing content", "A type of internet cable", "A virus"], cor: 1, exp: "Social networks like LinkedIn or Facebook facilitate digital interaction." },
-        { q: "What is 'Digital Citizenship'?", a: ["Living in a computer", "The responsible use of technology by anyone who uses it", "Owning many devices", "Working as a computer repair person"], cor: 1, exp: "Digital citizenship covers safety, etiquette, and responsibility online." },
-        { q: "Which of these is 'Asynchronous' communication?", a: ["Phone call", "Email", "Video chat", "Face-to-face"], cor: 1, exp: "Email is asynchronous because there is a time gap between sending and receiving." },
-        { q: "Which of these is 'Synchronous' communication?", a: ["Email", "Blog comment", "Live Instant Messaging", "Letter"], cor: 2, exp: "Live chat/IM happens in real-time." },
-        { q: "What can 'Oversharing' lead to?", a: ["Better privacy", "Reputation damage and security risks", "Faster downloads", "More RAM"], cor: 1, exp: "Posting too much personal info exposes you to various digital risks." },
-        { q: "What is the 'Subject' line in an email used for?", a: ["Writing the whole message", "A brief summary of what the email is about", "Listing the recipients", "Adding an attachment"], cor: 1, exp: "The subject line tells the reader the topic of the message." },
-        { q: "What is a 'Signature' in email?", a: ["A handwritten name on the screen", "A pre-set block of text with your contact info at the end of an email", "A password", "A digital virus"], cor: 1, exp: "Signatures provide professional contact details automatically." },
-        { q: "What is the purpose of 'Moderation' in a digital forum?", a: ["To delete all posts", "To review and approve comments to maintain a respectful environment", "To speed up the internet", "To sell products"], cor: 1, exp: "Moderation prevents harassment and off-topic content." },
-        { q: "What is 'VoIP' (Voice over IP)?", a: ["A video file", "Making voice calls over the internet", "A type of printer", "A secure email"], cor: 1, exp: "VoIP (like Skype/WhatsApp calls) uses data networks for voice." },
-        { q: "What is 'Multimedia'?", a: ["Just text", "Just audio", "A combination of text, audio, images, and video", "A type of hardware"], cor: 2, exp: "Multimedia uses multiple forms of content." },
-        { q: "What is 'Presence' in a chat app?", a: ["A gift", "Status icons showing if a user is online or busy", "A fast connection", "The user's real name"], cor: 1, exp: "Presence indicators show availability." },
-        { q: "What should you do if you receive an inappropriate email?", a: ["Forward it to everyone", "Reply with an insult", "Follow company/school policy (report or delete)", "Save it as your wallpaper"], cor: 2, exp: "Proper response involves following established safety/professional guidelines." },
-        { q: "Why check 'Traffic' on a site you use for research?", a: ["To see if it is pretty", "To gauge the site's popularity and potential reliability", "To change the site's content", "To buy the site"], cor: 1, exp: "High traffic can suggest a site is a recognized resource, though not always accurate." },
-        { q: "What is 'Tone' in digital communication?", a: ["The volume of the speakers", "The attitude or emotion conveyed through writing", "The color of the font", "The speed of typing"], cor: 1, exp: "Tone is critical in text because body language is missing." },
-        { q: "Which of these is a 'Professional' email practice?", a: ["Using all caps", "Using a clear subject line and proper grammar", "Using many emojis in a business letter", "Not signing your name"], cor: 1, exp: "Clarity and grammar are essential for professional communication." },
-        { q: "What is 'Streaming Media'?", a: ["A DVD", "Video or audio consumed while it is being delivered", "A printout", "A file on a USB drive"], cor: 1, exp: "Streaming occurs in real-time without a permanent download required first." },
-        { q: "What is a 'Podcast Episode'?", a: ["A single recording within a podcast series", "A type of email", "A computer monitor", "A social media 'like'"], cor: 0, exp: "Episodes are individual parts of a larger podcast series." },
-        { q: "How can 'Blogs' help your career?", a: ["By letting you play games", "By establishing you as an authority on a subject", "By increasing your typing speed", "By deleting your digital footprint"], cor: 1, exp: "Sharing expertise on a blog builds a professional brand." },
-        { q: "What is 'Collaboration' in a digital context?", a: ["Working alone", "Multiple people working together using digital tools", "Stealing code", "Buying a computer"], cor: 1, exp: "Tools like wikis and shared docs enable collaboration." },
-        { q: "What is 'Cloud-based' communication?", a: ["Using a weather app", "Communication tools hosted on the internet (e.g., Slack, Teams)", "A physical server in your room", "A type of radio"], cor: 1, exp: "Cloud tools are accessible from anywhere via the web." },
-        { q: "In the context of Lesson 5, what is a 'Bulletin Board System' (BBS)?", a: ["A wooden board", "An early electronic message board for public discussion", "A modern smartphone", "A type of printer"], cor: 1, exp: "BBS was a precursor to modern social media and forums." },
-        { q: "What is 'Spam'?", a: ["A virus", "Unsolicited or junk email", "A type of attachment", "A secure login"], cor: 1, exp: "Spam is unwanted bulk messaging." },
-        { q: "What does 'Reply to All' include?", a: ["Only the sender", "Only the Cc recipients", "The sender and everyone in the To and Cc fields", "Everyone in the world"], cor: 2, exp: "Reply to All is broad communication within the existing group." },
-        { q: "What is an 'Emoji' used for?", a: ["To speed up the CPU", "To convey emotion or tone in digital text", "To secure a password", "To print a file"], cor: 1, exp: "Emojis help provide the emotional context that text lacks." },
-        { q: "Why is 'Context' important in digital messages?", a: ["It makes the file bigger", "It helps the recipient understand the meaning and intent", "It changes the font", "It is a type of hardware"], cor: 1, exp: "Without context, text messages can be easily misunderstood." },
-        { q: "Which of these is a 'Messaging' app?", a: ["WhatsApp", "Excel", "Photoshop", "PowerPoint"], cor: 0, exp: "WhatsApp is a primary example of a messaging tool." },
-        { q: "What is 'Video Conferencing'?", a: ["Watching a movie", "Live, visual connection between two or more people via the internet", "Sending a video in email", "A type of webcam"], cor: 1, exp: "Conferencing allows for remote face-to-face meetings." },
-        { q: "What is 'Cyberbullying'?", a: ["Fixing a computer", "Using digital means to harass, threaten, or intimidate someone", "A type of software", "An internet speed test"], cor: 1, exp: "Cyberbullying is a violation of digital citizenship." },
-        { q: "What does 'Inclusive' mean online?", a: ["Excluding people you don't like", "Ensuring content and interactions are accessible and respectful to all", "Only using one language", "Blocking all comments"], cor: 1, exp: "Inclusivity ensures a welcoming environment for diverse users." },
-        { q: "What is the 'Domain' in 'user@gmail.com'?", a: ["user", "@", "gmail.com", ".com"], cor: 2, exp: "The domain follows the @ symbol and identifies the mail service." },
-        { q: "What is 'Instant' about Instant Messaging?", a: ["The set up", "The delivery of the message in real-time", "The way you type", "The cost"], cor: 1, exp: "IM is characterized by immediate transmission." },
-        { q: "True or False: A blog post is a permanent part of your digital footprint.", a: ["True", "False"], cor: 0, exp: "True. Even if deleted, copies may exist or have been seen." },
-        { q: "What is 'Multimedia Intaking'?", a: ["Deleting files", "Consuming content like video, audio, and text", "Building a computer", "Writing code"], cor: 1, exp: "Intaking refers to viewing or listening to shared media." },
-        { q: "What is a 'News Feed'?", a: ["A type of printer", "A list of newly published content or news stories", "A security alert", "A hardware part"], cor: 1, exp: "Feeds keep users updated on new information." },
-        { q: "Which field should you use if you want to 'inform' someone but don't need a reply?", a: ["To", "Cc", "Subject", "Forward"], cor: 1, exp: "Cc is traditionally used for 'FYI' (For Your Information) purposes." },
-        { q: "What is 'Digital Expression'?", a: ["Drawing on paper", "Sharing ideas and creativity through digital platforms", "A facial expression", "A mathematical formula"], cor: 1, exp: "Expression involves using tools like blogs and podcasts to share thoughts." },
-        { q: "What is a 'Portal'?", a: ["A type of door", "A website that acts as a gateway to other sites and services", "A virus", "A computer case"], cor: 1, exp: "Portals aggregate various links and tools in one place." },
-        { q: "What is 'Digital Etiquette'?", a: ["Fast typing", "Another word for Netiquette", "Buying digital goods", "Fixing a router"], cor: 1, exp: "Etiquette refers to the standards of conduct online." },
-        { q: "Why check the 'Last Updated' date on a blog?", a: ["To see the colors", "To ensure the information is current and relevant", "To see the author's age", "To check the site's price"], cor: 1, exp: "Communication and facts change; currency is vital for accuracy." },
-        { q: "What is the 'Golden Rule' of digital communication?", a: ["Type fast", "Treat others as you would want to be treated", "Never use punctuation", "Always use BCC"], cor: 1, exp: "Respect is the foundation of all positive digital interaction." },
-        { type: "matching", q: "Match Email Fields:", pairs: [{term: "To", definition: "Primary recipient"}, {term: "Cc", definition: "Visible copy for info"}, {term: "Bcc", definition: "Hidden copy for privacy"}], exp: "Bcc hides recipients from each other." },
-        { type: "ordering", q: "Professional Email Structure:", items: ["Subject Line", "Salutation", "Body Paragraphs", "Closing"], cor: ["Subject Line", "Salutation", "Body Paragraphs", "Closing"], exp: "Standard structure ensures clear communication." },
-        { type: "matching", q: "Match Social Tools:", pairs: [{term: "Blog", definition: "Online journal/articles"}, {term: "Wiki", definition: "Collaborative knowledge site"}, {term: "Podcast", definition: "Digital audio broadcast"}], exp: "Different tools serve different communication needs." },
-        { type: "ordering", q: "Replying to a Message:", items: ["Read original message", "Click Reply", "Type response", "Send message"], cor: ["Read original message", "Click Reply", "Type response", "Send message"], exp: "Basic communication flow." },
-        { type: "matching", q: "Match Communication Channels:", pairs: [{term: "SMS", definition: "Short text via phone"}, {term: "IM", definition: "Instant web-based chat"}, {term: "Email", definition: "Formal digital mail"}], exp: "Speed and formality vary by channel." },
-        { type: "ordering", q: "Attaching a File to Email:", items: ["Click Paperclip icon", "Select file from PC", "Wait for upload", "Send email"], cor: ["Click Paperclip icon", "Select file from PC", "Wait for upload", "Send email"], exp: "Method for sending external documents." },
-        { type: "matching", q: "Match Inbox Folders:", pairs: [{term: "Drafts", definition: "Unsent messages"}, {term: "Spam/Junk", definition: "Unwanted/dangerous mail"}, {term: "Sent", definition: "History of outgoing mail"}], exp: "Folders organize your communication history." },
-        { type: "ordering", q: "Searching an Inbox:", items: ["Click search bar", "Type sender name", "Apply 'Has Attachment' filter", "Select correct email"], cor: ["Click search bar", "Type sender name", "Apply 'Has Attachment' filter", "Select correct email"], exp: "Efficient way to find lost messages." },
-        { type: "matching", q: "Match Digital Presence:", pairs: [{term: "Profile", definition: "Personal info page"}, {term: "Status", definition: "Current activity update"}, {term: "Notification", definition: "Alert for new activity"}], exp: "Components of social networking." },
-        { type: "ordering", q: "Setting an Out-of-Office:", items: ["Go to Settings", "Select Automatic Replies", "Type message", "Enable date range"], cor: ["Go to Settings", "Select Automatic Replies", "Type message", "Enable date range"], exp: "Automating communication during absences." },
-        { type: "matching", q: "Match Video Call Icons:", pairs: [{term: "Microphone", definition: "Mute/Unmute audio"}, {term: "Camera", definition: "Enable/Disable video"}, {term: "Screen Share", definition: "Show your desktop to others"}], exp: "Standard controls for digital meetings." },
-        { type: "ordering", q: "Scheduling a Meeting:", items: ["Open Calendar", "Click New Event", "Invite attendees", "Set Time/Location"], cor: ["Open Calendar", "Click New Event", "Invite attendees", "Set Time/Location"], exp: "Workflow for group coordination." },
-        { type: "matching", q: "Match Professionalism Rules:", pairs: [{term: "Check Spelling", definition: "Avoid typos in emails"}, {term: "Avoid ALL CAPS", definition: "Don't 'shout' online"}, {term: "Subject lines", definition: "Be clear and concise"}], exp: "Etiquette rules for business communication." },
-        { type: "ordering", q: "Deleting a Conversation:", items: ["Select the thread", "Click Delete", "Confirm action", "Empty the Trash"], cor: ["Select the thread", "Click Delete", "Confirm action", "Empty the Trash"], exp: "Permanent removal of data." },
-        { type: "matching", q: "Match Digital Messaging Risks:", pairs: [{term: "Misinterpretation", definition: "Lack of tone/body language"}, {term: "Data Leak", definition: "Forwarding private info"}, {term: "Harassment", definition: "Unwanted repeated messages"}], exp: "Awareness of communication pitfalls." }
+        // --- 1. THE EVOLUTION OF DIGITAL COMMUNICATION ---
+        {
+            type: "mcq",
+            q: "What was a 'BBS' (Bulletin Board System) in the early days of the internet?",
+            a: ["A physical wooden board in a school", "An electronic message board where users logged in to share messages or files", "A type of modern social media like TikTok", "A hardware device used to print emails"],
+            cor: 1,
+            exp: "BBS systems were the early precursors to modern forums and social media."
+        },
+        {
+            type: "mcq",
+            q: "What is the primary characteristic of a 'Blog'?",
+            a: ["It is a private diary no one can see", "It is an online journal where creators post articles and others can comment", "It is a hardware component of a router", "It is a type of encrypted email"],
+            cor: 1,
+            exp: "Blogs allow individuals to share expertise or opinions and build a following (traffic)."
+        },
+        {
+            type: "yesno",
+            q: "Evaluate these statements about early communication:",
+            statements: [
+                "Early computer users often relied on trial and error to learn software.",
+                "BBS systems allowed for public discussion.",
+                "In the early days, users could only get help via video calls."
+            ],
+            cor: [true, true, false],
+            exp: "Early help was usually in-person or via phone/BBS; video calls were not common then."
+        },
+
+        // --- 2. INTERACTING WITH OTHERS ---
+        {
+            type: "mcq",
+            q: "What is required to interact with others on a specific social network?",
+            a: ["A high-speed printer", "An account for access", "A degree in computer science", "A wired Ethernet connection"],
+            cor: 1,
+            exp: "Most digital environments require a user account to post, comment, or share."
+        },
+        {
+            type: "mcq",
+            q: "Why is it important to be 'Inclusive' in your digital language?",
+            a: ["To make sure everyone has a password", "To demonstrate respect for people of different cultures and beliefs", "To bypass the email spam filter", "To increase the speed of your internet"],
+            cor: 1,
+            exp: "Inclusive language shows respect for a global audience with diverse traditions and values."
+        },
+        {
+            type: "matching",
+            q: "Match the interaction type to its description:",
+            pairs: [
+                { term: "Posting", definition: "Sharing media or comments to your own or others' accounts." },
+                { term: "Commenting", definition: "Responding to someone else's digital content." },
+                { term: "Inclusive Language", definition: "Words that show respect for all cultures and beliefs." }
+            ],
+            exp: "These are the basic building blocks of digital social interaction."
+        },
+        {
+            type: "mcq",
+            q: "If you encounter a comment online that does not match your values, what is the best professional response?",
+            a: ["Respond in a negative and aggressive manner", "Take care not to judge and respond thoughtfully or not at all", "Immediately report the person to the police", "Delete your own account"],
+            cor: 1,
+            exp: "Digital citizenship involves respecting different opinions even when you disagree."
+        },
+
+        // --- 3. EMAIL MECHANICS (TO, CC, BCC) ---
+        {
+            type: "mcq",
+            q: "What does 'Cc' stand for in an email?",
+            a: ["Carbon Copy", "Computer Connection", "Correct Content", "Cloud Copy"],
+            cor: 0,
+            exp: "Cc is used to send a copy of an email to someone for informational purposes."
+        },
+        {
+            type: "mcq",
+            q: "What is the primary purpose of the 'Bcc' (Blind Carbon Copy) field?",
+            a: ["To send an email to a person who is blind", "To send a copy of an email to someone without the other recipients knowing", "To make the email send faster", "To send an email to everyone in the world"],
+            cor: 1,
+            exp: "Recipients in the Bcc field are hidden from all other recipients."
+        },
+        {
+            type: "matching",
+            q: "Match the email field to the correct recipient type:",
+            pairs: [
+                { term: "To", definition: "The primary recipient(s) of the message." },
+                { term: "Cc", definition: "Individuals who receive a copy for information only." },
+                { term: "Bcc", definition: "Individuals who receive a copy secretly." }
+            ],
+            exp: "Understanding these fields ensures you communicate effectively and maintain privacy."
+        },
+        {
+            type: "multi",
+            q: "Which email fields allow recipients to see who else received the message? (Select 2)",
+            a: ["To", "Cc", "Bcc", "Subject Line"],
+            cor: [0, 1],
+            required: 2,
+            exp: "Everyone can see who is in the 'To' and 'Cc' fields, but no one sees the 'Bcc' list."
+        },
+
+        // --- 4. RESPONDING TO EMAIL ---
+        {
+            type: "mcq",
+            q: "What happens when you click 'Reply'?",
+            a: ["Your message is sent to everyone on the original email list", "Your message is sent only to the original sender", "The email is deleted", "The email is forwarded to a new person"],
+            cor: 1,
+            exp: "Reply is for one-on-one communication with the sender."
+        },
+        {
+            type: "mcq",
+            q: "What happens when you click 'Reply All'?",
+            a: ["Your message is sent only to the sender", "Your message is sent to everyone in the 'To' and 'Cc' fields", "The email is sent to your Bcc list", "The email is saved as a draft"],
+            cor: 1,
+            exp: "Reply All ensures everyone involved in the conversation stays updated."
+        },
+        {
+            type: "mcq",
+            q: "When should you use the 'Forward' option?",
+            a: ["When you want to send a copy of the message to a new person who wasn't on the original list", "When you want to delete the email", "When you want to reply to the sender only", "When you want to hide your identity"],
+            cor: 0,
+            exp: "Forwarding passes the entire message history to a third party."
+        },
+        {
+            type: "yesno",
+            q: "Evaluate these email response scenarios:",
+            statements: [
+                "Using 'Reply All' for a private message is a good idea.",
+                "You should use 'Bcc' when sending a mass email to protect people's privacy.",
+                "Forwarding an email always sends the attachments by default."
+            ],
+            cor: [false, true, true],
+            exp: "Reply All should be avoided for private chats; Bcc is excellent for privacy in large groups."
+        },
+
+        // --- 5. DIGITAL ETIQUETTE & NETIQUETTE ---
+        {
+            type: "mcq",
+            q: "What is 'Netiquette'?",
+            a: ["A type of high-speed internet cable", "The informal code of conduct for respectful online communication", "A software for blocking ads", "A social media site for lawyers"],
+            cor: 1,
+            exp: "Netiquette is short for 'Network Etiquette'."
+        },
+        {
+            type: "mcq",
+            q: "Why should you avoid using ALL CAPS in an email or post?",
+            a: ["It takes up too much space on the screen", "It is interpreted as shouting and can be seen as aggressive", "It uses more ink when printing", "It makes the file size too large"],
+            cor: 1,
+            exp: "Typing in all caps is generally considered rude or 'shouting' in digital spaces."
+        },
+        {
+            type: "multi",
+            q: "Which of these are good 'Netiquette' practices? (Select 3)",
+            a: ["Being thoughtful before posting", "Using inclusive language", "Using 'Reply All' for every single message", "Checking your spelling and grammar", "Ignoring the feelings of others"],
+            cor: [0, 1, 3],
+            required: 3,
+            exp: "Respect, thoughtfulness, and clear writing are the keys to good netiquette."
+        },
+
+        // --- 6. MESSAGING & COLLABORATION TOOLS ---
+        {
+            type: "mcq",
+            q: "What is the main advantage of 'Instant Messaging' (IM) over Email?",
+            a: ["It is more formal", "It allows for real-time, synchronous communication", "It can only be used on desktop computers", "It does not require an account"],
+            cor: 1,
+            exp: "IM is much faster and intended for immediate back-and-forth conversation."
+        },
+        {
+            type: "mcq",
+            q: "What does 'Synchronous' communication mean?",
+            a: ["Communication that happens at the same time (real-time)", "Communication that has a delay (like a letter)", "Communication that only uses text", "Communication between two robots"],
+            cor: 0,
+            exp: "Video calls and IM are synchronous; Email and Blogs are asynchronous."
+        },
+        {
+            type: "categorization",
+            q: "Categorize these communication methods:",
+            categories: ["Synchronous (Real-time)", "Asynchronous (Delayed)"],
+            items: [
+                { name: "Video Conferencing", category: "Synchronous (Real-time)" },
+                { name: "Email", category: "Asynchronous (Delayed)" },
+                { name: "Instant Messaging", category: "Synchronous (Real-time)" },
+                { name: "Blog Posts", category: "Asynchronous (Delayed)" }
+            ],
+            exp: "Real-time tools require both parties to be present; delayed tools allow for replies later."
+        },
+
+        // --- 7. PROFESSIONALISM & BRANDING ---
+        {
+            type: "mcq",
+            q: "What does your 'Digital Identity' include?",
+            a: ["Only your password", "A combination of your profile, posts, likes, and the people you follow", "The physical hardware of your computer", "Your home address only"],
+            cor: 1,
+            exp: "Your digital identity is a history of all your online actions."
+        },
+        {
+            type: "mcq",
+            q: "Who might look at your social media or digital identity in the future?",
+            a: ["Only your best friends", "Potential employers and school admissions boards", "No one, because the internet is private", "Only the government"],
+            cor: 1,
+            exp: "Professional organizations often check digital footprints to assess a candidate's character."
+        },
+        {
+            type: "yesno",
+            q: "Can posting a thoughtful comment on a professional blog help your career?",
+            statements: [
+                "Yes, it can build your reputation as an authority on a subject.",
+                "No, no one reads comments.",
+                "Yes, if the comment is helpful and well-written."
+            ],
+            cor: [true, false, true],
+            exp: "Meaningful participation in digital communities builds a positive personal brand."
+        },
+
+        // --- 8. SECURITY & PRIVACY IN COMMUNICATION ---
+        {
+            type: "mcq",
+            q: "What is 'Spam'?",
+            a: ["A type of encrypted file", "Unsolicited or junk email usually sent in bulk", "A virus that breaks your screen", "A specialized coding language"],
+            cor: 1,
+            exp: "Spam is the digital equivalent of 'junk mail'."
+        },
+        {
+            type: "mcq",
+            q: "What is 'Phishing'?",
+            a: ["A way to catch fish using a computer", "A fraudulent attempt to steal sensitive info like passwords by pretending to be a trustworthy source", "A type of high-speed internet", "A social media trend"],
+            cor: 1,
+            exp: "Phishing usually happens through deceptive emails or messages."
+        },
+        {
+            type: "multi",
+            q: "How can you protect yourself when communicating online? (Select 2)",
+            a: ["Share your password with close friends", "Never click on suspicious links in emails", "Use the same password for every account", "Be careful about what personal information you share publicly"],
+            cor: [1, 3],
+            required: 2,
+            exp: "Avoiding bad links and keeping personal data private are essential security steps."
+        },
+
+        // --- 9. VIDEO CONFERENCING ---
+        {
+            type: "mcq",
+            q: "Which hardware is essential for a 'Video Conference'?",
+            a: ["A scanner", "A camera (webcam) and a microphone", "A high-end graphics card", "A joystick"],
+            cor: 1,
+            exp: "To be seen and heard, you need a webcam and a microphone."
+        },
+        {
+            type: "mcq",
+            q: "What does 'Muting' your microphone do during a call?",
+            a: ["Turns off your video", "Prevents others from hearing any sound from your side", "Ends the meeting", "Records the meeting"],
+            cor: 1,
+            exp: "Muting is good netiquette when you are not speaking to avoid background noise."
+        },
+        {
+            type: "matching",
+            q: "Match the tool to its function:",
+            pairs: [
+                { term: "Screen Sharing", definition: "Allows others to see your computer desktop." },
+                { term: "Chat Box", definition: "Allows participants to type messages during a video call." },
+                { term: "Wait Room", definition: "A security feature where the host must admit participants." }
+            ],
+            exp: "These features help manage and enhance digital meetings."
+        },
+
+        // --- 10. GENERAL KNOWLEDGE & RECAP ---
+        {
+            type: "mcq",
+            q: "What is the best way to handle 'Trolls' (people who post mean things to get a reaction)?",
+            a: ["Argue with them for hours", "Ignore them and do not give them the reaction they want", "Invite them to a private call", "Give them your home address"],
+            cor: 1,
+            exp: "Ignoring trolls is the most effective way to stop their behavior."
+        },
+        {
+            type: "ordering",
+            q: "Order the steps for sending a professional email:",
+            items: [
+                "Enter the recipient's address in the 'To' field.",
+                "Add a clear and concise Subject Line.",
+                "Write a professional greeting and the body of the message.",
+                "Proofread for errors and then click Send."
+            ],
+            cor: [0, 1, 2, 3],
+            exp: "A professional email needs a clear structure and a final check before sending."
+        },
+        {
+            type: "mcq",
+            q: "What information should ALWAYS be included in a professional email?",
+            a: ["A link to your favorite game", "A clear Subject Line and a professional signature", "Your social security number", "A list of your favorite foods"],
+            cor: 1,
+            exp: "Subject lines tell the reader what the email is about; signatures tell them who you are."
+        },
+        {
+            type: "mcq",
+            q: "If you want to send an email to a group of people but don't want them to see each other's addresses, which field should you use?",
+            a: ["To", "Cc", "Bcc", "Forward"],
+            cor: 2,
+            exp: "Bcc hides the list of recipients from one another."
+        },
+        {
+            type: "mcq",
+            q: "What is a 'Handle' on social media?",
+            a: ["The physical side of the computer", "A unique username preceded by '@'", "A type of mouse", "The power button"],
+            cor: 1,
+            exp: "Handles (like @User123) are used to identify and mention people on social platforms."
+        },
+        {
+            type: "multi",
+            q: "Which of these are examples of 'Social Media'? (Select 3)",
+            a: ["Microsoft Word", "Instagram", "Facebook", "Twitter (X)", "Calculator"],
+            cor: [1, 2, 3],
+            required: 3,
+            exp: "Social media platforms are designed for sharing and interaction."
+        },
+        {
+            type: "mcq",
+            q: "What does it mean to 'Forward' an email?",
+            a: ["To delete it forever", "To send the original message to a new recipient", "To change the font of the message", "To block the sender"],
+            cor: 1,
+            exp: "Forwarding passes the content to someone who was not originally included."
+        },
+        {
+            type: "yesno",
+            q: "Is it okay to share someone else's private email with the public?",
+            statements: [
+                "Yes, information wants to be free.",
+                "No, that is a violation of privacy and bad digital citizenship.",
+                "Only if you think it is funny."
+            ],
+            cor: [false, true, false],
+            exp: "Respecting the privacy of others' communications is a core part of digital ethics."
+        },
+        {
+            type: "mcq",
+            q: "What is the purpose of the 'Subject Line'?",
+            a: ["To list your home address", "To give the recipient a brief idea of what the email is about", "To store your password", "To list the date"],
+            cor: 1,
+            exp: "A good subject line helps the recipient prioritize and organize their inbox."
+        },
+        {
+            type: "mcq",
+            q: "What is a 'Digital Footprint'?",
+            a: ["A piece of hardware you step on", "The permanent record of your activities online", "A special kind of computer mouse", "A way to measure the size of a monitor"],
+            cor: 1,
+            exp: "Every action online leaves a trace, forming your digital footprint."
+        },
+        {
+            type: "matching",
+            q: "Match the communication type to its primary tool:",
+            pairs: [
+                { term: "Formal Business", definition: "Email" },
+                { term: "Quick Team Update", definition: "Instant Messaging" },
+                { term: "Face-to-Face Remote", definition: "Video Conferencing" }
+            ],
+            exp: "Choosing the right tool for the task is a key communication skill."
+        },
+        {
+            type: "mcq",
+            q: "What should you do before clicking 'Reply All'?",
+            a: ["Nothing, just send it", "Think if everyone on the list really needs to see your response", "Check if you have enough ink", "Restart your computer"],
+            cor: 1,
+            exp: "Unnecessary 'Reply All' messages create digital clutter (inbox bloat)."
+        },
+        {
+            type: "mcq",
+            q: "Which of these is a sign of a professional email?",
+            a: ["Lots of emojis and slang", "A clear subject line and correct grammar", "Using all capital letters", "No greeting or closing"],
+            cor: 1,
+            exp: "Professionalism in email is marked by clarity, respect, and proper formatting."
+        },
+        {
+            type: "multi",
+            q: "What are common reasons to use 'Cc'? (Select 2)",
+            a: ["To keep a manager informed of a project's progress", "To hide the recipient's identity", "To send a copy to someone for their records", "To send an email to a secret contact"],
+            cor: [0, 2],
+            required: 2,
+            exp: "Cc is for transparency and record-keeping among known parties."
+        },
+        {
+            type: "mcq",
+            q: "If an email is 'Asynchronous', it means:",
+            a: ["Participants must be online at the same time", "Participants do NOT need to be online at the same time to communicate", "It only works on mobile phones", "It is extremely fast"],
+            cor: 1,
+            exp: "Email is asynchronous because the sender and receiver do not need to be present simultaneously."
+        },
+        {
+            type: "yesno",
+            q: "Does your digital reputation only affect your personal life?",
+            statements: [
+                "Yes, work and school don't care about the internet.",
+                "No, it can impact your college applications and job opportunities.",
+                "It only matters if you are a celebrity."
+            ],
+            cor: [false, true, false],
+            exp: "Employers and schools frequently use the internet to screen applicants."
+        },
+        {
+            type: "mcq",
+            q: "What is an 'Attachment' in an email?",
+            a: ["A physical wire", "A file (like an image or document) sent along with the email", "A type of digital signature", "The 'To' field"],
+            cor: 1,
+            exp: "Attachments allow you to share separate files via email."
+        },
+        {
+            type: "mcq",
+            q: "What is the 'Drafts' folder for?",
+            a: ["Storing deleted emails", "Storing emails you have started but not yet sent", "Storing emails that failed to send", "Storing spam"],
+            cor: 1,
+            exp: "Drafts allow you to save your progress and finish an email later."
+        },
+        {
+            type: "multi",
+            q: "Which actions help maintain a positive digital reputation? (Select 2)",
+            a: ["Posting helpful and accurate information", "Responding angrily to every criticism", "Being respectful in comments", "Sharing private secrets of others"],
+            cor: [0, 2],
+            required: 2,
+            exp: "Helpfulness and respect are the foundations of a good digital reputation."
+        },
+        {
+            type: "mcq",
+            q: "Why should you use a 'Signature' in your professional emails?",
+            a: ["To make the email look artistic", "To provide your contact information and full name easily", "To encrypt the message", "To prevent the email from being forwarded"],
+            cor: 1,
+            exp: "A signature makes it easy for others to know who you are and how to reach you."
+        },
+        {
+            type: "mcq",
+            q: "What is 'Inclusive Language'?",
+            a: ["A language only used by computers", "Words that avoid excluding people based on their background or identity", "A secret code", "A language that uses no vowels"],
+            cor: 1,
+            exp: "Inclusivity ensures that your message is welcoming to everyone."
+        },
+        {
+            type: "yesno",
+            q: "Is an email sent to the wrong person permanent?",
+            statements: [
+                "No, you can always just delete it from their inbox remotely.",
+                "Yes, once it is sent, you generally cannot get it back.",
+                "You can sometimes 'Recall' it, but it doesn't always work."
+            ],
+            cor: [false, true, true],
+            exp: "Email is difficult to 'un-send,' so you must double-check recipients before clicking send."
+        },
+        {
+            type: "mcq",
+            q: "What is the best title for a Lesson 5 summary?",
+            a: ["How to build a PC", "Effective Digital Communication and Etiquette", "History of the Printing Press", "The basics of Windows 11"],
+            cor: 1,
+            exp: "Lesson 5 is primarily about how we communicate and interact in digital environments."
+        }
     ],
     l1_lesson6: [
-        { q: "What is a primary benefit of digital collaboration?", a: ["It decreases the need for internet access", "Productivity increases through simultaneous activity", "It eliminates the need for leadership", "It slows down project completion"], cor: 1, exp: "Productivity increases because team members can work on the same project simultaneously." },
-        { q: "How does digital collaboration improve communication?", a: ["By using only physical mail", "Through instant messaging features within collaborative tools", "By preventing people from talking", "By limiting messages to once a day"], cor: 1, exp: "Communication is faster and more efficient using instant messaging inside collaborative tools." },
-        { q: "How does digital collaboration help when a team lacks specific expertise?", a: ["You can easily add remote collaborators with the needed expertise", "You must hire a new full-time employee", "The project must be canceled", "You have to finish the project without the expertise"], cor: 0, exp: "You can add or subtract collaborators where specific expertise is needed." },
-        { q: "How does digital collaboration benefit leadership or management?", a: ["They don't have to check the work anymore", "It makes oversight easier by providing access to contents and contributors", "It hides the work from them", "It forces them to do all the work"], cor: 1, exp: "Leadership has an easier time conducting oversight, increasing efficiency and quality control." },
-        { q: "What is 'Synchronous' communication?", a: ["Delayed communication", "Sending an email", "Information sent and received instantly in real-time", "A recorded video message"], cor: 2, exp: "Synchronous communication happens in real-time, instantly." },
-        { q: "What is 'Asynchronous' communication?", a: ["A live phone call", "A live video conference", "Delayed communication with a time gap between sending and receiving", "Face-to-face talking"], cor: 2, exp: "Asynchronous communication (like email) involves a time delay." },
-        { q: "Which of the following is an example of Synchronous communication?", a: ["A forum post", "An email", "A live instant messaging chat", "A recorded voicemail"], cor: 2, exp: "Instant messaging is real-time (synchronous)." },
-        { q: "Which of the following is an example of Asynchronous communication?", a: ["A Zoom video call", "A phone call", "An email", "A live Teams meeting"], cor: 2, exp: "Email is delayed (asynchronous) communication." },
-        { q: "Where are collaboration tools increasingly being used outside of corporate environments?", a: ["Only in physical retail stores", "In school settings", "Only in government facilities", "Nowhere else"], cor: 1, exp: "Collaboration tools are designed for corporate use but are increasingly used in schools." },
-        { q: "What do collaboration tools allow local and remote employees to do?", a: ["Only make phone calls", "Communicate, collaborate, and share documents", "Only track their hours", "Play video games together"], cor: 1, exp: "Employees can communicate, collaborate, and access/share documents regardless of location." },
-        { q: "What is 'SharePoint' in Microsoft 365?", a: ["A video editing app", "A website creation and document management platform", "A simple calculator", "An email client"], cor: 1, exp: "SharePoint is a browser-based collaboration and document management platform." },
-        { q: "What does 'Office Online' (web apps) provide?", a: ["Expensive, heavy software", "Free online, lightweight browser-based versions of Word, Excel, and PowerPoint", "Only email services", "A physical server"], cor: 1, exp: "Office Online provides free, browser-based versions of Microsoft 365 applications." },
-        { q: "What is 'OneDrive for Business'?", a: ["A social media site", "Cloud storage specifically for business files tied to a Microsoft account", "A video conferencing tool", "A local hard drive"], cor: 1, exp: "OneDrive for Business is cloud storage specifically for your business files." },
-        { q: "What is Microsoft 'Teams' primarily used for?", a: ["Editing photos", "Real-time communication, messaging, video conferencing, and document collaboration", "Creating public websites", "Only sending emails"], cor: 1, exp: "Teams is a real-time communication app that provides messaging, video, and collaboration." },
-        { q: "How is SharePoint accessed by users?", a: ["Through a USB drive", "It is a browser-based platform", "Through a mobile phone network only", "It does not use the internet"], cor: 1, exp: "SharePoint is a browser-based collaboration platform." },
-        { q: "What are the specific collaborative locations in SharePoint called?", a: ["Rooms", "Hubs", "Sites", "Folders"], cor: 2, exp: "SharePoint provides central locations for collaboration referred to as 'sites'." },
-        { q: "What is 'Co-authoring'?", a: ["Writing a book alone", "Simultaneous editing of a document by multiple authors", "Sending an email to an author", "Deleting a document"], cor: 1, exp: "Co-authoring allows multiple authors to edit a document at the exact same time." },
-        { q: "What is the primary goal of collaborating online?", a: ["Increasing productivity, efficiency, and teamwork", "Reducing the number of employees", "Avoiding face-to-face meetings forever", "Slowing down the workflow to avoid mistakes"], cor: 0, exp: "Collaborating online is a powerful option for increasing productivity, efficiency, and teamwork." },
-        { q: "What is 'Digital Etiquette'?", a: ["The speed of your internet", "The customary code of polite behavior in a digital society or profession", "A tool for editing videos", "A type of firewall"], cor: 1, exp: "Etiquette (or Netiquette) is the code of polite behavior online." },
-        { q: "What is another common term for Digital Etiquette?", a: ["Netiquette", "Web-rules", "Cyber-law", "Tech-manners"], cor: 0, exp: "Digital etiquette is often referred to as 'netiquette'." },
-        { q: "Why is caution needed in written digital collaboration?", a: ["It is too fast", "It uses too much data", "Electronic communication tends to be open to misinterpretation", "It is always public"], cor: 2, exp: "Without tone of voice or body language, written text is easily misinterpreted." },
-        { q: "Why should you refrain from using ALL UPPERCASE LETTERS in a professional message?", a: ["It makes the file size too large", "It is considered 'shouting'", "It is illegal", "It confuses the spell checker"], cor: 1, exp: "Using all caps is universally considered the digital equivalent of shouting." },
-        { q: "Are abbreviations (like 'ttyl' or 'brb') generally accepted in formal business or school collaboration?", a: ["Yes, always", "No, they are generally not accepted", "Only in emails", "Only on Fridays"], cor: 1, exp: "Abbreviations and acronyms in formal business or school communications are generally not accepted." },
-        { q: "Should you use emoticons or emojis to convey emotion in formal written collaboration?", a: ["Yes, to show you are happy", "No, refrain from using symbols that attempt to convey emotion", "Yes, if it is a sad email", "Only in the subject line"], cor: 1, exp: "In formal communication, you should refrain from using emoticons or symbols." },
-        { q: "If a collaborative message contains a question or requires action, what is the proper etiquette?", a: ["Ignore it if you are busy", "Send an appropriately timed reply", "Wait exactly one week to reply", "Reply with an emoji"], cor: 1, exp: "Proper etiquette dictates sending an appropriately timed reply to questions or action items." },
-        { q: "Whose rules and guidelines should you ALWAYS follow regarding electronic communications?", a: ["Your personal rules", "The guidelines established by your school or organization", "The rules of social media influencers", "No one's rules"], cor: 1, exp: "Always follow the rules and guidelines established by your school or organization." },
-        { q: "What is a major advantage of 'Visual Collaboration' (Video Conferencing) over text?", a: ["It uses less bandwidth", "It can display a larger range of emotion, meaning, and intention", "It doesn't require an internet connection", "You can hide your identity"], cor: 1, exp: "Visual collaboration conveys emotion and meaning better because of facial expressions and body language." },
-        { q: "What should you be particularly aware of during a video conference?", a: ["Your typing speed", "Your facial expressions and actions", "Your email inbox", "The brand of your webcam"], cor: 1, exp: "Because others can see you, be aware of your facial expressions and actions." },
-        { q: "During visual collaboration, how should you show you are engaged?", a: ["By looking at your phone", "By actively paying attention to the meeting and topic of discussion", "By turning off your camera", "By talking to someone else in the room"], cor: 1, exp: "Ensure you are actively paying attention since others can see you." },
-        { q: "Who is ultimately responsible for interpreting and conveying appropriate communication etiquette in a meeting?", a: ["The software provider", "The IT department", "You (the user)", "The internet service provider"], cor: 2, exp: "It is up to you to interpret and convey appropriate communication etiquette." },
-        { q: "Which Microsoft 365 application would be BEST for a live, real-time video meeting with remote workers?", a: ["Word Online", "OneDrive", "Teams", "SharePoint"], cor: 2, exp: "Teams is the designated app for real-time video conferencing and messaging." },
-        { q: "If you need to securely store a business document in the cloud so you can access it from home, which tool is best?", a: ["Teams", "OneDrive for Business", "A public wiki", "A blog"], cor: 1, exp: "OneDrive for Business is specifically for cloud storage of business files." },
-        { q: "If your team needs to build a central 'site' to host project files and shared calendars, what is the best tool?", a: ["Office Online", "SharePoint", "A USB drive", "Instant Messaging"], cor: 1, exp: "SharePoint is used to create central sites for document management and collaboration." },
-        { q: "You and a classmate are typing in the exact same Word document at the exact same time from different houses. What is this called?", a: ["Asynchronous editing", "Co-authoring", "Plagiarism", "File copying"], cor: 1, exp: "Simultaneous editing by multiple people is called co-authoring." },
-        { q: "Which of the following scenarios represents Asynchronous collaboration?", a: ["A live Zoom call", "Leaving a comment on a shared document for a coworker to read tomorrow", "A phone call", "A real-time Teams chat"], cor: 1, exp: "Leaving a comment to be read later involves a time delay, making it asynchronous." },
-        { q: "Which of the following scenarios represents Synchronous collaboration?", a: ["Sending a letter", "Sending an email", "Discussing a project over a live video call", "Updating a Wiki page"], cor: 2, exp: "A live video call is real-time (synchronous)." },
-        { q: "Why might a project manager prefer digital collaboration tools over traditional paper methods?", a: ["It is harder to see who did the work", "It increases efficiency and allows easier oversight of contributions", "It prevents people from working together", "It requires everyone to be in the same physical room"], cor: 1, exp: "Digital tools make oversight easier by tracking contents and contributors." },
-        { q: "You receive an email from a teacher asking for a project update. You don't have the answer yet. What is the best netiquette?", a: ["Ignore the email until you have the answer", "Reply in ALL CAPS that you are working on it", "Send a timely reply stating you received the email and will provide an update soon", "Send a smiley face emoji"], cor: 2, exp: "A timely reply acknowledging the message is proper etiquette." },
-        { q: "You are on a Teams video call. Your microphone is muted, but your camera is on. Your coworker is presenting. What should you do?", a: ["Scroll through your phone since you are muted", "Maintain eye contact with the screen to show active attention", "Roll your eyes at parts you disagree with", "Walk away from the computer"], cor: 1, exp: "You must actively pay attention and be aware of your facial expressions." },
-        { q: "Which statement is true regarding Office Online?", a: ["It requires a CD to install", "It provides lightweight, browser-based versions of apps like Word and Excel", "It can only be used if you are offline", "It is only for Apple computers"], cor: 1, exp: "Office Online provides free, browser-based versions of Office apps." },
-        { q: "You are collaborating on a formal business report. Is it acceptable to use 'LOL' to save time?", a: ["Yes, it increases productivity", "No, abbreviations are not accepted in formal business communication", "Yes, if you explain what it means first", "Only if the boss does it first"], cor: 1, exp: "Abbreviations and acronyms are generally not accepted in formal settings." },
-        { q: "What does the term 'Lightweight' mean when referring to Office Online web apps?", a: ["They weigh less on your laptop", "They run in a browser and may not have every single advanced feature of the desktop version", "They only work during the day", "They are only for mobile phones"], cor: 1, exp: "Browser-based web apps are 'lightweight' versions of the full desktop software." },
-        { q: "If an employee in Tokyo and an employee in London are working on a project, how does digital collaboration specifically help them?", a: ["It forces them to work at the exact same hour", "It allows them to share and access documents remotely", "It translates their speech instantly", "It pays for their travel"], cor: 1, exp: "Collaboration tools allow local and remote employees to communicate and share documents easily." },
-        { q: "During a collaborative video meeting, a team member suggests an idea you think is terrible. What is the appropriate visual etiquette?", a: ["Scoff and shake your head so they see you disagree", "Maintain a neutral or respectful facial expression and wait your turn to speak", "Turn off your webcam immediately", "Hold up a sign saying 'NO'"], cor: 1, exp: "Be aware of your facial expressions and demonstrate respectful behavior." },
-        { q: "Which tool is best described as a 'real-time communication application that provides messaging'?", a: ["OneDrive", "SharePoint", "Teams", "Word Online"], cor: 2, exp: "Teams is the real-time communication application in Microsoft 365." },
-        { q: "What is the primary danger of written collaboration (like email or chat)?", a: ["It uses too much electricity", "It is open to misinterpretation without voice tone", "It is too fast to read", "It always gets lost in the mail"], cor: 1, exp: "Electronic communication tends to be open to misinterpretation." },
-        { q: "If you want to emphasize a point in a professional email, what should you NOT do?", a: ["Use clear, descriptive vocabulary", "Use ALL UPPERCASE LETTERS", "Use bullet points", "Bold a specific word"], cor: 1, exp: "Do not use all caps, as it is considered shouting." },
-        { q: "Which of the following is an example of a 'collaborative tool'?", a: ["A standard calculator", "A printed dictionary", "A shared SharePoint site", "A single-player video game"], cor: 2, exp: "SharePoint sites allow multiple people to work together." },
-        { q: "In a collaborative document, how does co-authoring affect productivity?", a: ["It decreases it because people overwrite each other", "It increases it by allowing simultaneous activity", "It has no effect on productivity", "It causes the computer to crash"], cor: 1, exp: "Productivity increases through simultaneous activity between team members." },
-        { q: "If you are unsure of the digital communication rules at your new job, what should you do?", a: ["Guess and hope for the best", "Use the rules from your old job", "Follow the rules and guidelines established by your organization", "Ask a friend on social media"], cor: 2, exp: "Always follow the guidelines established by your specific school or organization." },
-        { q: "Which feature of visual collaboration prevents the common misinterpretations found in email?", a: ["The ability to type faster", "The ability to display a larger range of emotion, meaning, and intention", "The ability to mute your microphone", "The ability to share files"], cor: 1, exp: "Visual collaboration (video) adds body language and facial expressions." },
-        { q: "You need to store a file so that only you can access it from your work laptop and your home computer. Which M365 tool is best?", a: ["SharePoint", "OneDrive for Business", "Teams", "A public blog"], cor: 1, exp: "OneDrive for Business is personal cloud storage tied to your specific account." },
-        { q: "You need to store a file so that your entire 10-person department can edit it. Which M365 tool is best?", a: ["A USB drive", "SharePoint", "Your personal desktop", "A printed hard copy"], cor: 1, exp: "SharePoint provides a central location for teams to find and share documents." },
-        { q: "Is it acceptable to use a smiley face emoji ☺ in a formal report to your school principal?", a: ["Yes, it shows you are friendly", "No, refrain from using emoticons in formal communication", "Yes, but only in the title", "Only if it is in color"], cor: 1, exp: "Refrain from using emoticons that attempt to convey emotion in formal settings." },
-        { q: "What does 'simultaneous' mean in the context of digital collaboration?", a: ["Happening at different times", "Happening at the exact same time", "Taking turns", "Working offline"], cor: 1, exp: "Simultaneous activity (like co-authoring) happens at the same time." },
-        { q: "Which of the following is NOT a benefit of digital collaboration?", a: ["Increased productivity", "Easier leadership oversight", "Ability to add remote experts", "Guaranteed perfect accuracy of all work"], cor: 3, exp: "Collaboration improves efficiency but does not automatically guarantee work is error-free." },
-        { q: "If a coworker sends a chat message asking a question, but you are in a meeting, what is the best asynchronous response?", a: ["Ignore it forever", "Reply after your meeting: 'I was in a meeting, but here is the answer...'", "Leave the meeting immediately to answer", "Reply in ALL CAPS"], cor: 1, exp: "A delayed, appropriately timed reply is acceptable and respectful." },
-        { q: "What is the difference between OneDrive and SharePoint?", a: ["OneDrive is for video, SharePoint is for text", "OneDrive is typically for personal/individual cloud storage, SharePoint is a central hub for team collaboration", "They are exactly the same", "SharePoint does not use the internet"], cor: 1, exp: "OneDrive is tied to your individual account; SharePoint is a shared team platform." },
-        { q: "Why is 'active attention' important in a video conference?", a: ["So the software doesn't close", "Because participants can see your actions and facial expressions", "To save battery power", "So you can type faster"], cor: 1, exp: "Others can see you, so you must demonstrate you are paying attention." },
-        { q: "What is the primary characteristic of 'Cloud Storage' used in collaboration?", a: ["Files are saved on floppy disks", "Files are stored on remote servers accessed via the internet", "Files are printed immediately", "Files are stored only in RAM"], cor: 1, exp: "Cloud storage keeps files on remote servers, allowing access from anywhere." },
-        { q: "Which tool allows users to create and edit files using a web browser without installing full software?", a: ["Microsoft Windows", "Office Online", "A hard drive", "A graphics card"], cor: 1, exp: "Office Online provides browser-based versions of Word, Excel, etc." },
-        { q: "In a collaborative document, what ensures you don't lose your work if your computer crashes?", a: ["Typing very fast", "AutoSave to a cloud location", "Using a larger monitor", "Printing the document"], cor: 1, exp: "Cloud-based collaboration tools auto-save your progress continuously." },
-        { q: "What is a 'Thread' in Microsoft Teams?", a: ["A string used to fix a computer", "A continuous chain of related chat messages", "A virus", "A document template"], cor: 1, exp: "A thread keeps related messages grouped together." },
-        { q: "If you are upset about a project change, how should you communicate this digitally?", a: ["Type an angry email in ALL CAPS", "Use professional, respectful language to express your concerns", "Spam the team chat with angry emojis", "Delete the shared document"], cor: 1, exp: "Netiquette requires polite behavior and avoiding emotional outbursts ('flaming' or 'shouting')." },
-        { q: "Which of the following is true about digital collaboration leadership?", a: ["Leaders cannot see who made changes", "Leaders have an easier time conducting oversight and quality control", "Leaders must sit next to the employees", "Leaders do not use SharePoint"], cor: 1, exp: "Digital tools provide logs and histories, making oversight easier for leadership." },
-        { q: "What does 'remote' mean in the context of remote employees?", a: ["Employees who use remote controls", "Employees working from a different physical location than the main office", "Employees who do not use computers", "Employees who work slowly"], cor: 1, exp: "Remote employees work from different physical locations (like from home)." },
-        { q: "Why might a school use digital collaboration tools?", a: ["To stop students from communicating", "To allow students to co-author group projects from home", "To break the internet", "To replace all teachers"], cor: 1, exp: "Tools are increasingly used in schools to facilitate group projects and communication." },
-        { q: "What is 'presence' in an app like Microsoft Teams?", a: ["A physical gift", "An indicator showing if a user is online, away, or in a meeting", "A type of video filter", "A document file type"], cor: 1, exp: "Presence shows availability (Synchronous readiness)." },
-        { q: "If you are collaborating on a document and see another person's cursor moving, what is happening?", a: ["Your computer is hacked", "Co-authoring is occurring in real-time", "The mouse is broken", "The document is deleting itself"], cor: 1, exp: "Co-authoring allows you to see others making edits simultaneously." },
-        { q: "What is the best way to handle a misinterpretation in a written digital message?", a: ["Argue via email", "Clarify politely, perhaps offering a synchronous video call to explain the tone", "Ignore the person forever", "Report them to HR immediately"], cor: 1, exp: "Since text lacks tone, polite clarification (often via voice/video) resolves misunderstandings." },
-        { q: "Which of these is NOT a Microsoft 365 collaboration tool?", a: ["Teams", "SharePoint", "OneDrive", "Google Docs"], cor: 3, exp: "Google Docs is a collaboration tool, but it is not part of Microsoft 365." },
-        { q: "How does digital collaboration affect the speed of communication?", a: ["It makes it slower", "It makes it faster and more efficient", "It stops communication completely", "It has no effect"], cor: 1, exp: "Communication is faster through instant messaging and real-time tools." },
-        { q: "In a professional setting, what is the best practice for abbreviations like 'ICYMI' (In case you missed it)?", a: ["Use them in every email", "Avoid them; use full words for clarity and professionalism", "Only use them with the boss", "Make up your own abbreviations"], cor: 1, exp: "Abbreviations are generally not accepted in professional communication." },
-        { q: "What is the main difference between a live video call and an email?", a: ["Video calls are asynchronous; emails are synchronous", "Video calls are synchronous; emails are asynchronous", "There is no difference", "Emails use facial expressions"], cor: 1, exp: "Video calls happen in real-time (sync), while emails have a delay (async)." },
-        { q: "You are the manager of a project. How does SharePoint help you?", a: ["It cooks lunch for the team", "It provides a central site to track documents and contributor updates", "It physically blocks employees from leaving", "It prints documents automatically"], cor: 1, exp: "SharePoint provides a central location for oversight and document management." },
-        { type: "matching", q: "Match Microsoft 365 Tools:", pairs: [{term: "Teams", definition: "Chat and video meetings"}, {term: "SharePoint", definition: "Team sites and document management"}, {term: "OneDrive", definition: "Personal cloud storage"}], exp: "Teams is for communication; SharePoint for team data." },
-        { type: "ordering", q: "Co-authoring Workflow:", items: ["Share link to file", "Grant Edit permission", "Open file simultaneously", "See live changes"], cor: ["Share link to file", "Grant Edit permission", "Open file simultaneously", "See live changes"], exp: "Co-authoring allows real-time teamwork." },
-        { type: "matching", q: "Match Etiquette Concepts:", pairs: [{term: "Synchronous", definition: "Real-time communication"}, {term: "Asynchronous", definition: "Delayed communication"}, {term: "Netiquette", definition: "Online polite code"}], exp: "Timeframes and rules define digital interaction." },
-        { type: "ordering", q: "Conducting a Video Meeting:", items: ["Send invite link", "Admit participants", "Present content", "Record session"], cor: ["Send invite link", "Admit participants", "Present content", "Record session"], exp: "Phases of a successful virtual meeting." },
-        { type: "matching", q: "Match Collaboration Roles:", pairs: [{term: "Owner", definition: "Full control over the group"}, {term: "Member", definition: "Can edit and contribute"}, {term: "Guest", definition: "Limited view-only access"}], exp: "Permissions ensure secure collaboration." },
-        { type: "ordering", q: "Working with Shared Files:", items: ["Navigate to SharePoint", "Locate folder", "Check out file", "Edit and save"], cor: ["Navigate to SharePoint", "Locate folder", "Check out file", "Edit and save"], exp: "Standard document management flow." },
-        { type: "matching", q: "Match Chat Features:", pairs: [{term: "Thread", definition: "Specific topic in a channel"}, {term: "Mention (@)", definition: "Tagging a specific person"}, {term: "Emoji", definition: "Visual emotional indicator"}], exp: "Tools for making chat more efficient." },
-        { type: "ordering", q: "Resolving a Conflict online:", items: ["Identify the issue", "Take it to private chat", "Listen to both sides", "Agree on a solution"], cor: ["Identify the issue", "Take it to private chat", "Listen to both sides", "Agree on a solution"], exp: "Professionalism in collaborative environments." },
-        { type: "matching", q: "Match Project Tools:", pairs: [{term: "Planner", definition: "Assign and track tasks"}, {term: "Whiteboard", definition: "Brainstorming and drawing"}, {term: "Forms", definition: "Surveys and feedback"}], exp: "Specialized tools for team productivity." },
-        { type: "ordering", q: "Steps to Leave a Group:", items: ["Open group settings", "Select 'Leave Group'", "Confirm decision", "Check for confirmation email"], cor: ["Open group settings", "Select 'Leave Group'", "Confirm decision", "Check for confirmation email"], exp: "Process for removing yourself from a collaboration." },
-        { type: "matching", q: "Match File Management:", pairs: [{term: "Sync", definition: "Updating local and cloud files"}, {term: "Conflict", definition: "Two people saving at once"}, {term: "Lock", definition: "Preventing edits by others"}], exp: "Challenges and solutions in shared editing." },
-        { type: "ordering", q: "Sharing a Screen:", items: ["Click Share icon", "Select 'Desktop' or 'App'", "Wait for red border", "Stop sharing when done"], cor: ["Click Share icon", "Select 'Desktop' or 'App'", "Wait for red border", "Stop sharing when done"], exp: "Procedure for visual presentation." },
-        { type: "matching", q: "Match Connection Quality:", pairs: [{term: "Lag", definition: "Delay in audio/video"}, {term: "Bandwidth", definition: "Data capacity of connection"}, {term: "Jitter", definition: "Unstable connection quality"}], exp: "Technical factors affecting collaboration." },
-        { type: "ordering", q: "Giving Feedback on a document:", items: ["Select text", "Click 'New Comment'", "Type feedback", "Tag collaborator"], cor: ["Select text", "Click 'New Comment'", "Type feedback", "Tag collaborator"], exp: "Providing constructive digital input." },
-        { type: "matching", q: "Match Mobile Collaboration:", pairs: [{term: "Push Notifications", definition: "Alerts on phone screen"}, {term: "Mobile App", definition: "Optimized tool for phone"}, {term: "Offline mode", definition: "Working without data"}], exp: "Collaborating on the go." }
+        // --- 1. DIGITAL COLLABORATION CONCEPTS ---
+        {
+            type: "mcq",
+            q: "What is the primary way digital collaboration increases 'Productivity'?",
+            a: ["By making computers run faster", "Through simultaneous activity where multiple team members work on the same project at once", "By decreasing the number of meetings", "By providing free software"],
+            cor: 1,
+            exp: "Simultaneous activity allows work to progress faster than if people worked one after another."
+        },
+        {
+            type: "mcq",
+            q: "How does collaboration improve 'Communication' within a team?",
+            a: ["It requires everyone to use the same phone model", "It uses instant messaging features within tools to make talk faster and more efficient", "It forces people to only use email", "It prevents people from talking in person"],
+            cor: 1,
+            exp: "Collaborative tools often have built-in chat features that streamline team discussion."
+        },
+        {
+            type: "mcq",
+            q: "What is a major benefit of collaboration for 'Leadership'?",
+            a: ["Easier oversight of projects, contributors, and quality control", "The ability to delete team members' personal files", "Faster internet speeds for the boss", "Automated payroll processing"],
+            cor: 0,
+            exp: "Leaders can track progress and ensure quality more easily when all work happens in a shared space."
+        },
+        {
+            type: "mcq",
+            q: "Collaboration allows a team to be 'Scalable'. What does this mean?",
+            a: ["The team can only work on one computer", "The team can add or subtract collaborators based on the expertise needed for a task", "The team members must all be the same height", "The project is printed on a large scale"],
+            cor: 1,
+            exp: "Scalability in collaboration means bringing in experts only when they are needed for specific duties."
+        },
+        {
+            type: "multi",
+            q: "Identify the benefits of digital collaboration: (Select 3)",
+            a: ["Increased productivity", "Faster communication", "Lower hardware costs", "Easier leadership oversight", "Unlimited free storage"],
+            cor: [0, 1, 3],
+            required: 3,
+            exp: "Productivity, communication speed, and oversight are core benefits mentioned in Lesson 6."
+        },
+
+        // --- 2. SYNCHRONOUS VS. ASYNCHRONOUS ---
+        {
+            type: "mcq",
+            q: "What is 'Synchronous' communication?",
+            a: ["Information sent and received with a long delay", "Information sent and received instantly (real-time)", "Communication using only hand signals", "Communication that only happens in writing"],
+            cor: 1,
+            exp: "Synchronous means 'at the same time'—like a phone call or live chat."
+        },
+        {
+            type: "mcq",
+            q: "What is 'Asynchronous' communication?",
+            a: ["Communication where there is a time delay between sending and receiving", "Communication that happens at exactly the same time", "Communication that requires a video camera", "Communication between two computers in the same room"],
+            cor: 0,
+            exp: "Asynchronous means 'not at the same time'—like an email or a forum post."
+        },
+        {
+            type: "categorization",
+            q: "Categorize these methods as Synchronous or Asynchronous:",
+            categories: ["Synchronous (Real-time)", "Asynchronous (Delayed)"],
+            items: [
+                { name: "Instant Messaging", category: "Synchronous (Real-time)" },
+                { name: "Email", category: "Asynchronous (Delayed)" },
+                { name: "Video Conferencing", category: "Synchronous (Real-time)" },
+                { name: "Shared Document Comments", category: "Asynchronous (Delayed)" }
+            ],
+            exp: "Real-time interactions are synchronous; delayed interactions are asynchronous."
+        },
+        {
+            type: "mcq",
+            q: "Which of these is an example of 'Asynchronous' collaboration?",
+            a: ["A live Zoom meeting", "Leaving a comment on a shared file for a teammate to see later", "A face-to-face conversation", "A live phone call"],
+            cor: 1,
+            exp: "Comments on files allow people to work on their own schedule, creating a time delay."
+        },
+        {
+            type: "yesno",
+            q: "Is a phone call considered 'Asynchronous'?",
+            statements: [
+                "Yes, because you have to wait for the person to answer.",
+                "No, it is Synchronous because the conversation happens in real-time.",
+                "Yes, if you leave a voicemail."
+            ],
+            cor: [false, true, true],
+            exp: "The call itself is synchronous, but a voicemail message is asynchronous."
+        },
+
+        // --- 3. COLLABORATION TOOLS (MICROSOFT 365) ---
+        {
+            type: "mcq",
+            q: "What is Microsoft 'SharePoint'?",
+            a: ["A program for editing photos", "A website creation and management platform used for collaboration", "A type of computer mouse", "A social media app for teenagers"],
+            cor: 1,
+            exp: "SharePoint is a powerful platform for teams to store, share, and manage documents."
+        },
+        {
+            type: "mcq",
+            q: "What are 'Office Online' (or Web Apps)?",
+            a: ["Browser-based versions of Word, Excel, and PowerPoint that allow simultaneous editing", "Programs that only work when your computer is turned off", "Games for office workers", "A tool for checking the weather"],
+            cor: 0,
+            exp: "Web apps allow multiple people to edit the same document at the same time through a browser."
+        },
+        {
+            type: "mcq",
+            q: "What is 'Co-authoring'?",
+            a: ["When two people write separate books", "The ability for multiple authors to edit a document simultaneously", "A way to print two copies at once", "A tool that checks for plagiarism"],
+            cor: 1,
+            exp: "Co-authoring is a key feature of cloud tools like Microsoft 365 and Google Workspace."
+        },
+        {
+            type: "matching",
+            q: "Match the Microsoft tool to its primary collaboration use:",
+            pairs: [
+                { term: "Teams", definition: "Hub for teamwork, chat, and video meetings." },
+                { term: "SharePoint", definition: "Platform for creating sites and managing shared files." },
+                { term: "Office Online", definition: "Browser-based editing of documents." }
+            ],
+            exp: "Each tool serves a specific role in the Microsoft 365 ecosystem."
+        },
+        {
+            type: "mcq",
+            q: "Which tool would a remote employee use to participate in a live team meeting?",
+            a: ["SharePoint", "Microsoft Teams", "Windows Explorer", "Calculator"],
+            cor: 1,
+            exp: "Teams is the primary tool for real-time video conferencing and group chat."
+        },
+
+        // --- 4. DIGITAL ETIQUETTE (NETIQUETTE) ---
+        {
+            type: "mcq",
+            q: "What is 'Netiquette'?",
+            a: ["A set of rules for building a network", "The customary code of polite behavior in a digital or professional environment", "A way to catch fish using a net and a computer", "A program that blocks internet ads"],
+            cor: 1,
+            exp: "Netiquette (Network Etiquette) helps ensure digital communication is respectful and professional."
+        },
+        {
+            type: "mcq",
+            q: "In digital communication, what does writing in ALL UPPERCASE letters represent?",
+            a: ["Great importance", "Shouting", "A whisper", "Professionalism"],
+            cor: 1,
+            exp: "All caps are interpreted as shouting and can be seen as aggressive or rude."
+        },
+        {
+            type: "yesno",
+            q: "Is it professional to use 'Abbreviations' and 'Emoticons' in business communications?",
+            statements: [
+                "Yes, it makes you look friendly.",
+                "No, they are generally not accepted in professional or school settings.",
+                "Yes, but only if you use a lot of them."
+            ],
+            cor: [false, true, false],
+            exp: "Professional communication should be clear and avoid slang, emoticons, or text-speak abbreviations."
+        },
+        {
+            type: "mcq",
+            q: "What is an 'Appropriately Timed Reply'?",
+            a: ["Replying exactly 5 seconds after receiving a message", "Sending a response within a reasonable timeframe expected by your organization", "Waiting a week to make the sender feel ignored", "Replying only at 3:00 AM"],
+            cor: 1,
+            exp: "Good netiquette includes responding to questions or requests in a timely manner."
+        },
+        {
+            type: "matching",
+            q: "Match the Netiquette 'Don't' to the reason why:",
+            pairs: [
+                { term: "Using All Caps", definition: "Is interpreted as shouting." },
+                { term: "Using Slang/Abbreviations", definition: "Appears unprofessional in business." },
+                { term: "Delayed Replies", definition: "Slows down team productivity." }
+            ],
+            exp: "Following these rules keeps digital work environments productive and respectful."
+        },
+
+        // --- 5. VISUAL COLLABORATION & ETIQUETTE ---
+        {
+            type: "mcq",
+            q: "Why can 'Visual Collaboration' (Video Calls) be more effective than text?",
+            a: ["It uses less data", "It can display a larger range of emotion, meaning, and intention", "It doesn't require a microphone", "It is always faster"],
+            cor: 1,
+            exp: "Seeing someone's face helps you interpret their tone and intentions more accurately."
+        },
+        {
+            type: "mcq",
+            q: "Which of the following is important during a video meeting?",
+            a: ["Keeping your camera off and sleeping", "Ensuring you are actively paying attention and aware of your facial expressions", "Eating a loud, crunchy snack", "Muting everyone else's microphone"],
+            cor: 1,
+            exp: "Because others can see you, active listening and appropriate facial expressions are essential."
+        },
+        {
+            type: "multi",
+            q: "What should you check before starting a professional video call? (Select 2)",
+            a: ["Your background is appropriate", "Your video game high score", "Your camera and microphone are working", "Your favorite TV show schedule"],
+            cor: [0, 2],
+            required: 2,
+            exp: "A professional environment and working hardware are key for visual collaboration."
+        },
+        {
+            type: "mcq",
+            q: "What should you do if a collaborative message contains a question that requires action?",
+            a: ["Delete the message", "Send an appropriately timed reply", "Wait for someone else to answer", "Ignore it until the next meeting"],
+            cor: 1,
+            exp: "Timely responses are a core requirement of digital etiquette."
+        },
+        {
+            type: "mcq",
+            q: "Who establishes the specific 'Rules and Guidelines' for electronic communications in a workspace?",
+            a: ["The internet service provider", "Your school or organization", "The computer manufacturer", "A random user on social media"],
+            cor: 1,
+            exp: "Always follow the specific policies set by your employer or school."
+        },
+
+        // --- 6. ADVANCED COLLABORATION CONCEPTS ---
+        {
+            type: "mcq",
+            q: "What does 'Simultaneous Editing' mean?",
+            a: ["Editing two different files at the same time", "Multiple users editing the same document at the exact same time", "Printing a file while editing it", "Editing a file on two different monitors"],
+            cor: 1,
+            exp: "Cloud-based tools allow 'real-time' co-authoring where you can see others' changes as they happen."
+        },
+        {
+            type: "mcq",
+            q: "Which of the following is a benefit of working with 'Remote' employees?",
+            a: ["It makes the office louder", "It allows the organization to access expertise from people regardless of their physical location", "It uses more paper", "It prevents teams from using chat"],
+            cor: 1,
+            exp: "Remote collaboration bridges geographical gaps, allowing teams to hire the best talent from anywhere."
+        },
+        {
+            type: "ordering",
+            q: "Order the steps for a successful collaborative session:",
+            items: [
+                "Select the appropriate tool (e.g., Teams or SharePoint).",
+                "Set clear goals and roles for each collaborator.",
+                "Perform simultaneous work or co-authoring.",
+                "Review the project for quality control and oversight."
+            ],
+            cor: [0, 1, 2, 3],
+            exp: "Starting with the right tool and clear goals ensures the work is efficient."
+        },
+        {
+            type: "mcq",
+            q: "In a collaborative tool, what is the 'Chat' feature primarily used for?",
+            a: ["Playing games", "Fast and efficient communication between team members", "Storing large video files", "Replacing the operating system"],
+            cor: 1,
+            exp: "Chat is the synchronous heart of most collaboration platforms."
+        },
+        {
+            type: "yesno",
+            q: "Does 'Visual Collaboration' only refer to video calls?",
+            statements: [
+                "Yes, it only means Zoom or Teams calls.",
+                "No, it can also include shared whiteboards or screen sharing.",
+                "Yes, if you can't see the person, it's not visual."
+            ],
+            cor: [false, true, false],
+            exp: "Visual collaboration includes any tool where you can see shared visuals, like screens or digital boards."
+        },
+
+        // --- 7. RECAP & SCENARIOS ---
+        {
+            type: "mcq",
+            q: "A team needs to work on a budget spreadsheet together from different cities. Which is the best solution?",
+            a: ["Emailing the file back and forth 100 times", "Using a cloud-based spreadsheet with co-authoring enabled", "Mailing a USB drive", "Printing the file and faxing it"],
+            cor: 1,
+            exp: "Cloud-based co-authoring is the most efficient way to collaborate from different locations."
+        },
+        {
+            type: "mcq",
+            q: "If you are unsure of the 'Tone' of a text message from a teammate, what is the best approach?",
+            a: ["Assume they are being mean and get angry", "Ask for clarification or suggest a quick video call to understand the intent", "Ignore the message forever", "Block the teammate"],
+            cor: 1,
+            exp: "Electronic communication is prone to misinterpretation; visual or verbal follow-up can clear up confusion."
+        },
+        {
+            type: "multi",
+            q: "Which features are found in Microsoft Teams? (Select 2)",
+            a: ["Instant Messaging (Chat)", "Video Conferencing", "Hardware Repair Tool", "Automatic Laundry Service"],
+            cor: [0, 1],
+            required: 2,
+            exp: "Teams focuses on chat and meetings for business and education."
+        },
+        {
+            type: "mcq",
+            q: "What is the result of using 'Inclusive' and polite language in a group project?",
+            a: ["The project takes longer", "Better teamwork, efficiency, and a positive environment", "It makes no difference", "The software will crash"],
+            cor: 1,
+            exp: "Respectful communication (Netiquette) is the foundation of successful teamwork."
+        },
+        {
+            type: "mcq",
+            q: "Which behavior is a 'Netiquette' violation?",
+            a: ["Replying to an email within 2 hours", "Sending a message entirely in ALL CAPS", "Citing your sources in a shared document", "Asking a question in a chat"],
+            cor: 1,
+            exp: "All caps is considered 'shouting' and is a common netiquette violation."
+        },
+        {
+            type: "mcq",
+            q: "Why is 'Quality Control' easier in a digital collaborative environment?",
+            a: ["Because the computer fixes all mistakes", "Leaders can easily see all versions and contributors in one place", "Because only one person can edit at a time", "It isn't easier"],
+            cor: 1,
+            exp: "Oversight is improved when the history of changes and contributions is visible to the leader."
+        },
+        {
+            type: "mcq",
+            q: "A 'Wiki' is a type of collaborative tool. What is its main feature?",
+            a: ["It is a private diary", "It allows users to add, edit, or rearrange content on a website together", "It is only for watching videos", "It is a type of search engine"],
+            cor: 1,
+            exp: "Wikis (like Wikipedia) are designed for community-driven information management."
+        },
+        {
+            type: "matching",
+            q: "Match the term to its definition:",
+            pairs: [
+                { term: "Collaborator", definition: "A person working with others on a project." },
+                { term: "Real-time", definition: "Happening instantly, without delay." },
+                { term: "Misinterpretation", definition: "Understanding a message in a way the sender didn't intend." }
+            ],
+            exp: "Understanding these terms is vital for digital teamwork."
+        },
+        {
+            type: "mcq",
+            q: "If you are in a video call and you aren't speaking, what is a good practice?",
+            a: ["Mute your microphone to prevent background noise", "Start playing loud music", "Leave the room without saying anything", "Turn your camera toward the ceiling"],
+            cor: 0,
+            exp: "Muting when silent is part of good meeting netiquette."
+        },
+        {
+            type: "mcq",
+            q: "Which of these makes a team 'Efficient'?",
+            a: ["Everyone doing the same task at once", "Using tools that allow for faster communication and simultaneous work", "Only communicating through paper mail", "Having no leader"],
+            cor: 1,
+            exp: "Efficiency comes from the speed and organization provided by collaboration tools."
+        },
+        {
+            type: "multi",
+            q: "What are common features of 'Office Online'? (Select 2)",
+            a: ["It requires no internet to work", "It allows co-authoring", "It works through a web browser", "It is only for playing videos"],
+            cor: [1, 2],
+            required: 2,
+            exp: "Office Online is browser-based and built for co-authoring."
+        },
+        {
+            type: "mcq",
+            q: "What should you avoid in a 'Visual Collaboration' environment?",
+            a: ["Paying attention to the speaker", "Making rude facial expressions or acting distracted", "Using a professional background", "Having a clear microphone"],
+            cor: 1,
+            exp: "Since people can see you, distracting or rude behavior is unprofessional."
+        },
+        {
+            type: "mcq",
+            q: "What is 'Synchronous editing' usually called in Microsoft Office?",
+            a: ["Double-saving", "Co-authoring", "Multi-typing", "Auto-printing"],
+            cor: 1,
+            exp: "Co-authoring is the official term for multiple people editing at once."
+        },
+        {
+            type: "yesno",
+            q: "Is 'Digital Etiquette' different from 'Regular Etiquette'?",
+            statements: [
+                "Yes, because you don't have to be polite online.",
+                "No, it is the same principle of respect, just applied to digital tools.",
+                "Yes, there are specific rules like 'No All Caps' that only apply online."
+            ],
+            cor: [false, true, true],
+            exp: "While the principles of respect are the same, digital communication has unique rules (like all caps or emoji use)."
+        },
+        {
+            type: "mcq",
+            q: "Why is an 'Asynchronous' tool useful for a global team?",
+            a: ["Because it requires everyone to wake up at 3 AM", "Because it allows people in different time zones to contribute when they are awake", "Because it is faster than synchronous", "Because it uses no electricity"],
+            cor: 1,
+            exp: "Delayed communication (like email) is perfect for teams spread across the world."
+        },
+        {
+            type: "mcq",
+            q: "What does 'Netiquette' suggest regarding emoticons in a formal essay?",
+            a: ["Use at least five per page", "Only use them in the title", "Avoid using them as they are generally not accepted in formal writing", "Use them to replace words"],
+            cor: 2,
+            exp: "Formal and professional writing should remain clear and free of emoticons."
+        },
+        {
+            type: "matching",
+            q: "Match the activity to the communication type:",
+            pairs: [
+                { term: "Live Zoom Call", definition: "Synchronous" },
+                { term: "Posting on a Blog", definition: "Asynchronous" },
+                { term: "Microsoft Teams Chat", definition: "Synchronous" }
+            ],
+            exp: "Identify whether the interaction is instant or delayed."
+        },
+        {
+            type: "mcq",
+            q: "In collaboration, what is 'Simultaneous activity'?",
+            a: ["Working on tasks at the same time to increase productivity", "Working on tasks one by one in a long line", "Two computers connected by a cable", "A type of physical exercise"],
+            cor: 0,
+            exp: "Working at the same time is the key to collaborative speed."
+        },
+        {
+            type: "mcq",
+            q: "What is the best way to ensure everyone in a collaboration knows what to do?",
+            a: ["Hope they figure it out", "Assign clear roles and responsibilities through a collaboration hub", "Send a message in all caps", "Only talk to one person"],
+            cor: 1,
+            exp: "Organization and role assignment are key to collaborative success."
+        },
+        {
+            type: "multi",
+            q: "What are common ways to collaborate 'Visually'? (Select 2)",
+            a: ["Screen sharing during a call", "Video conferencing", "Writing a letter by hand", "Using a physical calculator"],
+            cor: [0, 1],
+            required: 2,
+            exp: "Video calls and screen sharing provide visual context to digital work."
+        },
+        {
+            type: "mcq",
+            q: "Which term describes a 'Customary code of polite behavior'?",
+            a: ["Software", "Etiquette", "Protocol", "Algorithm"],
+            cor: 1,
+            exp: "Etiquette is the standard for polite and professional behavior."
+        },
+        {
+            type: "mcq",
+            q: "What happens to efficiency when team members 'add expertise' as needed?",
+            a: ["It decreases", "It increases because specialized duties are met by experts", "It stays the same", "The team stops working"],
+            cor: 1,
+            exp: "Bringing in experts for specific parts of a project makes the whole process better."
+        },
+        {
+            type: "mcq",
+            q: "When communicating digitally, 'Open to Misinterpretation' means:",
+            a: ["The file won't open", "The reader might understand a different meaning or emotion than intended", "The computer is broken", "The message was deleted"],
+            cor: 1,
+            exp: "Without voice or facial cues, text can easily be misunderstood."
+        },
+        {
+            type: "mcq",
+            q: "Which Microsoft 365 tool is best for 'website creation' for a team?",
+            a: ["Excel", "SharePoint", "Word", "Teams"],
+            cor: 1,
+            exp: "SharePoint is primarily a platform for creating and managing team websites."
+        },
+        {
+            type: "mcq",
+            q: "What is the best title for a Lesson 6 summary?",
+            a: ["How to build a printer", "Digital Collaboration and Netiquette", "History of the Internet", "Basics of Microsoft Word"],
+            cor: 1,
+            exp: "Lesson 6 is all about how teams work together using digital tools and respectful behavior."
+        }
     ],
     l1_lesson7: [
-        { q: "What is a 'Hacker'?", a: ["A computer repair technician", "A person who tries to gain unauthorized access to computer systems", "A type of antivirus software", "A network administrator"], cor: 1, exp: "Hackers employ methods to gain unauthorized access to systems." },
-        { q: "What is a 'Virus'?", a: ["A hardware malfunction", "A malicious program designed to take control of system operations or destroy data", "A type of firewall", "A secure network connection"], cor: 1, exp: "Viruses are human-made malicious programs that damage data and spread to other users." },
-        { q: "How are computer viruses typically transferred?", a: ["Only by hackers typing on your keyboard", "Via email attachments, file downloads, or infected flash drives", "Through clean, secure networks", "By turning the computer on and off too fast"], cor: 1, exp: "Viruses spread through shared files, emails, and removable media." },
-        { q: "What is a 'Worm'?", a: ["A physical bug in the motherboard", "A self-replicating program that consumes system and network resources automatically", "A helpful program that cleans your hard drive", "A type of password"], cor: 1, exp: "Worms spread automatically across networks by replicating themselves." },
-        { q: "How does a 'Trojan' infect a computer?", a: ["It breaks the physical screen", "It hides inside seemingly harmless applications, like games, and is installed when the user runs the app", "It replicates itself across the network", "It is sent via text message only"], cor: 1, exp: "Trojans trick users into installing them by hiding inside legitimate-looking software." },
-        { q: "What is the primary purpose of a Trojan?", a: ["To speed up the computer", "To allow a hacker remote access to steal info or install other malware", "To clean viruses", "To back up files"], cor: 1, exp: "Once installed, Trojans create a 'backdoor' for hackers to control the system." },
-        { q: "What does 'Spyware' do?", a: ["Fixes spelling errors", "Secretly gathers personal or private information without your consent", "Displays harmless ads", "Creates a secure network"], cor: 1, exp: "Spyware monitors your activity, reads cookies, and tracks keystrokes secretly." },
-        { q: "What is 'Adware'?", a: ["Software that blocks advertisements", "Software that automatically displays or downloads unwanted advertisements", "A program used to create ads", "A type of computer monitor"], cor: 1, exp: "Adware generates revenue for its creator by forcing advertisements on the user." },
-        { q: "What is a 'Cookie' in computing?", a: ["A virus that deletes files", "A small text file placed on your computer by a web server to store preferences and login info", "A piece of hardware", "A type of password"], cor: 1, exp: "Cookies remember your preferences, like keeping you signed into a website." },
-        { q: "What is a 'First-party cookie'?", a: ["A cookie from a hacker", "A cookie that comes from the website you are currently viewing", "A cookie that is shared with everyone", "A cookie that deletes itself immediately"], cor: 1, exp: "First-party cookies are created by the site you are visiting." },
-        { q: "What is a 'Third-party cookie'?", a: ["A cookie from a site you are currently visiting", "A cookie that comes from a website other than the one you are currently viewing (often advertisers)", "A virus", "A secure password"], cor: 1, exp: "Third-party cookies often track your browsing habits across different websites." },
-        { q: "What happens to a 'Session cookie'?", a: ["It lasts forever", "It is stored only in temporary memory and is erased when you close the browser", "It steals your password", "It blocks viruses"], cor: 1, exp: "Session cookies expire as soon as you close your browsing session." },
-        { q: "Why are public Wi-Fi hotspots considered risky?", a: ["They are too slow", "No one can guarantee the network is virus-free or free of hackers waiting to exploit systems", "They use too much battery", "They are illegal"], cor: 1, exp: "Public networks lack the strict security measures of private, business networks." },
-        { q: "What is an 'Ad-hoc' network?", a: ["A secure business network", "A direct connection between devices without using a central access point or router", "A type of internet cable", "A firewall feature"], cor: 1, exp: "Ad-hoc networks connect devices directly and are often dangerous and unsecure." },
-        { q: "What is 'Social Engineering'?", a: ["Building social media networks", "Tricking users into giving out passwords or confidential information by posing as a trusted person", "Programming robots", "Fixing computer hardware"], cor: 1, exp: "Social engineering relies on human error and manipulation, not technical hacking." },
-        { q: "Which is an example of Social Engineering?", a: ["A brute-force password attack", "A stranger confusing a security guard to gain physical access to a building", "A virus destroying a hard drive", "A computer crashing from overheating"], cor: 1, exp: "Manipulating human psychology to bypass security is social engineering." },
-        { q: "What is 'Phishing'?", a: ["A water sport", "Trying to gather sensitive information by sending fake messages pretending to be a trustworthy entity", "Deleting old emails", "Installing a webcam"], cor: 1, exp: "Phishing emails instruct you to click a fake link to steal your login credentials." },
-        { q: "How can you protect yourself from Phishing?", a: ["Click all links to see if they are real", "Avoid clicking links in unexpected emails and call the organization directly instead", "Reply to the email with your password", "Turn off your monitor"], cor: 1, exp: "Never click unexpected links; verify the request directly with the company." },
-        { q: "What does 'VPN' stand for?", a: ["Very Private Network", "Visual Processing Node", "Virtual Private Network", "Video Player Network"], cor: 2, exp: "A VPN provides a secure, encrypted connection over a public network." },
-        { q: "What two things must a VPN provide?", a: ["Speed and Color", "Authentication and Encryption", "Music and Video", "Ad-blocking and Browsing"], cor: 1, exp: "VPNs authenticate users and encrypt the data being transferred." },
-        { q: "What is 'Encryption'?", a: ["Deleting a file permanently", "Converting data into an unreadable format that requires a decryption key to read", "Translating a website to a new language", "Compressing a file to save space"], cor: 1, exp: "Encryption protects data from being read by unauthorized spies or hackers." },
-        { q: "Why do remote employees use a VPN?", a: ["To play video games", "To establish a secure, private connection to the company network from outside the premises", "To make their computer faster", "To bypass company rules"], cor: 1, exp: "A VPN safely tunnels their data through the public internet to the corporate network." },
-        { q: "What is the recommended minimum length for a secure password?", a: ["4 characters", "6 characters (with 15 being the most secure)", "20 characters", "1 character"], cor: 1, exp: "A minimum of 6 is required, but 15 mixed characters is considered highly secure." },
-        { q: "Which of these makes a password strong?", a: ["Using your pet's name", "Using the word 'password'", "Including a mixture of numbers, letters, symbols, and capital letters", "Using your birthdate"], cor: 2, exp: "Complexity (mixing character types) prevents hackers from guessing your password." },
-        { q: "If you accidentally share your password with someone, what should you do immediately?", a: ["Nothing", "Change it immediately", "Delete your account", "Turn off your computer"], cor: 1, exp: "Changing a compromised password immediately secures the account." },
-        { q: "What is the keyboard shortcut to quickly lock a Windows computer?", a: ["Ctrl + L", "Windows Key + L", "Alt + F4", "Esc"], cor: 1, exp: "Windows Key + L locks the screen to protect your data while you step away." },
-        { q: "What is the browser 'Cache'?", a: ["A virus", "A folder on the hard drive that stores previously downloaded web files to speed up page loading", "A type of password", "A search engine"], cor: 1, exp: "The cache improves performance by loading local copies of previously visited sites." },
-        { q: "Why might you want to clear your browsing history and cache?", a: ["To make the computer heavier", "To free up disk space, speed up the browser, and protect your privacy on a shared PC", "To change your password", "To reinstall Windows"], cor: 1, exp: "Clearing history removes your private data from public or shared machines." },
-        { q: "What is 'Private Browsing' (Incognito/InPrivate)?", a: ["Browsing the web without saving history, cookies, or cache data", "Browsing with the monitor turned off", "A paid internet service", "A way to browse faster"], cor: 0, exp: "Incognito mode leaves no trace of your session on the local computer once closed." },
-        { q: "What is 'Cyberbullying'?", a: ["Playing games online", "Using technology to constantly, deliberately, and maliciously hurt or harass someone", "Sending a work email", "A computer glitch"], cor: 1, exp: "Cyberbullying involves hate speech, rumors, threats, and harassment via digital tools." },
-        { q: "What should you do if you are the victim of cyberbullying?", a: ["Respond with matched aggression", "Believe what the bully says", "Keep a hard copy record of the messages and report it to a trusted adult or authority", "Delete your internet"], cor: 2, exp: "Recording the incident and reporting it is the safest and most effective response." },
-        { q: "What is 'Cyberstalking'?", a: ["Looking at a friend's public photo", "Repeatedly communicating or watching someone online without their permission", "Reading the news", "A type of marketing"], cor: 1, exp: "Stalking is a serious form of harassment that should be recorded and reported to police." },
-        { q: "What is digital 'Blackmail'?", a: ["A type of dark email theme", "Threatening to make private information public unless compensation is paid", "Sending spam emails", "A computer virus"], cor: 1, exp: "Blackmail is extortion and a serious crime that should be reported to authorities." },
-        { q: "What does 'RSI' stand for in computer health?", a: ["Random System Infection", "Repetitive Stress Injury", "Remote Server Integration", "Real System Interface"], cor: 1, exp: "RSIs occur gradually from uninterrupted, repetitive, or awkward motions (like typing)." },
-        { q: "What parts of the body are most commonly affected by RSIs?", a: ["Feet and toes", "Hands, wrists, and arms", "Ears and nose", "Stomach"], cor: 1, exp: "RSIs like Carpal Tunnel Syndrome primarily affect the hands and wrists." },
-        { q: "What does 'Ergonomics' refer to in computing?", a: ["The study of computer viruses", "Designing equipment and workspaces to maximize comfort and reduce physical strain", "The speed of a processor", "A type of software"], cor: 1, exp: "Ergonomic furniture and practices prevent bodily injuries during computer use." },
-        { q: "How should your monitor be positioned to prevent neck strain?", a: ["Directly on the desk looking down", "Tilted up about 10 degrees, with the top of the monitor 2-3 inches above your eyes", "To the far left of your desk", "Higher than you can reach"], cor: 1, exp: "Proper monitor height and tilt prevent you from craning your neck." },
-        { q: "How far away should your monitor be from your eyes to prevent eyestrain?", a: ["5 to 10 inches", "24 to 30 inches", "50 to 60 inches", "It doesn't matter"], cor: 1, exp: "An arm's length (24-30 inches) reduces eye fatigue." },
-        { q: "How should your feet be positioned when sitting at a computer?", a: ["Crossed under the chair", "Dangling freely", "Flat on the floor (or on a footrest)", "Resting on the desk"], cor: 2, exp: "Feet should be flat on the floor to maintain proper posture and blood flow." },
-        { q: "What is a recommended practice to avoid physical strain when using a computer?", a: ["Work for 8 hours without stopping", "Take regular breaks to rest your eyes and stretch", "Type as hard as you can", "Sit on the floor"], cor: 1, exp: "Taking regular breaks prevents both eye strain and repetitive stress injuries." },
-        { q: "How should your wrists be positioned while typing?", a: ["Bent upwards sharply", "Bent downwards sharply", "Straight and flat, with arms close to your body", "Resting heavily on the desk edge"], cor: 2, exp: "Straight, neutral wrists prevent nerve compression." },
-        { q: "What is a padded wrist support used for?", a: ["To type faster", "To rest your wrists ON while you are NOT typing", "To rest your wrists ON while you ARE typing", "To hold your mouse"], cor: 1, exp: "Wrist rests are for pausing; resting on them while typing restricts movement and causes strain." },
-        { q: "What should you do to avoid screen glare?", a: ["Turn the monitor brightness to maximum", "Use natural light with blinds to block reflection, or use an appropriate lamp", "Wear sunglasses", "Turn off the monitor"], cor: 1, exp: "Adjusting ambient light prevents glare, which causes severe eyestrain and headaches." },
-        { q: "If you feel strain while using a traditional mouse, what should you do?", a: ["Keep using it until it stops hurting", "Switch to a trackball, larger mouse, or a touch-based device", "Use your feet", "Wrap your hand in a bandage"], cor: 1, exp: "Changing the type of input device alters the physical motion, relieving the strained muscles." },
-        { q: "When using a public computer, what must you ALWAYS do before leaving?", a: ["Turn off the monitor only", "Log out of all online accounts and log out of the operating system", "Leave your email open for the next person", "Delete the Windows folder"], cor: 1, exp: "Logging out ensures no one else can access your private data or accounts." },
-        { q: "What is a consequence of physical strain/pain from poor ergonomics?", a: ["Faster typing speeds", "Reduction in mental alertness, low productivity, and work errors", "Better vision", "Upgraded computer software"], cor: 1, exp: "Physical pain leads directly to decreased mental performance and increased errors." },
-        { q: "What is a 'Standing Desk'?", a: ["A desk that cannot be moved", "An ergonomic option that allows you to work while standing to reduce back strain from sitting", "A desk for the monitor only", "A desk that holds your printer"], cor: 1, exp: "Standing desks promote better circulation and relieve lower back pressure." },
-        { q: "If you download freeware to monitor for spyware, what built-in tool does Windows already provide for this?", a: ["Windows Calculator", "Windows Defender", "Windows Media Player", "Windows Explorer"], cor: 1, exp: "Windows Defender is the built-in anti-malware and anti-spyware tool for Windows." },
-        { q: "Which group of people are typical targets for Social Engineering?", a: ["Only CEOs", "Anyone with access to information about systems they do not use (receptionists, guards, standard employees)", "Only hackers", "Only IT staff"], cor: 1, exp: "Social engineers target standard employees or guards because they often want to be helpful." },
-        { q: "What is a 'Pirated' software?", a: ["Software related to boats", "Illegally copied and distributed software, which often contains Trojans or malware", "Open-source software", "A free trial"], cor: 1, exp: "Pirated software is a massive security risk because hackers hide malware inside the illegal files." },
-        { q: "Why might a website use 'Cookies' in a beneficial way?", a: ["To infect your computer", "To remember your site preferences or keep items in a shopping cart", "To delete your files", "To spy on your webcam"], cor: 1, exp: "Not all cookies are bad; many improve user experience by remembering session data." },
-        { q: "What does 'Decryption' mean?", a: ["Deleting a file", "Converting encrypted (unreadable) data back into a readable format using a key", "Hiding a file", "Sending an email"], cor: 1, exp: "Decryption is the reverse process of encryption." },
-        { q: "Where should you position physical documents you are typing from?", a: ["Flat on the desk next to the keyboard", "In a document holder in line with the monitor", "On your lap", "Behind the monitor"], cor: 1, exp: "A document holder at eye level prevents neck strain from looking down repeatedly." },
-        { q: "True or False: A virus can erase the contents of an entire hard disk.", a: ["True", "False"], cor: 0, exp: "True. Malicious viruses can be programmed to completely wipe data from a drive." },
-        { q: "What is 'Authentication' in network security?", a: ["Confirming the identity of a user or computer system (e.g., using a password)", "Scrambling data", "Blocking ads", "A type of virus"], cor: 0, exp: "Authentication proves you are who you say you are." },
-        { q: "Why should you avoid using names of people close to you as a password?", a: ["It is illegal", "They are too easy for hackers or acquaintances to guess", "It breaks the computer", "They are too long"], cor: 1, exp: "Personal names, birthdates, and addresses are the first things a hacker will guess." },
-        { q: "If you work on a laptop on your lap, what is recommended?", a: ["Slouch down to see the screen", "Use a sturdy tray or lap desk to support it and maintain posture", "Put it directly on your skin", "Type with one hand"], cor: 1, exp: "A tray provides a stable, flat surface to help maintain ergonomic posture." },
-        { q: "Which tool automatically checks your history and allows you to clear 'Cookies and other site data'?", a: ["Task Manager", "The 'Clear Browsing Data' menu in your web browser settings", "File Explorer", "Command Prompt"], cor: 1, exp: "All major browsers have a 'Clear Browsing Data' menu to manage history and cookies." },
-        { q: "What is a 'Keylogger'?", a: ["A type of keyboard", "A form of spyware that records every keystroke you make to steal passwords", "A person who types fast", "A music program"], cor: 1, exp: "Keyloggers are malicious programs designed to steal login credentials as you type them." },
-        { q: "If you receive an email that looks like it's from your bank asking you to 'Click here to update your password,' this is likely an example of:", a: ["A helpful reminder", "Phishing", "Adware", "A VPN"], cor: 1, exp: "Banks will never email you a link demanding you update your password." },
-        { q: "Why must domain network users (like in a school or business) change their passwords at regular intervals?", a: ["To test the keyboard", "To prevent unauthorized access if an old password was compromised", "To delete old files", "To confuse the user"], cor: 1, exp: "Regularly changing passwords is a standard IT policy to mitigate security breaches." },
-        { q: "What is 'Hate Speech' in the context of cyberbullying?", a: ["Complaining about a movie", "Abusive language expressing prejudice against a particular group", "Sending spam emails", "Using a virus"], cor: 1, exp: "Hate speech is a severe form of cyberbullying and harassment." },
-        { q: "What does 'Telecommuting' mean?", a: ["Watching TV", "Working from a remote location (like home) using the internet to connect to the office", "Driving to work", "Using a public computer"], cor: 1, exp: "Telecommuters rely heavily on VPNs to work securely from remote locations." },
-        { q: "What is a 'VPN Client'?", a: ["A person buying a VPN", "The software installed on a remote device that opens the connection to the VPN server", "A type of virus", "The company server"], cor: 1, exp: "The client is the app on your computer that creates the secure tunnel." },
-        { q: "If you are setting up a home workspace, how should your forearms be positioned?", a: ["Reaching up high", "Parallel to the floor", "Pointing down at the floor", "Crossed over your chest"], cor: 1, exp: "Forearms parallel to the floor prevent strain on the elbows and shoulders." },
-        { q: "What is the purpose of 'Incognito' or 'InPrivate' mode?", a: ["To hide from the government", "To surf the web without the browser saving your history or cookies locally", "To make internet free", "To bypass a firewall"], cor: 1, exp: "Private browsing leaves no local footprint on the computer you are using." },
-        { q: "What should you do if an unfamiliar website asks you to download a 'plugin' to view a video?", a: ["Download it immediately", "Decline it, as it could be a Trojan or Malware", "Send it to a friend", "Turn off your antivirus"], cor: 1, exp: "Fake plugins are a common method for delivering Trojans and spyware." },
-        { q: "What does 'Ctrl + Alt + Delete' do on a domain network?", a: ["Erases the hard drive", "Provides a secure menu to lock the PC, switch users, or change a password", "Restarts the router", "Clears the cache"], cor: 1, exp: "Ctrl+Alt+Del accesses the Windows Security screen." },
-        { q: "True or False: Cyberbullying can have serious mental health consequences for the victim.", a: ["True", "False"], cor: 0, exp: "True. Cyberbullying is incredibly serious and can lead to severe mental illness." },
-        { q: "How can Adware affect your computer's performance?", a: ["It makes the screen brighter", "It consumes memory resources and network bandwidth, slowing the system down", "It deletes your files", "It upgrades your OS"], cor: 1, exp: "Adware and spyware run in the background, consuming valuable system resources." },
-        { q: "What is a 'Network Administrator'?", a: ["A type of router", "An IT professional responsible for securing and maintaining a company/school network", "A hacker", "A website designer"], cor: 1, exp: "Administrators manage firewalls, antivirus policies, and VPN access." },
-        { q: "What does 'unauthorized access' mean?", a: ["Logging in with your own password", "Gaining entry to a computer system or network without permission", "Forgetting your password", "Using a public computer"], cor: 1, exp: "Hackers seek unauthorized access to steal or destroy data." },
-        { q: "What does a 'Self-Replicating' program do?", a: ["It deletes itself", "It automatically makes copies of itself to spread to other computers", "It fixes the system", "It creates backups"], cor: 1, exp: "Worms are self-replicating malware." },
-        { q: "If you feel threatened by online stalking, what should you do?", a: ["Nothing", "Record the incidents and report them to the police", "Delete the internet", "Threaten them back"], cor: 1, exp: "Stalking is a crime; record evidence and involve law enforcement." },
-        { q: "What does an 'Ergonomic Keyboard' do?", a: ["Types for you", "Allows your hands to rest in a more natural, angled position while typing", "Glows in the dark", "Prevents viruses"], cor: 1, exp: "Ergonomic keyboards are split or angled to prevent wrist strain." },
-        { type: "matching", q: "Match Security Threats:", pairs: [{term: "Virus", definition: "Damages or destroys data"}, {term: "Worm", definition: "Spreads across networks automatically"}, {term: "Trojan", definition: "Hides inside fake apps"}], exp: "Viruses damage; worms spread; Trojans trick." },
-        { type: "ordering", q: "Ergonomics (Bottom to Top):", items: ["Feet flat on floor", "Thighs parallel to floor", "Wrists straight", "Monitor at eye level"], cor: ["Feet flat on floor", "Thighs parallel to floor", "Wrists straight", "Monitor at eye level"], exp: "Ergonomics starts with body support from the ground up." },
-        { type: "matching", q: "Match Defense Tools:", pairs: [{term: "Firewall", definition: "Blocks unauthorized network access"}, {term: "Antivirus", definition: "Scans for malicious code"}, {term: "VPN", definition: "Encrypts your internet connection"}], exp: "Firewalls are gatekeepers; Antivirus is an internal scanner; VPNs secure the path." },
-        { type: "ordering", q: "Creating a Secure Password:", items: ["Choose a long phrase", "Add numbers", "Add special characters", "Avoid personal info"], cor: ["Choose a long phrase", "Add numbers", "Add special characters", "Avoid personal info"], exp: "Method for building high-entropy passwords." },
-        { type: "matching", q: "Match Health Issues:", pairs: [{term: "Eyestrain", definition: "Caused by blue light/glare"}, {term: "RSI", definition: "Caused by repetitive motion"}, {term: "Sedentary risk", definition: "Caused by sitting too long"}], exp: "Physical risks of excessive technology use." },
-        { type: "ordering", q: "Steps to Secure a Device:", items: ["Apply OS updates", "Enable Lock Screen", "Install Antivirus", "Set up Remote Wipe"], cor: ["Apply OS updates", "Enable Lock Screen", "Install Antivirus", "Set up Remote Wipe"], exp: "Layered defense strategy." },
-        { type: "matching", q: "Match Social Engineering:", pairs: [{term: "Phishing", definition: "Fake emails for info"}, {term: "Smishing", definition: "Fake text messages"}, {term: "Vishing", definition: "Fake phone calls"}], exp: "Psychological manipulation to steal data." },
-        { type: "ordering", q: "Reacting to a Breach:", items: ["Change passwords", "Notify banks", "Check credit report", "Enable 2FA"], cor: ["Change passwords", "Notify banks", "Check credit report", "Enable 2FA"], exp: "Immediate recovery steps." },
-        { type: "matching", q: "Match Physical Security:", pairs: [{term: "Cable Lock", definition: "Secures laptop to desk"}, {term: "Biometrics", definition: "Uses body for access"}, {term: "Privacy Screen", definition: "Blocks side-viewing of monitor"}], exp: "Protecting the physical hardware." },
-        { type: "ordering", q: "Setting up 2FA:", items: ["Enter password", "Select 2FA option", "Scan QR code", "Enter backup code"], cor: ["Enter password", "Select 2FA option", "Scan QR code", "Enter backup code"], exp: "Process for adding an extra security layer." },
-        { type: "matching", q: "Match Data Privacy Laws:", pairs: [{term: "GDPR", definition: "European data protection"}, {term: "COPPA", definition: "Children's online privacy"}, {term: "FERPA", definition: "Student record privacy"}], exp: "Legal frameworks for data safety." },
-        { type: "ordering", q: "Clearing Browser Data:", items: ["Open Settings", "Select 'Privacy & Security'", "Click 'Clear browsing data'", "Select 'All Time'"], cor: ["Open Settings", "Select 'Privacy & Security'", "Click 'Clear browsing data'", "Select 'All Time'"], exp: "Standard privacy maintenance." },
-        { type: "matching", q: "Match Secure Web Signs:", pairs: [{term: "HTTPS", definition: "Secure encrypted protocol"}, {term: "Padlock Icon", definition: "Indicates active encryption"}, {term: "Warning Page", definition: "Browser alert for bad sites"}], exp: "Visual cues for safe browsing." },
-        { type: "ordering", q: "Disposing of a Device:", items: ["Back up data", "Sign out of accounts", "Factory reset", "Recycle at certified center"], cor: ["Back up data", "Sign out of accounts", "Factory reset", "Recycle at certified center"], exp: "Safe way to retire old technology." },
-        { type: "matching", q: "Match Backup Strategy:", pairs: [{term: "Full Backup", definition: "Copies every file"}, {term: "Incremental", definition: "Only copies new changes"}, {term: "Off-site", definition: "Stored in a different building"}], exp: "Ensuring data can be recovered after failure." }
+        // --- 1. DIGITAL SECURITY THREATS ---
+        {
+            type: "mcq",
+            q: "What is a 'Virus' in the context of computing?",
+            a: ["A biological illness that affects the user", "A malicious program designed to take control of system operations or destroy data", "A hardware part that helps the computer run faster", "An automated update from the manufacturer"],
+            cor: 1,
+            exp: "Viruses are human-made malicious programs that run without the user's consent."
+        },
+        {
+            type: "mcq",
+            q: "How does a 'Worm' differ from a standard virus?",
+            a: ["It only affects the monitor", "It is a self-replicating program that automatically spreads from one computer to another over a network", "It requires the user to click a link to spread", "It only targets printers"],
+            cor: 1,
+            exp: "Worms are unique because they automatically spread and consume system resources without human intervention."
+        },
+        {
+            type: "mcq",
+            q: "What is a 'Trojan Horse'?",
+            a: ["A program that appears useful but contains malicious code to provide unauthorized access", "A type of high-speed gaming computer", "A virus that only works on Apple computers", "A physical lock for a laptop"],
+            cor: 0,
+            exp: "Trojans 'hide' inside seemingly innocent files to trick users into installing them."
+        },
+        {
+            type: "mcq",
+            q: "What is the primary goal of 'Spyware'?",
+            a: ["To fix broken files", "To secretly collect information about a user's activities and send it to a third party", "To increase the brightness of the screen", "To speed up the internet"],
+            cor: 1,
+            exp: "Spyware monitors your behavior, often to steal passwords or track your browsing habits."
+        },
+        {
+            type: "mcq",
+            q: "What does 'Ransomware' do to a victim's files?",
+            a: ["It deletes them permanently", "It encrypts them and demands payment for the decryption key", "It moves them to the cloud", "It prints them automatically"],
+            cor: 1,
+            exp: "Ransomware holds your data 'hostage' until a ransom is paid."
+        },
+
+        // --- 2. IDENTITY THEFT & PHISHING ---
+        {
+            type: "mcq",
+            q: "What is 'Phishing'?",
+            a: ["Searching for files on a hard drive", "A fraudulent attempt to obtain sensitive info by disguising as a trustworthy entity in an email", "A way to connect to a public Wi-Fi", "The process of updating your operating system"],
+            cor: 1,
+            exp: "Phishing emails often look like they come from banks or social media sites to steal logins."
+        },
+        {
+            type: "mcq",
+            q: "Which of the following is a sign of a Phishing email?",
+            a: ["Correct spelling and professional tone", "Urgent or threatening language and suspicious links", "The email comes from your own boss", "The email contains no attachments"],
+            cor: 1,
+            exp: "Phishing often creates a 'sense of urgency' to make you act without thinking."
+        },
+        {
+            type: "mcq",
+            q: "What is 'Identity Theft'?",
+            a: ["Losing your physical ID card", "When someone uses your personal information to commit fraud or other crimes", "Changing your name legally", "Creating a second social media account"],
+            cor: 1,
+            exp: "Identity theft involves using someone's stolen data to impersonate them for financial gain."
+        },
+        {
+            type: "multi",
+            q: "Which items are highly valuable to identity thieves? (Select 2)",
+            a: ["Favorite color", "Social Security Number", "Credit card details", "Operating system version"],
+            cor: [1, 2],
+            required: 2,
+            exp: "Financial details and government IDs are the primary targets for identity theft."
+        },
+
+        // --- 3. PROTECTING DEVICES AND CONTENT ---
+        {
+            type: "mcq",
+            q: "What is a 'Firewall'?",
+            a: ["A physical wall that protects the server room from fire", "A security system that monitors and controls incoming and outgoing network traffic", "A program that makes the internet faster", "A type of antivirus software"],
+            cor: 1,
+            exp: "Firewalls act as a barrier between your computer and the 'untrusted' internet."
+        },
+        {
+            type: "mcq",
+            q: "How does 'Antivirus' software protect your computer?",
+            a: ["It cleans the physical dust out of the machine", "It scans files for known malicious patterns and removes or quarantines them", "It prevents you from visiting any website", "It re-installs Windows automatically"],
+            cor: 1,
+            exp: "Antivirus software uses a database of 'signatures' to find and stop threats."
+        },
+        {
+            type: "mcq",
+            q: "What is 'Multi-Factor Authentication' (MFA)?",
+            a: ["Using two different computers at once", "A security process requiring two or more pieces of evidence to verify identity", "Entering your password two times", "Having two different internet providers"],
+            cor: 1,
+            exp: "MFA adds a layer of security, like a password PLUS a code sent to your phone."
+        },
+        {
+            type: "matching",
+            q: "Match the protection method to its description:",
+            pairs: [
+                { term: "Encryption", definition: "Scrambling data so only authorized parties can read it." },
+                { term: "VPN", definition: "Creates a secure, private tunnel over a public network." },
+                { term: "Backup", definition: "Creating a copy of data to recover it if the original is lost." }
+            ],
+            exp: "These methods help keep data private, secure, and recoverable."
+        },
+        {
+            type: "mcq",
+            q: "Why should you avoid using public Wi-Fi for banking?",
+            a: ["It is too slow", "It is often unencrypted and hackers can 'sniff' or intercept your data", "It will use up your battery", "It is illegal to use public Wi-Fi for work"],
+            cor: 1,
+            exp: "Public Wi-Fi is 'untrusted' and makes your data vulnerable to interception."
+        },
+
+        // --- 4. DATA COLLECTION & PRIVACY ---
+        {
+            type: "mcq",
+            q: "What are 'Cookies' in web browsing?",
+            a: ["Small rewards for visiting a site", "Small text files stored on your computer to track preferences and login info", "A type of computer virus", "Files that speed up your CPU"],
+            cor: 1,
+            exp: "Cookies help websites remember who you are, but can also be used for tracking."
+        },
+        {
+            type: "mcq",
+            q: "What is 'Adware'?",
+            a: ["Software that automatically displays or downloads advertising material", "A tool for blocking ads", "A program for designing posters", "An update for your browser"],
+            cor: 0,
+            exp: "Adware is often bundled with free software and generates revenue through pop-ups."
+        },
+        {
+            type: "mcq",
+            q: "What does 'Incognito' or 'Private' browsing mode do?",
+            a: ["Makes you completely invisible to the government", "Prevents the browser from saving your history, cookies, and form data", "Protects you from all viruses", "Encrypts your entire hard drive"],
+            cor: 1,
+            exp: "Private mode clears your local data after the session, but doesn't make you 'anonymous' online."
+        },
+        {
+            type: "yesno",
+            q: "Do websites have a right to track every action you take?",
+            statements: [
+                "Yes, it's their website.",
+                "No, privacy laws (like GDPR) often require sites to ask for consent.",
+                "They can only track you if you click 'Accept'."
+            ],
+            cor: [false, true, true],
+            exp: "Modern regulations give users more control over how their data is collected."
+        },
+
+        // --- 5. PHYSICAL HEALTH & ERGONOMICS ---
+        {
+            type: "mcq",
+            q: "What is 'Ergonomics'?",
+            a: ["The study of computer hardware speed", "The science of designing the workplace to fit the user's needs and reduce strain", "A type of programming language", "A law about digital privacy"],
+            cor: 1,
+            exp: "Ergonomics helps prevent injuries like Carpal Tunnel Syndrome or back pain."
+        },
+        {
+            type: "mcq",
+            q: "What is the recommended position for your monitor?",
+            a: ["Below desk level", "Top of monitor 2-3 inches above eye level", "At a 45-degree angle to the side", "Directly against your face"],
+            cor: 1,
+            exp: "Proper height prevents neck strain and 'craning'."
+        },
+        {
+            type: "mcq",
+            q: "How should your feet be positioned when sitting at a computer?",
+            a: ["Tucked under the chair", "Flat on the floor or on a footrest", "Crossed at the ankles", "Dangling in the air"],
+            cor: 1,
+            exp: "Keeping feet flat supports the lower back and improves circulation."
+        },
+        {
+            type: "mcq",
+            q: "What is 'Computer Vision Syndrome'?",
+            a: ["Being able to see code in the air", "Eye strain and discomfort caused by looking at screens for long periods", "A virus that affects your webcam", "The ability of a computer to recognize faces"],
+            cor: 1,
+            exp: "Symptoms include dry eyes, blurred vision, and headaches."
+        },
+        {
+            type: "mcq",
+            q: "What is the '20-20-20 Rule'?",
+            a: ["Work for 20 hours, sleep for 20", "Every 20 minutes, look at something 20 feet away for 20 seconds", "Set your font size to 20", "Keep your monitor 20 inches away"],
+            cor: 1,
+            exp: "This rule helps reduce eye strain during computer use."
+        },
+
+        // --- 6. SECURE PASSWORDS & ACCOUNTS ---
+        {
+            type: "mcq",
+            q: "Which of these is considered a 'Strong Password'?",
+            a: ["password123", "YourBirthday", "Tr0p!cal#92", "12345678"],
+            cor: 2,
+            exp: "Strong passwords use a mix of uppercase, lowercase, numbers, and symbols."
+        },
+        {
+            type: "mcq",
+            q: "Why is it dangerous to use the same password for all accounts?",
+            a: ["It's too hard to remember", "If one account is hacked, the hacker can access all your other accounts", "It makes the computer run slower", "It is against the law"],
+            cor: 1,
+            exp: "Credential stuffing is a common attack where hackers try stolen passwords on multiple sites."
+        },
+        {
+            type: "multi",
+            q: "What are good ways to manage many strong passwords? (Select 2)",
+            a: ["Writing them on a sticky note on your monitor", "Using a digital Password Manager", "Using your cat's name for everything", "Creating a unique passphrase for each site"],
+            cor: [1, 3],
+            required: 2,
+            exp: "Password managers securely store complex passwords so you don't have to remember them."
+        },
+
+        // --- 7. GENERAL SECURITY CONCEPTS ---
+        {
+            type: "mcq",
+            q: "What is 'Social Engineering'?",
+            a: ["Building a social media site", "Manipulating people into giving up confidential information", "Fixing a computer in a group", "A type of civil engineering"],
+            cor: 1,
+            exp: "Social engineering targets the 'human element' rather than technical bugs."
+        },
+        {
+            type: "mcq",
+            q: "What does 'HTTPS' in a URL indicate?",
+            a: ["The site is highly popular", "The site is using encryption to secure the connection", "The site is a personal blog", "The site is hosted in the US"],
+            cor: 1,
+            exp: "The 'S' stands for Secure, meaning the data between you and the server is encrypted."
+        },
+        {
+            type: "mcq",
+            q: "What is a 'Hacker'?",
+            a: ["A person who builds computers", "A person who uses computers to gain unauthorized access to data", "A type of fast typist", "A professional gamer"],
+            cor: 1,
+            exp: "While some hackers are ethical, the term usually refers to those seeking unauthorized access."
+        },
+        {
+            type: "categorization",
+            q: "Categorize these threats:",
+            categories: ["Malware", "Social Engineering"],
+            items: [
+                { name: "Virus", category: "Malware" },
+                { name: "Phishing", category: "Social Engineering" },
+                { name: "Trojan", category: "Malware" },
+                { name: "Baiting", category: "Social Engineering" }
+            ],
+            exp: "Malware is malicious software; Social Engineering is human manipulation."
+        },
+
+        // --- 8. DEVICE SAFETY ---
+        {
+            type: "mcq",
+            q: "What should you do before disposing of an old computer or phone?",
+            a: ["Just throw it in the trash", "Wipe or destroy the hard drive/storage to remove all personal data", "Delete your browser history", "Turn it off"],
+            cor: 1,
+            exp: "Data can often be recovered even if files are 'deleted,' so a full wipe is necessary."
+        },
+        {
+            type: "mcq",
+            q: "What is a 'Patch' or 'Security Update'?",
+            a: ["A physical sticker for the laptop", "Software released by developers to fix security vulnerabilities", "A way to make the screen brighter", "A type of computer mouse"],
+            cor: 1,
+            exp: "Keeping software updated 'patches' holes that hackers might use."
+        },
+        {
+            type: "yesno",
+            q: "Is it safe to plug in a USB drive you found in a parking lot?",
+            statements: [
+                "Yes, it's a free gift.",
+                "No, it could contain a worm or virus designed to infect your computer.",
+                "Yes, if you use a Mac."
+            ],
+            cor: [false, true, false],
+            exp: "Found USB drives are a common 'baiting' technique used by hackers."
+        },
+
+        // --- 9. HEALTH & WORKSPACE RECAP ---
+        {
+            type: "mcq",
+            q: "Where should your wrists be when typing?",
+            a: ["Bent upwards", "Straight and flat, not at an angle", "Resting heavily on the desk", "Bent downwards"],
+            cor: 1,
+            exp: "Straight wrists prevent strain on the tendons (Carpal Tunnel)."
+        },
+        {
+            type: "mcq",
+            q: "Why is 'Glare' on a screen bad?",
+            a: ["It makes the computer hot", "It causes eye strain and makes the screen hard to read", "It deletes your files", "It slows down the internet"],
+            cor: 1,
+            exp: "Glare from windows or lights forces the eyes to work harder to focus."
+        },
+        {
+            type: "matching",
+            q: "Match the ergonomic solution to the problem:",
+            pairs: [
+                { term: "Footrest", definition: "Feet cannot reach the floor." },
+                { term: "Document Holder", definition: "Neck strain from looking down at papers." },
+                { term: "Trackball", definition: "Strain from using a traditional mouse." }
+            ],
+            exp: "Small adjustments to the workspace can prevent long-term physical ailments."
+        },
+        {
+            type: "mcq",
+            q: "What can 'reduction in mental alertness' be a symptom of?",
+            a: ["A fast internet connection", "Physical strain or poor ergonomic setup", "Having too much RAM", "A new monitor"],
+            cor: 1,
+            exp: "Discomfort and physical pain drain your mental energy and productivity."
+        },
+
+        // --- 10. FINAL RECAP ---
+        {
+            type: "mcq",
+            q: "Which of these is the most secure way to handle a suspicious email link?",
+            a: ["Click it to see where it goes", "Hover your mouse over it to see the actual URL without clicking", "Click it only if you have antivirus", "Forward it to a friend to check"],
+            cor: 1,
+            exp: "Hovering allows you to see if the link leads to a fake/malicious website."
+        },
+        {
+            type: "mcq",
+            q: "What is 'Biometric' authentication?",
+            a: ["Using a very long password", "Using physical traits like fingerprints or facial recognition to log in", "Using a special keycard", "Logging in with your heart rate"],
+            cor: 1,
+            exp: "Biometrics use 'who you are' rather than 'what you know' for security."
+        },
+        {
+            type: "mcq",
+            q: "If your computer starts running very slowly and displaying random pop-ups, it likely has:",
+            a: ["Too much memory", "A Malware infection", "A very fast CPU", "A broken keyboard"],
+            cor: 1,
+            exp: "Slowness and pop-ups are classic symptoms of viruses or adware."
+        },
+        {
+            type: "mcq",
+            q: "What is the 'Public Domain'?",
+            a: ["A park with free Wi-Fi", "Works that are not protected by copyright and are free for anyone to use", "Websites owned by the government", "A type of antivirus"],
+            cor: 1,
+            exp: "Items enter the public domain usually 70 years after the author's death."
+        },
+        {
+            type: "mcq",
+            q: "What is the best title for a Lesson 7 summary?",
+            a: ["How to build a website", "Digital Safety, Security, and Health", "History of the CPU", "Basics of Microsoft Excel"],
+            cor: 1,
+            exp: "Lesson 7 focuses on protecting your data, your device, and your body."
+        },
+        {
+            type: "mcq",
+            q: "A 'Pop-up Blocker' is used to:",
+            a: ["Speed up the CPU", "Prevent unwanted windows from opening automatically in a browser", "Block the entire internet", "Delete your cookies"],
+            cor: 1,
+            exp: "Pop-up blockers help prevent annoying ads and some forms of adware."
+        },
+        {
+            type: "multi",
+            q: "What should you do if you suspect you are a victim of identity theft? (Select 2)",
+            a: ["Keep it a secret", "Contact your bank or credit card company", "Report it to the authorities", "Ignore it and hope it goes away"],
+            cor: [1, 2],
+            required: 2,
+            exp: "Taking immediate action is crucial to limiting the damage of identity theft."
+        },
+        {
+            type: "mcq",
+            q: "Which of these helps protect against 'Ransomware'?",
+            a: ["A larger monitor", "Regularly backing up your files to an offline location", "Using a wireless mouse", "Changing your desktop wallpaper"],
+            cor: 1,
+            exp: "If your files are backed up elsewhere, the ransom threat loses its power."
+        },
+        {
+            type: "mcq",
+            q: "What is 'Baiting'?",
+            a: ["Fishing for compliments", "Leaving an infected physical device (like a USB) for someone to find and plug in", "A type of fast typing", "A computer game"],
+            cor: 1,
+            exp: "Baiting uses curiosity to get people to compromise their own security."
+        },
+        {
+            type: "mcq",
+            q: "What does 'Quarantine' mean in antivirus software?",
+            a: ["Deleting the file immediately", "Moving a suspicious file to a safe, isolated area where it cannot run", "Sending the file to the police", "Formatting the hard drive"],
+            cor: 1,
+            exp: "Quarantining allows you to review the file without letting it hurt your system."
+        },
+        {
+            type: "mcq",
+            q: "Why is a 'VPN' useful on public Wi-Fi?",
+            a: ["It makes the internet free", "It encrypts your data traffic so hackers cannot read it", "It prevents your laptop from getting hot", "It increases your signal strength"],
+            cor: 1,
+            exp: "VPNs provide a secure tunnel for your data in insecure environments."
+        },
+        {
+            type: "mcq",
+            q: "How often should you perform data backups?",
+            a: ["Only once when you buy the computer", "Regularly (daily or weekly) depending on how important your data is", "Only after you get a virus", "Every 10 years"],
+            cor: 1,
+            exp: "Frequent backups ensure you lose as little data as possible in an emergency."
+        },
+        {
+            type: "mcq",
+            q: "Which of these is a physical security measure?",
+            a: ["A password", "A cable lock for a laptop", "An antivirus scan", "A firewall"],
+            cor: 1,
+            exp: "Cable locks prevent the physical theft of the hardware itself."
+        },
+        {
+            type: "mcq",
+            q: "What is 'Vishing'?",
+            a: ["Phishing that happens over a voice call", "A very fast virus", "Phishing via text message", "A type of virtual reality"],
+            cor: 0,
+            exp: "Vishing (Voice Phishing) uses phone calls to trick people into giving info."
+        },
+        {
+            type: "mcq",
+            q: "What is 'Smishing'?",
+            a: ["Phishing via SMS (text message)", "Phishing via email", "A way to break a screen", "A social media post"],
+            cor: 0,
+            exp: "Smishing uses text messages with malicious links."
+        },
+        {
+            type: "mcq",
+            q: "What should you check before entering your password on a website?",
+            a: ["The color of the website", "The URL (to ensure it is the correct, official site)", "The number of images on the page", "The font size"],
+            cor: 1,
+            exp: "Always verify you are on the real site and not a fake 'spoof' site."
+        },
+        {
+            type: "mcq",
+            q: "What is the purpose of 'Terms of Service'?",
+            a: ["To teach you how to use the site", "To outline the legal agreement and rules for using a service", "To provide a list of passwords", "To speed up the website"],
+            cor: 1,
+            exp: "ToS documents explain your rights and the company's rights regarding your data."
+        },
+        {
+            type: "mcq",
+            q: "What is a 'Digital Key' or 'Token' in MFA?",
+            a: ["A physical house key", "A temporary code generated by an app or device to prove identity", "A piece of code that deletes viruses", "A type of currency"],
+            cor: 1,
+            exp: "Tokens are 'something you have' used to verify your identity."
+        }
     ],
     //----- Beginnning of Level Two -----
     l2_lesson8: [
-        // --- GLOBAL & PROFILE SETTINGS / WINDOWS SETTINGS APP ---
+        // --- 1. SETTINGS & CUSTOMIZATION ---
         {
-            q: "You need to change a setting on a Windows computer. Which type of setting generally relates directly to hardware and affects every user account on the system?",
-            a: ["Profile-specific settings", "Global settings", "Application-specific preferences", "Temporary container configurations"],
+            type: "mcq",
+            q: "What is the difference between 'Global' and 'Profile-specific' settings?",
+            a: ["Global settings affect only the administrator; Profile-specific affect everyone.", "Global settings affect all users on the system (usually hardware); Profile-specific are tied to one user.", "Global settings only work online; Profile-specific work offline.", "There is no difference."],
             cor: 1,
-            exp: "According to the guide, global settings affect all user accounts on the system and are generally related to hardware."
+            exp: "Global settings (like hardware drivers) affect the whole machine, while Profile settings (like wallpaper) follow the individual user."
         },
         {
-            q: "A user wants to change their personal background image and lock screen colors. How is this type of setting classified?",
-            a: ["Global hardware setting", "System-wide override", "Profile-specific setting", "Kernel configuration"],
-            cor: 2,
-            exp: "Profile-specific settings are tied to an individual user's profile, such as personal backgrounds or lock screens, rather than affecting the entire system hardware."
-        },
-        {
-            q: "What is the official step-by-step mouse navigation sequence required to open the primary Windows Settings app?",
-            a: ["Click Start, and then click Settings", "Right-click Taskbar, and click Properties", "Open File Explorer, and select Network Settings", "Click Start, select Control Panel, and choose Registry"],
-            cor: 0,
-            exp: "To configure commonly-accessed options, you click the Start button and then select the Settings icon."
-        },
-        {
-            q: "When navigating the main interface of the Windows Settings application, which method is available to quickly locate an obscure setting without browsing categories?",
-            a: ["Pressing F5 to refresh the navigation panel", "Using the provided 'Find a setting' search box", "Opening the system Command Prompt window", "Double-clicking on the window title bar"],
+            type: "mcq",
+            q: "Where can you configure commonly-accessed settings in Windows?",
+            a: ["File Explorer", "The Settings App", "Microsoft Edge", "Task Manager"],
             cor: 1,
-            exp: "The Windows Settings app allows you to either browse designated categories or utilize the 'Find a setting' search box directly."
+            exp: "The Settings App (Start > Settings) is the central hub for customizing Windows environments."
+        },
+        {
+            type: "mcq",
+            q: "What is an 'Accessibility' setting?",
+            a: ["A setting that makes the computer faster", "A feature designed to help people with disabilities use technology more easily", "A setting for changing the internet password", "A way to access deleted files"],
+            cor: 1,
+            exp: "Accessibility features include screen readers, high contrast modes, and closed captions."
+        },
+        {
+            type: "multi",
+            q: "Which of the following are 'Profile-specific' settings? (Select 2)",
+            a: ["Desktop Wallpaper", "System Time Zone", "Screen brightness", "Browser Bookmarks"],
+            cor: [0, 3],
+            required: 2,
+            exp: "Wallpaper and bookmarks are tied to a specific user account, while time and brightness are often global."
+        },
+        {
+            type: "mcq",
+            q: "In a web browser, what does 'Clearing Cache' do?",
+            a: ["Deletes all your saved passwords", "Removes temporary files stored to speed up page loading", "Uninstalls the browser", "Resets your internet router"],
+            cor: 1,
+            exp: "The cache stores site data; clearing it can fix loading issues but might make sites load slower the first time."
+        },
+
+        // --- 2. DIGITAL CALENDARS ---
+        {
+            type: "mcq",
+            q: "What is the primary benefit of using a 'Personal Digital Calendar'?",
+            a: ["It tells you the weather", "It allows for efficient time management, reminders, and scheduling coordination", "It replaces the need for an email address", "It automatically completes your work for you"],
+            cor: 1,
+            exp: "Digital calendars help track appointments and can sync across multiple devices."
+        },
+        {
+            type: "mcq",
+            q: "What is a 'Recurring Event'?",
+            a: ["An event that only happens once", "An appointment that repeats at regular intervals (daily, weekly, monthly)", "A deleted event", "An event with more than 10 people"],
+            cor: 1,
+            exp: "Recurring events (like a weekly meeting) only need to be scheduled once."
+        },
+        {
+            type: "mcq",
+            q: "What does 'Sharing' a calendar allow you to do?",
+            a: ["Post your schedule on social media", "Allow others to see your availability or manage your appointments", "Give your computer to someone else", "Delete other people's meetings"],
+            cor: 1,
+            exp: "Sharing is essential for team coordination so others know when you are busy."
         },
         {
             type: "matching",
-            q: "Match each administrative setting type to its core system behavioral characteristic.",
+            q: "Match the Calendar term to its purpose:",
             pairs: [
-                { term: "Global Settings", definition: "Affects all user accounts on the system and generally relates to hardware components." },
-                { term: "Profile-Specific Settings", definition: "Tied directly to an individual user account and does not modify other environments." }
-            ]
-        },
-        // --- BROWSER PREFERENCES AND SETTINGS ---
-        {
-            q: "Which specific utility should be deployed to defend a Local Area Network (LAN) from unauthorized, unwanted incoming internet traffic?",
-            a: ["Antivirus software", "Network Firewall", "Local Web Browser Extensions", "Operating System AutoCorrect"],
-            cor: 1,
-            exp: "Firewalls protect a Local Area Network (LAN) from unwanted network traffic originating from public untrusted networks."
-        },
-        {
-            q: "Your system keeps catching hidden spyware, trojans, and worms. Which tool is primarily designed to actively run background scans and protect the local OS file system from these specific threats?",
-            a: ["A network firewall rule", "Antivirus software", "An AutoFill form manager", "A browser default search filter"],
-            cor: 1,
-            exp: "Antivirus software protects the local operating system from threats like viruses, Trojans, and spyware."
-        },
-        {
-            q: "You click the 'Customize and Control' three-dot icon in Google Chrome. Which designated menu category must you choose to alter the browser's default search engine or autofill behaviors?",
-            a: ["History", "Downloads", "Settings", "More Tools"],
-            cor: 2,
-            exp: "To customize web browser preferences such as search engines, autofill, or default behaviors, you must choose 'Settings' from the control menu."
-        },
-        {
-            q: "You want to clear your saved address entries and automated payment forms from a browser session. Under which specific settings sub-panel are these data completion preferences grouped?",
-            a: ["Appearance settings", "Default browser configurations", "On startup configurations", "Autofill settings"],
-            cor: 3,
-            exp: "Options like Autofill handle the saving and automatic entering of form information such as login credentials, addresses, and credit cards."
-        },
-        {
-            q: "True or False: Web browser settings look identical, share the exact same names, and are located in the same structural configurations across all available web browsers.",
-            a: ["True", "False"],
-            cor: 1,
-            exp: "Customized browser settings vary in exact location, layout, and nomenclature depending on the specific web browser being utilized."
-        },
-        // --- DIGITAL CALENDAR CONCEPTS ---
-        {
-            q: "You need to block out an hour on your calendar for an individual task. No other personnel or shared equipment are involved. What type of calendar entry should be created?",
-            a: ["A meeting request", "An appointment", "An all-day event", "A collaborative task"],
-            cor: 1,
-            exp: "An appointment is a personal calendar activity that usually only involves you and blocks out specific time slots on your schedule."
-        },
-        {
-            q: "You are planning a collaborative project overview session where several team members are invited and a physical conference room must be reserved. What type of calendar entry is required?",
-            a: ["A basic appointment", "A meeting", "An all-day event", "A digital task entry"],
-            cor: 1,
-            exp: "A meeting is an appointment to which external participants are explicitly invited and may involve reserving structural resources like rooms or AV gear."
-        },
-        {
-            q: "You are setting up a reminder on your calendar for a national holiday that spans the entire day. How does this entry affect your timeline visibility?",
-            a: ["It blocks out your calendar as 'Busy' from 9:00 AM to 5:00 PM", "It does not block out specific hourly blocks of time in your calendar", "It automatically deletes your other overlapping appointments", "It locks out your calendar to an 'Out of office' status permanently"],
-            cor: 1,
-            exp: "The guide explicitly notes that events lasting an entire day or longer do not block out discrete operational time slots in your calendar."
-        },
-        {
-            type: "matching",
-            q: "Match each digital calendar entry type to its exact operational behavior.",
-            pairs: [
-                { term: "Appointment", definition: "Involves only you and blocks out active time slots in your daily calendar matrix." },
-                { term: "Meeting", definition: "Invites external colleagues and frequently manages shared physical rooms or equipment." },
-                { term: "All-Day Event", definition: "Spans a full day duration or longer and does not block out discrete timeline hours." }
-            ]
-        },
-        {
-            q: "When colleagues look at your calendar, they see colored bars over certain hours. What do these custom indicators communicate to them?",
-            a: ["Your network bandwidth speeds", "Your specific user profile access privileges", "Your availability status (free, tentative, busy, out of office)", "The physical proximity of your device"],
-            cor: 2,
-            exp: "Colored bars represent a user's chosen availability configurations, showing whether they are free, tentative, busy, or out of the office."
-        },
-        // --- CALENDAR MANAGEMENT & RECURRENCE ---
-        {
-            q: "When working inside a webmail interface like Gmail, which icon must you select first to open the quick launcher menu containing the Google Calendar link?",
-            a: ["The Settings Gear icon", "The Search Bar option", "The Google Apps grid icon (9 dots)", "The Create button"],
-            cor: 2,
-            exp: "To open the calendar directly from Gmail, you select the Google Apps icon grid at the top right and then select the Calendar app."
-        },
-        {
-            q: "You manage a standing weekly team sync every Monday morning. Instead of creating a new calendar slot manually every single week, which configuration option should you adjust?",
-            a: ["Change visibility to public", "Click the 'Does not repeat' button to configure a recurring appointment", "Convert the appointment into a custom Task", "Modify the default time zone parameters"],
-            cor: 1,
-            exp: "Clicking the 'Does not repeat' button opens options to configure recurring patterns or set custom intervals for ongoing schedules."
-        },
-        {
-            q: "You need to make your work calendar available to the public internet so external clients can view your basic schedule via a web page or URL. Which configuration is required?",
-            a: ["Exporting your source code via a local script", "Setting your calendar visibility settings to Public", "Converting all appointments into local tasks", "Subscribing to an external interest profile"],
-            cor: 1,
-            exp: "Choosing to make a calendar public saves the calendar structure to the internet, giving you an accessible URL or code to embed in a web page."
-        },
-        {
-            q: "A coworker shares their calendar with you via email. What action must you take to display their schedule alongside your own inside Google Calendar?",
-            a: ["Copy and paste their user source code into your settings", "Click the 'View Your Calendar' link directly inside the email notification", "Re-route your local network firewall configurations", "Delete your existing personal calendar data"],
-            cor: 1,
-            exp: "Clicking the 'View Your Calendar' link within the confirmation email automatically updates your interface, adding their schedule to your account."
-        },
-        {
-            q: "Once a colleague's calendar is added to your account layout, how can you quickly identify which appointments belong to them versus your own?",
-            a: ["Their entries flash continuously on your display interface", "Their appointments appear in a distinctly different color than yours", "Their appointments can only be seen when you log out of your system profile", "Their appointments are automatically listed inside your local task manager"],
-            cor: 1,
-            exp: "Shared external calendars and appointments are rendered using distinct colors to help you easily differentiate between multiple individuals' schedules."
-        },
-        // --- SUBSCRIPTIONS & TASKS ---
-        {
-            q: "You have too many overlapping schedules on your screen because a colleague's shared calendar is currently displayed. How can you hide their schedule temporarily without completely deleting it?",
-            a: ["Clear your local browser autofill entries", "Uncheck the checkbox next to that person's name in the calendar sidebar", "Toggle your browser to private incognito mode", "Change your Windows settings profile to global execution"],
-            cor: 1,
-            exp: "To turn off the visible display of another user's shared calendar, you simply uncheck the checkbox designated next to their name."
-        },
-        {
-            q: "You want to follow an official corporate product launch timeline hosted on an external website. Which feature allows you to link that live internet schedule into your personal setup?",
-            a: ["Creating an offline document backup", "Subscribing to a calendar via 'Browse calendars of interest'", "Writing a macro in Visual Basic for Applications", "Configuring an Advanced Privacy Firewall layer"],
-            cor: 1,
-            exp: "By expanding 'Other calendars' and selecting 'Browse calendars of interest', you can subscribe directly to public schedules hosted across the web."
-        },
-        {
-            q: "What is the primary operational distinction between a calendar Event and a calendar Task?",
-            a: ["Tasks are only meant for global hardware items", "Tasks act as action reminders that include an explicit deadline or completion status", "Events require local source code modifications to run", "Tasks are automatically broadcasted publicly over a local network connection"],
-            cor: 1,
-            exp: "Tasks are distinct items set up as explicit action reminders for specific items you must perform with a strict tracking deadline."
-        },
-        {
-            q: "You have created a new item in your Task manager. Which visual control interface element must you click to open advanced options, add sub-steps, or input custom descriptive notes?",
-            a: ["The Settings Gear icon", "The Search engine dropdown field", "The Pencil icon located to the right of the task text", "The Start menu icon button"],
-            cor: 2,
-            exp: "Clicking the edit pencil icon at the right of a task line expands options to add specific operational parameters and notes."
-        },
-        // --- AUTOMATED METHODS ---
-        {
-            q: "What term describes a set of background computer instructions that are written to execute automatically when a specific user action is initiated?",
-            a: ["A display port", "An internet firewall ruleset", "A script", "A hardware slider control"],
-            cor: 2,
-            exp: "Actions on a computer often occur using scripts, which are defined sets of operational instructions that run automatically when an action triggers them."
-        },
-        {
-            q: "Software developers write software instructions in a human-readable format. What is the technical term for this uncompiled, editable text block?",
-            a: ["Macro blocks", "Source code", "Hardware settings", "Synchronized cloud backups"],
-            cor: 1,
-            exp: "Developers use programming languages to construct instructions and calculations in a human-readable form known specifically as source code."
-        },
-        {
-            q: "You regularly perform the exact same repetitive formatting sequence on spreadsheet files. Which feature allows you to record these steps once and replay them with a single command?",
-            a: ["An AutoFill plugin configuration", "A Macro execution utility", "A profile-specific hardware override", "An Infrastructure service model"],
-            cor: 1,
-            exp: "A macro refers to a recorded group of actions or commands that can be executed instantly with a single shortcut command to handle repetitive tasks."
-        },
-        {
-            q: "Which specialized programming language serves as the underlying engine to build, edit, and run advanced automated macros inside Microsoft 365 core applications?",
-            a: ["HyperText Markup Language (HTML)", "JavaScript Engine Core v8", "Visual Basic for Applications (VBA)", "Structured Query Language (SQL)"],
-            cor: 2,
-            exp: "Visual Basic for Applications (VBA) provides the foundational programming language components that drive macro recording and execution inside Microsoft 365 apps."
-        },
-        // --- CLOUD COMPUTING CONCEPTS ---
-        {
-            q: "In standard cloud computing terminology, what is the role of a 'Client' system versus a 'Server' system?",
-            a: ["Clients provide physical laser printing, while servers manage system brightness sliders", "Clients request services and access resources, while servers supply services and grant permissions", "Clients write the underlying source code, while servers record local application macros", "Clients handle global hardware modifications, while servers process profile-specific settings"],
-            cor: 1,
-            exp: "Client systems request services and access resources over a network connection, whereas server systems supply those services and manage access permissions."
-        },
-        {
-            q: "Your enterprise chooses to pay a monthly fee to access web-based email clients hosted on external servers rather than hosting local email software on-premise. What is this architecture called?",
-            a: ["Local script execution", "A hosted service infrastructure", "A profile-specific hardware driver", "An AutoCorrect algorithm configuration"],
-            cor: 1,
-            exp: "A hosted service is provided by external servers located outside your immediate local network, letting companies pay subscription fees to run modern utilities without server hardware overhead."
-        },
-        {
-            type: "matching",
-            q: "Match each primary cloud computing service model to its correct operational definition.",
-            pairs: [
-                { term: "Software as a Service (SaaS)", definition: "The most common model; applications are completely hosted by a provider and accessed over a network connection." },
-                { term: "Infrastructure as a Service (IaaS)", definition: "Provides virtualized computing resources, memory, and raw server hardware leased as on-demand services." },
-                { term: "Platform as a Service (PaaS)", definition: "An extension providing developers configured system environments to build, run, and test applications." }
-            ]
-        },
-        {
-            q: "A developer needs an environment with specific pre-configured operating systems and server software stacks to build a new software application. Which cloud layer model fits this requirement best?",
-            a: ["Software as a Service (SaaS)", "Platform as a Service (PaaS)", "Infrastructure as a Service (IaaS)", "Local Hardware Adjustment Layers"],
-            cor: 1,
-            exp: "Platform as a Service (PaaS) provides developers with software environments and underlying configurations required to construct new applications."
-        },
-        // --- CLOUD BENEFITS & BROWSER COMPLETION TOOLS ---
-        {
-            q: "How does cloud computing help an organization significantly reduce its internal hardware procurement and upkeep costs?",
-            a: ["It automatically increases physical processor speeds measured in Gigahertz", "Older or slower hardware can remain highly productive since data processing occurs remotely", "It eliminates the need for any local network video connections or monitors", "It forces all local operating systems to drop profile-specific configuration tabs"],
-            cor: 1,
-            exp: "Cloud computing reduces hardware costs by letting companies distribute older or slower hardware to workforces while keeping them productive due to minimal local storage and execution demands."
-        },
-        {
-            q: "You lose your internet connection mid-flight but can still read and edit your cloud files because your machine syncs an identical copy to your local storage drive automatically. Which benefit does this describe?",
-            a: ["Built-in server hardware backup", "Ultra-high server proctor security layers", "Local access to synchronized user files", "Automated platform microcode compilation"],
-            cor: 2,
-            exp: "Most hosted cloud services maintain synchronized local copies of your files to ensure seamless document access even when an active internet connection drops."
-        },
-        {
-            q: "What browser feature is explicitly designed to speed up user form entries by automatically completing whole sentences as you type?",
-            a: ["AutoCorrect utility layers", "AutoComplete browser tools", "AutoFill payment systems", "Hardware brightness regulators"],
-            cor: 1,
-            exp: "The AutoComplete browser feature can automatically complete a sentence as you type, increasing your speed by learning text preferences over time."
-        },
-        {
-            q: "Where must a developer navigate inside Microsoft Edge to modify form memory, password savers, and personal data entries?",
-            a: ["Start Menu -> System Settings -> Sound Matrix Panel", "Advanced settings panel within the Privacy and Services section", "Google Apps icon matrix dropdown selection grid", "Printers & scanners interface management wizard"],
-            cor: 1,
-            exp: "In Microsoft Edge, automated form text completion parameters are accessed via the Advanced settings panel within the Privacy and Services section."
-        },
-        {
-            q: "Which tool is commonly integrated directly into smartphones to predict spelling and swap out mistyped characters on the fly?",
-            a: ["AutoFill database fields", "AutoComplete network systems", "AutoCorrect text prediction engines", "Macro tracking script panels"],
-            cor: 2,
-            exp: "The AutoCorrect feature automatically fixes words by predicting typing text, a tool commonly integrated into mobile smartphone layouts."
-        },
-        // --- HARDWARE ADJUSTMENTS (MONITOR & SOUND) ---
-        {
-            q: "You need to increase the display contrast or change your display screen illumination level. What path takes you to these settings?",
-            a: ["Start button -> Settings -> System -> Display", "Gmail -> Google apps icon -> Other calendars menu option", "Chrome -> Settings -> Autofill forms sub-tab", "Start button -> Control Panel -> VBA Macros window"],
-            cor: 0,
-            exp: "Hardware component parameters like monitors, displays, and audio controllers are accessed by clicking Start -> Settings -> System."
-        },
-        {
-            q: "What does the term 'Color' specifically describe when adjusting your system monitor parameters through the built-in Windows display slider?",
-            a: ["The physical pixel dimensions of the monitor case", "The contrast or intensity level of colors rendered on-screen", "The conversion rate of digital video ports to analog streams", "The total count of connected external video out display adapters"],
-            cor: 1,
-            exp: "The text defines monitor 'color' adjustments as referring to contrast, which controls how intense colors look on your display screen."
-        },
-        {
-            q: "You are operating your laptop in a dark workspace. Which specific display option should you toggle to make the panel less bright and reduce eye strain?",
-            a: ["Set application default print layout to landscape", "Enable the integrated Night light option", "Re-route system firewalls to public networks", "Increase the processor speed parameter to maximum"],
-            cor: 1,
-            exp: "The Night light feature changes screen illumination levels to make displays less bright when using computing devices in dark environments."
-        },
-        // --- CORE PRINTER CONCEPTS & SETTINGS ---
-        {
-            q: "A home office user needs an inexpensive printer that outputs high-quality text documents and graphics at a modest speed of several pages per minute. Which option is best?",
-            a: ["An industrial network laser printer", "An inkjet-type printer", "A high-speed wide-format line plotter", "A standalone thermal micro-scanner"],
-            cor: 1,
-            exp: "Inkjet printers are lower in cost, offer good print quality, and output several pages per minute, making them ideal for simple home setups."
-        },
-        {
-            q: "An office team requires a heavy-duty, shared printing setup with multiple trays capable of feeding various paper dimensions for booklets and flow charts. Which option is best?",
-            a: ["A basic personal inkjet printer", "A network-connected laser printer", "A compact desktop photo printer", "An analog plot-cabling machine"],
-            cor: 1,
-            exp: "Laser printers handle large print volumes for multiple network users and come with multiple paper trays for varying dimensions like booklets or charts."
-        },
-        {
-            q: "What is the standard hardware interface cable used to plug a new local desktop printer directly into a personal computer system?",
-            a: ["An HDMI display connector", "A standard USB cable", "A Cat 6a twisted ethernet cable", "A VGA analog video port adapter"],
-            cor: 1,
-            exp: "To connect a new physical printer directly to your personal computer system, you use a standard Universal Serial Bus (USB) cable."
-        },
-        {
-            q: "How does modern Windows OS handle driver setup when a new, standard peripheral printer is plugged into an active USB slot?",
-            a: ["It blocks system operation until a script is manually written in VBA", "It comes pre-loaded with hundreds of drivers and automatically loads them upon detection", "It converts the local profile structure into an Infrastructure service model", "It routes user visibility into an open public cloud container structure"],
-            cor: 1,
-            exp: "Windows comes pre-loaded with hundreds of device drivers and automatically loads them once a new printer connection is detected."
-        },
-        {
-            type: "ordering",
-            q: "Order the steps chronologically to change your default system printer using the Windows Settings application layer.",
-            items: [
-                "Open the 'Printers & scanners' option located within system settings.",
-                "Select your preferred target printer from the active device list.",
-                "Click the 'Manage' button option.",
-                "Click the 'Set as default' command link option."
+                { term: "Reminder", definition: "A notification sent before an event starts." },
+                { term: "Time Zone", definition: "Ensures events align with local time when traveling." },
+                { term: "Attachment", definition: "A file (like an agenda) linked to a specific meeting." }
             ],
-            cor: [0, 1, 2, 3]
+            exp: "These features turn a simple list into a powerful management tool."
         },
-        // --- PROCESSORS & PORTS ---
         {
-            q: "What is the technical name for the silicon microprocessing chip that handles all calculations and logical system instructions within a computer?",
-            a: ["Graphics Processing Unit (GPU)", "Central Processing Unit (CPU)", "Visual Basic Application (VBA)", "Infrastructure as a Service (IaaS)"],
+            type: "mcq",
+            q: "Which feature would you use to ensure you don't forget a meeting in 15 minutes?",
+            a: ["Recurring Event", "Notification/Alert", "Calendar Color-coding", "Archive"],
             cor: 1,
-            exp: "The Central Processing Unit (CPU), or processor, is the silicon chip that performs the calculations and logical operations inside a computer."
+            exp: "Alerts or notifications provide a visual or audible prompt before an event."
         },
+
+        // --- 3. HARDWARE ADJUSTMENTS & CONCEPTS ---
         {
-            q: "Processor performance and clock oscillation cycle frequencies are calculated using which base scientific unit of measurement?",
-            a: ["Bytes per second (Bps)", "Hertz (Hz)", "Feet or Meters (ft/m)", "Total Layer Pools"],
+            type: "mcq",
+            q: "What is a 'Device Driver'?",
+            a: ["A person who fixes computers", "Software that tells the operating system how to communicate with a specific piece of hardware", "The power cable for a laptop", "A type of USB drive"],
             cor: 1,
-            exp: "Processor speeds are measured using units called hertz, which represent cycles or oscillations per second as current passes through the chip."
+            exp: "Drivers act as translators between the hardware (like a printer) and the software (the OS)."
         },
         {
-            type: "matching",
-            q: "Match each processor frequency abbreviation metric to its exact numeric multiplier value.",
-            pairs: [
-                { term: "Kilohertz (KHz)", definition: "One thousand (1,000) cycles per second." },
-                { term: "Megahertz (MHz)", definition: "One million (1,000,000) cycles per second." },
-                { term: "Gigahertz (GHz)", definition: "One billion (1,000,000,000) cycles per second." },
-                { term: "Terahertz (THz)", definition: "One trillion (1,000,000,000,000) cycles per second." }
-            ]
-        },
-        {
-            q: "A user is buying a new laptop and notices the internal processor clock metrics fall within the 2 GHz to 3 GHz range. How is this standard classified?",
-            a: ["It indicates an outdated server model stack from early 1990", "It represents a standard operational speed range for most modern laptop systems", "It means the machine requires external liquid cooling processing configurations", "It proves the system can only support basic analog VGA ports without data translation"],
+            type: "mcq",
+            q: "What does 'Plug and Play' mean?",
+            a: ["You have to write code to use the device", "The OS automatically detects and configures a new device when it's connected", "The device only works for playing games", "The device doesn't need electricity"],
             cor: 1,
-            exp: "The text states that while desktop machines hover around 3 to 4 GHz, most standard laptops include processors in the 2 GHz to 3 GHz speed range."
+            exp: "Plug and Play (PnP) simplifies hardware installation for users."
         },
         {
-            q: "Which specific processor runs alongside the main CPU to accelerate the processing of complex matrix data needed to render videos, movies, and video games?",
-            a: ["Visual Basic Application Script Engine", "Graphics Processing Unit (GPU)", "Network Laser Printer Interface Driver", "AutoComplete System Processing Layer"],
+            type: "mcq",
+            q: "If a monitor's input port doesn't match the computer's output port, what should you use?",
+            a: ["A new computer", "An Adapter", "Tape", "A wireless router"],
             cor: 1,
-            exp: "The Graphics Processing Unit (GPU) is a specialized processor programmed to handle rich graphic computations, videos, and game data alongside the CPU."
+            exp: "Adapters (like HDMI to VGA) convert signals from one format to another."
         },
         {
-            q: "You are setting up an external display layout. Which group lists standard video ports available on computer systems?",
-            a: ["SaaS, IaaS, PaaS", "VGA, DVI, HDMI", "Cat 5, Cat 5e, Cat 6", "KHz, MHz, GHz"],
+            type: "mcq",
+            q: "Which port is most commonly used to connect a keyboard or mouse today?",
+            a: ["Serial Port", "USB Port", "VGA Port", "Ethernet Port"],
             cor: 1,
-            exp: "Standard computer video out configurations include Video Graphics Adapter (VGA), Digital Video Interface (DVI), and High-Definition Multimedia Interface (HDMI)."
+            exp: "USB (Universal Serial Bus) is the standard for most peripheral devices."
         },
         {
-            q: "You need to plug an HDMI monitor cable into a computer that only has an older DVI slot. What accessory must be used to bridge this physical connection?",
-            a: ["An automated VBA execution macro script", "A signal conversion port adapter", "A local network firewall routing proxy", "A Category 5e internet patch cable"],
-            cor: 1,
-            exp: "If a monitor's input formats do not match a computer's video output ports, you must use a port adapter to convert signals between the formats."
-        },
-        {
-            q: "Which device class generally excludes built-in external physical video out display ports, separating it from standard laptops or tablets?",
-            a: ["Modern Desktop Gaming Rigs", "Most Smartphones", "All-In-One Office Systems", "Enterprise Presentation Projectors"],
-            cor: 1,
-            exp: "Laptops and tablets usually include video out ports to extend displays, but most standard cellular smartphones do not carry these ports."
-        },
-        // --- NETWORKING & CABLING STANDARDS ---
-        {
-            type: "matching",
-            q: "Match each standard Ethernet protocol type to its exact maximum data transmission speed threshold.",
-            pairs: [
-                { term: "10Base-T Ethernet", definition: "Transmits network data at a maximum speed of 10Mbps." },
-                { term: "Fast Ethernet", definition: "Transmits network data at a maximum speed of 100Mbps." },
-                { term: "Gigabit Ethernet", definition: "Transmits network data at a maximum speed of 1Gbps." }
-            ]
-        },
-        {
-            q: "Why do enterprise networks prefer wired Ethernet connections over wireless Wi-Fi setups for transmitting highly sensitive client documents?",
-            a: ["Wired setups run completely inside system macro structures", "Wired networks are faster, more stable, and ideal for high-volume, secure data transmission", "Wired connection speeds are measured using Terahertz cycles", "Wired networks eliminate the need to configure any local operating system user profiles"],
-            cor: 1,
-            exp: "Ethernet networks are more stable and secure than wireless options, making them ideal for transmitting sensitive information and running high-volume streams."
-        },
-        {
-            q: "What is the standard maximum recommended physical distance limit for standard Ethernet copper wire cable installations before structural signal loss happens?",
-            a: ["50 feet (15 meters)", "300 feet (100 meters)", "1,200 feet (400 meters)", "3,000 feet (1,000 meters)"],
-            cor: 1,
-            exp: "Standard numerical twisted-pair Ethernet cables are manufactured to reliably transmit signals over a maximum cable length of roughly 300 feet (100 meters)."
-        },
-        {
-            type: "ordering",
-            q: "Arrange the physical Ethernet copper cable category standards sequentially from lowest data transfer capability up to the highest speed standard.",
-            items: [
-                "Category 5 (Cat 5) - Caps out at 10Mbps and 100Mbps bandwidth limits.",
-                "Category 5e (Cat 5e) - Enhances speeds up to 1Gbps capabilities safely.",
-                "Category 6 (Cat 6) - Expands transmission throughput boundaries up to 10Gbps bounds."
+            type: "yesno",
+            q: "Do most modern smartphones have a dedicated 'Video Out' port?",
+            statements: [
+                "Yes, they usually have an HDMI port.",
+                "No, most phones do not have a dedicated video out port.",
+                "Yes, but only for connecting to printers."
             ],
-            cor: [0, 1, 2]
+            cor: [false, true, false],
+            exp: "Most phones use their charging port (USB-C or Lightning) with an adapter for video out, rather than a dedicated port."
+        },
+
+        // --- 4. CORE PRINTER CONCEPTS ---
+        {
+            type: "mcq",
+            q: "What is 'Print Queue'?",
+            a: ["A type of ink", "The list of documents waiting to be printed", "A high-speed printer", "The paper tray"],
+            cor: 1,
+            exp: "The queue manages the order of print jobs and allows you to cancel or pause them."
         },
         {
-            q: "What performance enhancement sets Category 6a (Cat 6a) cabling apart from standard Category 6 (Cat 6) installations?",
-            a: ["It changes the local system sound properties automatically", "It is designed with specialized physical insulation to minimize signal interference", "It extends the length limit past 5,000 feet without a switch", "It converts data parameters directly into SaaS cloud service blocks"],
+            type: "mcq",
+            q: "What does 'Duplex Printing' mean?",
+            a: ["Printing in two different colors", "Printing on both sides of the paper", "Printing two copies at once", "Printing twice as fast"],
             cor: 1,
-            exp: "Category 6a features identical maximum speeds to Cat 6 (10Gbps) but is engineered with tighter shielding to reduce data signal interference."
+            exp: "Duplexing is a common way to save paper by using both sides."
+        },
+        {
+            type: "mcq",
+            q: "Which printer setting should you use to save ink or toner?",
+            a: ["High Quality", "Draft or Grayscale mode", "Landscape Orientation", "Legal Paper Size"],
+            cor: 1,
+            exp: "Draft mode uses less ink/toner and is faster, making it ideal for non-final documents."
+        },
+        {
+            type: "mcq",
+            q: "What is a 'Network Printer'?",
+            a: ["A printer connected to only one computer via USB", "A printer connected to a network that multiple users can access", "A printer that only prints websites", "A printer that uses no cables"],
+            cor: 1,
+            exp: "Network printers are shared resources in offices and schools."
+        },
+        {
+            type: "matching",
+            q: "Match the printer component to its role:",
+            pairs: [
+                { term: "Toner", definition: "Powder used in laser printers." },
+                { term: "Ink Cartridge", definition: "Liquid used in inkjet printers." },
+                { term: "Spooler", definition: "Software that manages the print jobs in the background." }
+            ],
+            exp: "Understanding these parts helps with basic troubleshooting."
+        },
+
+        // --- 5. NETWORKING & ETHERNET ---
+        {
+            type: "mcq",
+            q: "What is 'Ethernet'?",
+            a: ["A type of wireless signal", "A network-cabling protocol for transmitting data across a LAN", "The name of the internet", "A brand of computer"],
+            cor: 1,
+            exp: "Ethernet is the standard for wired local area networks."
+        },
+        {
+            type: "mcq",
+            q: "Which speed is associated with 'Gigabit Ethernet'?",
+            a: ["10 Mbps", "100 Mbps", "1 Gbps (1000 Mbps)", "10 Gbps"],
+            cor: 2,
+            exp: "Gigabit Ethernet moves data at 1 billion bits per second."
+        },
+        {
+            type: "mcq",
+            q: "Why is an Ethernet connection often preferred over Wi-Fi for high-volume streaming?",
+            a: ["It is cheaper", "It is generally faster and more stable", "It allows you to move the computer around more", "It doesn't require a router"],
+            cor: 1,
+            exp: "Wired connections are less prone to interference than wireless ones."
+        },
+        {
+            type: "mcq",
+            q: "What is the standard maximum length for an Ethernet cable signal?",
+            a: ["10 feet (3 meters)", "100 feet (30 meters)", "300 feet (100 meters)", "1 mile"],
+            cor: 2,
+            exp: "Ethernet signals degrade if the cable is longer than approximately 100 meters."
+        },
+        {
+            type: "categorization",
+            q: "Categorize the Ethernet Category (Cat) by its max speed:",
+            categories: ["Up to 100 Mbps", "Up to 1 Gbps", "Up to 10 Gbps"],
+            items: [
+                { name: "Cat 5", category: "Up to 100 Mbps" },
+                { name: "Cat 5e", category: "Up to 1 Gbps" },
+                { name: "Cat 6", category: "Up to 10 Gbps" },
+                { name: "Cat 6a", category: "Up to 10 Gbps" }
+            ],
+            exp: "Cat 5e is the most common standard for Gigabit speeds, while Cat 6/6a support 10Gbps."
+        },
+
+        // --- 6. HIGHER-LEVEL TECH CONCEPTS ---
+        {
+            type: "mcq",
+            q: "What is 'Cloud Computing'?",
+            a: ["Using computers while flying", "Delivering computing services (servers, storage, apps) over the internet", "Storing data only on your hard drive", "A type of weather forecasting software"],
+            cor: 1,
+            exp: "The 'Cloud' allows you to access data and apps from any device with internet."
+        },
+        {
+            type: "mcq",
+            q: "What is 'SaaS' (Software as a Service)?",
+            a: ["Buying a software disc at a store", "A software distribution model where a third-party provider hosts applications over the internet", "Building your own computer", "A type of internet cable"],
+            cor: 1,
+            exp: "Examples of SaaS include Microsoft 365, Google Workspace, and Netflix."
+        },
+        {
+            type: "mcq",
+            q: "What does 'IoT' stand for?",
+            a: ["Internet of Tools", "Internet of Things", "Input Output Technology", "Internal Operating Task"],
+            cor: 1,
+            exp: "IoT refers to everyday objects (like thermostats or fridges) connected to the internet."
+        },
+        {
+            type: "yesno",
+            q: "Does 'VGA' support audio transmission?",
+            statements: [
+                "Yes, it carries both video and sound.",
+                "No, it is an analog video-only standard.",
+                "Yes, but only on laptops."
+            ],
+            cor: [false, true, false],
+            exp: "VGA is an older analog standard that only transmits video; a separate cable is needed for audio."
+        },
+        {
+            type: "mcq",
+            q: "Which cable type is most likely used to connect a modern computer to a high-definition monitor?",
+            a: ["VGA", "HDMI or DisplayPort", "Ethernet", "PS/2"],
+            cor: 1,
+            exp: "HDMI and DisplayPort are the modern digital standards for high-def video and audio."
+        },
+
+        // --- 7. BROWSER & INTERNET SETTINGS ---
+        {
+            type: "mcq",
+            q: "What is a 'Pop-up Blocker'?",
+            a: ["A tool that stops a computer from turning on", "Browser software that prevents new windows from opening automatically", "A type of antivirus", "A way to speed up the CPU"],
+            cor: 1,
+            exp: "Pop-up blockers improve browsing by stopping intrusive advertisements."
+        },
+        {
+            type: "mcq",
+            q: "What is a 'Browser Extension' (or Add-on)?",
+            a: ["A longer internet cable", "A small software module that adds specific features to a web browser", "A new version of Windows", "A type of computer monitor"],
+            cor: 1,
+            exp: "Extensions can add features like ad-blocking, password management, or translation."
+        },
+        {
+            type: "mcq",
+            q: "What does it mean when a browser says a connection is 'Not Secure'?",
+            a: ["The computer has a virus", "The website is not using HTTPS encryption", "Your monitor is broken", "The internet is too slow"],
+            cor: 1,
+            exp: "An unsecure site (HTTP) does not encrypt the data sent between you and the server."
+        },
+        {
+            type: "multi",
+            q: "Which actions can help protect your privacy in a browser? (Select 2)",
+            a: ["Using Incognito/Private mode", "Saving all passwords in the browser", "Disabling third-party cookies", "Enabling 'Auto-fill' for credit cards"],
+            cor: [0, 2],
+            required: 2,
+            exp: "Private mode and blocking trackers/cookies are key privacy measures."
+        },
+        {
+            type: "mcq",
+            q: "What is the purpose of 'Bookmarking' a page?",
+            a: ["To delete the page", "To save a shortcut to a website for quick access later", "To share the page on social media", "To download the entire website"],
+            cor: 1,
+            exp: "Bookmarks (or Favorites) help you organize and return to important sites."
+        },
+
+        // --- 8. TROUBLESHOOTING & MAINTENANCE ---
+        {
+            type: "mcq",
+            q: "If a USB device is not working, what is the first logical troubleshooting step?",
+            a: ["Reinstall the Operating System", "Unplug the device and plug it back in (reseat it)", "Buy a new computer", "Call a professional engineer"],
+            cor: 1,
+            exp: "Basic 'reseating' or trying a different port solves many hardware issues."
+        },
+        {
+            type: "mcq",
+            q: "What should you check if a 'Network Printer' is not showing up on your computer?",
+            a: ["The printer's ink level", "That your computer is connected to the same network as the printer", "The font size of your document", "The monitor brightness"],
+            cor: 1,
+            exp: "Network printers require your device to be on the same Local Area Network (LAN)."
+        },
+        {
+            type: "mcq",
+            q: "What is the result of 'System Updates'?",
+            a: ["They only change the wallpaper", "They provide security patches and improve system stability", "They delete your personal files", "They make the keyboard harder to use"],
+            cor: 1,
+            exp: "Regular updates are critical for security and hardware compatibility."
+        },
+        {
+            type: "mcq",
+            q: "A computer is running very loudly and getting hot. What might be the hardware issue?",
+            a: ["Not enough RAM", "Dust blocking the fans or cooling vents", "A slow internet connection", "The mouse is dirty"],
+            cor: 1,
+            exp: "Physical maintenance (cleaning dust) is necessary for proper heat management."
+        },
+        {
+            type: "matching",
+            q: "Match the problem to the solution:",
+            pairs: [
+                { term: "Paper Jam", definition: "Check the printer rollers and paper path." },
+                { term: "No Internet", definition: "Check the Ethernet cable or Wi-Fi status." },
+                { term: "Blurry Monitor", definition: "Adjust the screen resolution in Settings." }
+            ],
+            exp: "Basic troubleshooting involves checking physical connections and software settings."
+        },
+
+        // --- 9. CONFIGURATION SCENARIOS ---
+        {
+            type: "mcq",
+            q: "You want to change your 'Screen Timeout' (how long before the screen goes black). Where do you go?",
+            a: ["Browser Settings", "Windows Settings > System > Power & Sleep", "The Printer Queue", "A Calendar App"],
+            cor: 1,
+            exp: "Power settings manage how the system conserves energy."
+        },
+        {
+            type: "mcq",
+            q: "Which hardware adjustment would most likely require an 'Administrator' password?",
+            a: ["Changing the mouse pointer speed", "Installing a new hardware driver", "Increasing the volume", "Changing the desktop background"],
+            cor: 1,
+            exp: "Installing software (drivers) is a system-level change that requires admin rights."
+        },
+        {
+            type: "mcq",
+            q: "You are setting up a home office and want the most stable internet for video calls. What should you use?",
+            a: ["Public Wi-Fi", "A Cat 6 Ethernet cable connected to your router", "A Bluetooth tether from your phone", "A long VGA cable"],
+            cor: 1,
+            exp: "Ethernet (Cat 6) provides the most stable and fast connection for high-bandwidth tasks."
+        },
+        {
+            type: "mcq",
+            q: "What is the purpose of 'Default Apps' settings?",
+            a: ["To delete all apps", "To choose which program opens a specific file type (e.g., .pdf or .mp3)", "To make all apps free", "To prevent apps from updating"],
+            cor: 1,
+            exp: "Default apps tell the OS which browser, email client, or media player to use by default."
+        },
+        {
+            type: "mcq",
+            q: "If you want to print a document but the colors are wrong, what should you check?",
+            a: ["The Ethernet cable", "The ink/toner levels or print head alignment", "The computer's RAM", "The calendar settings"],
+            cor: 1,
+            exp: "Color issues are usually related to physical ink supply or maintenance."
+        },
+
+        // --- 10. RECAP & FINAL CONCEPTS ---
+        {
+            type: "mcq",
+            q: "What is 'Bandwidth'?",
+            a: ["The physical width of a computer", "The maximum rate of data transfer across a network path", "The number of apps you have installed", "The size of a printer's paper tray"],
+            cor: 1,
+            exp: "Bandwidth determines how much data can move through your connection at once."
+        },
+        {
+            type: "mcq",
+            q: "Which of these is a 'Hardware' component?",
+            a: ["Operating System", "Browser Extension", "Motherboard", "SaaS"],
+            cor: 2,
+            exp: "Hardware is the physical parts of the system; the others are software or service concepts."
+        },
+        {
+            type: "mcq",
+            q: "What is the benefit of a 'Wireless' printer?",
+            a: ["It doesn't need power", "It can be placed anywhere within range of the Wi-Fi without needing a data cable", "It prints faster than a wired printer", "It never runs out of ink"],
+            cor: 1,
+            exp: "Wireless (Wi-Fi) printers offer flexible placement in a home or office."
+        },
+        {
+            type: "mcq",
+            q: "What is the best title for a Lesson 8 summary?",
+            a: ["Advanced Digital Citizenship", "Technology Basics: Customization, Hardware, and Connectivity", "History of Social Media", "How to use Microsoft Word"],
+            cor: 1,
+            exp: "Lesson 8 covers the fundamental setup and operation of hardware and environments."
+        },
+        {
+            type: "multi",
+            q: "What can cause 'Signal Interference' in a Wi-Fi network? (Select 2)",
+            a: ["Microwave ovens", "Thick concrete walls", "A fast CPU", "A large monitor"],
+            cor: [0, 1],
+            required: 2,
+            exp: "Physical barriers and other electronic devices can disrupt wireless signals."
+        },
+        {
+            type: "mcq",
+            q: "Which Cat cable is designed specifically for 'reduced signal interference'?",
+            a: ["Cat 5", "Cat 6", "Cat 6a", "Cat 10"],
+            cor: 2,
+            exp: "The 'a' in Cat 6a stands for 'augmented,' designed to reduce crosstalk/interference."
         }
     ]
 };

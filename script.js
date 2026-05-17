@@ -18,503 +18,421 @@ document.onkeydown = function(e) {
 // ==========================================
 const allModules = {
     l1_lesson1: [
-        // --- 1. OPERATING SYSTEM & SOFTWARE CONCEPTS ---
+        // --- 1. OPERATING SYSTEM FUNDAMENTALS ---
         {
             type: "mcq",
-            q: "What is the definition of an Operating System (OS)?",
-            a: ["A physical hardware component inside the case", "A computer program that manages hardware and controls communication between apps and hardware", "A web browser used to access the internet", "A temporary storage device"],
+            q: "What is an Operating System (OS)?",
+            a: ["A collection of mechanical parts", "A program that manages hardware and controls communication between apps and hardware", "A set of tools for editing photos", "The physical casing of a computer"],
             cor: 1,
-            exp: "The Operating System is the central program that manages communication, coordinates tasks, and controls hardware devices."
-        },
-        {
-            type: "matching",
-            q: "Match the software terminology to its correct definition:",
-            pairs: [
-                { term: "Program", definition: "A sequence of instructions that guides a computer through tasks." },
-                { term: "Code", definition: "Individual lines of instruction within a program." },
-                { term: "Software", definition: "General term for any program that makes a computer run." }
-            ],
-            exp: "Programs are made of code; software is the umbrella term for all programs including the OS."
-        },
-        {
-            type: "yesno",
-            q: "Evaluate the following statements regarding Operating System Versions and Editions:",
-            statements: [
-                "An OS 'Version' refers to the specific code-base used to develop it (e.g., Windows 10).",
-                "An OS 'Edition' determines which specific features are available (e.g., Home vs. Pro).",
-                "Versions and Editions are exactly the same thing."
-            ],
-            cor: [true, true, false],
-            exp: "Version refers to the core build/release, while Edition refers to the feature package purchased."
-        },
-        {
-            type: "categorization",
-            q: "Categorize the following Operating Systems based on their primary design target:",
-            categories: ["Desktop OS", "Mobile OS", "Embedded OS"],
-            items: [
-                { name: "Windows 10", category: "Desktop OS" },
-                { name: "Android", category: "Mobile OS" },
-                { name: "iOS", category: "Mobile OS" },
-                { name: "Medical Equipment Software", category: "Embedded OS" },
-                { name: "macOS", category: "Desktop OS" }
-            ],
-            exp: "Desktops use Windows/Mac; handhelds use Mobile OS; specialized machines use Embedded OS."
-        },
-        {
-            type: "categorization",
-            q: "Categorize the licensing type for these Operating Systems:",
-            categories: ["Proprietary (Closed)", "Open-Source"],
-            items: [
-                { name: "Windows 10", category: "Proprietary (Closed)" },
-                { name: "Linux", category: "Open-Source" },
-                { name: "macOS", category: "Proprietary (Closed)" },
-                { name: "iOS", category: "Proprietary (Closed)" }
-            ],
-            exp: "Proprietary software is owned by a company; Open-Source code can be modified and shared by anyone."
+            exp: "The OS is the software that manages hardware and facilitates communication between hardware and applications."
         },
         {
             type: "mcq",
-            q: "What does EULA stand for in software installation?",
-            a: ["Electronic User Legal Agreement", "End User License Agreement", "Enterprise Utility Loading Access", "Every User Listing Array"],
-            cor: 1,
-            exp: "The EULA contains the rules regarding what you are permitted to do with the software."
-        },
-
-        // --- 2. BROWSER CONCEPTS & NAVIGATION ---
-        {
-            type: "multi",
-            q: "Which of the following are considered popular Web Browsers? (Select 3)",
-            a: ["Microsoft Edge", "Windows 10", "Google Chrome", "Mozilla Firefox", "Linux"],
-            cor: [0, 2, 3],
-            required: 3,
-            exp: "Edge, Chrome, and Firefox are browsers. Windows 10 and Linux are Operating Systems."
-        },
-        {
-            type: "matching",
-            q: "Match the standard window control button to its exact function:",
-            pairs: [
-                { term: "Minimize", definition: "Collapses the window to the taskbar." },
-                { term: "Maximize", definition: "Displays the window full screen." },
-                { term: "Restore Down", definition: "Returns the window to its previous size." },
-                { term: "Close", definition: "Exits the program or window." }
-            ],
-            exp: "These controls are standard in almost all Windows-based application windows."
-        },
-        {
-            type: "ordering",
-            q: "Arrange the steps to duplicate an active browser tab:",
-            items: [
-                "Right-click the active tab at the top of the browser.",
-                "Select 'Duplicate' (or 'Duplicate tab') from the menu.",
-                "The new identical tab appears next to the original."
-            ],
-            cor: [0, 1, 2],
-            exp: "Right-clicking a tab provides the option to duplicate it."
-        },
-        {
-            type: "yesno",
-            q: "Evaluate these statements about Browsing Elements:",
-            statements: [
-                "The Address Bar is used to type a specific URL.",
-                "The Search Bar is used to find information using keywords.",
-                "The 'Home' button always takes you to Google.com."
-            ],
-            cor: [true, true, false],
-            exp: "Address bars are for URLs; Search bars are for keywords. The Home button goes to whatever page the user sets as home."
-        },
-        {
-            type: "yesno",
-            q: "Evaluate these statements about Hyperlinks:",
-            statements: [
-                "The cursor usually changes to a pointing hand icon over a link.",
-                "Hyperlinks can only be text, not images.",
-                "Hyperlinks can link to files, web pages, or email addresses."
-            ],
-            cor: [true, false, true],
-            exp: "Links can be text, images, or icons, and the cursor changes to a hand when hovering."
-        },
-
-        // --- 3. USER ACCOUNTS & WINDOWS SETTINGS ---
-        {
-            type: "categorization",
-            q: "Categorize the permissions for these User Account types:",
-            categories: ["Administrator", "Standard User"],
-            items: [
-                { name: "Can change security settings for all users", category: "Administrator" },
-                { name: "Can install apps that affect the whole system", category: "Administrator" },
-                { name: "Can only change their own password/picture", category: "Standard User" },
-                { name: "Cannot access other users' files", category: "Standard User" }
-            ],
-            exp: "Administrators have full system control; Standard users are restricted for security."
-        },
-        {
-            type: "mcq",
-            q: "What is a 'Single Sign-on Account' (like a Microsoft Account)?",
-            a: ["An account that only works on one computer", "An account that validates identity across multiple services and devices", "An account that doesn't require a password", "An account used only for email"],
-            cor: 1,
-            exp: "Single sign-on allows one set of credentials to access various apps and sync settings across devices."
-        },
-        {
-            type: "matching",
-            q: "Match the Windows Taskbar element to its description:",
-            pairs: [
-                { term: "Task View", definition: "Shows small windows of running apps and virtual desktops." },
-                { term: "Notification Area", definition: "Displays time, date, volume, and network status." },
-                { term: "Show Desktop", definition: "Thin button at the far right to minimize all windows." }
-            ],
-            exp: "These are core functional areas of the Windows 10 Taskbar."
-        },
-        {
-            type: "matching",
-            q: "Match the Session option to its effect:",
-            pairs: [
-                { term: "Lock", definition: "Hides your desktop behind a login screen but keeps apps running." },
-                { term: "Sign out", definition: "Closes all apps and ends your session, but leaves computer on." },
-                { term: "Restart", definition: "Closes all apps and reboots the Operating System." }
-            ],
-            exp: "Locking is for short breaks; Signing out is for when another user needs the computer."
-        },
-
-        // --- 4. MOBILE NAVIGATION GESTURES ---
-        {
-            type: "matching",
-            q: "Match the Mobile gesture to its action:",
-            pairs: [
-                { term: "Tap", definition: "Used to select an item or open an app." },
-                { term: "Touch and Hold", definition: "Used to drag items or open secondary menus." },
-                { term: "Swipe", definition: "Used to scroll through lists or pages." },
-                { term: "Pinch / Spread", definition: "Used to zoom in or out on photos or maps." }
-            ],
-            exp: "These are the four fundamental gestures for touch-screen navigation."
-        },
-
-        // --- 5. HARDWARE: INPUT & OUTPUT ---
-        {
-            type: "categorization",
-            q: "Categorize these hardware devices:",
-            categories: ["Input Device", "Output Device"],
-            items: [
-                { name: "Keyboard", category: "Input Device" },
-                { name: "Microphone", category: "Input Device" },
-                { name: "Monitor", category: "Output Device" },
-                { name: "Printer", category: "Output Device" },
-                { name: "Speakers", category: "Output Device" },
-                { name: "Mouse", category: "Input Device" }
-            ],
-            exp: "Input sends data to the computer; Output receives data from the computer."
-        },
-        {
-            type: "matching",
-            q: "Match the keyboard key category to its description:",
-            pairs: [
-                { term: "Modifier Keys", definition: "Ctrl, Alt, and Shift; used in combination with other keys." },
-                { term: "Function Keys", definition: "F1 through F12; used for specific shortcut commands." },
-                { term: "Numeric Keypad", definition: "Grid of numbers toggled by the NumLock key." }
-            ],
-            exp: "Keyboards are organized into functional zones for efficiency."
-        },
-        {
-            type: "multi",
-            q: "Which actions can typically be performed with a standard mouse? (Select 3)",
-            a: ["Left Click / Drag", "Right Click", "Pinch to Zoom", "Scroll Wheel navigation", "Biometric Scanning"],
-            cor: [0, 1, 3],
-            required: 3,
-            exp: "A mouse supports clicking, dragging, and scrolling. Pinching is for touch screens."
-        },
-        {
-            type: "mcq",
-            q: "When using a laptop Touchpad, how do you typically 'double-click' to open a file?",
-            a: ["Tap the touchpad once", "Tap the touchpad twice quickly", "Hold three fingers on the pad", "Swipe left"],
-            cor: 1,
-            exp: "Tapping twice quickly on a touchpad mimics the double-click of a physical mouse."
-        },
-        {
-            type: "mcq",
-            q: "What does 'Resolution' refer to in regards to a Monitor?",
-            a: ["The size of the power cable", "The sharpness and clarity of images (measured in pixels)", "The weight of the screen", "The amount of power it consumes"],
-            cor: 1,
-            exp: "Higher resolution means more pixels, resulting in a clearer and sharper image."
-        },
-        {
-            type: "multi",
-            q: "Identify common types of Printers described in the lesson: (Select 3)",
-            a: ["Inkjet", "Laser", "Stylus", "All-in-one", "Ethernet"],
-            cor: [0, 1, 3],
-            required: 3,
-            exp: "Inkjet, Laser, and All-in-one (Print/Scan/Copy) are the primary printer types."
-        },
-
-        // --- 6. PORTS & CONNECTORS ---
-        {
-            type: "matching",
-            q: "Match the Audio Port color to the device it connects:",
-            pairs: [
-                { term: "Pink", definition: "Microphone" },
-                { term: "Lime Green", definition: "Speakers or Headphones (Line Out)" },
-                { term: "Light Blue", definition: "CD Player or other audio source (Line In)" }
-            ],
-            exp: "Audio ports on PC cases are color-coded based on industry standards."
-        },
-        {
-            type: "matching",
-            q: "Match the USB version to its standard color code:",
-            pairs: [
-                { term: "USB 2.0", definition: "Black or White" },
-                { term: "USB 3.0", definition: "Blue" },
-                { term: "USB 3.1 Gen 2", definition: "Teal Blue" }
-            ],
-            exp: "Port colors help users identify the maximum speed of the USB connection."
-        },
-        {
-            type: "multi",
-            q: "Which of the following are standard Video Ports? (Select 3)",
-            a: ["HDMI", "VGA", "RJ-45", "DVI", "PS/2"],
-            cor: [0, 1, 3],
-            required: 3,
-            exp: "HDMI, VGA, and DVI are for video. RJ-45 is for network; PS/2 is for old mice/keyboards."
-        },
-        {
-            type: "yesno",
-            q: "Evaluate these statements about modern connectors:",
-            statements: [
-                "USB-C connectors are 'reversible' (can be plugged in either way).",
-                "HDMI carries both high-definition video AND audio signals.",
-                "VGA is the newest and most powerful video connection available."
-            ],
-            cor: [true, true, false],
-            exp: "USB-C is reversible and HDMI carries audio; VGA is an older, analog-only technology."
-        },
-        {
-            type: "ordering",
-            q: "Arrange the steps to pair a Bluetooth device:",
-            items: [
-                "Turn on Bluetooth on your computer/phone.",
-                "Put the accessory (headphones/mouse) into pairing mode.",
-                "Select the accessory name from the list on your screen.",
-                "Enter a PIN code if prompted to finish."
-            ],
-            cor: [0, 1, 2, 3],
-            exp: "The host must be 'listening' and the accessory 'visible' for pairing to work."
-        },
-
-        // --- 7. MEMORY & STORAGE ---
-        {
-            type: "categorization",
-            q: "Categorize the following memory types:",
-            categories: ["Volatile (Temporary)", "Non-Volatile (Permanent)"],
-            items: [
-                { name: "RAM (Random Access Memory)", category: "Volatile (Temporary)" },
-                { name: "ROM (Read Only Memory)", category: "Non-Volatile (Permanent)" },
-                { name: "Hard Disk Drive (HDD)", category: "Non-Volatile (Permanent)" },
-                { name: "Solid State Drive (SSD)", category: "Non-Volatile (Permanent)" }
-            ],
-            exp: "RAM loses its contents when power is lost; storage drives and ROM keep data permanently."
-        },
-        {
-            type: "mcq",
-            q: "What is the main physical difference between an HDD and an SSD?",
-            a: ["HDDs are smaller", "SSDs have no moving parts and use flash memory", "HDDs use lasers to read data", "SSDs are slower but cheaper"],
-            cor: 1,
-            exp: "SSDs use chips (flash memory) and have no moving parts, making them faster and more durable than spinning HDDs."
-        },
-        {
-            type: "ordering",
-            q: "Arrange the units of data storage from SMALLEST to LARGEST:",
-            items: [
-                "Bit",
-                "Byte",
-                "Kilobyte (KB)",
-                "Megabyte (MB)",
-                "Gigabyte (GB)",
-                "Terabyte (TB)"
-            ],
-            cor: [0, 1, 2, 3, 4, 5],
-            exp: "8 bits make a byte; roughly 1000 units make the next level up (KB to MB to GB)."
-        },
-        {
-            type: "matching",
-            q: "Match the storage media to its common usage:",
-            pairs: [
-                { term: "SD Card", definition: "Used in digital cameras and smartphones." },
-                { term: "USB Flash Drive", definition: "Portable 'thumb' drive for easy file transfer." },
-                { term: "Cloud Storage", definition: "Storing files on remote servers over the internet." }
-            ],
-            exp: "These represent the most common ways we save and move data today."
-        },
-
-        // --- 8. NETWORKING CONCEPTS ---
-        {
-            type: "mcq",
-            q: "What is the difference between a LAN and a WAN?",
-            a: ["LAN is for long distances; WAN is for one building", "LAN is for a local area (home/office); WAN covers large areas (cities/countries)", "LAN is only wireless; WAN is only wired", "There is no difference"],
-            cor: 1,
-            exp: "LAN (Local Area Network) is small scale; WAN (Wide Area Network) connects LANs across distances."
-        },
-        {
-            type: "categorization",
-            q: "Categorize the maximum speed of these Ethernet cables:",
-            categories: ["1 Gbps", "10 Gbps"],
-            items: [
-                { name: "Cat 5e", category: "1 Gbps" },
-                { name: "Cat 6", category: "10 Gbps" },
-                { name: "Cat 6a", category: "10 Gbps" }
-            ],
-            exp: "Cat 5e is standard Gigabit; Cat 6 and above support 10 Gigabit speeds."
-        },
-        {
-            type: "matching",
-            q: "Match the Ethernet speed name to its numerical value:",
-            pairs: [
-                { term: "Gigabit Ethernet", definition: "1000 Mbps (1 Gbps)" },
-                { term: "Fast Ethernet", definition: "100 Mbps" },
-                { term: "10Base-T", definition: "10 Mbps" }
-            ],
-            exp: "These are the three standard historical speeds of Ethernet networking."
-        },
-        {
-            type: "yesno",
-            q: "Evaluate these statements about Wireless (Wi-Fi) networking:",
-            statements: [
-                "Infrastructure mode uses a central router or Access Point.",
-                "Ad-hoc mode connects devices directly to each other without a router.",
-                "Ad-hoc networks are more secure than Infrastructure networks."
-            ],
-            cor: [true, true, false],
-            exp: "Infrastructure is the standard home/office setup; Ad-hoc is direct but often insecure."
-        },
-        {
-            type: "ordering",
-            q: "Order the steps to connect to a Wi-Fi network in Windows 10:",
-            items: [
-                "Click the Network icon in the taskbar notification area.",
-                "Select the correct Network Name (SSID) from the list.",
-                "Click Connect and enter the Security Key (password).",
-                "Verify the status says 'Connected, secured'."
-            ],
-            cor: [0, 1, 2, 3],
-            exp: "You must find the signal, identify the specific network, and provide credentials."
-        },
-        {
-            type: "mcq",
-            q: "While troubleshooting, you see your IP address is 169.254.0.1. What does this indicate?",
-            a: ["You are connected to the high-speed fiber internet", "Your computer failed to get a valid IP from the router (APIPA)", "Your firewall is blocking all traffic", "Your computer is in Airplane mode"],
-            cor: 1,
-            exp: "A 169.254.x.x address (APIPA) means the computer cannot talk to the router's DHCP server."
-        },
-        {
-            type: "ordering",
-            q: "Order the steps for a proper network power cycle (reboot):",
-            items: [
-                "Turn off the modem, router, and computer.",
-                "Turn on the Modem and wait for it to fully connect.",
-                "Turn on the Router and wait for its lights to stabilize.",
-                "Turn on the computer and test the connection."
-            ],
-            cor: [0, 1, 2, 3],
-            exp: "Always start from the internet source (modem) and work inward toward the computer."
-        },
-
-        // --- 9. SOFTWARE TYPES & DEPLOYMENT ---
-        {
-            type: "categorization",
-            q: "Categorize the software deployment model:",
-            categories: ["Locally-Installed", "Cloud-Based (SaaS)"],
-            items: [
-                { name: "Runs directly from the device hard drive", category: "Locally-Installed" },
-                { name: "Accessed via a web browser over the internet", category: "Cloud-Based (SaaS)" },
-                { name: "Google Docs", category: "Cloud-Based (SaaS)" },
-                { name: "Microsoft Word (Desktop version)", category: "Locally-Installed" }
-            ],
-            exp: "Local software stays on your disk; Cloud software lives on the provider's servers."
-        },
-        {
-            type: "matching",
-            q: "Match the App category to the correct software example:",
-            pairs: [
-                { term: "Word Processing", definition: "Microsoft Word / Google Docs" },
-                { term: "Spreadsheet", definition: "Microsoft Excel / Google Sheets" },
-                { term: "Presentation", definition: "PowerPoint / Google Slides" },
-                { term: "Web Browser", definition: "Chrome / Edge / Firefox" }
-            ],
-            exp: "These categories define the primary function of the productivity software."
-        },
-        {
-            type: "multi",
-            q: "Which of these are characteristics of a Chromebook? (Select 3)",
-            a: ["Runs on Chrome OS", "Primarily designed for cloud-based apps", "Typically has 7-9 hours of battery life", "Requires a very expensive hardware setup", "Runs only Apple software"],
-            cor: [0, 1, 2],
-            required: 3,
-            exp: "Chromebooks are low-power, cloud-focused devices running Google's Chrome OS."
-        },
-        {
-            type: "matching",
-            q: "Match the App Store to its platform:",
-            pairs: [
-                { term: "Google Play Store", definition: "Android" },
-                { term: "App Store", definition: "iOS (Apple)" },
-                { term: "Microsoft Store", definition: "Windows 10" }
-            ],
-            exp: "Each major operating system has its own curated digital storefront."
-        },
-
-        // --- 10. COMPUTER TYPES & HISTORY ---
-        {
-            type: "mcq",
-            q: "Which computer type features the PC internal components integrated into the same case as the monitor?",
-            a: ["Laptop", "Tower Desktop", "All-in-One Computer", "Mainframe"],
+            q: "What is the specific term for individual lines of instructions that guide a computer?",
+            a: ["Hardware", "Framework", "Code", "Nodes"],
             cor: 2,
-            exp: "All-in-One PCs save space by combining the screen and the system unit."
+            exp: "Individual lines of instruction in a program are referred to as code."
         },
         {
             type: "mcq",
-            q: "Which operating system was originally developed for mainframes and is known for its stability and security?",
-            a: ["Windows 95", "UNIX", "MS-DOS", "Android"],
+            q: "Which of these is considered 'Software'?",
+            a: ["The Monitor", "The Operating System and Application Programs", "The CPU and RAM", "The Keyboard and Mouse"],
             cor: 1,
-            exp: "UNIX is one of the oldest and most stable operating systems, forming the basis for Linux and macOS."
+            exp: "Software refers to the programs (OS and apps) that make the hardware run."
         },
         {
-            type: "multi",
-            q: "Which of these are popular Linux 'Distributions' (versions)? (Select 2)",
-            a: ["Ubuntu", "CentOS", "Windows 10 Pro", "macOS Catalina"],
-            cor: [0, 1],
-            required: 2,
-            exp: "Ubuntu and CentOS are versions of Linux; the others are proprietary OSs."
+            type: "mcq",
+            q: "Every computer requires an ______ to function.",
+            a: ["Internet connection", "Operating System", "Printer", "Webcam"],
+            cor: 1,
+            exp: "Without an OS, the hardware cannot communicate or run application programs."
+        },
+        {
+            type: "mcq",
+            q: "What does the OS do for application programs?",
+            a: ["It deletes them when they are old", "It manages hardware devices and controls communication for them", "It writes the code for the apps", "It buys the apps from the store"],
+            cor: 1,
+            exp: "The OS acts as the middleman between the app and the physical hardware."
+        },
+
+        // --- 2. TYPES OF COMPUTERS ---
+        {
+            type: "mcq",
+            q: "Which type of computer is designed for high-volume data processing for thousands of users?",
+            a: ["Laptop", "Mainframe", "Smartphone", "Desktop"],
+            cor: 1,
+            exp: "Mainframes are used by large organizations (like banks) for bulk data processing."
+        },
+        {
+            type: "mcq",
+            q: "What is a 'Supercomputer' primarily used for?",
+            a: ["Browsing social media", "Checking email", "Performing complex scientific calculations and simulations", "Playing simple video games"],
+            cor: 2,
+            exp: "Supercomputers are the fastest computers, used for weather forecasting or nuclear research."
+        },
+        {
+            type: "mcq",
+            q: "Which device is an example of an 'All-in-one' computer?",
+            a: ["A tower PC with a separate monitor", "A computer where the monitor and CPU components are in the same housing", "A tablet without a keyboard", "A printer that also scans"],
+            cor: 1,
+            exp: "All-in-one desktops (like an iMac) combine the screen and system unit into one piece."
+        },
+        {
+            type: "mcq",
+            q: "What defines a 'Server'?",
+            a: ["A computer that only works for one person", "A computer that provides services and resources to other computers on a network", "A laptop that is very thin", "A computer used only for gaming"],
+            cor: 1,
+            exp: "Servers 'serve' data, files, or web pages to client computers."
+        },
+        {
+            type: "mcq",
+            q: "Which of these is considered a 'Mobile Device'?",
+            a: ["Mainframe", "Workstation", "Smartphone", "Server Tower"],
+            cor: 2,
+            exp: "Smartphones and tablets are mobile devices designed for portability."
+        },
+
+        // --- 3. HARDWARE & PERIPHERALS ---
+        {
+            type: "mcq",
+            q: "What is the 'CPU' often called?",
+            a: ["The Heart of the computer", "The Brain of the computer", "The Eyes of the computer", "The Memory of the computer"],
+            cor: 1,
+            exp: "The Central Processing Unit (CPU) performs all the calculations and instructions."
+        },
+        {
+            type: "mcq",
+            q: "Which type of memory is 'Volatile' (lost when the power is turned off)?",
+            a: ["Hard Drive", "RAM", "ROM", "Flash Drive"],
+            cor: 1,
+            exp: "Random Access Memory (RAM) is temporary workspace that clears when the PC shuts down."
+        },
+        {
+            type: "mcq",
+            q: "What is a 'Peripheral' device?",
+            a: ["The CPU", "Any external device that connects to and works with the computer", "The Motherboard", "The power supply"],
+            cor: 1,
+            exp: "Keyboards, mice, and printers are all examples of peripheral hardware."
+        },
+        {
+            type: "mcq",
+            q: "Which component is used for long-term data storage?",
+            a: ["CPU", "RAM", "Hard Disk Drive (HDD)", "Video Card"],
+            cor: 2,
+            exp: "Hard drives and SSDs keep data even when the computer is turned off."
+        },
+        {
+            type: "mcq",
+            q: "What is the main circuit board of a computer called?",
+            a: ["Control Board", "Motherboard", "Logic Plate", "System Card"],
+            cor: 1,
+            exp: "The motherboard connects all the internal components together."
+        },
+
+        // --- 4. DATA MEASUREMENT (BITS & BYTES) ---
+        {
+            type: "mcq",
+            q: "What is a 'Bit'?",
+            a: ["A group of 8 numbers", "The smallest unit of data (a 0 or a 1)", "A type of computer virus", "A physical part of the mouse"],
+            cor: 1,
+            exp: "A bit (Binary Digit) is the basic unit of information in computing."
+        },
+        {
+            type: "mcq",
+            q: "How many bits are in one 'Byte'?",
+            a: ["2", "4", "8", "16"],
+            cor: 2,
+            exp: "8 bits combine to form 1 byte, which usually represents a single character."
+        },
+        {
+            type: "mcq",
+            q: "Approximately how many bytes are in a 'Kilobyte' (KB)?",
+            a: ["10", "100", "1,000", "1,000,000"],
+            cor: 2,
+            exp: "A Kilobyte is roughly 1,000 bytes (technically 1,024)."
+        },
+        {
+            type: "mcq",
+            q: "Which unit is larger?",
+            a: ["Megabyte (MB)", "Gigabyte (GB)", "Kilobyte (KB)", "Byte"],
+            cor: 1,
+            exp: "Gigabytes (billions of bytes) are larger than Megabytes (millions)."
+        },
+        {
+            type: "mcq",
+            q: "What follows a Terabyte (TB) in size?",
+            a: ["Gigabyte", "Petabyte", "Megabyte", "Kilobyte"],
+            cor: 1,
+            exp: "The order is KB, MB, GB, TB, PB (Petabyte)."
+        },
+
+        // --- 5. NETWORKING BASICS ---
+        {
+            type: "mcq",
+            q: "What is a 'Local Area Network' (LAN)?",
+            a: ["A network that covers a whole city", "A network connecting computers in a small area like a home or office", "The global internet", "A network that only works via satellite"],
+            cor: 1,
+            exp: "LANs are confined to a single building or limited geographic area."
+        },
+        {
+            type: "mcq",
+            q: "What does 'WAN' stand for?",
+            a: ["Wireless Area Network", "Wide Area Network", "Web Access Node", "Wired Access Network"],
+            cor: 1,
+            exp: "WANs connect multiple LANs over long distances (like the Internet)."
+        },
+        {
+            type: "mcq",
+            q: "What is the primary function of a 'Router'?",
+            a: ["To print documents", "To direct data traffic between different networks", "To store your files", "To speed up the CPU"],
+            cor: 1,
+            exp: "Routers act as traffic controllers, moving data between your LAN and the Internet."
+        },
+        {
+            type: "mcq",
+            q: "What is an 'IP Address'?",
+            a: ["Your home street address", "A unique numerical label assigned to each device on a network", "Your computer's serial number", "A password for your email"],
+            cor: 1,
+            exp: "IP addresses allow devices to find and communicate with each other on a network."
+        },
+        {
+            type: "mcq",
+            q: "Which device converts digital signals to analog (and vice versa) for internet access?",
+            a: ["Monitor", "Modem", "Scanner", "Keyboard"],
+            cor: 1,
+            exp: "Modems (Modulator-Demodulator) connect your home to your Internet Service Provider (ISP)."
+        },
+
+        // --- 6. TROUBLESHOOTING ---
+        {
+            type: "mcq",
+            q: "If your computer cannot connect to the internet, what is the first step you should take?",
+            a: ["Buy a new computer", "Check physical cable connections and restart the router", "Delete all your files", "Call the police"],
+            cor: 1,
+            exp: "Checking physical connections and 'power cycling' the router fixes most basic issues."
+        },
+        {
+            type: "mcq",
+            q: "What is a sign that your computer has a valid IP address on a local network?",
+            a: ["The IP starts with 0.0.0.0", "The IP starts with 169.254", "The IP looks like 192.168.1.x", "The monitor is bright"],
+            cor: 2,
+            exp: "192.168.x.x is a standard private IP range for home/office LANs."
+        },
+        {
+            type: "mcq",
+            q: "What does an IP address starting with '169.254' usually mean?",
+            a: ["The internet is working perfectly", "The computer could not get an IP from the router (APIPA)", "The computer is hacked", "The printer is out of ink"],
+            cor: 1,
+            exp: "169.254.x.x indicates a failure to communicate with the DHCP server (the router)."
+        },
+        {
+            type: "mcq",
+            q: "What should you do if your Wi-Fi is slow?",
+            a: ["Move closer to the Wi-Fi hotspot", "Change your wallpaper", "Unplug the mouse", "Turn off the monitor"],
+            cor: 0,
+            exp: "Distance from the access point significantly affects Wi-Fi speed and signal strength."
+        },
+        {
+            type: "mcq",
+            q: "Who should you contact if restarting your equipment doesn't fix your internet outage?",
+            a: ["Microsoft", "Your ISP (Internet Service Provider)", "The hardware store", "The electric company"],
+            cor: 1,
+            exp: "The ISP is responsible for the external connection to your building."
+        },
+
+        // --- 7. FILE MANAGEMENT & ENVIRONMENTS ---
+        {
+            type: "mcq",
+            q: "What is a 'File Extension'?",
+            a: ["The size of a file", "The characters after the period in a filename that tell the OS the file type", "The date a file was created", "A way to make a file longer"],
+            cor: 1,
+            exp: "Extensions like .docx, .jpg, or .exe tell the computer which app to use to open the file."
+        },
+        {
+            type: "mcq",
+            q: "What is the 'Cloud'?",
+            a: ["A weather pattern", "Storing and accessing data and programs over the internet instead of locally", "A type of hardware in the CPU", "A backup battery"],
+            cor: 1,
+            exp: "Cloud computing means the data lives on remote servers accessed via the web."
+        },
+        {
+            type: "mcq",
+            q: "Which of these is a 'Cloud Storage' service?",
+            a: ["Windows 11", "Google Drive", "Microsoft Word", "The Recycle Bin"],
+            cor: 1,
+            exp: "Google Drive, OneDrive, and Dropbox are examples of cloud storage."
+        },
+        {
+            type: "mcq",
+            q: "What is a 'Graphical User Interface' (GUI)?",
+            a: ["A way to use the computer by typing code only", "A visual way of interacting with a computer using items like windows, icons, and menus", "A physical hardware part", "A type of printer"],
+            cor: 1,
+            exp: "GUIs allow users to point and click rather than memorizing text commands."
+        },
+        {
+            type: "mcq",
+            q: "What is 'Input' hardware?",
+            a: ["Monitor", "Keyboard", "Printer", "Speakers"],
+            cor: 1,
+            exp: "Input devices send data *into* the computer."
+        },
+
+        // --- 8. SYSTEM MAINTENANCE ---
+        {
+            type: "mcq",
+            q: "What is 'Firmware'?",
+            a: ["Soft hardware", "Permanent software programmed into a hardware device", "A type of clothing", "A temporary file"],
+            cor: 1,
+            exp: "Firmware provides low-level control for a device's specific hardware."
+        },
+        {
+            type: "mcq",
+            q: "What is a 'Driver'?",
+            a: ["The person using the mouse", "Software that allows the OS to communicate with a specific hardware device", "A part of the hard drive", "An internet cable"],
+            cor: 1,
+            exp: "Drivers act as 'translators' between the OS and hardware like printers or video cards."
+        },
+        {
+            type: "mcq",
+            q: "What does 'Plug and Play' mean?",
+            a: ["You have to build the device yourself", "The computer automatically recognizes a device when it is plugged in", "The device only works for games", "The device doesn't need power"],
+            cor: 1,
+            exp: "Plug and Play (PnP) makes hardware installation automatic and easy."
+        },
+        {
+            type: "mcq",
+            q: "Why should you 'Eject' a flash drive before unplugging it?",
+            a: ["To make it fly out of the port", "To ensure all data is finished writing to prevent corruption", "To save battery life", "To clean the drive"],
+            cor: 1,
+            exp: "Ejecting ensures the OS has closed all files on the drive before physical removal."
+        },
+        {
+            type: "mcq",
+            q: "What does 'Updates' usually provide for your OS?",
+            a: ["More ads", "Security patches and bug fixes", "A new monitor", "More physical RAM"],
+            cor: 1,
+            exp: "Updates are essential for keeping the system secure and running smoothly."
+        },
+
+        // --- 9. CATEGORIZATION & MATCHING ---
+        {
+            type: "matching",
+            q: "Match the device to its category:",
+            pairs: [
+                { term: "Mouse", definition: "Input Device" },
+                { term: "Monitor", definition: "Output Device" },
+                { term: "CPU", definition: "Processing Device" }
+            ],
+            exp: "Devices are categorized by how they handle data flow."
+        },
+        {
+            type: "categorization",
+            q: "Categorize these as Hardware or Software:",
+            categories: ["Hardware", "Software"],
+            items: [
+                { name: "RAM", category: "Hardware" },
+                { name: "Windows 11", category: "Software" },
+                { name: "Web Browser", category: "Software" },
+                { name: "Hard Drive", category: "Hardware" }
+            ],
+            exp: "Hardware is physical; Software is digital instructions."
         },
         {
             type: "yesno",
-            q: "Evaluate these statements about modern hardware:",
+            q: "Is a Smartphone considered a 'Computer'?",
             statements: [
-                "Laptops are designed to be portable and run on battery power.",
-                "Tablets are thin, touch-screen devices that lack a physical keyboard.",
-                "Smartphones are primarily used for voice calls and cannot run apps."
+                "Yes, it has a CPU, memory, and an OS.",
+                "No, it is only a phone.",
+                "Yes, but it cannot run application programs."
             ],
-            cor: [true, true, false],
-            exp: "Smartphones are fully functional pocket computers that run a wide variety of apps."
+            cor: [true, false, false],
+            exp: "Smartphones are powerful mobile computers with all the core components of a PC."
         },
+
+        // --- 10. ADVANCED BASICS ---
         {
-            type: "matching",
-            q: "Match the resolution term to its pixel count:",
-            pairs: [
-                { term: "Full HD (1080p)", definition: "1920 x 1080 pixels" },
-                { term: "4K (Ultra HD)", definition: "3840 x 2160 pixels" },
-                { term: "SD (Standard Def)", definition: "640 x 480 pixels" }
-            ],
-            exp: "Resolution is always expressed as Horizontal pixels x Vertical pixels."
-        },
-        {
-            type: "multi",
-            q: "When calling an ISP for technical support, what information should you have ready? (Select 2)",
-            a: ["Your current IP address", "Your browser history", "Your connection speed", "Your desktop wallpaper"],
-            cor: [0, 2],
-            required: 2,
-            exp: "Technical support needs your network identity (IP) and performance data (speed) to help."
+            type: "mcq",
+            q: "What is 'Multi-tasking' in an OS?",
+            a: ["Having multiple people use one computer", "The ability of the OS to run more than one program at a time", "Using two monitors", "Buying two computers"],
+            cor: 1,
+            exp: "Modern OSs allow you to listen to music while typing a document simultaneously."
         },
         {
             type: "mcq",
-            q: "What is the primary function of a Motherboard?",
-            a: ["To provide power to the monitor", "To act as the main circuit board that connects all hardware components", "To store the user's photos and videos", "To cool down the CPU"],
+            q: "What is an 'Administrator' account?",
+            a: ["The person who built the computer", "A user account with full control over the system and settings", "An account that can only browse the web", "A guest account"],
             cor: 1,
-            exp: "The motherboard is the backbone that allows the CPU, RAM, and all other hardware to communicate."
+            exp: "Admin accounts can install software and change system-wide settings."
+        },
+        {
+            type: "mcq",
+            q: "Which of these is a 'Standard' user restricted from doing?",
+            a: ["Opening a web browser", "Changing critical system files or installing some software", "Saving a document", "Changing their own password"],
+            cor: 1,
+            exp: "Standard users have limited permissions to protect the system's security."
+        },
+        {
+            type: "mcq",
+            q: "What does 'Resolution' refer to on a monitor?",
+            a: ["The size of the screen in inches", "The number of pixels displayed on the screen", "The weight of the monitor", "The brightness of the lamp"],
+            cor: 1,
+            exp: "Higher resolution means more pixels and a clearer, sharper image."
+        },
+        {
+            type: "mcq",
+            q: "What is 'Bluetooth'?",
+            a: ["A type of internet cable", "Short-range wireless technology for connecting devices", "A virus that turns the screen blue", "A high-speed printer"],
+            cor: 1,
+            exp: "Bluetooth is used for mice, headphones, and syncing phones over short distances."
+        },
+        {
+            type: "mcq",
+            q: "Which of these is a 'Web Browser'?",
+            a: ["Windows 10", "Google Chrome", "Adobe Photoshop", "Intel Core i5"],
+            cor: 1,
+            exp: "Browsers are application software used to access the World Wide Web."
+        },
+        {
+            type: "mcq",
+            q: "What is the purpose of the 'Task Manager'?",
+            a: ["To play music", "To view and manage currently running programs and system performance", "To write letters", "To delete your files"],
+            cor: 1,
+            exp: "Task Manager allows you to 'Force Quit' frozen apps and check CPU usage."
+        },
+        {
+            type: "mcq",
+            q: "What is 'Motherboard' also known as?",
+            a: ["System Board", "Power Plate", "Data Hub", "Logic Box"],
+            cor: 0,
+            exp: "The terms Motherboard and System Board are often used interchangeably."
+        },
+        {
+            type: "mcq",
+            q: "What is 'Cache' memory?",
+            a: ["Physical money inside the PC", "High-speed memory used by the CPU to store frequently used data", "A type of slow hard drive", "The trash can"],
+            cor: 1,
+            exp: "Cache memory is even faster than RAM and sits very close to the CPU."
+        },
+        {
+            type: "mcq",
+            q: "Which port is used specifically for high-definition video and audio?",
+            a: ["USB", "VGA", "HDMI", "PS/2"],
+            cor: 2,
+            exp: "High-Definition Multimedia Interface (HDMI) is the standard for modern displays."
+        },
+        {
+            type: "mcq",
+            q: "What is an 'Optical Drive' used for?",
+            a: ["Reading glasses", "Reading and writing CDs, DVDs, and Blu-ray discs", "Scanning your eyes", "Connecting to the internet"],
+            cor: 1,
+            exp: "Optical drives use lasers to read data from discs."
+        },
+        {
+            type: "mcq",
+            q: "What is the 'Desktop' in a GUI?",
+            a: ["The physical top of your desk", "The main workspace area on the screen", "A folder for deleted items", "The back of the computer"],
+            cor: 1,
+            exp: "The Desktop is the home screen where icons and windows are displayed."
         }
     ],
     l1_lesson2: [

@@ -23,6 +23,11 @@
         
         <form id="setup-form" onsubmit="event.preventDefault();">
             <div class="menu-section">
+                <label for="candidate-name">Candidate Name:</label>
+                <input type="text" id="candidate-name" placeholder="Enter your full name" style="width: 100%; padding: 10px; margin-top: 5px; border-radius: 4px; border: 1px solid #ccc;">
+            </div>
+
+            <div class="menu-section">
                 <label for="module-select">1. Select Module:</label>
                 <select id="module-select" required>
                     <optgroup label="Level 1: Fundamentals">
@@ -36,8 +41,9 @@
                     </optgroup>
                     <optgroup label="Level 2: Working Knowledge">
                         <option value="l2_lesson8">L2M8: Technology Basics</option>
-                        <option value="l1_lesson2">L2M9: Digital Citizenship</option>
-                        <option value="l1_lesson3">L2M10: Information Management</option>
+                        <option value="l2_lesson9">L2M9: Digital Citizenship</option>
+                        <option value="l2_lesson10">L2M10: Information Management</option>
+                        <option value="l2_lesson11">L2M11: Content Creation</option>
                     </optgroup>
                     <optgroup label="Comprehensive Level Exams">
                         <option value="l1_full">Level 1 Full Exam</option>
@@ -74,46 +80,120 @@
 
         <main id="question-workspace" aria-live="assertive">
             <h2 id="q-text">Question Loading...</h2>
-            
             <div id="options-container"></div>
             <div id="interactive-container" class="hidden"></div>
-            
             <div id="feedback" class="hidden" role="status" aria-live="polite"></div>
         </main>
         
         <footer class="exam-footer">
-            <button id="flag-btn" onclick="toggleFlag()" aria-label="Flag current question for review">Flag for Review</button>
+            <button id="flag-btn" onclick="toggleFlag()">Flag for Review</button>
             <div>
                 <button id="submit-btn" onclick="checkAnswer()">Submit Answer</button>
                 <button id="next-btn" class="hidden" onclick="nextQuestion()">Next Question</button>
-                <button onclick="location.reload()" style="margin-top: 20px; background: #0056b3; color: white;">Return to Main Menu</button>
             </div>
         </footer>
         
-        <nav id="nav-pane" aria-label="Question Navigation Matrix">
+        <nav id="nav-pane">
             <h3>Question Overview</h3>
-            <div id="q-grid" role="list"></div>
+            <div id="q-grid"></div>
         </nav>
     </div>
 
-    <section id="review-screen" class="hidden" aria-labelledby="review-title">
-        <h2 id="review-title">Exam Summary</h2>
-        <p style="color: #4a5568; margin-bottom: 20px;">Click any question to return and edit your answer. 🚩 indicates flagged items.</p>
-        <div id="review-list" role="list"></div>
+    <section id="review-screen" class="hidden">
+        <h2>Exam Summary</h2>
+        <p>Click any question to return and edit. 🚩 indicates flagged items.</p>
+        <div id="review-list"></div>
         <div class="review-actions">
             <button onclick="submitExam()" style="background: #28a745; color: white;">Submit Final Exam</button>
             <button onclick="document.getElementById('review-screen').classList.add('hidden'); document.getElementById('exam-container').classList.remove('hidden');">Back to Exam</button>
         </div>
     </section>
 
-    <section id="result-screen" class="hidden" aria-labelledby="result-title">
-        <h2 id="result-title">Exam Complete!</h2>
-        <div id="final-score" aria-live="polite"></div>
-        <button onclick="location.reload()" style="margin-top: 20px; background: #0056b3; color: white;">Return to Main Menu</button>
+    <section id="result-screen" class="hidden">
+        <div class="report-container">
+            <div class="report-header">Exam Score Report</div>
+            
+            <div class="report-grid split-2">
+                <div class="report-box">
+                    <div class="box-header">Candidate</div>
+                    <div class="box-body">
+                        <strong id="report-candidate-name">Student Name</strong>
+                    </div>
+                </div>
+                <div class="report-box">
+                    <div class="box-header">Exam Name</div>
+                    <div class="box-body">
+                        <strong id="report-exam-title">IC3 GS6 Digital Literacy</strong>
+                        <p>Date: <span id="report-date">--/--/----</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-box margin-top">
+                <div class="grid-scale-header">
+                    <span class="scale-title">Results</span>
+                    <div class="scale-numbers">
+                        <span>100</span><span>200</span><span>300</span><span>400</span><span>500</span><span>600</span><span>700</span><span>800</span><span>900</span><span>1000</span>
+                    </div>
+                </div>
+                <div class="scale-row">
+                    <div class="row-label">Required Score</div>
+                    <div class="bar-container">
+                        <div class="score-bar required-bar" style="width: 66.66%; background: #43b02a;"></div>
+                        <div class="grid-lines"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                    </div>
+                </div>
+                <div class="scale-row">
+                    <div class="row-label">Your Score</div>
+                    <div class="bar-container">
+                        <div id="your-score-bar" class="score-bar user-bar" style="width: 0%; background: #3a3a3a;"></div>
+                        <div class="grid-lines"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-grid split-sub margin-top">
+                <div class="report-box">
+                    <div class="box-header">Section Analysis</div>
+                    <table class="analysis-table">
+                        <tbody id="section-analysis-rows">
+                            </tbody>
+                    </table>
+                </div>
+
+                <div class="side-panel-stack">
+                    <div class="report-box">
+                        <div class="box-header">Final Score</div>
+                        <table class="score-table">
+                            <tr><td>Required Score</td><td class="text-right">700</td></tr>
+                            <tr><td>Your Score</td><td class="text-right" id="report-final-score">0</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="report-box margin-top">
+                        <div class="box-header">Outcome</div>
+                        <div class="outcome-banner">
+                            <span id="report-outcome-text">--</span>
+                            <span id="report-outcome-icon" class="status-icon"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-footer">
+                <p>Certiport and the Certiport logo are registered trademarks of Certiport, a Pearson VUE business. All other trademarks are property of their respective holders.</p>
+                <div class="certiport-logo-sub">CERTIPORT</div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <button onclick="window.print()" style="background: #4a5568; color: white; padding: 10px 20px;">Print Report</button>
+            <button onclick="location.reload()" style="background: #0056b3; color: white; padding: 10px 20px; margin-left: 10px;">Return to Main Menu</button>
+        </div>
     </section>
 
-    <footer class="copyright-footer" role="contentinfo">
-        <p>© 2026 IC3 GS6 Exam Simulator. All Rights Reserved. Designed by <span>Donfaruk19</span>.</p>
+    <footer class="copyright-footer">
+        <p>© 2026 IC3 GS6 Exam Simulator. Designed by <span>Donfaruk19</span>.</p>
     </footer>
 
 </body>

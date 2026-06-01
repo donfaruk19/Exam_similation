@@ -433,3 +433,183 @@ select:focus {
     }
     .exam-footer button { width: 100%; text-align: center; }
 }
+
+:root {
+    --certiport-green: #43b02a;
+    --certiport-dark: #3a3a3a;
+    --border-gray: #bcbcbc;
+    --bar-bg: #e0e0e0;
+}
+
+.report-container {
+    width: 100%;
+    max-width: 850px;
+    margin: 20px auto;
+    background: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #111;
+    border: 1px solid var(--border-gray);
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.report-header {
+    background: var(--certiport-dark);
+    color: #fff;
+    font-size: 20px;
+    padding: 8px 15px;
+    text-align: right;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.report-grid {
+    display: flex;
+    gap: 15px;
+}
+.split-2 > div { flex: 1; }
+.split-sub > div:nth-child(1) { flex: 1.6; }
+.split-sub > div:nth-child(2) { flex: 1; }
+
+.margin-top { margin-top: 15px; }
+
+.report-box {
+    border: 1px solid var(--border-gray);
+    display: flex;
+    flex-direction: column;
+}
+
+.box-header {
+    background: var(--certiport-green);
+    color: #fff;
+    font-weight: bold;
+    padding: 6px 10px;
+    font-size: 15px;
+}
+
+.box-body {
+    padding: 10px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+.box-body p { margin: 4px 0 0 0; color: #333; }
+
+/* Grid scale metrics styles */
+.grid-scale-header {
+    display: flex;
+    background: var(--certiport-green);
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    align-items: center;
+}
+.scale-title { width: 140px; padding-left: 10px; }
+.scale-numbers {
+    display: flex;
+    flex: 1;
+    border-left: 1px solid var(--border-gray);
+}
+.scale-numbers span {
+    flex: 1;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 13px;
+    border-right: 1px solid rgba(255,255,255,0.3);
+}
+
+.scale-row {
+    display: flex;
+    border-top: 1px solid var(--border-gray);
+    align-items: center;
+    height: 40px;
+}
+.row-label {
+    width: 140px;
+    padding-left: 10px;
+    font-size: 13px;
+    font-weight: bold;
+}
+.bar-container {
+    flex: 1;
+    height: 100%;
+    position: relative;
+    background: #fff;
+    border-left: 1px solid var(--border-gray);
+}
+.score-bar {
+    height: 18px;
+    position: absolute;
+    top: 11px;
+    left: 0;
+    z-index: 2;
+    background: var(--bar-bg);
+}
+.grid-lines {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0; left: 0; z-index: 1;
+}
+.grid-lines span {
+    flex: 1;
+    height: 100%;
+    border-right: 1px solid var(--border-gray);
+    box-sizing: border-box;
+}
+
+/* Tables Analysis */
+.analysis-table, .score-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+.analysis-table td, .score-table td {
+    border-bottom: 1px solid var(--border-gray);
+    padding: 8px 10px;
+}
+.analysis-table tr:last-child td, .score-table tr:last-child td {
+    border-bottom: none;
+}
+.analysis-table td:nth-child(2) {
+    width: 80px;
+    text-align: center;
+    border-left: 1px solid var(--border-gray);
+}
+.text-right { text-align: right; width: 60px; font-weight: bold; }
+
+.side-panel-stack {
+    display: flex;
+    flex-direction: column;
+}
+
+.outcome-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 16px;
+}
+.status-icon {
+    font-size: 18px;
+}
+.status-icon.pass { color: var(--certiport-green); }
+.status-icon.fail { color: #d9534f; }
+
+.report-footer {
+    margin-top: 25px;
+    border-top: 1px solid var(--border-gray);
+    padding-top: 5px;
+    font-size: 9px;
+    color: #666;
+    line-height: 1.3;
+}
+.certiport-logo-sub {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 900;
+    color: #0076a3;
+    margin-top: 10px;
+    letter-spacing: 2px;
+}

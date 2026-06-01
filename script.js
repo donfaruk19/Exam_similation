@@ -4010,6 +4010,382 @@ const allModules = {
             cor: 1,
             exp: "Understanding different cultures and reactions is key to digital competence[cite: 11]."
         }
+    ],
+    l2_lesson11: [
+        // --- 1. ADVANCED TEXT EDITING & FORMATTING ---
+        {
+            type: "mcq",
+            q: "Which feature should you use to apply a consistent set of fonts, colors, and font sizes throughout a document quickly?",
+            a: ["Format Painter", "Styles", "Find and Replace", "Page Setup"],
+            cor: 1,
+            exp: "Styles (like Heading 1, Heading 2) allow you to apply a pre-configured package of formatting choices consistently across your document."
+        },
+        {
+            type: "mcq",
+            q: "What is the primary benefit of using a document 'Template'?",
+            a: ["It automatically checks your facts for accuracy", "It provides a pre-formatted layout and design to save time when starting a new document", "It protects the document from being opened by unauthorized users", "It increases the maximum storage space of the file"],
+            cor: 1,
+            exp: "Templates give you a structural blueprint (like a resume or invoice template) so you don't have to design documents from scratch."
+        },
+        {
+            type: "mcq",
+            q: "What does the 'Format Painter' tool allow you to do?",
+            a: ["Draw shapes and lines in different colors", "Copy the formatting of a selected text block and apply it to another text block", "Change a document into a completely different file type", "Insert structural clip art into your pages"],
+            cor: 1,
+            exp: "Format Painter copies the exact cosmetic properties (fonts, sizes, colors) of highlighted text and paints them onto another selection."
+        },
+        {
+            type: "mcq",
+            q: "If you want to space text out horizontally from the left margin precisely, you should adjust the:",
+            a: ["Line Spacing", "Indentation", "Orientation", "Page Break"],
+            cor: 1,
+            exp: "Indentation controls the distance between the paragraph text boundary and the page margins."
+        },
+        {
+            type: "mcq",
+            q: "Which feature lets you find every instance of a specific word and change it to something else automatically?",
+            a: ["AutoCorrect", "Find and Replace", "Track Changes", "Word Count"],
+            cor: 1,
+            exp: "The Find and Replace tool searches your whole document database for specific keywords and updates them with your new input text."
+        },
+
+        // --- 2. MANAGING DIGITAL ASSETS ---
+        {
+            type: "mcq",
+            q: "When you insert an image into a word document, what setting determines how paragraph text behaves around that image?",
+            a: ["Image Scaling", "Text Wrapping", "Graphic Cropping", "Layout Masking"],
+            cor: 1,
+            exp: "Text wrapping (e.g., Tight, Square, In Line with Text) determines how the text flows around or behind an inserted graphic object."
+        },
+        {
+            type: "mcq",
+            q: "What does 'Cropping' an image do?",
+            a: ["It changes the image color palette to black and white", "It trims or hides outer edges of the graphic to frame a specific area", "It compresses the file size to speed up network transfers", "It translates embedded text inside the graphic image"],
+            cor: 1,
+            exp: "Cropping cuts away unwanted outer sections of an asset image without changing its overall internal resolution properties."
+        },
+        {
+            type: "mcq",
+            q: "To display structured data using rows and columns in a content document, you should insert a:",
+            a: ["SmartArt diagram", "Table", "Text Box", "Hyperlink layout"],
+            cor: 1,
+            exp: "Tables organize intersecting grids of rows and columns, making data sets much easier to read and format."
+        },
+        {
+            type: "mcq",
+            q: "What component is used to add text boxes, flowcharts, arrow symbols, or banner fields into a document layout manually?",
+            a: ["Page Layout Breaks", "Shapes", "Font Effects", "Bibliography Citations"],
+            cor: 1,
+            exp: "The Shapes utility allows you to draw standard geometry, arrows, callouts, and custom text containers directly into document canvasses."
+        },
+        {
+            type: "mcq",
+            q: "When resizing a graphic asset, how do you prevent the image from becoming distorted or stretched unevenly?",
+            a: ["Drag the center top resizing handle", "Drag one of the corner resizing handles", "Double-click the image body text", "Change the document page orientation"],
+            cor: 1,
+            exp: "Dragging a corner handle scales both width and height simultaneously, preserving the original aspect ratio of the asset."
+        },
+
+        // --- 3. PAGE LAYOUT & NAVIGATION ---
+        {
+            type: "mcq",
+            q: "If you want to shift your document layout from a vertical page view to a horizontal wide-screen format, you change the:",
+            a: ["Margin size", "Orientation", "Paper columns", "Page alignment"],
+            cor: 1,
+            exp: "Page orientation allows you to choose between Portrait (vertical) and Landscape (horizontal) layout positions."
+        },
+        {
+            type: "mcq",
+            q: "What feature forces any remaining text after your insertion point to automatically jump down onto a brand new page?",
+            a: ["Line Break", "Page Break", "Paragraph Indent", "Section Divider"],
+            cor: 1,
+            exp: "A Page Break immediately ends the current page and advances your cursor workspace directly onto the top of the subsequent page."
+        },
+        {
+            type: "mcq",
+            q: "The margins of a document represent:",
+            a: ["The physical thickness of the printing paper properties", "The blank spaces around the very top, bottom, left, and right edges of a page", "The total number of sentences inside a single paragraph", "The space separating line columns inside a database table"],
+            cor: 1,
+            exp: "Margins define the outer boundary areas of a page layout where text cannot normally be written or printed."
+        },
+        {
+            type: "mcq",
+            q: "To display information like page numbers, document titles, or dates automatically at the very bottom of every page, use:",
+            a: ["Headers", "Footers", "Footnotes", "Endnotes"],
+            cor: 1,
+            exp: "Footers display repeating details at the bottom margin of pages, while Headers display repeating info at the top margin."
+        },
+        {
+            type: "mcq",
+            q: "Which view mode is best suited for reviewing how a document layout will look when printed out on physical paper sheets?",
+            a: ["Web Layout view", "Print Layout view", "Outline view", "Draft mode console"],
+            cor: 1,
+            exp: "Print Layout view matches the exact canvas dimensions, page breaks, and margin spaces that will be processed by a hardware printer."
+        },
+
+        // --- 4. REVIEWING & COLLABORATING ---
+        {
+            type: "mcq",
+            q: "When multiple people collaborate on a document, which tool logs every addition, deletion, or format change automatically?",
+            a: ["AutoCorrect history", "Track Changes", "Document Inspector", "Restrict Editing mode"],
+            cor: 1,
+            exp: "Track Changes acts as an audit trail, highlighting exactly what edits were suggested, who made them, and when."
+        },
+        {
+            type: "mcq",
+            q: "What is the function of a 'Comment' in a content creation document?",
+            a: ["It alters the text permanently without saving backups", "It provides an attached feedback note or query in a sidebar without changing the actual page text", "It compiles a citation index automatically at the end", "It converts standard text structures into HTML scripts"],
+            cor: 1,
+            exp: "Comments allow collaborators to leave margin annotations or review notes for others without corrupting the document text itself."
+        },
+        {
+            type: "mcq",
+            q: "What must you do to a tracked edit to incorporate it permanently into the document text?",
+            a: ["Delete the text completely", "Accept the change", "Reject the change", "Add a new comment block"],
+            cor: 1,
+            exp: "Choosing 'Accept Change' removes the markup indicators and makes the collaborator's edit a permanent part of the text."
+        },
+        {
+            type: "mcq",
+            q: "If you disagree with a change a reviewer made using Track Changes, what action should you take?",
+            a: ["Accept the change and complain in a comment", "Reject the change", "Reformat your entire computer system", "Save the document as a template"],
+            cor: 1,
+            exp: "Choosing 'Reject Change' reverses the suggested modification and restores the document text back to its previous version."
+        },
+        {
+            type: "mcq",
+            q: "Which utility checks for misspelled words and grammar structural errors throughout your content layout?",
+            a: ["The Thesaurus", "Spelling and Grammar / Editor", "Smart Lookup", "Translate Engine"],
+            cor: 1,
+            exp: "The Spelling and Grammar engine compares document words against standard dictionaries to spot anomalies."
+        },
+
+        // --- 5. PRESENTATION SOFTWARE FUNDAMENTALS ---
+        {
+            type: "mcq",
+            q: "What is the individual workspace canvas or block inside a presentation program called?",
+            a: ["Document Page", "Slide", "Sheet Row", "Layout Node"],
+            cor: 1,
+            exp: "Presentation assets (like PowerPoint files) are divided into structured individual canvases called slides."
+        },
+        {
+            type: "mcq",
+            q: "What component do you use to type textual notes that only the presenter can see on screen during a live broadcast presentation?",
+            a: ["Slide Titles", "Speaker Notes / Presenter Notes", "Handout Masters", "SmartArt Labels"],
+            cor: 1,
+            exp: "Speaker notes are visible on the presenter's control monitor console but remain hidden from the audience's main projector screen."
+        },
+        {
+            type: "mcq",
+            q: "The visual effect that occurs when a presentation file moves from one slide onto the subsequent slide is a:",
+            a: ["Text Animation", "Slide Transition", "Graphic Object Style", "Theme Variant"],
+            cor: 1,
+            exp: "Transitions control the entire scene animation effect that triggers when jumping between adjacent slides."
+        },
+        {
+            type: "mcq",
+            q: "Applying a movement effect to an individual text block, list bullet, or image on a slide is known as a/an:",
+            a: ["Transition", "Animation", "Style Theme", "Layout Break"],
+            cor: 1,
+            exp: "Animations control how specific elements *inside* a single slide behave (e.g., fading in an image or making bullet points fly in)."
+        },
+        {
+            type: "mcq",
+            q: "Which presentation view allows you to see all slides as small thumbnails on one screen to reorganize them easily?",
+            a: ["Slide Show view", "Slide Sorter view", "Notes Page view", "Reading view mode"],
+            cor: 1,
+            exp: "Slide Sorter displays grid thumbnails, making it easy to drag, drop, and sequence presentation parts."
+        },
+
+        // --- 6. SPREADSHEET BASICS & DATA ---
+        {
+            type: "mcq",
+            q: "The individual block formed by the intersection of a column and a row in a spreadsheet application is called a:",
+            a: ["Gridline", "Cell", "Formula box", "Sheet index"],
+            cor: 1,
+            exp: "Cells are the fundamental data compartments in spreadsheets, mapped via coordinates like A1 or B25."
+        },
+        {
+            type: "mcq",
+            q: "How are columns normally identified inside standard spreadsheets?",
+            a: ["By numbers (1, 2, 3...)", "By letters (A, B, C...)", "By colors (Red, Blue, Green)", "By functional symbols (+, -, *)"],
+            cor: 1,
+            exp: "Spreadsheet structures run vertically with alphabetic column labels and horizontally with numeric row numbers."
+        },
+        {
+            type: "mcq",
+            q: "Every functional formula or mathematical calculation statement inside a cell must begin with which symbol?",
+            a: ["The dollar sign ($)", "The equals sign (=)", "The hash key (#)", "The asterisk symbol (*)"],
+            cor: 1,
+            exp: "The equals sign (=) signals to the spreadsheet processor that the cell contains an active formula calculation, not just plain text entry."
+        },
+        {
+            type: "mcq",
+            q: "What spreadsheet function automatically adds a range of chosen cell numeric values together?",
+            a: ["AVERAGE", "SUM", "COUNT", "MAX"],
+            cor: 1,
+            exp: "The `=SUM()` expression calculates the total cumulative mathematical value of all designated coordinate cells."
+        },
+        {
+            type: "mcq",
+            q: "To change how data appears inside a cell (like rendering a plain 10 as $10.00) without altering the raw number value, adjust the:",
+            a: ["Formula alignment", "Number Formatting", "Font Case option", "Data Query Filter"],
+            cor: 1,
+            exp: "Number formatting converts values into specific display masks like Currency, Percentage, Date, or Plain Text."
+        },
+
+        // --- 7. FILE MANAGEMENT & EXPORTING ---
+        {
+            type: "mcq",
+            q: "What file command creates an entirely new duplicate version of your open file in a different location or with a new filename?",
+            a: ["Save", "Save As", "Export PDF", "Print Queue"],
+            cor: 1,
+            exp: "Save As prompts the OS to establish a separate file clone, leaving your original version unchanged."
+        },
+        {
+            type: "mcq",
+            q: "If you want to share a text document with someone so they can read it but cannot accidentally shift or reformat its text layout, save it as a:",
+            a: ["Plain text (.txt) file", "PDF (.pdf) file", "Word Template (.dotx)", "Rich Text (.rtf) layout"],
+            cor: 1,
+            exp: "Exporting to PDF locks the alignment, fonts, and graphics so the document prints and displays uniformly across all destination devices."
+        },
+        {
+            type: "mcq",
+            q: "What file extension is standard for traditional Microsoft Word processing application files?",
+            a: [".xlsx", ".docx", ".pptx", ".html"],
+            cor: 1,
+            exp: ".docx is the modern standard XML-compressed file format extension for Word documents."
+        },
+        {
+            type: "mcq",
+            q: "When working on web cloud platforms like Google Docs, where are edits saved?",
+            a: ["Only when clicking a manual Save button", "Automatically to the cloud after every keystroke or update action", "To your computer's local RAM only", "When the local internet router restarts"],
+            cor: 1,
+            exp: "Cloud-native suites continuously sync and store changes into remote data files instantly as you type."
+        },
+        {
+            type: "mcq",
+            q: "What utility checks for hidden metadata, personal developer info, or hidden rows before publishing a document publicly?",
+            a: ["Document Inspector", "Spell Checker", "Format Painter", "Style Panel"],
+            cor: 0,
+            exp: "Document Inspector scans file backgrounds to scrub sensitive tracking metadata, comments, or author information prior to wide distribution."
+        },
+
+        // --- 8. ADVANCED LAYOUT CONCEPTS ---
+        {
+            type: "mcq",
+            q: "What alignment option spaces your text block out evenly so both the left and right edges align flush with page margins?",
+            a: ["Align Left", "Justify", "Center", "Align Right"],
+            cor: 1,
+            exp: "Justifying text stretches line spacings dynamically so text paragraphs create boxy, straight margins on both sides."
+        },
+        {
+            type: "mcq",
+            q: "To organize a simple text list into ordered chronological ranks or instruction steps, which element is best?",
+            a: ["Bulleted List", "Numbered List", "Table of Contents", "Hyperlink Index"],
+            cor: 1,
+            exp: "Numbered lists designate absolute sequential steps or rank hierarchies, whereas bullet points list items without a strict order."
+        },
+        {
+            type: "mcq",
+            q: "What are the pre-set, non-printing dashed lines that help map boundaries when editing a layout grid table called?",
+            a: ["Cell Borders", "Gridlines", "Margin Frames", "Paragraph Outlines"],
+            cor: 1,
+            exp: "Gridlines show you cell walls on your design screen even if you have disabled actual printing borders."
+        },
+        {
+            type: "mcq",
+            q: "What formatting parameter controls the vertical gap space between lines of text inside a paragraph container?",
+            a: ["Character Kerning", "Line Spacing", "Paragraph Indenting", "Margin Scaling"],
+            cor: 1,
+            exp: "Line spacing (e.g., single-spaced, double-spaced) dictates the structural vertical distance separating lines of text."
+        },
+        {
+            type: "mcq",
+            q: "If you want to create an automatic, clickable index mapping your headings to page numbers at the start of a long report, you insert a/an:",
+            a: ["Bibliography Table", "Table of Contents", "Index Citation Marker", "Header Template"],
+            cor: 1,
+            exp: "A Table of Contents scans text items flagged with Heading Styles to map and structure a clickable document index."
+        },
+
+        // --- 9. CATEGORIZATION & MATCHING ---
+        {
+            type: "matching",
+            q: "Match the workspace file type extension to its matching core utility app ecosystem:",
+            pairs: [
+                { term: ".docx", definition: "Word Processing Document Application" },
+                { term: ".xlsx", definition: "Spreadsheet Data Calculation Application" },
+                { term: ".pptx", definition: "Presentation Layout Delivery Application" }
+            ],
+            exp: "Extensions keep the operating system updated on which application engine handles specific document database structures."
+        },
+        {
+            type: "categorization",
+            q: "Categorize the following commands based on whether they affect entire page frameworks (Page Layout) or individual font aesthetics (Character/Paragraph Formatting):",
+            categories: ["Page Layout Level", "Character/Paragraph Formatting"],
+            items: [
+                { name: "Changing Page Margins", category: "Page Layout Level" },
+                { name: "Applying Bold and Italic font properties", category: "Character/Paragraph Formatting" },
+                { name: "Setting Landscape Orientation", category: "Page Layout Level" },
+                { name: "Adjusting Line Spacing", category: "Character/Paragraph Formatting" }
+            ],
+            exp: "Layout controls global page margins and orientation, while formatting focuses on look adjustments to characters or sentences."
+        },
+        {
+            type: "yesno",
+            q: "Can multiple editors review, edit, and comment on a shared cloud word document simultaneously?",
+            statements: [
+                "Yes, cloud environments support live multi-user collaborative editing and chat logging streams.",
+                "No, only one user can open a file at any given time, locking out other network accounts.",
+                "Yes, but you can only see their edits after restarting your computer system."
+            ],
+            cor: [true, false, false],
+            exp: "Cloud suites allow real-time multi-person authoring, meaning changes show up on screen immediately as they happen."
+        },
+
+        // --- 10. OBJECTS & LAYOUT COHESION ---
+        {
+            type: "mcq",
+            q: "What component allows you to combine multiple drawn shapes or lines into a single, unified object box that moves together?",
+            a: ["Locking tool", "Grouping", "Merging layers", "Anchoring text"],
+            cor: 1,
+            exp: "Grouping links several separate items together, allowing you to move or scale them as a single piece."
+        },
+        {
+            type: "mcq",
+            q: "What happens when you adjust an object's layer sorting position to 'Bring to Front'?",
+            a: ["The item is deleted completely", "The object is moved to the top layer, appearing over any overlapping items", "The object moves behind the page background text", "The file size increases"],
+            cor: 1,
+            exp: "Layer sorting dictates object stack depth. 'Bring to Front' places the asset on top of all overlapping canvas objects."
+        },
+        {
+            type: "mcq",
+            q: "When a spelling checker flags a word with a wavy red underline, what does it mean?",
+            a: ["The word is correctly formatted but needs to be bolded", "The word is not recognized in the application's current language dictionary", "The word contains a critical security virus threat", "The line spacing above the paragraph container is broken"],
+            cor: 1,
+            exp: "Red underlines signal spelling exceptions or unknown proper nouns that aren't matching dictionary reference terms."
+        },
+        {
+            type: "mcq",
+            q: "What is the purpose of using a 'Footnote' in formal content creation?",
+            a: ["To customize the page border colors", "To add background tracking data variables", "To place an source reference or citation annotation at the bottom of the current page", "To structure slide presentation transitions"],
+            cor: 2,
+            exp: "Footnotes anchor precise citation reference details at the bottom of the page where the source index marker was embedded."
+        },
+        {
+            type: "mcq",
+            q: "To select an entire single paragraph block instantly using your mouse pointer, you should:",
+            a: ["Single-click any letter word", "Triple-click anywhere inside that paragraph body", "Right-click the page margins once", "Drag the scrollbar handle up and down"],
+            cor: 1,
+            exp: "Triple-clicking a word paragraph quickly highlights the entire contiguous text container automatically."
+        },
+        {
+            type: "mcq",
+            q: "What feature automatically adjusts column widths in a spreadsheet to match the longest text entry inside them?",
+            a: ["AutoCorrect", "AutoFit", "Merge & Center", "Wrap Text"],
+            cor: 1,
+            exp: "AutoFit expands or contracts column boundaries dynamically to display cell data perfectly without clipping text."
+        }
     ]
 };
 
@@ -4739,4 +5115,97 @@ function updateProgress() {
     const currentPct = Math.round(((session.currentIdx + 1) / session.questions.length) * 100);
     if (UI.progressFill) UI.progressFill.style.width = `${currentPct}%`;
     if (UI.progressBar) UI.progressBar.setAttribute('aria-valuenow', currentPct);
+}
+
+/**
+ * Processes completed user test configurations and prints the customized Certiport Exam Score Report interface.
+ * @param {Array} questionsArray - The active Lesson Array (e.g., l2_lesson11)
+ * @param {Array} userAnswers - Array containing indices of user choices matched against question lengths
+ * @param {String} currentLessonTitle - Title descriptive text of the active evaluation
+ */
+function generateCertiportScoreReport(questionsArray, userAnswers, currentLessonTitle = "IC3 GS6 Digital Literacy Exam") {
+    // 1. Calculate General Structural Analytics Data
+    let totalQuestions = questionsArray.length;
+    let correctAnswersCount = 0;
+
+    // Track subsections dynamically based on your app's questions
+    // Since some individual lessons focus heavily on single themes, we will auto-group by question topics
+    let domainMetrics = {
+        "Core Concepts & Knowledge": { correct: 0, total: 0 },
+        "Practical Application & UI Tools": { correct: 0, total: 0 },
+        "Advanced Operations": { correct: 0, total: 0 }
+    };
+
+    questionsArray.forEach((question, index) => {
+        let isCorrect = (userAnswers[index] === question.cor);
+        if (isCorrect) correctAnswersCount++;
+
+        // Categorize into domains for analysis presentation output based on question index balance
+        let sectionKey = "Core Concepts & Knowledge";
+        if (index >= Math.floor(totalQuestions * 0.6)) {
+            sectionKey = "Advanced Operations";
+        } else if (index >= Math.floor(totalQuestions * 0.3)) {
+            sectionKey = "Practical Application & UI Tools";
+        }
+
+        domainMetrics[sectionKey].total++;
+        if (isCorrect) {
+            domainMetrics[sectionKey].correct++;
+        }
+    });
+
+    // 2. Score Linear Transformations (Certiport uses a 100-1000 scale)
+    // Formula: 100 + (Percentage Correct * 900)
+    let percentageCorrect = correctAnswersCount / totalQuestions;
+    let finalScaledScore = Math.round(100 + (percentageCorrect * 900));
+    const passingThreshold = 700;
+    let coreOutcomePassed = finalScaledScore >= passingThreshold;
+
+    // 3. UI DOM Rendering Engine Injection
+    document.getElementById("report-exam-title").innerText = currentLessonTitle;
+    document.getElementById("report-date").innerText = new Date().toLocaleDateString();
+    document.getElementById("report-final-score").innerText = finalScaledScore;
+
+    // Update Scaled Result Bars
+    // Adjust visual offset percentage calculation space out across grid blocks
+    let visualPercentWidth = Math.max(0, ((finalScaledScore - 100) / 900) * 100);
+    document.getElementById("your-score-bar").style.width = `${visualPercentWidth}%`;
+
+    // Process Status Configurations
+    let outcomeText = document.getElementById("report-outcome-text");
+    let outcomeIcon = document.getElementById("report-outcome-icon");
+    if (coreOutcomePassed) {
+        outcomeText.innerText = "Pass";
+        outcomeText.style.color = "var(--certiport-green)";
+        outcomeIcon.className = "status-icon pass";
+        outcomeIcon.innerText = "✓";
+    } else {
+        outcomeText.innerText = "Fail";
+        outcomeText.style.color = "#d9534f";
+        outcomeIcon.className = "status-icon fail";
+        outcomeIcon.innerText = "✗";
+    }
+
+    // Build Section Analysis Dynamic Markup Rows
+    let analysisTableBody = document.getElementById("section-analysis-rows");
+    analysisTableBody.innerHTML = ""; // Flush template elements
+
+    for (const [sectionName, data] of Object.entries(domainMetrics)) {
+        if (data.total === 0) continue;
+        let sectionPercentage = Math.round((data.correct / data.total) * 100);
+        
+        let rowHTML = `
+            <tr>
+                <td>${sectionName}</td>
+                <td>${sectionPercentage}%</td>
+            </tr>
+        `;
+        analysisTableBody.innerHTML += rowHTML;
+    }
+
+    // Unhide the report view container element panel
+    document.getElementById("exam-score-report").style.display = "block";
+    
+    // Smoothly scroll down directly to view performance analytics metrics
+    document.getElementById("exam-score-report").scrollIntoView({ behavior: 'smooth' });
 }

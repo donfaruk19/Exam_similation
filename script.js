@@ -4991,6 +4991,14 @@ function submitExam() {
     UI.examContainer.classList.add('hidden');
     UI.resultScreen.classList.remove('hidden');
 
+    // Capture Candidate Name from the setup screen
+    const nameInput = document.getElementById('candidate-name').value;
+    document.getElementById('report-candidate-name').innerText = nameInput || "Guest Candidate";
+
+    // Call the detailed report generator
+    generateCertiportScoreReport(session.questions, session.userAnswers, UI.moduleSelect.options[UI.moduleSelect.selectedIndex].text);
+}
+
     let finalScore = 0;
     let lessonStats = {};
 
@@ -5123,89 +5131,73 @@ function updateProgress() {
  * @param {Array} userAnswers - Array containing indices of user choices matched against question lengths
  * @param {String} currentLessonTitle - Title descriptive text of the active evaluation
  */
-function generateCertiportScoreReport(questionsArray, userAnswers, currentLessonTitle = "IC3 GS6 Digital Literacy Exam") {
-    // 1. Calculate General Structural Analytics Data
+function generateCertiportScoreReport(questionsArray, userAnswers, currentLessonTitle) {
     let totalQuestions = questionsArray.length;
-    let correctAnswersCount = 0;
+    let correctCount = 0;
 
-    // Track subsections dynamically based on your app's questions
-    // Since some individual lessons focus heavily on single themes, we will auto-group by question topics
-    let domainMetrics = {
-        "Core Concepts & Knowledge": { correct: 0, total: 0 },
-        "Practical Application & UI Tools": { correct: 0, total: 0 },
-        "Advanced Operations": { correct: 0, total: 0 }
-    };
-
-    questionsArray.forEach((question, index) => {
-        let isCorrect = (userAnswers[index] === question.cor);
-        if (isCorrect) correctAnswersCount++;
-
-        // Categorize into domains for analysis presentation output based on question index balance
-        let sectionKey = "Core Concepts & Knowledge";
-        if (index >= Math.floor(totalQuestions * 0.6)) {
-            sectionKey = "Advanced Operations";
-        } else if (index >= Math.floor(totalQuestions * 0.3)) {
-            sectionKey = "Practical Application & UI Tools";
-        }
-
-        domainMetrics[sectionKey].total++;
-        if (isCorrect) {
-            domainMetrics[sectionKey].correct++;
+    // 1. Calculate Score
+    questionsArray.forEach((q, idx) => {
+        if (gradeQuestion(q, userAnswers[idx])) {
+            correctCount++;
         }
     });
 
-    // 2. Score Linear Transformations (Certiport uses a 100-1000 scale)
-    // Formula: 100 + (Percentage Correct * 900)
-    let percentageCorrect = correctAnswersCount / totalQuestions;
-    let finalScaledScore = Math.round(100 + (percentageCorrect * 900));
-    const passingThreshold = 700;
-    let coreOutcomePassed = finalScaledScore >= passingThreshold;
+    let percentage = (correctCount / totalQuestions);
+    // Certiport Scale: 100 to 1000
+    let scaledScore = Math.round(100 + (percentage * 900));
+    const passScore = 700;
 
-    // 3. UI DOM Rendering Engine Injection
+    // 2. Populate Header Info
     document.getElementById("report-exam-title").innerText = currentLessonTitle;
     document.getElementById("report-date").innerText = new Date().toLocaleDateString();
-    document.getElementById("report-final-score").innerText = finalScaledScore;
+    document.getElementById("report-final-score").innerText = scaledScore;
 
-    // Update Scaled Result Bars
-    // Adjust visual offset percentage calculation space out across grid blocks
-    let visualPercentWidth = Math.max(0, ((finalScaledScore - 100) / 900) * 100);
-    document.getElementById("your-score-bar").style.width = `${visualPercentWidth}%`;
+    // 3. Update Visual Bars
+    // The bar width is based on the 100-1000 scale (900 points total range)
+    let barWidth = ((scaledScore - 100) / 900) * 100;
+    document.getElementById("your-score-bar").style.width = `${Math.max(0, barWidth)}%`;
+    
+    // Change color if failed
+    document.getElementById("your-score-bar").style.background = (scaledScore >= passScore) ? "#3a3a3a" : "#d9534f";
 
-    // Process Status Configurations
-    let outcomeText = document.getElementById("report-outcome-text");
-    let outcomeIcon = document.getElementById("report-outcome-icon");
-    if (coreOutcomePassed) {
+    // 4. Outcome Status
+    const outcomeText = document.getElementById("report-outcome-text");
+    const outcomeIcon = document.getElementById("report-outcome-icon");
+
+    if (scaledScore >= passScore) {
         outcomeText.innerText = "Pass";
-        outcomeText.style.color = "var(--certiport-green)";
+        outcomeText.style.color = "#43b02a";
+        outcomeIcon.innerHTML = "&#10004;"; // Checkmark
         outcomeIcon.className = "status-icon pass";
-        outcomeIcon.innerText = "✓";
     } else {
         outcomeText.innerText = "Fail";
         outcomeText.style.color = "#d9534f";
+        outcomeIcon.innerHTML = "&#10008;"; // Cross
         outcomeIcon.className = "status-icon fail";
-        outcomeIcon.innerText = "✗";
     }
 
-    // Build Section Analysis Dynamic Markup Rows
-    let analysisTableBody = document.getElementById("section-analysis-rows");
-    analysisTableBody.innerHTML = ""; // Flush template elements
+    // 5. Section Analysis (Objective Breakdown)
+    const analysisTableBody = document.getElementById("section-analysis-rows");
+    analysisTableBody.innerHTML = ""; 
 
-    for (const [sectionName, data] of Object.entries(domainMetrics)) {
-        if (data.total === 0) continue;
-        let sectionPercentage = Math.round((data.correct / data.total) * 100);
+    // Grouping logic based on sourceLesson or general domains
+    let domainMetrics = {};
+    questionsArray.forEach((q, idx) => {
+        let domain = q.domain || "Digital Literacy Skills"; // Fallback if domain isn't in JSON
+        if (!domainMetrics[domain]) domainMetrics[domain] = { correct: 0, total: 0 };
         
-        let rowHTML = `
+        domainMetrics[domain].total++;
+        if (gradeQuestion(q, userAnswers[idx])) domainMetrics[domain].correct++;
+    });
+
+    for (const [name, data] of Object.entries(domainMetrics)) {
+        let pct = Math.round((data.correct / data.total) * 100);
+        let row = `
             <tr>
-                <td>${sectionName}</td>
-                <td>${sectionPercentage}%</td>
+                <td>${name}</td>
+                <td class="text-right">${pct}%</td>
             </tr>
         `;
-        analysisTableBody.innerHTML += rowHTML;
+        analysisTableBody.innerHTML += row;
     }
-
-    // Unhide the report view container element panel
-    document.getElementById("exam-score-report").style.display = "block";
-    
-    // Smoothly scroll down directly to view performance analytics metrics
-    document.getElementById("exam-score-report").scrollIntoView({ behavior: 'smooth' });
 }

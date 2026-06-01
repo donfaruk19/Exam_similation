@@ -3620,6 +3620,396 @@ const allModules = {
             cor: 2,
             exp: "The 'a' in Cat 6a stands for 'augmented,' designed to reduce crosstalk/interference."
         }
+    ],
+    l2_lesson9: [
+        // --- 1. PERSONAL VS. PROFESSIONAL IDENTITIES ---
+        {
+            type: "mcq",
+            q: "What is a primary reason for maintaining separate personal and professional online identities?",
+            a: ["To confuse search engines", "To manage the professional impression you leave in others' minds", "To avoid paying for internet services", "To use the same password for everything"],
+            cor: 1,
+            exp: "Separate identities help you be mindful of the impressions your online activities leave on potential employers or colleagues[cite: 30, 32]."
+        },
+        {
+            type: "mcq",
+            q: "What is an 'Alias' in a digital context?",
+            a: ["A type of computer virus", "A misleading or alternative name used to create an account", "The physical serial number of a device", "A high-speed network cable"],
+            cor: 1,
+            exp: "Aliases are popular for privacy or when people have common names, but they can also be used to create misleading accounts[cite: 31, 34, 35]."
+        },
+        {
+            type: "mcq",
+            q: "When should you use a 'Professional Identity' for purchases?",
+            a: ["When buying groceries for your home", "When purchasing items for business use or reporting business expenses", "Only when using a personal credit card", "Never; always use a personal account for all shopping"],
+            cor: 1,
+            exp: "Using a professional account for business purchases helps identify the expense as being for the organization[cite: 7]."
+        },
+        {
+            type: "mcq",
+            q: "Where should you store files when collaborating with colleagues on a business project?",
+            a: ["In your personal Google Drive folders", "In the company's designated cloud location using your professional identity", "On a physical USB drive only", "In a private social media group"],
+            cor: 1,
+            exp: "Professional identities provide access to company cloud folders for official collaboration[cite: 8]."
+        },
+        {
+            type: "mcq",
+            q: "What is a risk of blending personal and professional identities?",
+            a: ["Your computer will run slower", "Professional contacts may see personal posts that do not reflect your work persona", "You will get more spam emails", "You cannot use a smartphone"],
+            cor: 1,
+            exp: "Being mindful of your digital footprint is critical because everything you post reflects who you are[cite: 30, 9]."
+        },
+
+        // --- 2. MANAGING ACCOUNTS ---
+        {
+            type: "mcq",
+            q: "How do you manage or switch between multiple Google accounts on a device?",
+            a: ["Restart the computer", "Select your profile image and click 'Add' or 'Switch' account", "Delete the browser cache", "Call Google support"],
+            cor: 1,
+            exp: "Google allows you to manage multiple identities by clicking your profile image at the top of the screen[cite: 3]."
+        },
+        {
+            type: "mcq",
+            q: "In Windows Settings, where can you manage your Microsoft Work, School, or Personal accounts?",
+            a: ["System > Display", "Accounts", "Network & Internet", "Personalization"],
+            cor: 1,
+            exp: "The 'Accounts' section in Windows Settings is the central hub for managing different Microsoft identities[cite: 4]."
+        },
+        {
+            type: "mcq",
+            q: "Which browser feature allows you to manage different profiles for work and personal use?",
+            a: ["The Print Preview", "The Profiles page in Settings", "The Bookmarks bar", "The History tab"],
+            cor: 1,
+            exp: "Browsers like Microsoft Edge have a Profiles page to manage and switch between different account identities[cite: 6]."
+        },
+        {
+            type: "yesno",
+            q: "Is it recommended to add personal games to a company-owned computing device?",
+            statements: [
+                "Yes, as long as you finish your work.",
+                "No, you should refrain from adding unapproved applications or games to company devices.",
+                "Yes, but only if you use a personal account."
+            ],
+            cor: [false, true, false],
+            exp: "Company devices should be used for professional purposes with approved software only[cite: 9]."
+        },
+        {
+            type: "mcq",
+            q: "What should you do before accepting a 'Friend' request on a professional social media account?",
+            a: ["Accept everyone to increase your numbers", "Be careful and ensure the connection is appropriate for your professional identity", "Ask them for their password", "Ignore it for at least a month"],
+            cor: 1,
+            exp: "Professional accounts require more careful vetting of connections than personal ones[cite: 36]."
+        },
+
+        // --- 3. DIGITAL ETIQUETTE (NETIQUETTE) ---
+        {
+            type: "mcq",
+            q: "What does using ALL UPPERCASE letters in a digital message usually imply?",
+            a: ["The sender is being very polite", "The sender is 'shouting' or expressing anger", "The message is a secret code", "The keyboard is broken"],
+            cor: 1,
+            exp: "In digital etiquette, all caps are considered shouting and should be avoided[cite: 11]."
+        },
+        {
+            type: "mcq",
+            q: "Which of the following is considered 'Inappropriate' for business or school conversations?",
+            a: ["Clear and concise language", "Abbreviations, acronyms, and emoticons", "Timely responses", "Formal greetings"],
+            cor: 1,
+            exp: "Formal environments generally require avoiding slang, emoticons, and text-speak[cite: 11]."
+        },
+        {
+            type: "mcq",
+            q: "Why is electronic communication often open to misinterpretation?",
+            a: ["Because the internet is too fast", "Because it lacks physical cues like tone of voice and body language", "Because everyone uses the same font", "Because it is always encrypted"],
+            cor: 1,
+            exp: "Without seeing the person, digital messages can be easily misunderstood[cite: 10]."
+        },
+        {
+            type: "mcq",
+            q: "When responding to a group message, what 'Etiquette' factor should you consider?",
+            a: ["The color of your font", "The frequency of your messages to avoid cluttering the conversation", "The size of your monitor", "How many emojis you can fit"],
+            cor: 1,
+            exp: "Consider how often you post so you don't overwhelm a group chat[cite: 10]."
+        },
+        {
+            type: "mcq",
+            q: "What is the best way to handle a message that makes you feel angry?",
+            a: ["Respond immediately with your true feelings", "Refrain from responding while in a negative emotional state", "Forward it to everyone you know", "Use even more uppercase letters"],
+            cor: 1,
+            exp: "Digital etiquette suggests waiting until you are calm before replying to avoid saying something you regret[cite: 11]."
+        },
+
+        // --- 4. RESPECTING DIVERSITY & OPINIONS ---
+        {
+            type: "mcq",
+            q: "How should you treat others in a virtual meeting or online environment?",
+            a: ["Ignore them if they have a different opinion", "Treat them as you would want to be treated yourself", "Be as offensive as possible to win the argument", "Only speak to people from your own country"],
+            cor: 1,
+            exp: "The 'Golden Rule' of treating others with respect applies to all digital interactions[cite: 11]."
+        },
+        {
+            type: "mcq",
+            q: "Is it acceptable to disagree with someone's point of view online?",
+            a: ["No, you must always agree to be polite", "Yes, it is okay to disagree as long as you remain respectful and not offensive", "Yes, but only if you use an alias", "No, disagreement is a form of cyberbullying"],
+            cor: 1,
+            exp: "Healthy debate is fine, but disrespect and offensiveness are not[cite: 13]."
+        },
+        {
+            type: "mcq",
+            q: "Why might terminology vary significantly in a global online environment?",
+            a: ["Because the internet translates everything poorly", "Because of different cultural backgrounds and local dialects", "Because older computers use different words", "Because people like to make up new words"],
+            cor: 1,
+            exp: "Global communication requires awareness that words can mean different things in different cultures[cite: 12]."
+        },
+        {
+            type: "mcq",
+            q: "What should you be conscious of when reacting to a post?",
+            a: ["How many 'likes' it already has", "That your reaction may reflect your own culture, background, or beliefs", "The speed of your mouse click", "The time of day in your region"],
+            cor: 1,
+            exp: "Our digital reactions are filtered through our personal perspectives[cite: 13]."
+        },
+        {
+            type: "mcq",
+            q: "Being 'Inculsive' in your digital language means:",
+            a: ["Using only words you know", "Demonstrating respect for people of all cultures, traditions, and beliefs", "Excluding people who disagree with you", "Posting only in one language"],
+            cor: 1,
+            exp: "Inclusivity online promotes a respectful and welcoming environment for everyone[cite: 12]."
+        },
+
+        // --- 5. DIGITAL COMPETENCE & UPDATES ---
+        {
+            type: "mcq",
+            q: "Which type of update is considered 'Critical' for your system?",
+            a: ["A new desktop theme", "Security patches and antivirus updates", "A change to the font in your email", "A reminder to buy a new mouse"],
+            cor: 1,
+            exp: "Updates that fix security vulnerabilities are the most important for protecting your data[cite: 13]."
+        },
+        {
+            type: "mcq",
+            q: "What is a good way to stay informed about technological advancements?",
+            a: ["Wait for someone to tell you", "Subscribe to technology newsletters from reliable sources or universities", "Only read social media posts", "Delete your browser every week"],
+            cor: 1,
+            exp: "Newsletters and expert reports are excellent ways to track tech trends[cite: 14]."
+        },
+        {
+            type: "mcq",
+            q: "Do you need to install every single software update and patch available?",
+            a: ["Yes, immediately", "No, not all updates are necessary for every program; find out how they benefit you first", "Yes, but only on weekends", "No, never update your software"],
+            cor: 1,
+            exp: "Assess updates to see if they are necessary or beneficial for your specific needs[cite: 13, 14]."
+        },
+        {
+            type: "mcq",
+            q: "What is a benefit of subscribing to automated notices for updates?",
+            a: ["It makes the computer faster", "It ensures you are aware of fixes for problems as soon as they are released", "It automatically buys new software for you", "It stops all pop-up ads"],
+            cor: 1,
+            exp: "Automation helps you stay current with critical system maintenance[cite: 13]."
+        },
+        {
+            type: "mcq",
+            q: "Before upgrading hardware for a 'new technology,' what should you research?",
+            a: ["The color of the new device", "How the new technology will actually benefit you, your company, or your family", "If it is the most expensive option", "What your neighbors think about it"],
+            cor: 1,
+            exp: "Evaluate the practical benefits of a hardware upgrade before spending money[cite: 14]."
+        },
+
+        // --- 6. SUSTAINABILITY & RECYCLING ---
+        {
+            type: "mcq",
+            q: "How should you dispose of old ink cartridges or non-working computer parts?",
+            a: ["Throw them in the regular trash", "Take them to organizations that specifically recycle computer components and plastic/metal", "Keep them in your garage forever", "Bury them in your backyard"],
+            cor: 1,
+            exp: "E-waste and consumables should be recycled through proper channels to protect the environment[cite: 11]."
+        },
+        {
+            type: "mcq",
+            q: "What is a benefit of buying 'Recycled' or 'Refilled' ink cartridges?",
+            a: ["They are always faster", "They are generally lower in cost and reduce environmental waste", "They never run out of ink", "They make the printer sound quieter"],
+            cor: 1,
+            exp: "Recycling cartridges is both cost-effective and environmentally friendly[cite: 11]."
+        },
+        {
+            type: "mcq",
+            q: "If you have an old computer that still works perfectly, what is a responsible option?",
+            a: ["Throw it in the trash", "Donate it to a charitable organization or person who can use it", "Take it apart and throw the pieces away", "Leave it on the sidewalk"],
+            cor: 1,
+            exp: "Donating working hardware helps others and keeps functional tech out of landfills[cite: 11]."
+        },
+        {
+            type: "mcq",
+            q: "What is a way to 'Increase your digital competence' by helping others?",
+            a: ["Tell them they are doing it wrong", "Volunteer to teach or provide technical support to family, friends, or charities", "Charging your friends for every question they ask", "Watching them use the computer"],
+            cor: 1,
+            exp: "Teaching and supporting others helps reinforce your own digital skills[cite: 11]."
+        },
+        {
+            type: "mcq",
+            q: "Why should you 'research carefully' before sending computer parts to a recycling company?",
+            a: ["To see if they give you free gifts", "To ensure they aren't just sending the parts to a landfill in another country", "To see if they have a nice website", "To find the closest location"],
+            cor: 1,
+            exp: "Responsible recycling means ensuring the company follows legal and safe disposal practices[cite: 11]."
+        },
+
+        // --- 7. ADDITIONAL ETIQUETTE & IDENTITY SCENARIOS ---
+        {
+            type: "mcq",
+            q: "You are representing your company on a social media site. Your posts should be:",
+            a: ["About your personal hobbies", "Relevant to your profession and promote your organization positively", "Complaints about your boss", "Short and confusing"],
+            cor: 1,
+            exp: "Professional posts should align with your organization's values and your professional role[cite: 9, 10]."
+        },
+        {
+            type: "mcq",
+            q: "What should you do if a message requires further action?",
+            a: ["Ignore it until you have time next week", "Respond in a timely manner", "Delete it", "Forward it to your personal account"],
+            cor: 1,
+            exp: "Professionalism requires prompt responses to actionable requests[cite: 11]."
+        },
+        {
+            type: "mcq",
+            q: "In an online environment, if you encounter someone from a different cultural background:",
+            a: ["Demand they use your terminology", "Respect their diversity and be open to learning from their viewpoint", "Ignore their comments", "Report them to the moderator"],
+            cor: 1,
+            exp: "Digital citizenship involves valuing different perspectives and backgrounds[cite: 12, 13]."
+        },
+        {
+            type: "mcq",
+            q: "Which rule should you follow regarding electronic communications at school or work?",
+            a: ["Your own personal rules", "The rules and guidelines established by your organization", "No rules; it's a free environment", "Whatever rules your friends follow"],
+            cor: 1,
+            exp: "Always adhere to organizational policies regarding digital communication[cite: 11]."
+        },
+        {
+            type: "mcq",
+            q: "What does 'Netiquette' stand for?",
+            a: ["Network Quiet", "Internet Etiquette", "Next Technology", "New Ticket"],
+            cor: 1,
+            exp: "Netiquette is the customary code of polite behavior in online environments[cite: 10]."
+        },
+
+        // --- 8. TROUBLESHOOTING & MAINTENANCE ---
+        {
+            type: "mcq",
+            q: "What is the best way to handle 'Electronic Bullying'?",
+            a: ["Bully them back", "Refrain from using texting to bully and report such behavior to proper authorities", "Change your alias every day", "Delete all your accounts"],
+            cor: 1,
+            exp: "Cyberbullying is a violation of digital etiquette and should be handled formally[cite: 11]."
+        },
+        {
+            type: "mcq",
+            q: "If your computer has a problem, what should you look for first in an update?",
+            a: ["A new game", "A patch designed specifically to fix that known problem", "A hardware replacement", "A different internet provider"],
+            cor: 1,
+            exp: "Software patches are often released to address specific bugs or glitches[cite: 13]."
+        },
+        {
+            type: "mcq",
+            q: "What is 'Crosstalk' in a networking context (referenced in Cat 6a design)?",
+            a: ["Two people talking at once", "Signal interference between cables", "A type of social media site", "A printer error"],
+            cor: 1,
+            exp: "Cat 6a cables are designed to reduce this type of interference[cite: 28]."
+        },
+        {
+            type: "mcq",
+            q: "Why is it important to 'be thoughtful' when viewing others' comments?",
+            a: ["To find something to argue about", "To understand that beliefs and traditions vary among users", "To count how many typos they made", "To see if they are using an alias"],
+            cor: 1,
+            exp: "Empathy and thoughtfulness are core components of digital citizenship[cite: 11]."
+        },
+        {
+            type: "mcq",
+            q: "When should you use 'Bcc' (Blind Carbon Copy) in an email?",
+            a: ["To send a message to a primary recipient", "To send a copy to someone without other recipients knowing", "To reply to everyone in a group", "To attach a large file"],
+            cor: 1,
+            exp: "Bcc is used for privacy so that recipient addresses are hidden from others[cite: 12]."
+        },
+
+        // --- 9. CATEGORIZATION & MATCHING ---
+        {
+            type: "matching",
+            q: "Match the concept to its correct definition:",
+            pairs: [
+                { term: "Digital Footprint", definition: "Permanent record of all your digital activity." },
+                { term: "Alias", definition: "A name used to hide or change your identity online." },
+                { term: "Critical Update", definition: "An important fix for security or system stability." }
+            ],
+            exp: "Understanding these terms is key to navigating Level 2 Digital Citizenship[cite: 4, 13, 31]."
+        },
+        {
+            type: "categorization",
+            q: "Categorize the following as 'Personal' or 'Professional' identity use:",
+            categories: ["Personal Identity", "Professional Identity"],
+            items: [
+                { name: "Buying a gift for your mother", category: "Personal Identity" },
+                { name: "Posting industry-related news", category: "Professional Identity" },
+                { name: "Collaborating on a project folder", category: "Professional Identity" },
+                { name: "Sharing vacation photos with family", category: "Personal Identity" }
+            ],
+            exp: "Keeping these activities separate maintains your professional reputation[cite: 7, 8, 9]."
+        },
+        {
+            type: "mcq",
+            q: "What is 'Asynchronous Communication'?",
+            a: ["Information sent and received instantly", "A time delay between sending and receiving information (e.g., Email)", "Talking on the phone", "A type of physical cable"],
+            cor: 1,
+            exp: "Delayed communication allows users to respond at their convenience[cite: 5]."
+        },
+        {
+            type: "mcq",
+            q: "Which of these is a benefit of digital collaboration?",
+            a: ["It always takes longer", "Increased productivity through simultaneous activity", "You never have to speak to anyone", "It uses more paper"],
+            cor: 1,
+            exp: "Real-time tools allow teams to work on the same project at once[cite: 4, 6]."
+        },
+        {
+            type: "mcq",
+            q: "What should you do if you find online humor 'Sarcastic' or 'Exaggerated'?",
+            a: ["Assume it is factually true", "Consider the tone and potential bias of the source", "Report it as a virus", "Share it as professional advice"],
+            cor: 1,
+            exp: "Critical thinking is necessary to identify bias and tone online[cite: 13]."
+        },
+
+        // --- 10. RECAP & FINAL CONCEPTS ---
+        {
+            type: "mcq",
+            q: "A high ranking in many search engines for a website usually indicates:",
+            a: ["The site is free", "The site has invested effort in design and maintenance", "The site is 100% true", "The site is owned by the government"],
+            cor: 1,
+            exp: "Search ranking often reflects the professional quality of a site's management[cite: 13]."
+        },
+        {
+            type: "mcq",
+            q: "What is 'Creative Commons'?",
+            a: ["A way to steal music", "A non-profit providing licenses to share creative work legally", "A type of social media site", "A computer manufacturer"],
+            cor: 1,
+            exp: "Creative Commons licenses help owners manage how their work is shared[cite: 9]."
+        },
+        {
+            type: "mcq",
+            q: "How long is the standard copyright for an author's creative work?",
+            a: ["10 years", "70 years after the author's death", "Forever", "Until the author retires"],
+            cor: 1,
+            exp: "Copyright protection is long-lasting to protect intellectual property[cite: 9]."
+        },
+        {
+            type: "mcq",
+            q: "What are 'Public Domain' items?",
+            a: ["Items you buy at a store", "Works not protected by intellectual property laws (free for everyone to use)", "Government secrets", "Anything found on Facebook"],
+            cor: 1,
+            exp: "Public domain works can be used by anyone without permission[cite: 9]."
+        },
+        {
+            type: "mcq",
+            q: "Which is a 'Personal Responsibility' mentioned in digital citizenship?",
+            a: ["Fixing everyone's computer", "Living and working online in a safe and legal manner", "Buying the most expensive phone", "Winning online arguments"],
+            cor: 1,
+            exp: "Responsible users prioritize safety, legality, and ethics[cite: 11]."
+        },
+        {
+            type: "mcq",
+            q: "What is the best way to handle 'Conflicting Values' online?",
+            a: ["Attack the other person's beliefs", "Be open to learning why an incident led to a specific reaction", "Mute everyone who disagrees", "Use an alias to argue"],
+            cor: 1,
+            exp: "Understanding different cultures and reactions is key to digital competence[cite: 11]."
+        }
     ]
 };
 

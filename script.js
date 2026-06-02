@@ -4473,7 +4473,15 @@ function checkResume() {
 }
 
 function startExam() {
+    const nameInput = document.getElementById('candidate-name');
     const selectedModule = UI.moduleSelect.value;
+    
+    // Simple validation
+    if (!nameInput.value.trim()) {
+        alert("Please enter your name to start.");
+        return;
+    }
+
     let compiledQuestions = [];
 
     // GMETRIX STYLE COMPREHENSIVE EXAM COMPILER (Full Level Aggregation)
@@ -5131,73 +5139,51 @@ function updateProgress() {
  * @param {Array} userAnswers - Array containing indices of user choices matched against question lengths
  * @param {String} currentLessonTitle - Title descriptive text of the active evaluation
  */
-function generateCertiportScoreReport(questionsArray, userAnswers, currentLessonTitle) {
+function generateCertiportScoreReport(questionsArray, userAnswers, currentLessonTitle = "IC3 GS6 Digital Literacy Exam") {
     let totalQuestions = questionsArray.length;
-    let correctCount = 0;
+    let correctAnswersCount = 0;
 
-    // 1. Calculate Score
-    questionsArray.forEach((q, idx) => {
-        if (gradeQuestion(q, userAnswers[idx])) {
-            correctCount++;
+    // Use the existing gradeQuestion function to be consistent
+    questionsArray.forEach((question, index) => {
+        if (gradeQuestion(question, userAnswers[index])) {
+            correctAnswersCount++;
         }
     });
 
-    let percentage = (correctCount / totalQuestions);
-    // Certiport Scale: 100 to 1000
-    let scaledScore = Math.round(100 + (percentage * 900));
-    const passScore = 700;
+    let percentageCorrect = correctAnswersCount / totalQuestions;
+    let finalScaledScore = Math.round(100 + (percentageCorrect * 900));
+    const passingThreshold = 700;
 
-    // 2. Populate Header Info
+    // Populate HTML
     document.getElementById("report-exam-title").innerText = currentLessonTitle;
     document.getElementById("report-date").innerText = new Date().toLocaleDateString();
-    document.getElementById("report-final-score").innerText = scaledScore;
-
-    // 3. Update Visual Bars
-    // The bar width is based on the 100-1000 scale (900 points total range)
-    let barWidth = ((scaledScore - 100) / 900) * 100;
-    document.getElementById("your-score-bar").style.width = `${Math.max(0, barWidth)}%`;
+    document.getElementById("report-final-score").innerText = finalScaledScore;
     
-    // Change color if failed
-    document.getElementById("your-score-bar").style.background = (scaledScore >= passScore) ? "#3a3a3a" : "#d9534f";
+    // Set Bar Width
+    let visualPercentWidth = ((finalScaledScore - 100) / 900) * 100;
+    document.getElementById("your-score-bar").style.width = `${Math.max(0, visualPercentWidth)}%`;
 
-    // 4. Outcome Status
+    // Set Outcome
     const outcomeText = document.getElementById("report-outcome-text");
     const outcomeIcon = document.getElementById("report-outcome-icon");
-
-    if (scaledScore >= passScore) {
+    if (finalScaledScore >= passingThreshold) {
         outcomeText.innerText = "Pass";
         outcomeText.style.color = "#43b02a";
-        outcomeIcon.innerHTML = "&#10004;"; // Checkmark
+        outcomeIcon.innerHTML = "&#10004;";
         outcomeIcon.className = "status-icon pass";
     } else {
         outcomeText.innerText = "Fail";
         outcomeText.style.color = "#d9534f";
-        outcomeIcon.innerHTML = "&#10008;"; // Cross
+        outcomeIcon.innerHTML = "&#10008;";
         outcomeIcon.className = "status-icon fail";
     }
 
-    // 5. Section Analysis (Objective Breakdown)
-    const analysisTableBody = document.getElementById("section-analysis-rows");
-    analysisTableBody.innerHTML = ""; 
-
-    // Grouping logic based on sourceLesson or general domains
-    let domainMetrics = {};
-    questionsArray.forEach((q, idx) => {
-        let domain = q.domain || "Digital Literacy Skills"; // Fallback if domain isn't in JSON
-        if (!domainMetrics[domain]) domainMetrics[domain] = { correct: 0, total: 0 };
-        
-        domainMetrics[domain].total++;
-        if (gradeQuestion(q, userAnswers[idx])) domainMetrics[domain].correct++;
-    });
-
-    for (const [name, data] of Object.entries(domainMetrics)) {
-        let pct = Math.round((data.correct / data.total) * 100);
-        let row = `
-            <tr>
-                <td>${name}</td>
-                <td class="text-right">${pct}%</td>
-            </tr>
-        `;
-        analysisTableBody.innerHTML += row;
-    }
+    // Populate Table
+    let analysisTableBody = document.getElementById("section-analysis-rows");
+    analysisTableBody.innerHTML = `
+        <tr>
+            <td>Objective Domains</td>
+            <td class="text-right">${Math.round(percentageCorrect * 100)}%</td>
+        </tr>
+    `;
 }

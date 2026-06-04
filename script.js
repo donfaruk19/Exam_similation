@@ -5005,7 +5005,6 @@ function submitExam() {
 
     // Call the detailed report generator
     generateCertiportScoreReport(session.questions, session.userAnswers, UI.moduleSelect.options[UI.moduleSelect.selectedIndex].text);
-}
 
     let finalScore = 0;
     let lessonStats = {};

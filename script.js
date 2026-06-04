@@ -6,11 +6,89 @@
  */
 
 // ==========================================
-// DOCUMENTATION: BUG FIX #1 - START BUTTON
+// DOCUMENTATION: PART 2 - ANALYTICS TRACKER
 // ==========================================
-// The start button had onclick="startExam()" in HTML but was not properly
-// connected to the DOM. This fix ensures the button responds to clicks.
-// Solution: Added proper event listener in DOMContentLoaded
+// Tracks all user interactions, session metrics, and performance data
+// This enables debugging, UX improvements, and performance analysis
+// Events logged: exam_started, answer_selected, question_flagged, timer_warning, etc.
+
+// ==========================================
+// ADVANCED ANALYTICS ENGINE
+// ==========================================
+class AnalyticsTracker {
+    constructor() {
+        this.events = [];
+        this.sessionStart = Date.now();
+        this.questionViewTimes = {}; // Track time per question
+    }
+
+    /**
+     * Log an analytics event
+     * @param {string} eventName - Name of the event (e.g., 'answer_selected')
+     * @param {object} eventData - Additional data to log
+     */
+    trackEvent(eventName, eventData = {}) {
+        const event = {
+            name: eventName,
+            timestamp: Date.now(),
+            data: eventData
+        };
+        this.events.push(event);
+        console.log(`📊 [Analytics] ${eventName}:`, eventData);
+    }
+
+    /**
+     * Start tracking time for a question
+     * @param {number} questionIdx - Index of the question
+     */
+    startQuestionTimer(questionIdx) {
+        this.questionViewTimes[questionIdx] = Date.now();
+    }
+
+    /**
+     * Get time spent on a question
+     * @param {number} questionIdx - Index of the question
+     * @returns {number} Time in seconds
+     */
+    getQuestionTime(questionIdx) {
+        if (!this.questionViewTimes[questionIdx]) return 0;
+        return Math.round((Date.now() - this.questionViewTimes[questionIdx]) / 1000);
+    }
+
+    /**
+     * Get total session duration
+     * @returns {number} Time in seconds
+     */
+    getSessionDuration() {
+        return Math.round((Date.now() - this.sessionStart) / 1000);
+    }
+
+    /**
+     * Get analytics summary
+     * @returns {object} Complete analytics data
+     */
+    getSummary() {
+        return {
+            totalEvents: this.events.length,
+            sessionDuration: this.getSessionDuration(),
+            events: this.events,
+            timestamp: new Date().toISOString()
+        };
+    }
+
+    /**
+     * Export analytics to console (for debugging)
+     */
+    exportToConsole() {
+        console.group('📈 Exam Analytics Summary');
+        console.table(this.events);
+        console.log('Total Session Duration:', this.getSessionDuration(), 'seconds');
+        console.groupEnd();
+    }
+}
+
+// Create global analytics instance
+const analytics = new AnalyticsTracker();
 
 // ==========================================
 // EXTENSIBLE QUIZ MODULE STORAGE
@@ -73,7 +151,8 @@ const CONFIG = {
     EXAM_TIME_SECONDS: 3000, // 50 Minutes
     WARNING_TIME: 300,        // 5 Minutes (Timer turns red)
     PASS_SCORE: 70,           // Passing threshold %
-    STORAGE_KEY: 'IC3_Simulator_State'
+    STORAGE_KEY: 'IC3_Simulator_State',
+    ENABLE_ANALYTICS: true    // Toggle analytics globally
 };
 
 // ==========================================
@@ -113,6 +192,7 @@ class ExamSession {
         this.flags = [];
         this.isLocked = new Array(questions.length).fill(false);
         this.timeLeft = CONFIG.EXAM_TIME_SECONDS;
+        this.candidateName = '';
     }
 
     getCurrentQuestion() {
@@ -132,8 +212,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (startBtn) {
         startBtn.addEventListener('click', startExam);
         console.log('✅ Start button event listener attached');
+        analytics.trackEvent('page_loaded', { feature: 'start_button_ready' });
     } else {
         console.warn('⚠️ Start button not found in DOM');
+        analytics.trackEvent('page_error', { feature: 'start_button_missing' });
     }
     
     checkResume();
@@ -145,18 +227,23 @@ function checkResume() {
         if (!saved) return;
         const state = JSON.parse(saved);
         if (state && Date.now() - state.timestamp < 3600000) { 
+            analytics.trackEvent('session_resume_available', { age_seconds: Math.round((Date.now() - state.timestamp) / 1000) });
             if (confirm("An incomplete exam session was found. Would you like to resume?")) {
                 rebuildSession(state);
+                analytics.trackEvent('session_resumed_confirmed');
             } else {
                 localStorage.removeItem(CONFIG.STORAGE_KEY);
+                analytics.trackEvent('session_resume_rejected');
             }
         }
     } catch (e) {
         console.warn("localStorage environment is restricted or unavailable.", e);
+        analytics.trackEvent('storage_error', { error: e.message });
     }
 }
 
 function startExam() {
+    analytics.trackEvent('exam_start_clicked');
     console.log('🎯 startExam() triggered');
     
     const nameInput = document.getElementById('candidate-name');
@@ -165,6 +252,7 @@ function startExam() {
     // Simple validation
     if (!nameInput.value.trim()) {
         alert("Please enter your name to start.");
+        analytics.trackEvent('exam_start_failed', { reason: 'no_name_entered' });
         return;
     }
 
@@ -189,13 +277,18 @@ function startExam() {
         const pool = allModules[selectedModule];
         if (!pool || pool.length === 0) {
             alert("Error: The selected structural module is empty or not registered.");
+            analytics.trackEvent('exam_start_failed', { reason: 'empty_module', module: selectedModule });
             return;
         }
         // Tag with lesson name for breakdown report
         compiledQuestions = shuffle([...pool]).map(q => ({ ...q, sourceLesson: selectedModule }));
     }
 
-    if (compiledQuestions.length === 0) return alert("Compilation failed. No questions available.");
+    if (compiledQuestions.length === 0) {
+        alert("Compilation failed. No questions available.");
+        analytics.trackEvent('exam_start_failed', { reason: 'no_questions_compiled' });
+        return;
+    }
 
     // Capture dynamic mode check configuration
     let currentMode = 'training';
@@ -208,6 +301,7 @@ function startExam() {
 
     setTimeout(() => {
         session = new ExamSession(compiledQuestions, currentMode);
+        session.candidateName = nameInput.value.trim();
         saveStateToStorage(selectedModule);
 
         if (UI.loadingOverlay) UI.loadingOverlay.classList.add('hidden');
@@ -216,6 +310,14 @@ function startExam() {
 
         startTimer();
         loadQuestion();
+        
+        analytics.trackEvent('exam_started', {
+            candidate: session.candidateName,
+            mode: currentMode,
+            questions_count: compiledQuestions.length,
+            module: selectedModule
+        });
+        
         console.log('✅ Exam started successfully with', compiledQuestions.length, 'questions');
     }, 400);
 }
@@ -242,12 +344,15 @@ function saveStateToStorage(moduleKey) {
                 userAnswers: session.userAnswers,
                 flags: session.flags,
                 isLocked: session.isLocked,
-                timeLeft: session.timeLeft
+                timeLeft: session.timeLeft,
+                candidateName: session.candidateName
             }
         };
         localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(backupPayload));
+        analytics.trackEvent('state_saved', { question_idx: session.currentIdx });
     } catch (e) {
         console.warn("Failed syncing backup state payload.", e);
+        analytics.trackEvent('save_state_error', { error: e.message });
     }
 }
 
@@ -263,6 +368,13 @@ function loadQuestion() {
     
     const q = session.getCurrentQuestion();
     UI.qText.innerText = `${session.currentIdx + 1}. ${q.q}`;
+    
+    // Track question view
+    analytics.startQuestionTimer(session.currentIdx);
+    analytics.trackEvent('question_loaded', {
+        question_idx: session.currentIdx,
+        question_type: q.type || 'mcq'
+    });
     
     // Update flag button
     if (session.flags.includes(session.currentIdx)) {
@@ -296,8 +408,16 @@ function renderMCQ(q) {
         }
         
         btn.onclick = () => {
+            const timeSpentOnQuestion = analytics.getQuestionTime(session.currentIdx);
             session.userAnswers[session.currentIdx] = idx;
             saveStateToStorage('l1_lesson1');
+            
+            analytics.trackEvent('answer_selected', {
+                question_idx: session.currentIdx,
+                answer_idx: idx,
+                time_seconds: timeSpentOnQuestion,
+                is_correct: idx === q.cor
+            });
             
             if (session.mode === 'training') {
                 revealTrainingFeedback(q, idx);
@@ -318,12 +438,18 @@ function revealTrainingFeedback(q, answerIdx) {
         ? `✅ <strong>Correct!</strong> ${q.exp}` 
         : `❌ <strong>Incorrect.</strong> ${q.exp}`;
     feedbackDiv.classList.remove('hidden');
+    
+    analytics.trackEvent('training_feedback_shown', {
+        is_correct: isCorrect,
+        question_idx: session.currentIdx
+    });
 }
 
 function nextQuestion() {
     if (session.currentIdx < session.questions.length - 1) {
         session.currentIdx++;
         loadQuestion();
+        analytics.trackEvent('next_question_clicked');
     } else {
         showReviewScreen();
     }
@@ -331,8 +457,10 @@ function nextQuestion() {
 
 function jumpToQuestion(idx) {
     if (!session || idx < 0 || idx >= session.questions.length) return;
+    const prevIdx = session.currentIdx;
     session.currentIdx = idx;
     loadQuestion();
+    analytics.trackEvent('jumped_to_question', { from: prevIdx, to: idx });
 }
 
 function updateNavGrid() {
@@ -360,15 +488,27 @@ function updateProgress() {
 function showReviewScreen() {
     UI.examContainer.classList.add('hidden');
     UI.reviewScreen.classList.remove('hidden');
+    analytics.trackEvent('review_screen_shown');
 }
 
 function toggleFlag() {
     if (!session) return;
     const current = session.currentIdx;
     const pos = session.flags.indexOf(current);
-    if (pos !== -1) session.flags.splice(pos, 1);
-    else session.flags.push(current);
+    const isFlagging = pos === -1;
+    
+    if (isFlagging) {
+        session.flags.push(current);
+    } else {
+        session.flags.splice(pos, 1);
+    }
+    
     loadQuestion();
+    analytics.trackEvent('question_flagged', {
+        question_idx: current,
+        flagged: isFlagging
+    });
+    
     console.log('Question flagged:', current);
 }
 
@@ -382,14 +522,16 @@ function startTimer() {
         const s = session.timeLeft % 60;
         UI.timer.innerText = `Time: ${m}:${s < 10 ? '0' : ''}${s}`;
         
-        if (session.timeLeft < CONFIG.WARNING_TIME) {
+        if (session.timeLeft < CONFIG.WARNING_TIME && session.timeLeft === CONFIG.WARNING_TIME) {
             UI.timer.style.color = '#e53e3e';
             UI.timer.style.fontWeight = '700';
+            analytics.trackEvent('timer_warning', { seconds_left: CONFIG.WARNING_TIME });
         }
 
         if (session.timeLeft <= 0) {
             clearInterval(timerInterval);
             alert("Time has expired. Your exam will now be submitted automatically.");
+            analytics.trackEvent('exam_timeout');
         }
     }, 1000);
 }
@@ -402,3 +544,13 @@ function shuffle(array) {
     }
     return arr;
 }
+
+// ==========================================
+// EXPORT ANALYTICS (For Admin/Debug Use)
+// ==========================================
+window.exportAnalytics = function() {
+    analytics.exportToConsole();
+    console.log('Complete Analytics Data:', JSON.stringify(analytics.getSummary(), null, 2));
+};
+
+console.log('💡 Tip: Open console and type exportAnalytics() to view all tracked events');

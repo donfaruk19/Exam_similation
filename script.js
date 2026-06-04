@@ -6,11 +6,14 @@
  */
 
 // ==========================================
-// DOCUMENTATION: PART 2 - ANALYTICS TRACKER
+// DOCUMENTATION: PART 3 - KEYBOARD SHORTCUTS
 // ==========================================
-// Tracks all user interactions, session metrics, and performance data
-// This enables debugging, UX improvements, and performance analysis
-// Events logged: exam_started, answer_selected, question_flagged, timer_warning, etc.
+// Keyboard shortcuts for power users and accessibility
+// Ctrl+S: Save progress manually
+// Ctrl+F: Flag/unflag current question
+// Alt+N: Jump to next question
+// Alt+P: Jump to previous question
+// ? or H: Show keyboard help
 
 // ==========================================
 // ADVANCED ANALYTICS ENGINE
@@ -22,11 +25,6 @@ class AnalyticsTracker {
         this.questionViewTimes = {}; // Track time per question
     }
 
-    /**
-     * Log an analytics event
-     * @param {string} eventName - Name of the event (e.g., 'answer_selected')
-     * @param {object} eventData - Additional data to log
-     */
     trackEvent(eventName, eventData = {}) {
         const event = {
             name: eventName,
@@ -37,36 +35,19 @@ class AnalyticsTracker {
         console.log(`📊 [Analytics] ${eventName}:`, eventData);
     }
 
-    /**
-     * Start tracking time for a question
-     * @param {number} questionIdx - Index of the question
-     */
     startQuestionTimer(questionIdx) {
         this.questionViewTimes[questionIdx] = Date.now();
     }
 
-    /**
-     * Get time spent on a question
-     * @param {number} questionIdx - Index of the question
-     * @returns {number} Time in seconds
-     */
     getQuestionTime(questionIdx) {
         if (!this.questionViewTimes[questionIdx]) return 0;
         return Math.round((Date.now() - this.questionViewTimes[questionIdx]) / 1000);
     }
 
-    /**
-     * Get total session duration
-     * @returns {number} Time in seconds
-     */
     getSessionDuration() {
         return Math.round((Date.now() - this.sessionStart) / 1000);
     }
 
-    /**
-     * Get analytics summary
-     * @returns {object} Complete analytics data
-     */
     getSummary() {
         return {
             totalEvents: this.events.length,
@@ -76,9 +57,6 @@ class AnalyticsTracker {
         };
     }
 
-    /**
-     * Export analytics to console (for debugging)
-     */
     exportToConsole() {
         console.group('📈 Exam Analytics Summary');
         console.table(this.events);
@@ -89,6 +67,34 @@ class AnalyticsTracker {
 
 // Create global analytics instance
 const analytics = new AnalyticsTracker();
+
+// ==========================================
+// KEYBOARD SHORTCUT HELPER
+// ==========================================
+class KeyboardShortcutManager {
+    constructor() {
+        this.shortcuts = {
+            'Ctrl+S': { description: 'Save progress manually', action: () => saveCurrentProgress() },
+            'Ctrl+F': { description: 'Flag/unflag current question', action: () => toggleFlag() },
+            'Alt+N': { description: 'Jump to next question', action: () => skipToNext() },
+            'Alt+P': { description: 'Jump to previous question', action: () => skipToPrevious() },
+            'Alt+R': { description: 'Jump to review screen', action: () => showReviewScreen() },
+            '?': { description: 'Show keyboard help', action: () => showKeyboardHelp() },
+            'H': { description: 'Show keyboard help', action: () => showKeyboardHelp() }
+        };
+    }
+
+    showHelp() {
+        console.group('⌨️ Keyboard Shortcuts');
+        console.table(Object.entries(this.shortcuts).map(([key, val]) => ({ 
+            Shortcut: key, 
+            Description: val.description 
+        })));
+        console.groupEnd();
+    }
+}
+
+const keyboardManager = new KeyboardShortcutManager();
 
 // ==========================================
 // EXTENSIBLE QUIZ MODULE STORAGE
@@ -152,7 +158,8 @@ const CONFIG = {
     WARNING_TIME: 300,        // 5 Minutes (Timer turns red)
     PASS_SCORE: 70,           // Passing threshold %
     STORAGE_KEY: 'IC3_Simulator_State',
-    ENABLE_ANALYTICS: true    // Toggle analytics globally
+    ENABLE_ANALYTICS: true,    // Toggle analytics globally
+    ENABLE_KEYBOARD_SHORTCUTS: true // Toggle keyboard shortcuts
 };
 
 // ==========================================
@@ -218,8 +225,98 @@ document.addEventListener('DOMContentLoaded', () => {
         analytics.trackEvent('page_error', { feature: 'start_button_missing' });
     }
     
+    // PART 3: Setup keyboard shortcuts
+    setupKeyboardShortcuts();
+    
     checkResume();
 });
+
+// ==========================================
+// PART 3: KEYBOARD SHORTCUT SETUP
+// ==========================================
+function setupKeyboardShortcuts() {
+    if (!CONFIG.ENABLE_KEYBOARD_SHORTCUTS) return;
+    
+    document.addEventListener('keydown', (e) => {
+        // Show help on ? or H
+        if ((e.key === '?' || e.key === 'h' || e.key === 'H') && !e.ctrlKey && !e.altKey) {
+            showKeyboardHelp();
+            return;
+        }
+
+        if (!session) return; // Only during exam
+
+        // Ctrl+S: Save progress
+        if (e.ctrlKey && e.key === 's') {
+            e.preventDefault();
+            saveCurrentProgress();
+            analytics.trackEvent('keyboard_shortcut_save');
+            console.log('✅ Progress saved via Ctrl+S');
+        }
+        
+        // Ctrl+F: Flag question
+        else if (e.ctrlKey && e.key === 'f') {
+            e.preventDefault();
+            toggleFlag();
+            analytics.trackEvent('keyboard_shortcut_flag');
+            console.log('🚩 Question flagged/unflagged via Ctrl+F');
+        }
+        
+        // Alt+N: Next question
+        else if (e.altKey && e.key === 'n') {
+            e.preventDefault();
+            skipToNext();
+            analytics.trackEvent('keyboard_shortcut_next');
+            console.log('→ Next question via Alt+N');
+        }
+        
+        // Alt+P: Previous question
+        else if (e.altKey && e.key === 'p') {
+            e.preventDefault();
+            skipToPrevious();
+            analytics.trackEvent('keyboard_shortcut_previous');
+            console.log('← Previous question via Alt+P');
+        }
+        
+        // Alt+R: Review screen
+        else if (e.altKey && e.key === 'r') {
+            e.preventDefault();
+            if (session && !UI.reviewScreen.classList.contains('hidden')) {
+                UI.reviewScreen.classList.add('hidden');
+                UI.examContainer.classList.remove('hidden');
+                console.log('Back to exam');
+            } else if (session) {
+                showReviewScreen();
+                console.log('Showing review screen via Alt+R');
+            }
+            analytics.trackEvent('keyboard_shortcut_review');
+        }
+    });
+    
+    console.log('⌨️ Keyboard shortcuts enabled. Press ? for help');
+}
+
+function showKeyboardHelp() {
+    const helpText = `
+╔════════════════════════════════════════════════════════════════╗
+║                   KEYBOARD SHORTCUTS HELP                      ║
+╠════════════════════════════════════════════════════════════════╣
+║  Ctrl+S  →  Save progress manually                             ║
+║  Ctrl+F  →  Flag/unflag current question for review            ║
+║  Alt+N   →  Jump to next question                              ║
+║  Alt+P   →  Jump to previous question                          ║
+║  Alt+R   →  Toggle review screen                               ║
+║  ?       →  Show this help dialog                              ║
+║  H       →  Show this help dialog                              ║
+╠════════════════════════════════════════════════════════════════╣
+║  Pro Tip: Master these shortcuts to work 30% faster! ⚡        ║
+╚════════════════════════════════════════════════════════════════╝
+    `;
+    
+    console.clear();
+    console.log(helpText);
+    analytics.trackEvent('keyboard_help_shown');
+}
 
 function checkResume() {
     try {
@@ -319,6 +416,7 @@ function startExam() {
         });
         
         console.log('✅ Exam started successfully with', compiledQuestions.length, 'questions');
+        console.log('⌨️ Press ? or H for keyboard shortcuts');
     }, 400);
 }
 
@@ -455,6 +553,24 @@ function nextQuestion() {
     }
 }
 
+function skipToNext() {
+    if (!session) return;
+    nextQuestion();
+}
+
+function skipToPrevious() {
+    if (!session || session.currentIdx === 0) return;
+    session.currentIdx--;
+    loadQuestion();
+    analytics.trackEvent('previous_question_clicked');
+}
+
+function saveCurrentProgress() {
+    if (!session) return;
+    saveStateToStorage('l1_lesson1');
+    console.log('✅ Progress saved at question', session.currentIdx + 1);
+}
+
 function jumpToQuestion(idx) {
     if (!session || idx < 0 || idx >= session.questions.length) return;
     const prevIdx = session.currentIdx;
@@ -553,4 +669,4 @@ window.exportAnalytics = function() {
     console.log('Complete Analytics Data:', JSON.stringify(analytics.getSummary(), null, 2));
 };
 
-console.log('💡 Tip: Open console and type exportAnalytics() to view all tracked events');
+console.log('💡 Tip: Type exportAnalytics() in console to view tracked events');

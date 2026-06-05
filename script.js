@@ -4386,7 +4386,1211 @@ const allModules = {
             cor: 1,
             exp: "AutoFit expands or contracts column boundaries dynamically to display cell data perfectly without clipping text."
         }
-    ]
+    ],
+    l2_lesson12: [
+    // --- SECTION 1: STEP-BY-STEP ACTION SEQUENCES ---
+    {
+        type: "arrange",
+        q: "Arrange the sequential steps required to manually protect an Android device against accidental or unwanted purchases in the Google Play Store.",
+        steps: [
+            "Open the Google Play Store application.",
+            "Touch the menu icon and then tap on Settings.",
+            "Touch the option labeled 'Require authentication for purchases'.",
+            "Choose your desired authentication frequency setting.",
+            "Follow the remaining on-screen instructions and click OK."
+        ],
+        exp: "According to the IC3 GS6 framework, Android purchase protection requires accessing the Play Store Settings, selecting 'Require authentication for purchases', and saving your preference."
+    },
+    {
+        type: "arrange",
+        q: "Arrange the correct operational steps to restrict accidental or unwanted in-app purchases on an Apple iOS iPhone.",
+        steps: [
+            "Navigate to Settings and select Screen Time.",
+            "Touch Continue, choose 'This is My Device', and turn Screen Time on.",
+            "Tap on Content & Privacy Restrictions.",
+            "Enter your secure device passcode.",
+            "Tap App Store Purchases and set In-App Purchases to 'Don't Allow'."
+        ],
+        exp: "iOS utilizes Screen Time settings under Content & Privacy Restrictions to completely disable or restrict unauthorized App Store and in-app purchases."
+    },
+    {
+        type: "arrange",
+        q: "Arrange the fundamental architectural steps involved when a standard Voice over Internet Protocol (VoIP) system processes and transmits your voice.",
+        steps: [
+            "The system captures raw analog voice signals through a microphone.",
+            "The system converts the continuous analog voice signals into digital data.",
+            "The digital data is segmented into small, discrete digital packets.",
+            "Addressing and routing information is appended to each data packet.",
+            "The packets are transmitted across the broadband Internet connection."
+        ],
+        exp: "VoIP operates by converting voice signals into small packets of digital data, adding addressing details, and routing them over a broadband Internet connection."
+    },
+    {
+        type: "arrange",
+        q: "Arrange the logical workflow for creating and dispatching a formal business electronic mail (email) message.",
+        steps: [
+            "Click the Compose button to instantiate a new mail message window.",
+            "Address the message by entering target email addresses into the To, Cc, or Bcc fields.",
+            "Type a concise, relevant single line of text into the Subject line.",
+            "Draft the main text in the message pane and attach any required digital files.",
+            "Execute a spell check, proofread to eliminate grammatical errors, and click Send."
+        ],
+        exp: "The correct professional workflow requires addressing, providing a subject, composing the body, attaching files, proofreading/spellchecking, and finally sending."
+    },
+
+    // --- SECTION 2: MATCHING MATRICES ---
+    {
+        type: "match",
+        q: "Match each digital communication method with its definitive operational characteristic.",
+        pairs: [
+            { item: "Short Message Service (SMS)", match: "Limited to short strings of text (about 100 to 200 characters) sent over a cellular network." },
+            { item: "Multimedia Messaging Service (MMS)", match: "Standard way to transmit photos, videos, breaking news, or weather updates over cellular lines." },
+            { item: "Instant Messaging (IM)", match: "Allows multiple participants to converse and exchange text in a dedicated app window in real-time." },
+            { item: "WhatsApp / Viber", match: "Cross-platform messaging systems that send individual or group data bypassing traditional SMS channels via Wi-Fi/mobile data." }
+        ],
+        exp: "SMS is limited by character constraints over cellular infrastructure; MMS handles media files; IM provides dedicated real-time windows; apps like WhatsApp utilize Internet protocols instead of cellular SMS lanes."
+    },
+    {
+        type: "match",
+        q: "Match the specific Electronic Mail (Email) header fields and components to their correct functional definitions.",
+        pairs: [
+            { item: "To Field", match: "Identifies the primary recipient or recipients of the email message." },
+            { item: "Cc (Carbon Copy)", match: "Lists individuals who will receive a copy of the email openly visible to all other recipients." },
+            { item: "Bcc (Blind Carbon Copy)", match: "Lists individuals who receive a copy of the email secretly, hiding their identity from others." },
+            { item: "Subject Line", match: "A single line of text designed to let the recipient know exactly what the message is about." },
+            { item: "Signature", match: "An optional block of text at the end containing a name, title, and corporate contact information." }
+        ],
+        exp: "Primary targets go in 'To'; 'Cc' is for secondary open visibility; 'Bcc' conceals the recipient; 'Subject' summarizes intent; 'Signature' appends professional metadata."
+    },
+    {
+        type: "match",
+        q: "Match the telephonic communication technologies to their precise architectural mediums.",
+        pairs: [
+            { item: "Landline Phones", match: "Voice signals sent as analog electrical signals over the public switched telephone network." },
+            { item: "Mobile Phones", match: "Voice signals transmitted wirelessly across a cellular carrier's distributed network." },
+            { item: "VoIP Phones", match: "Voice signals converted into compressed packets and transmitted over a broadband Internet connection." }
+        ],
+        exp: "Landlines rely on legacy switched public networks; mobile phones use wireless carrier towers; VoIP exclusively parses digital packets over broadband networks."
+    },
+    {
+        type: "match",
+        q: "Match the digital content delivery terms with their behavior and functional characteristics.",
+        pairs: [
+            { item: "Pre-recorded Streaming", match: "Delivers content in a steady flow from a media server, allowing the client to pause, rewind, or fast-forward." },
+            { item: "Live Streaming", match: "Broadcasting real-time audio or video footage simultaneously to an audience accessing a single common feed." },
+            { item: "Subscription Streaming", match: "Grants unfettered access to an entire catalog of digital works on a platform for a fixed recurring monthly fee." },
+            { item: "Ad-Supported Streaming", match: "Grants access to streaming content without a subscription fee, but injects advertisements at various times." }
+        ],
+        exp: "Pre-recorded streams allow trick-play controls (pause/rewind); live streams are real-time broadcasts; subscriptions require a flat monthly fee; ad-supported options monetize via commercial interruptions."
+    },
+    {
+        type: "match",
+        q: "Match the criteria of the AAOCC evaluation framework used to audit digital community resources with its correct definition.",
+        pairs: [
+            { item: "Accuracy", match: "Evaluating if the information provided is scientifically correct, truthful, and free of factual errors." },
+            { item: "Authentication", match: "Verifying the background, credentials, and legitimacy of the source or author." },
+            { item: "Objectivity", match: "Determining whether the information is presented without bias, prejudice, or commercial agendas." },
+            { item: "Currency", match: "Checking the timeline, update frequency, and relevance of the data to ensure it is not obsolete." },
+            { item: "Coverage", match: "Assessing the depth, scope, and completeness of the topics addressed on the site." }
+        ],
+        exp: "The AAOCC framework stands for Accuracy, Authentication, Objectivity, Currency, and Coverage, which acts as an evaluation metric for internet research validity."
+    },
+    {
+        type: "match",
+        q: "Match the core concepts of Internet Commerce (E-Commerce) to their correct classifications.",
+        pairs: [
+            { item: "Tangible Goods", match: "Physical products bought online that are physically delivered to a customer who then claims full ownership." },
+            { item: "Intangible Services", match: "Activities or work performed by a provider over the Internet to satisfy a specific need without a physical item." },
+            { item: "In-App Purchases", match: "Financial transactions made within an application to unlock special features, content, or virtual currency." },
+            { item: "Digital Certificate", match: "An electronic file that authenticates and establishes the true identity of an individual or company online." }
+        ],
+        exp: "Goods are tangible physical products; services are intangible actions; in-app purchases happen within a running software environment; digital certificates cryptographically confirm identity."
+    },
+
+    // --- SECTION 3: YES / NO (TRUE or FALSE) TASKS ---
+    {
+        type: "yesno",
+        q: "Is it true that cellular network service providers enforce strict character limitations (typically around 100 to 200 characters) on standard SMS text messages?",
+        a: "Yes",
+        exp: "Short Message Service (SMS) protocols natively limit strings of text to between 100 and 200 characters depending entirely on the carrier's specific configuration."
+    },
+    {
+        type: "yesno",
+        q: "Does sending a Multimedia Messaging Service (MMS) text message guarantee the exact same delivery speed as a standard Short Message Service (SMS) text message?",
+        a: "No",
+        exp: "MMS delivery speeds can be substantially slower than standard SMS depending entirely on the physical size of the media attachment and carrier bandwidth."
+    },
+    {
+        type: "yesno",
+        q: "To successfully initiate a standard cellular SMS text message, must you know the recipient's specific cellular phone number?",
+        a: "Yes",
+        exp: "Unlike web platforms that use usernames, standard cellular text messaging networks require the destination cell phone number to route messages correctly."
+    },
+    {
+        type: "yesno",
+        q: "Do non-SMS applications like WhatsApp, Viber, and Facebook Messenger route their messages through the traditional cellular provider SMS/MMS channels?",
+        a: "No",
+        exp: "These modern platforms bypass traditional cellular carrier SMS channels completely, utilizing Wi-Fi or mobile data connections to transmit message payloads."
+    },
+    {
+        type: "yesno",
+        q: "Can web-based chat features be integrated directly inside an electronic mail application mailbox interface?",
+        a: "Yes",
+        exp: "Many modern communication interfaces integrate web-based instant chat options straight into a user's active mailbox console for real-time engagement."
+    },
+    {
+        type: "yesno",
+        q: "Is Instant Messaging (IM) primarily categorized as an asynchronous communication method where parties reply days later?",
+        a: "No",
+        exp: "Instant Messaging is a real-time, synchronous communication tool designed for immediate conversation within a dedicated interface window."
+    },
+    {
+        type: "yesno",
+        q: "Is a phone call highly recommended over written communication when you must convey a highly complicated idea or discuss an extremely sensitive topic?",
+        a: "Yes",
+        exp: "Phone calls bring verbal clarity and nuance, making them highly effective when dealing with complex details, sensitive matters, or instances requiring immediate responses."
+    },
+    {
+        type: "yesno",
+        q: "Are incoming voice calls received on a traditional landline telephone line subject to long-distance per-minute fees for the recipient?",
+        a: "No",
+        exp: "On standard public switched landline networks, incoming telephone calls are completely free to receive, though outgoing long-distance calls incur costs."
+    },
+    {
+        type: "yesno",
+        q: "Does Voice over Internet Protocol (VoIP) transmit voice communications by maintaining a continuous, uncompressed analog circuit connection across telephone poles?",
+        a: "No",
+        exp: "VoIP works by digitizing voice signals, fragmenting them into small digital data packets, adding addressing information, and routing them over the Internet."
+    },
+    {
+        type: "yesno",
+        q: "Are VoIP conference calls completely limited to audio transmissions, making them incapable of screen sharing or file transfers?",
+        a: "No",
+        exp: "Modern VoIP conferencing architectures actively support video calls, multi-user screen sharing, instant messaging, and direct digital file transfers."
+    },
+    {
+        type: "yesno",
+        q: "Will a Voice over Internet Protocol (VoIP) residential hardware phone system continue to function perfectly during a local electrical power outage, even if no backup generator is present?",
+        a: "No",
+        exp: "VoIP systems are wholly dependent on an active broadband internet connection and continuous electrical power to maintain service."
+    },
+    {
+        type: "yesno",
+        q: "Are online discussion forums generally structured in a chronological chat layout rather than a categorized, question-and-answer threaded format?",
+        a: "No",
+        exp: "Forums are organized into distinct categories and threads using a structured question-and-answer format, making them less immediate than a live chat room."
+    },
+    {
+        type: "yesno",
+        q: "Is Electronic Mail (Email) traditionally treated as the ideal primary tool for communications that demand an immediate, emergency response?",
+        a: "No",
+        exp: "Email is an asynchronous tool intended for business and personal communication where an immediate response is not strictly urgent or required."
+    },
+    {
+        type: "yesno",
+        q: "To successfully instantiate a brand new message canvas in Google Gmail, should the user click on the button labeled 'Compose'?",
+        a: "Yes",
+        exp: "In the Gmail interface, the standard action to open a fresh email drafting pane is clicking the 'Compose' button located in the navigation pane."
+    },
+    {
+        type: "yesno",
+        q: "Is it considered acceptable digital netiquette to type business emails entirely in uppercase letters when you want to highlight regular bullet points?",
+        a: "No",
+        exp: "Using all capital letters in digital communication is recognized as the online equivalent of shouting and should be completely avoided."
+    },
+    {
+        type: "yesno",
+        q: "Is relying on complex humor and inside jokes encouraged when sending professional emails to international business clients?",
+        a: "No",
+        exp: "Humor is highly subjective and easily misinterpreted across different cultures; professional digital communications should remain objective and clear."
+    },
+    {
+        type: "yesno",
+        q: "Does the acronym 'E-Commerce' refer exclusively to the process of downloading applications, excluding physical items like clothing or electronics?",
+        a: "No",
+        exp: "E-Commerce represents the entire paradigm of buying and selling both physical, tangible goods and intangible services over the Internet."
+    },
+    {
+        type: "yesno",
+        q: "Do completely legitimate and reputable e-commerce websites omit links to their privacy policies and terms and conditions to save page space?",
+        a: "No",
+        exp: "Legitimate, consumer-safe e-commerce websites will prominently display clear hyperlinks to both their Privacy Policy and Terms and Conditions."
+    },
+    {
+        type: "yesno",
+        q: "Does the appearance of a lock icon in a browser's address bar alongside the 'https' protocol indicate that transactions with that web server are encrypted and secure?",
+        a: "Yes",
+        exp: "The 'https' prefix paired with a closed padlock icon confirms that the web connection is securely encrypted via a certified secure socket layer."
+    },
+    {
+        type: "yesno",
+        q: "Is a trusted third party known as a Certificate Authority (CA) responsible for verifying and validating the legitimacy of a website's digital certificate?",
+        a: "Yes",
+        exp: "Certificate Authorities act as trusted arbiters in the web security ecosystem, checking and signing digital certificates to verify corporate identities."
+    },
+    {
+        type: "yesno",
+        q: "Are visual symbols or graphic trust badges printed directly on an e-commerce webpage technically identical to a valid cryptographic HTTPS protocol?",
+        a: "No",
+        exp: "Graphic badges on a webpage can be easily fabricated and do not actively secure data transactions; only the native browser 'https' protocol and lock icon guarantee structural transport security."
+    },
+    {
+        type: "yesno",
+        q: "When a media server streams a pre-recorded video file to multiple clients simultaneously, does it transmit a single shared file that clients must all watch at the exact same playback position?",
+        a: "No",
+        exp: "For pre-recorded streaming assets, the media server streams dedicated, controllable data feeds to each individual client, allowing them to independently pause, rewind, or fast-forward."
+    },
+    {
+        type: "yesno",
+        q: "Can an enterprise utilize no-cost or low-cost streaming service platforms to broadcast real-time corporate meetings or interactive panel presentations globally?",
+        a: "Yes",
+        exp: "Modern cloud distribution networks make it trivial and highly cost-effective for businesses to stream live audio and video footage to viewers on web browsers or mobile devices."
+    },
+    {
+        type: "yesno",
+        q: "If an individual chooses not to purchase a premium subscription for a digital video streaming service, will they typically encounter advertisements interspersed throughout the media content?",
+        a: "Yes",
+        exp: "Free or non-subscribed tiers on mainstream streaming platforms offset infrastructure delivery costs by injecting digital advertisements during playback."
+    },
+    {
+        type: "yesno",
+        q: "Is it possible to completely disable or restrict in-app purchases on a mobile device to prevent children or unauthorized users from accumulating unwanted credit card charges?",
+        a: "Yes",
+        exp: "Both iOS and Android operating systems provide robust native configuration menus under Settings to require authentication or block in-app purchases entirely."
+    },
+
+    // --- SECTION 4: MINIMIZED MULTIPLE CHOICE QUESTIONS (MCQs) ---
+    {
+        type: "mcq",
+        q: "You are choosing an online vendor to purchase expensive field equipment. Which set of attributes represents the most reliable indicator of a secure, reputable e-commerce business?",
+        a: [
+            "An anonymous contact form, unverified low prices, and flashy promotional badges on the homepage.",
+            "A verified market reputation, reliable delivery histories, fair return policies, and visible links to privacy terms.",
+            "A strict 'no-returns' policy paired with an HTTP-only web address that lacks a padlock icon.",
+            "An online store that requires you to email your credit card details directly to their customer service team."
+        ],
+        cor: 1,
+        exp: "Reputable digital storefronts distinguish themselves through clear customer support options, reliable fulfillment, transparent return frameworks, and cryptographic web infrastructure."
+    },
+    {
+        type: "mcq",
+        q: "What occurs from a network infrastructure perspective when a massive audience connects to a live streaming broadcast?",
+        a: [
+            "Each user downloads a static copy of the file completely to local storage before it begins playing.",
+            "The media server sends a real-time live video and audio feed across the Internet that multiple clients connect to simultaneously.",
+            "The client device acts as a telephone switchboard routing analog radio frequencies over cell towers.",
+            "The stream permanently deletes the user's browser history to free up operational bandwidth."
+        ],
+        cor: 1,
+        exp: "Live streaming broadcasts a real-time, continuous video/audio feed over the internet, handling dynamic concurrent connections without saving the whole asset onto the client storage drive."
+    },
+    {
+        type: "mcq",
+        q: "You need to send an email attachment containing sensitive operational data to a primary client, while also subtly copying a supervisor without the client's knowledge. Which configuration should you use?",
+        a: [
+            "Put the client in the Cc field and the supervisor in the To field.",
+            "Put the client in the To field and the supervisor in the Bcc field.",
+            "Put both the client and supervisor in the open Cc field.",
+            "Put the supervisor in the Subject line and the client in the Message pane."
+        ],
+        cor: 1,
+        exp: "The Bcc (Blind Carbon Copy) field hides the recipient's identity from everyone else on the email thread, while the To field designates primary target recipients."
+    },
+    {
+        type: "mcq",
+        q: "A specific digital communication tool is described as being highly sensitive to transmission delays, vulnerable to echo/feedback loop issues, and completely non-functional without local electricity or Internet. What technology is this?",
+        a: [
+            "Traditional Landline Telephony",
+            "Short Message Service (SMS)",
+            "Voice over Internet Protocol (VoIP)",
+            "Asynchronous Discussion Forums"
+        ],
+        cor: 2,
+        exp: "VoIP relies entirely on real-time internet data packet delivery, making it uniquely vulnerable to connection latencies, jitter, feedback, and local power loss."
+    },
+    {
+        type: "mcq",
+        q: "When evaluating a newly discovered community research website using the AAOCC protocol, what specific element are you analyzing under the 'Currency' parameter?",
+        a: [
+            "The financial cost required to access the site's premium discussion areas.",
+            "The precise geographical location of the server hosting the forum data.",
+            "The timeline and update frequency of the content to ensure it is modern and accurate.",
+            "The specific encryption protocols protecting the login screen."
+        ],
+        cor: 2,
+        exp: "Currency in information evaluation methodologies gauges how recently the material was recorded, edited, or reviewed to protect against obsolete data."
+    },
+
+    // --- SECTION 5: COMPLEX IDENTIFICATION & CLASSIFICATION (YES/NO FOCUS) ---
+    {
+        type: "yesno",
+        q: "Does a standard digital certificate contain data that validates the cryptographic key and proves the true identity of a website's parent entity?",
+        a: "Yes",
+        exp: "Digital certificates are cryptographic credentials issued by trusted authorities specifically to bind identity data to a web domain's public keys."
+    },
+    {
+        type: "yesno",
+        q: "Can standard cell phone text messaging apps be used to transmit files, photos, and video attachments if the underlying network protocol switches from SMS to MMS?",
+        a: "Yes",
+        exp: "Multimedia Messaging Service (MMS) expands basic texting capabilities to support sending photos, audio, short video clips, and location markers."
+    },
+    {
+        type: "yesno",
+        q: "Is it necessary to complete a formal system reboot every time an in-app purchase is successfully processed on a smartphone?",
+        a: "No",
+        exp: "In-app purchases update dynamically within the running program context by communicating with the app store API; no device reboot is required."
+    },
+    {
+        type: "yesno",
+        q: "Does using the 'Bcc' field in an email client automatically encrypt the entire body text of the message from cyber intercepts?",
+        a: "No",
+        exp: "Bcc handles recipient visibility constraints only; it does not encrypt or sign the textual contents of the email body payload."
+    },
+    {
+        type: "yesno",
+        q: "Are web-based forums completely anonymous spaces where users are barred from forming organized sub-groups or threads?",
+        a: "No",
+        exp: "Forums are highly organized structures explicitly split into logical topic categories and conversation threads, often requiring registration."
+    },
+    {
+        type: "yesno",
+        q: "Is an internet connection mandatory for a consumer to experience real-time video conferencing on an iOS or Android mobile device?",
+        a: "Yes",
+        exp: "Video conferencing pipelines transfer massive amounts of real-time audio/visual data packets, which strictly requires data connectivity via Wi-Fi or mobile networks."
+    },
+    {
+        type: "yesno",
+        q: "Can a user pull down the formatting toolbar within an email client to adjust font sizes, alter colors, or structure text lists?",
+        a: "Yes",
+        exp: "The formatting toolbar in email interfaces provides explicit rich-text controls to modify fonts, text properties, text alignments, and lists."
+    },
+    {
+        type: "yesno",
+        q: "Are international cellular text messages guaranteed to cost the exact same rate as domestic text messages under all baseline cellular contracts?",
+        a: "No",
+        exp: "International texting routing rates carry premium charges; users should carefully review their cellular contract terms to avoid unexpected international fees."
+    },
+    {
+        type: "yesno",
+        q: "Does Voice over Internet Protocol technology run exclusively over dedicated fiber-optic copper cables completely isolated from the rest of the web?",
+        a: "No",
+        exp: "VoIP utilizes standard public and private broadband networks, parsing voice data packets alongside normal everyday web traffic."
+    },
+    {
+        type: "yesno",
+        q: "Is an email signature block required by modern operating systems to be a legally binding, cryptographically locked document?",
+        a: "No",
+        exp: "An email signature is simply an optional block of descriptive text containing contact details, names, or sign-off greetings appended to the end of a message."
+    },
+    {
+        type: "yesno",
+        q: "Should an online consumer exercise skepticism and conduct external background research if a digital vendor's brand is completely unfamiliar to them?",
+        a: "Yes",
+        exp: "Skepticism is an important digital literacy habit; researching unknown brands protects consumers from fraudulent sites and bad refund practices."
+    },
+    {
+        type: "yesno",
+        q: "Does a local library act as an acceptable physical or digital alternative tool to narrow down highly specific community resource info?",
+        a: "Yes",
+        exp: "Libraries offer access to verified scholarly lookup indices, archival storage databases, and expert assistance to locate targeted information."
+    },
+    {
+        type: "yesno",
+        q: "Will a standard pre-recorded media stream crash if a single viewer attempts to use fast-forward controls while another user is pausing?",
+        a: "No",
+        exp: "Media servers process distinct interaction streams for each connected client asset handle, ensuring absolute independence during playback."
+    },
+    {
+        type: "yesno",
+        q: "Is it standard protocol to run an automated spell checker and manually proofread a professional business message before firing it out?",
+        a: "Yes",
+        exp: "Proofreading and utilizing spellcheck engines minimizes syntax mistakes, maintaining professional credibility in all business communications."
+    },
+    {
+        type: "yesno",
+        q: "Are premium streaming platforms legally obligated to keep all content entirely free of charge for anyone who accesses their webpage?",
+        a: "No",
+        exp: "Streaming vendors use various business models, ranging from subscription paywalls to ad-supported monetization engines."
+    },
+    {
+        type: "yesno",
+        q: "Is a traditional instant message board thread exactly identical to a landline phone conference architecture?",
+        a: "No",
+        exp: "Instant message boards use text-based asynchronous data formats, whereas landline conferencing utilizes circuit-switched voice channels."
+    }
+],
+l2_lesson13: [
+    // --- SECTION 1: CERTIPORT-STYLE STEP REARRANGEMENTS (ARRANGE) ---
+    {
+        type: "arrange",
+        q: "An organizer sends you a calendar invite for a live collaboration session via Microsoft Teams. Arrange the standard sequential actions to process the request and attend the session on the meeting day.",
+        steps: [
+            "Open the incoming meeting invitation email in your mailbox client.",
+            "Click the 'Accept' button to dynamically commit the placeholder to your calendar.",
+            "Open your digital Calendar application on the day of the scheduled event.",
+            "Locate and click on the specific active meeting time slot.",
+            "Click the 'Join Meeting' link or button inside the entry to launch the virtual conference room."
+        ],
+        exp: "Certiport workflows confirm that accepting an invite auto-schedules it to your calendar. On the meeting day, navigating to that entry and choosing 'Join' grants you system access."
+    },
+    {
+        type: "arrange",
+        q: "A team needs to utilize automated workflow control to pass an updated policy proposal through a formal review cycle. Arrange the operational steps of a document workflow process.",
+        steps: [
+            "The initial content creator drafts the base document inside a cloud collaboration environment.",
+            "The creator submits the file to instantiate the automated workflow control tracking system.",
+            "The document is automatically routed by the host network platform directly to the next reviewer.",
+            "The current reviewer opens, evaluates, updates, or approves their designated phase of work.",
+            "The platform automatically hands off the document branch to the subsequent downstream approver."
+        ],
+        exp: "Automated workflow controls remove manual delivery lag by programmatically routing files to the next predefined user in sequence once the current actor completes their tasks."
+    },
+    {
+        type: "arrange",
+        q: "You are setting up your hardware workspace and software properties immediately before speaking on a highly visible corporate panel presentation. Arrange the professional preparation steps.",
+        steps: [
+            "Position your external hardware webcam at eye-level and test your audio inputs.",
+            "Access your video software properties interface to modify or blur your local background environment.",
+            "Verify that you are physically located in a quiet, low-noise acoustic zone to prevent audio bleeding.",
+            "Launch your file share controls to verify audience visibility of presentation slides.",
+            "Engage the platform's 'Record' function if archival distribution copies are required for download."
+        ],
+        exp: "Professional virtual presence demands verifying physical/audio components, setting professional digital boundaries (background masks), checking presentation assets, and configuring recording toggles before live streaming."
+    },
+
+    // --- SECTION 2: MULTI-TIER COGNITIVE MATRICES (MATCH) ---
+    {
+        type: "match",
+        q: "Match each collaboration environment concept with its correct definition or deployment utility.",
+        pairs: [
+            { item: "Real-time Communication", match: "Information is sent and received instantly with no operational lag, simulating face-to-face exchanges." },
+            { item: "Delayed Communication", match: "Asynchronous interaction where gaps occur between transmitting an update and receiving feedback." },
+            { item: "SharePoint", match: "A web-based collaborative platform designed to facilitate file sharing inside a company and with verified partners." },
+            { item: "Shared Network Drive", match: "A centralized on-premises or cloud storage space allocated for saving large collections of corporate employee records." }
+        ],
+        exp: "Real-time is immediate; delayed is asynchronous; SharePoint is Microsoft's web-based document coordination suite; shared network drives host bulk multi-user file volumes."
+    },
+    {
+        type: "match",
+        q: "Match the following structural management attributes of cloud document systems to their exact definitions.",
+        pairs: [
+            { item: "Document Version Control", match: "Ensures that only a single collaborator can execute active data edits or lock revisions at any given moment." },
+            { item: "Workflow Control", match: "Programmatically passes records across individual milestone owners automatically based on approval rules." },
+            { item: "Social Networking Features", match: "Enables multi-user groups to post contextual notes, feedback strings, and media directly within a workspace." },
+            { item: "Team-specific Email Arrays", match: "Stores announcements, alerts, and operational notices in a shared sandbox away from chaotic personal inboxes." }
+        ],
+        exp: "Version control stops file overwrites; workflows automate lifecycle tracking; social components handle casual team commentary; team arrays partition corporate notices away from regular incoming traffic."
+    },
+    {
+        type: "match",
+        q: "Match the active interface feature used during live video meetings with its functional purpose.",
+        pairs: [
+            { item: "Participants Control", match: "Allows the host to dynamically add new users or audit the roster during a call." },
+            { item: "Screen Sharing", match: "Projects active slides, software walkthroughs, or live desktops to everyone connected to the conference." },
+            { item: "Monitored Q&A Area", match: "Provides an isolated chat section to post queries cleanly without interrupting the vocal speaker." },
+            { item: "Raise Hand Utility", match: "Generates a non-verbal visual alert to notify the host that a listener is requesting the floor to speak." }
+        ],
+        exp: "Rosters are updated via Participants; desktops are broadcast via Screen Sharing; text queues belong in the Q&A box; conversational floor control uses the Raise Hand flag."
+    },
+
+    // --- SECTION 3: TRUE/FALSE INTERACTIVE CHECKS (YESNO) ---
+    {
+        type: "yesno",
+        q: "Is it true that real-time communication is defined by information being sent and received instantly, much like a traditional face-to-face interaction?",
+        a: "Yes",
+        exp: "Synchronous or real-time systems transfer operational data packets without a built-in delivery lag, creating instant responses."
+    },
+    {
+        type: "yesno",
+        q: "Does asynchronous interaction mean that there is an intentional or structural time delay between sending information and receiving a response?",
+        a: "Yes",
+        exp: "Delayed or asynchronous communication includes mechanisms like emails, message boards, or offline tasks where answers aren't expected instantly."
+    },
+    {
+        type: "yesno",
+        q: "Was Microsoft SharePoint natively architected to strictly prevent data collaboration outside an internal network, blocking all access for external partner organizations?",
+        a: "No",
+        exp: "SharePoint functions explicitly as a web-based collaborative environment designed to securely share files with both internal staff and authorized external partners."
+    },
+    {
+        type: "yesno",
+        q: "Does document version control permit multiple people to save conflicting edits over the exact same file paragraph at the absolute same microsecond?",
+        a: "No",
+        exp: "Version control prevents document corruption by locking edits to a single authorized user at a time, or by cleanly separating individual revision histories."
+    },
+    {
+        type: "yesno",
+        q: "Can a workflow control system automatically forward a project document to the next reviewer in line once the current approver marks their task completed?",
+        a: "Yes",
+        exp: "The core purpose of automated workflow engines is to instantly hand off files down a predetermined administrative chain without manual intervention."
+    },
+    {
+        type: "yesno",
+        q: "Is it considered poor digital etiquette to post non-work comments, text strings, or multimedia files inside social networking areas designated for business communication?",
+        a: "No",
+        exp: "Dedicated social networking fields on team portals are specifically created to let staff share text updates and media to build quick engagement outside formal records."
+    },
+    {
+        type: "yesno",
+        q: "Do collaborative group calendars require each individual attendee to manually calculate time zone math before clicking accept?",
+        a: "No",
+        exp: "Modern scheduling software auto-detects and scales meeting requests to each participant's local workstation clock configuration."
+    },
+    {
+        type: "yesno",
+        q: "If you configure an explicit digital calendar entry for a web conference, can you typically launch into that virtual environment using a direct 'Join Meeting' button inside the calendar interface?",
+        a: "Yes",
+        exp: "Calendar records store platform meta-links. Clicking 'Join Meeting' instantly opens the app or web portal room."
+    },
+    {
+        type: "yesno",
+        q: "Are virtual webinars and screen-sharing sessions fundamentally ineffective because they require participants to leave their geographic home base to attend?",
+        a: "No",
+        exp: "Webinars allow users to gather information and collaborate interactively from anywhere on Earth without traveling."
+    },
+    {
+        type: "yesno",
+        q: "Can you dynamically add more participants to an active, ongoing live video conference by clicking the 'Participants' interface control button?",
+        a: "Yes",
+        exp: "The Participants button opens full menu options to invite, dial in, or authorize permissions for additional users while a call is running."
+    },
+    {
+        type: "yesno",
+        q: "Will a meeting software window display a participant's live video stream even if their hardware webcam device is completely powered down or disconnected?",
+        a: "No",
+        exp: "If a user's camera is turned off or missing, the software dashboard defaults to showing their static system profile picture or text name string instead."
+    },
+    {
+        type: "yesno",
+        q: "Does screen sharing allow you to pass control of your visible mouse cursor and displayed applications directly to a remote connected user?",
+        a: "Yes",
+        exp: "Modern collaboration platforms allow a presenter to grant mouse/keyboard control to a remote listener so they can interact with the host system live."
+    },
+    {
+        type: "yesno",
+        q: "Must an online audience interrupt a speaker mid-sentence via their microphone to ask clarification questions on a webinar?",
+        a: "No",
+        exp: "Users should utilize the text-based monitored Q&A area to log questions quietly without disrupting the presenter's delivery."
+    },
+    {
+        type: "yesno",
+        q: "Does the 'Raise Hand' button trigger a loud, continuous alarm sound that forcefully shuts down all video streams on the network?",
+        a: "No",
+        exp: "The 'Raise Hand' utility creates a subtle, non-disruptive visual marker next to the user's name on the host's monitor to request floor access."
+    },
+    {
+        type: "yesno",
+        q: "Can virtual presentations be recorded by the platform engine and subsequently placed on a shared drive for attendees to download later?",
+        a: "Yes",
+        exp: "Live sessions can be captured as multimedia files and dropped onto shared directories as a reference database."
+    },
+    {
+        type: "yesno",
+        q: "Is modifying your digital software video background to a professional look or a soft blur considered a standard digital literacy etiquette standard?",
+        a: "Yes",
+        exp: "Using a background blur hides personal surroundings, prevents visual distractions for other attendees, and preserves privacy during professional calls."
+    },
+    {
+        type: "yesno",
+        q: "Are document updates lost forever if a cloud environment lacks automated version history archiving?",
+        a: "Yes",
+        exp: "Without explicit version control or manual file increments, matching edits risk overwriting each other, leading to unrecoverable data loss."
+    },
+    {
+        type: "yesno",
+        q: "Does a web-based collaborative environment require a user to install heavy desktop application software to view shared documents?",
+        a: "No",
+        exp: "Web-based collaborative tools render content inside standard web browsers, eliminating the need for standalone desktop software installs."
+    },
+    {
+        type: "yesno",
+        q: "Do collaborative calendar platforms allow teams to deploy custom surveys and opinion polls straight into their communication workflows?",
+        a: "Yes",
+        exp: "Integrated enterprise systems let managers deploy real-time quick surveys, feedback polls, and scheduling options directly inside the shared space."
+    },
+    {
+        type: "yesno",
+        q: "If multiple team members access a single live shared folder, can reference files be distributed to all of them at the same time?",
+        a: "Yes",
+        exp: "Shared folders act as uniform file distribution points, making uploaded assets immediately available to all authenticated accounts."
+    },
+
+    // --- SECTION 4: SCENARIO-BASED EVALUATION (MCQ PROFILE) ---
+    {
+        type: "mcq",
+        q: "Your team needs to construct a digital workspace to coordinate a multi-stage project with strict review phases. Which structural feature combination will ensure files move to the right person without manual handoffs, while preventing simultaneous editing conflicts?",
+        a: [
+            "Delayed Email configurations mixed with open Social Networking message feeds.",
+            "Document Version Control paired with automated Workflow Control parameters.",
+            "Shared Network Drives connected to traditional Landline Conference bridges.",
+            "Web-based public search indices running manual Local Device Backups."
+        ],
+        cor: 1,
+        exp: "Version control prevents editing conflicts by tracking adjustments and user locks, while workflow control handles automated file handoffs based on business rules."
+    },
+    {
+        type: "mcq",
+        q: "You are dialled into an active meeting with fifteen stakeholders and notice distracting household noises coming from your microphone line. Which interface control action should you immediately execute?",
+        a: [
+            "Activate full Screen Sharing to hide your local workspace controls.",
+            "Mute your microphone channel and post urgent text commentary in the monitored Q&A area.",
+            "Click the 'Participants' button to disconnect the meeting host.",
+            "Toggle your video background property to an aggressive image layout."
+        ],
+        cor: 1,
+        exp: "Proper digital etiquette requires muting your microphone line when unexpected background noise occurs, then switching to text chat channels to stay engaged safely."
+    },
+    {
+        type: "mcq",
+        q: "A company wants to run a wide-scale digital seminar for hundreds of remote employees across multiple global offices. They need to share slide presentations live and provide access to reference files afterward without forcing anyone to travel. What approach best fits these needs?",
+        a: [
+            "Set up an asynchronous internal team email chain requesting files via direct attachments.",
+            "Deploy an enterprise web-based Webinar session utilizing real-time screen sharing and an associated shared download folder.",
+            "Implement a local shared network storage drive linked to standard analog landline phones.",
+            "Publish static documentation text assets across several independent social media blogs."
+        ],
+        cor: 1,
+        exp: "Webinars provide massive user scaling for live screen-sharing presentations, while shared cloud folders handle immediate reference file downloads post-event."
+    },
+    {
+        type: "mcq",
+        q: "What is the core technical difference between Real-time Communication and Delayed Communication in modern corporate collaboration architectures?",
+        a: [
+            "Real-time requires expensive mainframe supercomputers, while delayed functions only on cellular phones.",
+            "Real-time transmits information instantly with zero processing lag, whereas delayed communication introduces an operational time gap between actions.",
+            "Real-time systems block data security file transfers, while delayed platforms enforce absolute encryption rules.",
+            "Real-time relies completely on optical laser printers, while delayed utilizes database spreadsheets."
+        ],
+        cor: 1,
+        exp: "The key differentiator is the timeframe of delivery: real-time tools handle interactions instantly, while delayed (asynchronous) frameworks include a time buffer between updates and responses."
+    },
+    {
+        type: "mcq",
+        q: "You open your calendar client and accept a meeting invite for a project sync. According to the standard automated workflows outlined in Lesson 13, what happens next inside your personal productivity suite?",
+        a: [
+            "The email client permanently locks your inbox against receiving any other messages.",
+            "The platform automatically logs the event slot into your calendar and generates a live portal access path.",
+            "The software triggers a complete system update that forces a computer reboot.",
+            "The system automatically uploads your personal contact records to a public website repository."
+        ],
+        cor: 1,
+        exp: "Accepting a digital invitation automatically schedules the event on your integrated calendar, creating an organized launch point for the meeting link when the session goes live."
+    },
+
+    // --- SECTION 5: RAPID CONTEXT CLASSIFICATIONS (YESNO FOCUS) ---
+    {
+        type: "yesno",
+        q: "Does utilizing a shared cloud system create a uniform workspace that helps clean up chaotic email inboxes by organizing group notices into a single accessible area?",
+        a: "Yes",
+        exp: "Shared group workspaces centralize communication threads and logs, keeping clutter out of individual team member mailboxes."
+    },
+    {
+        type: "yesno",
+        q: "Can a user who is granted control of a shared screen execute operational actions inside an application on the presenter's system?",
+        a: "Yes",
+        exp: "Remote input authorization lets an attendee interact with software applications running on the host system in real time."
+    },
+    {
+        type: "yesno",
+        q: "Does a standard document workflow tracking environment require an employee to manually print out a physical page and run it to the next office floor?",
+        a: "No",
+        exp: "Workflow systems handle this digitally by routing tracking paths over web connections, saving significant administrative time."
+    },
+    {
+        type: "yesno",
+        q: "Is a face-to-face interaction categorized as a delayed communication format?",
+        a: "No",
+        exp: "Face-to-face discussion is an immediate, zero-latency exchange, making it a classic example of real-time communication."
+    },
+    {
+        type: "yesno",
+        q: "Can any user on a public browser access an internal enterprise SharePoint library if it is explicitly locked down by corporate security administrators?",
+        a: "No",
+        exp: "Access to secured cloud document portals strictly requires explicit profile authentication and verified system permissions."
+    },
+    {
+        type: "yesno",
+        q: "Are team polls and surveys effective tools for gathering data and making decisions during collaborative projects?",
+        a: "Yes",
+        exp: "Integrated polling features allow team leaders to rapidly collect opinions, gauge project consensus, and build data-driven schedules."
+    },
+    {
+        type: "yesno",
+        q: "Will clicking the 'Join Meeting' link inside an active calendar entry fail to open if your computer has no network access to the web?",
+        a: "Yes",
+        exp: "Web conferencing tools run entirely over cloud data tunnels; you must have an active internet connection to access a meeting space."
+    },
+    {
+        type: "yesno",
+        q: "Is it considered acceptable etiquette during an important corporate presentation to leave your microphone line unmuted while typing loudly on a mechanical keyboard?",
+        a: "No",
+        exp: "Typing clatter creates immediate background noise disruption; lines should stay muted unless you are actively speaking to the group."
+    },
+    {
+        type: "yesno",
+        q: "Can shared folders on cloud environments house large directories of reference files, documents, and slides for an entire organization?",
+        a: "Yes",
+        exp: "Shared directories provide high-volume storage infrastructure to distribute key reference material to authorized users."
+    },
+    {
+        type: "yesno",
+        q: "Does version control ensure that editing records show exactly which team member made a change to a shared document?",
+        a: "Yes",
+        exp: "Comprehensive version control platforms tag each change with a unique user stamp, providing a clear audit log of all updates."
+    },
+    {
+        type: "yesno",
+        q: "Is it a waste of time to run an interactive training webinar if you want to teach remote employees new software skills without traveling?",
+        a: "No",
+        exp: "Webinars are highly effective tools for long-distance training, allowing screen-sharing demonstrations and live Q&A sessions globally."
+    },
+    {
+        type: "yesno",
+        q: "Does a digital system's 'Participants' window display an accurate roster of everyone currently connected to a virtual meeting room?",
+        a: "Yes",
+        exp: "The Participants panel serves as a real-time attendance log, allowing hosts to verify who is listening or presenting on the call."
+    },
+    {
+        type: "yesno",
+        q: "Can a presentation host choose to record a live web conference to ensure team members who missed it can review it later?",
+        a: "Yes",
+        exp: "Recording tools convert live video streams into standalone video files that can be archived and accessed asynchronously on-demand."
+    },
+    {
+        type: "yesno",
+        q: "Does a soft background blur or custom virtual image help shield your personal environment from being broadcast over a work video feed?",
+        a: "Yes",
+        exp: "Virtual backgrounds dynamically mask your actual physical room, keeping the focus entirely on you and maintaining privacy."
+    },
+    {
+        type: "yesno",
+        q: "Are email communications considered real-time interactions since they always trigger an instant face-to-face video feed?",
+        a: "No",
+        exp: "Email is a delayed, text-based communication format that does not provide immediate video interaction or real-time delivery tracking."
+    },
+    {
+        type: "yesno",
+        q: "Can team members use built-in social tools within their corporate project hub to post quick text updates and coordinate tasks?",
+        a: "Yes",
+        exp: "Modern collaboration platforms integrate internal feeds to let staff share text updates and coordinate tasks without formal email chains."
+    },
+    {
+        type: "yesno",
+        q: "Will a digital calendar app reject a meeting invitation if you choose to accept it through your email client workflow?",
+        a: "No",
+        exp: "Accepting an invite in your email client automatically flags your calendar engine to log the event slot seamlessly."
+    },
+    {
+        type: "yesno",
+        q: "Is it required to keep your webcam turned on during a virtual meeting if you have low internet bandwidth and want to prevent audio dropping?",
+        a: "No",
+        exp: "Turning off your camera saves substantial data bandwidth, which can help keep your voice connection stable if network performance drops."
+    },
+    {
+        type: "yesno",
+        q: "Do monitored text chat zones inside webinars allow users to ask questions safely without breaking the speaker's vocal delivery flow?",
+        a: "Yes",
+        exp: "Monitored chat boxes allow participants to log questions cleanly in text, letting the presenter answer them at an appropriate stopping point."
+    },
+    {
+        type: "yesno",
+        q: "Can file version histories be completely ignored when multiple people are collaborating on a critical project report?",
+        a: "No",
+        exp: "Ignoring version tracking risks overwriting important edits, making clear tracking essential to avoid data loss."
+    }
+],
+l2_lesson14: [
+    // --- SECTION 1: CERTIPORT-STYLE SEQUENTIAL REARRANGEMENTS (ARRANGE) ---
+    {
+        type: "arrange",
+        q: "You suspect a data-harvesting application is running silently in the background of your mobile device. Arrange the correct manual administrative steps to audit and block application camera permissions on a modern mobile operating system.",
+        steps: [
+            "Launch the main system Settings interface panel on your device.",
+            "Scroll down and select the App Management or Privacy section.",
+            "Tap explicitly on Permission Manager and select the Camera sub-category.",
+            "Review the list of software applications that currently have active rights.",
+            "Select the suspicious application and toggle its permission parameter to 'Don't Allow' or 'Deny'."
+        ],
+        exp: "Certiport administrative tasks require navigating from global Settings to specific Privacy/Permission consoles, choosing the target sensor hardware (Camera), and selecting 'Don't Allow' for the targeted application to block unauthorized video captures."
+    },
+    {
+        type: "arrange",
+        q: "A collaborative corporate document contains highly sensitive operational records. Arrange the steps to execute encryption and add a structural password lock to an office document asset before uploading it to shared network spaces.",
+        steps: [
+            "Open your document workspace file and navigate to the File menu tab.",
+            "Select the Info or Protection submenu option.",
+            "Click on the 'Protect Document' or 'Encrypt document' command button.",
+            "Type a highly secure, non-trivial alphanumeric string into the designated Password field.",
+            "Re-enter the password string to confirm accuracy and click OK to commit the cryptographic layer."
+        ],
+        exp: "Securing local files natively involves finding File > Info > Protect, inputting a password string, and validating that entry to instantiate the local encryption algorithm."
+    },
+    {
+        type: "arrange",
+        q: "You have downloaded a project archive folder onto an office terminal and must configure explicit file access rights. Arrange the steps to configure read-only restriction rules for guest users.",
+        steps: [
+            "Right-click on the specific target folder inside your operating system's file manager.",
+            "Select the Properties option from the context dropdown menu.",
+            "Navigate to the Security tab to access the multi-tier ACL permissions layout.",
+            "Select the specific Guest or User profile string from the Group names roster.",
+            "Click Edit, check the box labeled Read-Only or Deny Write, and click Apply."
+        ],
+        exp: "Operating system file security is adjusted via an object's Properties window, where the Security tab allows granular control over access levels (Read/Write) for specific system users."
+    },
+    {
+        type: "arrange",
+        q: "An employee receives a high-density external USB storage drive from an unknown source. Arrange the safety protocol steps before interacting with any digital assets inside that storage unit.",
+        steps: [
+            "Insert the removable media into the isolated terminal's physical hardware port.",
+            "Cancel or completely bypass any automatic file execution or autoplay wizard pop-ups.",
+            "Open your local anti-malware security application interface console.",
+            "Initiate a targeted root custom scan directly pointing to the external drive letter partition.",
+            "Wait for the security application to confirm zero threats are present before opening any directories."
+        ],
+        exp: "Safe interaction with unknown external media requires bypassing system Autoplay triggers and running an explicitly targeted anti-malware scan to catch malicious payloads before files run."
+    },
+
+    // --- SECTION 2: MULTI-TIER COGNITIVE MATRICES (MATCH) ---
+    {
+        type: "match",
+        q: "Match each physical or mental health risk concept with its definitive digital baseline or manifestation trait.",
+        pairs: [
+            { item: "Ergonomics", match: "The science of organizing physical computer workspaces to minimize skeletal strain, repetitive injuries, and fatigue." },
+            { item: "Digital Unplugging", match: "The intentional, periodic complete disconnection from internet environments to restore psychological focus." },
+            { item: "Catfishing", match: "The fraudulent creation of highly elaborate fake digital personas on social networks to deceive targeted users." },
+            { item: "FOMO", match: "A systemic anxiety state triggered by social media feeds causing a persistent fear of missing out on rewarding events." }
+        ],
+        exp: "Ergonomics structures physical safety; unplugging protects cognitive health; catfishing is identity fraud; FOMO is an anxiety cycle driven by tracking peer social updates."
+    },
+    {
+        type: "match",
+        q: "Match the following technical security concepts with their correct operational definitions.",
+        pairs: [
+            { item: "Data Encryption", match: "Cryptographically scrambling plain text information into unreadable cyphertext to protect it against unauthorized intercepts." },
+            { item: "Camera Blocking", match: "System-level or physical hardware restriction of lens elements to stop background video espionage." },
+            { item: "File Permissions", match: "Granular administrative configuration parameters determining who can read, modify, or run data files." },
+            { item: "Untrusted Removable Media", match: "External physical drives or hardware pieces that carry a high risk of harboring hidden malicious software code." }
+        ],
+        exp: "Encryption renders data unreadable; camera blocks limit sensor exposure; permissions enforce logical access rules; untrusted media poses a hardware/malware threat."
+    },
+    {
+        type: "match",
+        q: "Match the workplace physical hazard with the correct ergonomic corrective measure.",
+        pairs: [
+            { item: "Carpal Tunnel Syndrome", match: "Maintaining neutral, completely straight wrist alignments while utilizing a keyboard and ergonomic mouse." },
+            { item: "Digital Eye Strain", match: "Applying the 20-20-20 visual rule and tuning the local monitor brightness to match ambient room lighting." },
+            { item: "Lumbar Muscular Strain", match: "Utilizing an adjustable office chair that provides deliberate, rigid curvature alignment for the lower spine." },
+            { item: "Cervical Neck Strain", match: "Positioning the top edge of your main display terminal directly at or slightly below horizontal eye level." }
+        ],
+        exp: "Carpal tunnel relates to wrist angling; eye strain requires visual breaks; lumbar relates to lower back support; neck safety is dependent on appropriate monitor heights."
+    },
+
+    // --- SECTION 3: TRUE / FALSE LOGICAL TASKS (YESNO) ---
+    {
+        type: "yesno",
+        q: "Is it true that ergonomics is defined as the applied engineering science of configuring physical workspaces to maximize user comfort, health, and operational productivity?",
+        a: "Yes",
+        exp: "Ergonomics specifically addresses the physical interface between humans and computers to minimize injuries and fatigue."
+    },
+    {
+        type: "yesno",
+        q: "Does positioning your computer display monitor significantly above horizontal eye level reduce long-term cervical neck strain?",
+        a: "No",
+        exp: "Displays should sit at or slightly below eye level; keeping a monitor too high forces an unnatural backward tilt of the neck, leading to severe spine stress."
+    },
+    {
+        type: "yesno",
+        q: "Will adjusting your monitor's contrast and brightness parameters to match local ambient office illumination help protect you from digital eye strain?",
+        a: "Yes",
+        exp: "Matching display output luminosity to room lighting prevents the pupils from overworking, reducing optical fatigue."
+    },
+    {
+        type: "yesno",
+        q: "Does the term 'Digital Unplugging' describe the technical process of formatting an internal solid-state storage drive using command line prompts?",
+        a: "No",
+        exp: "Digital unplugging is a mental health practice that involves intentionally disconnecting from digital screens and internet environments to recharge."
+    },
+    {
+        type: "yesno",
+        q: "Can excessive, unchecked monitoring of peer social media feeds trigger the psychological anxiety state known as FOMO (Fear of Missing Out)?",
+        a: "Yes",
+        exp: "Consistently tracking curated, high-highlight digital posts from others can cultivate an intense anxiety that one is excluded from valuable experiences."
+    },
+    {
+        type: "yesno",
+        q: "Is 'Catfishing' defined as the deployment of automated network firewall rules designed to block malicious incoming traffic patterns?",
+        a: "No",
+        exp: "Catfishing is a social engineering deception where a threat actor builds a completely fraudulent profile to trick or exploit another user."
+    },
+    {
+        type: "yesno",
+        q: "Does posting inflammatory, highly negative comments online leave a permanent digital footprint that can hurt your future employment opportunities?",
+        a: "Yes",
+        exp: "Content published online is indexed and permanently archived, creating a reputation trail that corporate recruitment teams regularly review."
+    },
+    {
+        type: "yesno",
+        q: "When a file is encrypted using modern cryptographic protocols, can an unauthorized actor open and read its text details without the specific decryption key?",
+        a: "No",
+        exp: "Encryption mathematically scrambles data into ciphertext, rendering it entirely unreadable unless a matched cryptographic token or key is supplied."
+    },
+    {
+        type: "yesno",
+        q: "Can a phone or computer application collect local audio records if its microphone permissions are set to 'Deny' inside system properties?",
+        a: "No",
+        exp: "Setting a resource permission to Deny instructs the operating system kernel to completely block the app's access to that underlying hardware interface."
+    },
+    {
+        type: "yesno",
+        q: "Do 'Read-Only' file attributes grant an external guest user full authority to modify code cells and permanently delete text blocks within that file?",
+        a: "No",
+        exp: "Read-Only constraints permit users to view file contents but explicitly block any data modification, text overwriting, or deletion updates."
+    },
+    {
+        type: "yesno",
+        q: "Is plugging a completely random USB storage device found in a public hallway directly into a critical corporate computer safe as long as the machine has a screensaver?",
+        a: "No",
+        exp: "Untrusted removable media can contain malicious hardware chips or automated software payloads that can infect system sectors the moment they are plugged in."
+    },
+    {
+        type: "yesno",
+        q: "Does setting a file to password-protected encrypt its data payload, making it safer to distribute across public network environments?",
+        a: "Yes",
+        exp: "Password protection locks document contents behind a cryptographic wrapper, preventing access if the file is intercepted during transmission."
+    },
+    {
+        type: "yesno",
+        q: "Are physical privacy covers that clip over a laptop webcam lens effective at stopping remote hackers from spying on you through your camera?",
+        a: "Yes",
+        exp: "A physical shutter provides an absolute barrier that completely blocks the camera sensor, ensuring privacy even if software security is breached."
+    },
+    {
+        type: "yesno",
+        q: "Can standard malware applications modify system properties or disable logging modules if an administrative account grants them unfettered root permissions?",
+        a: "Yes",
+        exp: "Malware running with administrative privileges gains full structural authority to modify internal files, stop defenses, and corrupt data."
+    },
+    {
+        type: "yesno",
+        q: "Does a 'Full Control' file permission setting mean that a user can read, write, modify, and adjust the ownership settings of that file object?",
+        a: "Yes",
+        exp: "Full Control grants complete administrative access to an asset, including editing permissions, deleting data, and modifying ACL properties."
+    },
+    {
+        type: "yesno",
+        q: "Is it completely impossible to experience physical wrist strain or carpal tunnel issues if you type on a modern wireless mechanical keyboard?",
+        a: "No",
+        exp: "Physical strain is caused by typing posture and wrist angling, regardless of whether a keyboard uses wireless or mechanical switches."
+    },
+    {
+        type: "yesno",
+        q: "Does the 20-20-20 ergonomic rule state that you should stare at a bright digital screen for 20 hours straight without moving your focus?",
+        a: "No",
+        exp: "The rule states that every 20 minutes, you should look at an object at least 20 feet away for at least 20 seconds to give your eye muscles a break."
+    },
+    {
+        type: "yesno",
+        q: "Can threat actors utilize social media tracking data to gather personal details about you to orchestrate targeted catfishing attacks?",
+        a: "Yes",
+        exp: "Attackers look through public timelines and profiles to harvest background details, helping them construct highly convincing fake identities."
+    },
+    {
+        type: "yesno",
+        q: "Will an encryption algorithm lose all protective functionality if the legitimate user openly shares the primary decryption key on a public forum?",
+        a: "Yes",
+        exp: "The security of encrypted data depends on keeping the key safe; exposing a key allows anyone to decrypt and read the information."
+    },
+    {
+        type: "yesno",
+        q: "Are file permissions managed identically across every single type of cloud storage system and local computer hardware operating system on earth?",
+        a: "No",
+        exp: "Different operating systems and file structures use distinct security models and interfaces to manage file and folder access permissions."
+    },
+
+    // --- SECTION 4: MINIMIZED HIGH-TIER CHOICE SELECTIONS (MCQ) ---
+    {
+        type: "mcq",
+        q: "An investigator needs to safely store an image file containing highly sensitive evidence on a local workstation shared by multiple users. Which combination of actions provides the best protection against unauthorized access?",
+        a: [
+            "Change the display filename to lowercase and hide the directory inside an arbitrary social media blog folder.",
+            "Apply a strong password cryptographic encryption wrapper to the file and configure native OS permissions to deny write/read access to other profiles.",
+            "Move the data to an untrusted external USB drive and leave it unmonitored on an open office desk matrix.",
+            "Adjust the system monitor brightness levels down to zero percent and clear the browser's cookies registry cache."
+        ],
+        cor: 1,
+        exp: "Combining file-level encryption with strict operating system user permissions ensures the asset remains unreadable and inaccessible, even if other users access the terminal."
+    },
+    {
+        type: "mcq",
+        q: "A professional encounters an application that demands continuous access to location data, camera sensors, and contact lists to run a basic text document template. What risk assessment response best aligns with intermediate digital citizenship rules?",
+        a: [
+            "Grant full access permissions immediately to bypass the pop-up warning boxes and speed up work execution.",
+            "Evaluate the app's requirements with appropriate skepticism, deny permissions that don't match its core function, and search for a safer alternative.",
+            "Reboot the workstation monitor five times to trigger an automated hardware firewall configuration update.",
+            "Post your personal account credentials on an online public discussion board to ask community bots for a quick override password."
+        ],
+        cor: 1,
+        exp: "Intermediate digital literacy emphasizes questioning intrusive permission requests, limiting application access to sensitive hardware sensors, and protecting your data privacy."
+    },
+    {
+        type: "mcq",
+        q: "You are experiencing persistent lower back pain and visual blurring after sitting through long data-analysis sessions at your office terminal. Which set of adjustments directly addresses the structural cause of these issues?",
+        a: [
+            "Upgrade your network connection to a high-speed fiber line and buy a larger external backup storage drive.",
+            "Configure an adjustable chair to support your lumbar spine, place the display monitor at horizontal eye level, and integrate regular 20-20-20 visual breaks.",
+            "Encrypt all system files and configure the webcam permissions toggle parameter to 'Deny' across all accounts.",
+            "Type using all capital letters to increase visibility and post summaries on an online community forum to find feedback metrics."
+        ],
+        cor: 1,
+        exp: "Back strain and eye strain are handled through proper ergonomic design: using structured lumbar support, setting optimal monitor heights, and taking regular visual breaks."
+    },
+    {
+        type: "mcq",
+        q: "What structural threat does an untrusted, unknown removable flash drive present when inserted directly into a secured local computer system?",
+        a: [
+            "It will automatically erase the physical serial numbers printed on the outer case of your computer.",
+            "It can carry malicious software payloads or automated root scripts that exploit system vulnerabilities to steal data.",
+            "It immediately converts all local data files into public open-source web pages on Google Blogger.",
+            "It forces the workstation's display cables to change their internal hardware pin wiring layout."
+        ],
+        cor: 1,
+        exp: "Untrusted flash media are a common vector for security threats, often carrying malware or auto-run scripts designed to compromise system security the moment they are plugged in."
+    },
+    {
+        type: "mcq",
+        q: "Why is maintaining a positive digital footprint and practicing clean netiquette considered a critical rule for career development in today's workforce?",
+        a: [
+            "Because search engine algorithms automatically delete the user accounts of anyone who types slowly.",
+            "Because companies routinely check public digital footprints to assess a candidate's professionalism, conduct, and communication skills.",
+            "Because clean online netiquette automatically upgrades a terminal's physical RAM hardware specs over the network.",
+            "Because writing positive comments ensures your local printer never runs out of ink cartridges."
+        ],
+        cor: 1,
+        exp: "Your digital footprint serves as a permanent public record of your online behavior, making professional netiquette essential to protecting your career opportunities."
+    },
+
+    // --- SECTION 5: ADVANCED COMPREHENSION CLASSIFICATIONS (YESNO FOCUS) ---
+    {
+        type: "yesno",
+        q: "Does a hardware operating system's 'Modify' permission level allow a user to look at text lines, add data updates, and completely delete a file object?",
+        a: "Yes",
+        exp: "Modify permissions provide extensive file privileges, allowing users to read, write, edit, and delete data assets without granting full administrative control over ownership rules."
+    },
+    {
+        type: "yesno",
+        q: "Is an interactive online challenge that encourages you to share sensitive personal details or execute dangerous physical acts considered a safe digital practice?",
+        a: "No",
+        exp: "Viral online challenges that ask for sensitive personal data or push unsafe behavior pose significant identity security and physical safety risks."
+    },
+    {
+        type: "yesno",
+        q: "Can a user block an app's camera access inside settings while keeping its network access active to let it download text updates safely?",
+        a: "Yes",
+        exp: "Modern permission structures partition access settings, allowing you to disable specific hardware sensors (like the camera) while keeping standard network data options open."
+    },
+    {
+        type: "yesno",
+        q: "Does symmetric encryption utilize two completely different keys—a public key to encrypt and a separate private key to decrypt?",
+        a: "No",
+        exp: "Symmetric encryption uses a single shared key to both encrypt and decrypt data; asymmetric encryption uses separate public and private keys."
+    },
+    {
+        type: "yesno",
+        q: "Will a standard anti-virus scan automatically fix a physical spine injury caused by using an unadjustable office chair for years?",
+        a: "No",
+        exp: "Anti-virus applications target software issues only; physical injuries must be addressed through proper ergonomic support and medical care."
+    },
+    {
+        type: "yesno",
+        q: "Does using an alpha-numeric password on a compressed file help protect your data if it is accidentally sent to the wrong network user?",
+        a: "Yes",
+        exp: "Password protection encrypts file contents, preventing unauthorized recipients from opening or reading the data if a file is misrouted."
+    },
+    {
+        type: "yesno",
+        q: "Are the psychological impacts of continuous cyber-bullying or aggressive social media callouts completely harmless to an individual's long-term mental health?",
+        a: "No",
+        exp: "Persistent online harassment and toxic social environments carry serious risks, often causing severe stress, anxiety, and deep mental exhaustion."
+    },
+    {
+        type: "yesno",
+        q: "Can software update patches contain fixes that resolve underlying security vulnerabilities in your machine's app permission engine?",
+        a: "Yes",
+        exp: "System and application updates patch known security holes, keeping your data protection tools effective against exploitation."
+    },
+    {
+        type: "yesno",
+        q: "Is it considered safe netiquette to post highly accurate blueprints of your company's physical security systems on a public web profile?",
+        a: "No",
+        exp: "Publishing sensitive operational specifications creates massive security risks and violates core corporate confidentiality policies."
+    },
+    {
+        type: "yesno",
+        q: "Does your physical hand posture when typing on a flat interface influence your risk of developing repetitive strain injuries over time?",
+        a: "Yes",
+        exp: "Typing with awkwardly bent or twisted wrists strains tendons and nerves, which can lead to conditions like carpal tunnel syndrome."
+    },
+    {
+        type: "yesno",
+        q: "Will your display monitor automatically adjust its physical tilt and height settings if you type the word 'Ergonomics' into a search engine?",
+        a: "No",
+        exp: "Monitor stands require manual adjustment to properly align the display height and tilt to your eye level."
+    },
+    {
+        type: "yesno",
+        q: "Does a standard digital certificate confirm the identity of a secure web platform, helping you verify that a site is safe to interact with?",
+        a: "Yes",
+        exp: "Digital certificates authenticate a web domain's registry credentials, verifying that you are connecting to a legitimate site rather than an impersonator."
+    },
+    {
+        type: "yesno",
+        q: "Can malware applications hide within arbitrary file formats like images, audio archives, or software updates downloaded from untrusted webs?",
+        a: "Yes",
+        exp: "Threat actors often bundle malicious payloads inside seemingly harmless files to trick users into downloading and running them."
+    },
+    {
+        type: "yesno",
+        q: "Is an employee required to give their personal social media login passwords to any client who asks for them via an incoming email?",
+        a: "No",
+        exp: "You should never share your account passwords; requests for login credentials are a clear sign of phishing or social engineering tactics."
+    },
+    {
+        type: "yesno",
+        q: "Does checking file properties allow an administrator to view the exact modification timestamps and active ownership data of a file object?",
+        a: "Yes",
+        exp: "The properties menu displays core metadata, including file size, creation records, modification timestamps, and active permission listings."
+    },
+    {
+        type: "yesno",
+        q: "Will a physical webcam cover shield your office space from visual recording threats even if a malicious root program takes control of your operating system?",
+        a: "Yes",
+        exp: "A physical slider provides an absolute mechanical block that keeps the lens covered, preventing visual capture even if an attacker gains control of the system."
+    },
+    {
+        type: "yesno",
+        q: "Is it considered appropriate workplace etiquette to ignore your company's acceptable use policy as long as you complete your daily data entry?",
+        a: "No",
+        exp: "Following the company's acceptable use policy is mandatory, ensuring security compliance and maintaining operational safety across the network."
+    },
+    {
+        type: "yesno",
+        q: "Can taking regular breaks to stand up and stretch help reduce the cardiovascular and muscular risks of sitting at a desk all day?",
+        a: "Yes",
+        exp: "Taking consistent short breaks to stand and stretch boosts blood circulation and relieves muscle tension, preventing long-term physical strain."
+    },
+    {
+        type: "yesno",
+        q: "Does a 'Read' permission layer allow an online guest profile to permanently modify spreadsheet cells inside a secured directory?",
+        a: "No",
+        exp: "Read permissions restrict users to viewing file contents only, explicitly blocking any data updates, edits, or file modifications."
+    },
+    {
+        type: "yesno",
+        q: "Is it safe to run a file backup routine straight to an unverified external drive that has never been scanned by your organization's security tools?",
+        a: "No",
+        exp: "Interacting with unverified external storage devices risks exposing your terminal and files to hidden malware payloads."
+    }
+]
 };
 
 // ==========================================

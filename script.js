@@ -6259,10 +6259,23 @@ function submitExam() {
 
 function formatLessonName(key) {
     const map = {
-        'l1_lesson1': 'L1: Technology Basics', 'l1_lesson2': 'L1: Digital Citizenship',
-        'l1_lesson3': 'L1: Information Management', 'l1_lesson4': 'L1: Content Creation',
-        'l1_lesson5': 'L1: Communication', 'l1_lesson6': 'L1: Collaboration',
-        'l1_lesson7': 'L1: Safety and Security', 'l2_lesson8': 'L2: Technology Basics'
+        // --- Level 1 Mapping ---
+        'l1_lesson1': 'L1 L1: Technology Basics', 
+        'l1_lesson2': 'L1 L2: Digital Citizenship',
+        'l1_lesson3': 'L1 L3: Information Management', 
+        'l1_lesson4': 'L1 L4: Content Creation',
+        'l1_lesson5': 'L1 L5: Communication', 
+        'l1_lesson6': 'L1 L6: Collaboration',
+        'l1_lesson7': 'L1 L7: Safety and Security', 
+        
+        // --- Level 2 Mapping ---
+        'l2_lesson8': 'L2 L1: Technology Basics',
+        'l2_lesson9': 'L2 L2: Digital Citizenship',
+        'l2_lesson10': 'L2 L3: Information Management',
+        'l2_lesson11': 'L2 L4: Content Creation',
+        'l2_lesson12': 'L2 L5: Communication',
+        'l2_lesson13': 'L2 L6: Collaboration',
+        'l2_lesson14': 'L2 L7: Safety and Security'
     };
     return map[key] || key;
 }
@@ -6339,55 +6352,119 @@ function updateProgress() {
 
 /**
  * Processes completed user test configurations and prints the customized Certiport Exam Score Report interface.
- * @param {Array} questionsArray - The active Lesson Array (e.g., l2_lesson11)
+ * Dynamically parses and scales to handle Level 1, Level 2, or Level 3 modules automatically.
+ * @param {Array} questionsArray - The active Lesson Array (e.g., l1_lesson5, l2_lesson14)
  * @param {Array} userAnswers - Array containing indices of user choices matched against question lengths
  * @param {String} currentLessonTitle - Title descriptive text of the active evaluation
  */
 function generateCertiportScoreReport(questionsArray, userAnswers, currentLessonTitle = "IC3 GS6 Digital Literacy Exam") {
     let totalQuestions = questionsArray.length;
     let correctAnswersCount = 0;
+    
+    // Dynamic tracking container that automatically builds itself based on active questions
+    const dynamicDomains = {};
 
-    // Use the existing gradeQuestion function to be consistent
+    // Evaluate answers and map them dynamically
     questionsArray.forEach((question, index) => {
-        if (gradeQuestion(question, userAnswers[index])) {
+        const isCorrect = gradeQuestion(question, userAnswers[index]);
+        if (isCorrect) {
             correctAnswersCount++;
+        }
+
+        // Determine which lesson key this question belongs to
+        const activeKey = question.lessonKey || currentSelectedModuleKey;
+        
+        // Dynamic Domain Name Generator: Parses "l2_lesson12" -> "Level 2" + matching human title
+        if (activeKey && activeKey.includes('_')) {
+            const levelPrefix = activeKey.split('_')[0].toUpperCase().replace('L', 'Level '); // e.g., "Level 2"
+            const humanName = typeof formatLessonName === 'function' ? formatLessonName(activeKey) : activeKey;
+            
+            // Clean up name string to extract just the domain topic (removes redundant level prefixes if present)
+            const cleanDomainName = humanName.replace(/^L\d+\s+L\d+:\s*/i, '').replace(/^L\d+:\s*/i, '');
+            const compositeDomainTitle = `${levelPrefix} - ${cleanDomainName}`;
+
+            // Initialize the dynamic tracking bucket if it doesn't exist yet
+            if (!dynamicDomains[activeKey]) {
+                dynamicDomains[activeKey] = {
+                    name: compositeDomainTitle,
+                    total: 0,
+                    correct: 0
+                };
+            }
+
+            dynamicDomains[activeKey].total++;
+            if (isCorrect) {
+                dynamicDomains[activeKey].correct++;
+            }
         }
     });
 
-    let percentageCorrect = correctAnswersCount / totalQuestions;
+    let percentageCorrect = totalQuestions > 0 ? (correctAnswersCount / totalQuestions) : 0;
     let finalScaledScore = Math.round(100 + (percentageCorrect * 900));
     const passingThreshold = 700;
 
-    // Populate HTML
+    // Populate UI Metrics Elements
     document.getElementById("report-exam-title").innerText = currentLessonTitle;
     document.getElementById("report-date").innerText = new Date().toLocaleDateString();
     document.getElementById("report-final-score").innerText = finalScaledScore;
-    
+
     // Set Bar Width
     let visualPercentWidth = ((finalScaledScore - 100) / 900) * 100;
     document.getElementById("your-score-bar").style.width = `${Math.max(0, visualPercentWidth)}%`;
 
-    // Set Outcome
+    // Set Pass/Fail Outcome Elements
     const outcomeText = document.getElementById("report-outcome-text");
     const outcomeIcon = document.getElementById("report-outcome-icon");
     if (finalScaledScore >= passingThreshold) {
         outcomeText.innerText = "Pass";
         outcomeText.style.color = "#43b02a";
-        outcomeIcon.innerHTML = "&#10004;";
+        outcomeIcon.innerHTML = "✔";
         outcomeIcon.className = "status-icon pass";
     } else {
         outcomeText.innerText = "Fail";
         outcomeText.style.color = "#d9534f";
-        outcomeIcon.innerHTML = "&#10008;";
+        outcomeIcon.innerHTML = "✘";
         outcomeIcon.className = "status-icon fail";
     }
 
-    // Populate Table
+    // --- DYNAMIC PERFORMANCE MATRIX GENERATION ---
     let analysisTableBody = document.getElementById("section-analysis-rows");
-    analysisTableBody.innerHTML = `
-        <tr>
-            <td>Objective Domains</td>
-            <td class="text-right">${Math.round(percentageCorrect * 100)}%</td>
-        </tr>
-    `;
+    analysisTableBody.innerHTML = ""; // Flush previous test runs
+
+    // SCENARIO A: Full Level Exam (Key starts with "full_") -> Display all captured domains sequentially
+    if (currentSelectedModuleKey.startsWith("full_")) {
+        const targetLevel = currentSelectedModuleKey.split('_')[1].toLowerCase(); // e.g., "l1", "l2", "l3"
+        
+        Object.keys(dynamicDomains).forEach(key => {
+            // Only show domains belonging to the level taken (e.g., if full_l2 is taken, show all l2 keys)
+            if (key.startsWith(targetLevel)) {
+                let domain = dynamicDomains[key];
+                let scorePercent = domain.total > 0 ? Math.round((domain.correct / domain.total) * 100) : 0;
+                
+                let row = `<tr>
+                    <td>${domain.name}</td>
+                    <td class="text-right font-weight-bold" style="text-align: right;">${scorePercent}%</td>
+                </tr>`;
+                analysisTableBody.innerHTML += row;
+            }
+        });
+    } else {
+        // SCENARIO B: Single Module Isolated Test -> Render ONLY the one matching currentSelectedModuleKey
+        let activeDomain = dynamicDomains[currentSelectedModuleKey];
+        if (activeDomain) {
+            let scorePercent = activeDomain.total > 0 ? Math.round((activeDomain.correct / activeDomain.total) * 100) : 0;
+            let row = `<tr>
+                <td>${activeDomain.name}</td>
+                <td class="text-right font-weight-bold" style="text-align: right;">${scorePercent}%</td>
+            </tr>`;
+            analysisTableBody.innerHTML = row;
+        } else {
+            // Fallback catch-all structural safeguard
+            let globalScorePercent = Math.round(percentageCorrect * 100);
+            analysisTableBody.innerHTML = `<tr>
+                <td>Core Assessment Objective Domains</td>
+                <td class="text-right font-weight-bold" style="text-align: right;">${globalScorePercent}%</td>
+            </tr>`;
+        }
+    }
 }

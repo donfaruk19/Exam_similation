@@ -5225,120 +5225,140 @@ l2_lesson13: [
         type: "yesno",
         q: "Is it true that real-time communication is defined by information being sent and received instantly, much like a traditional face-to-face interaction?",
         a: "Yes",
+		cor: [true],
         exp: "Synchronous or real-time systems transfer operational data packets without a built-in delivery lag, creating instant responses."
     },
     {
         type: "yesno",
         q: "Does asynchronous interaction mean that there is an intentional or structural time delay between sending information and receiving a response?",
         a: "Yes",
+		cor: [true],
         exp: "Delayed or asynchronous communication includes mechanisms like emails, message boards, or offline tasks where answers aren't expected instantly."
     },
     {
         type: "yesno",
         q: "Was Microsoft SharePoint natively architected to strictly prevent data collaboration outside an internal network, blocking all access for external partner organizations?",
         a: "No",
+		cor: [false],
         exp: "SharePoint functions explicitly as a web-based collaborative environment designed to securely share files with both internal staff and authorized external partners."
     },
     {
         type: "yesno",
         q: "Does document version control permit multiple people to save conflicting edits over the exact same file paragraph at the absolute same microsecond?",
         a: "No",
+		cor: [false],
         exp: "Version control prevents document corruption by locking edits to a single authorized user at a time, or by cleanly separating individual revision histories."
     },
     {
         type: "yesno",
         q: "Can a workflow control system automatically forward a project document to the next reviewer in line once the current approver marks their task completed?",
         a: "Yes",
+		cor: [true],
         exp: "The core purpose of automated workflow engines is to instantly hand off files down a predetermined administrative chain without manual intervention."
     },
     {
         type: "yesno",
         q: "Is it considered poor digital etiquette to post non-work comments, text strings, or multimedia files inside social networking areas designated for business communication?",
         a: "No",
+		cor: [false],
         exp: "Dedicated social networking fields on team portals are specifically created to let staff share text updates and media to build quick engagement outside formal records."
     },
     {
         type: "yesno",
         q: "Do collaborative group calendars require each individual attendee to manually calculate time zone math before clicking accept?",
         a: "No",
+		cor: [false],
         exp: "Modern scheduling software auto-detects and scales meeting requests to each participant's local workstation clock configuration."
     },
     {
         type: "yesno",
         q: "If you configure an explicit digital calendar entry for a web conference, can you typically launch into that virtual environment using a direct 'Join Meeting' button inside the calendar interface?",
         a: "Yes",
+		cor: [false],
         exp: "Calendar records store platform meta-links. Clicking 'Join Meeting' instantly opens the app or web portal room."
     },
     {
         type: "yesno",
         q: "Are virtual webinars and screen-sharing sessions fundamentally ineffective because they require participants to leave their geographic home base to attend?",
         a: "No",
+		cor: [false],
         exp: "Webinars allow users to gather information and collaborate interactively from anywhere on Earth without traveling."
     },
     {
         type: "yesno",
         q: "Can you dynamically add more participants to an active, ongoing live video conference by clicking the 'Participants' interface control button?",
         a: "Yes",
+		cor: [true],
         exp: "The Participants button opens full menu options to invite, dial in, or authorize permissions for additional users while a call is running."
     },
     {
         type: "yesno",
         q: "Will a meeting software window display a participant's live video stream even if their hardware webcam device is completely powered down or disconnected?",
         a: "No",
+		cor: [false],
         exp: "If a user's camera is turned off or missing, the software dashboard defaults to showing their static system profile picture or text name string instead."
     },
     {
         type: "yesno",
         q: "Does screen sharing allow you to pass control of your visible mouse cursor and displayed applications directly to a remote connected user?",
         a: "Yes",
+		cor: [true],
         exp: "Modern collaboration platforms allow a presenter to grant mouse/keyboard control to a remote listener so they can interact with the host system live."
     },
     {
         type: "yesno",
         q: "Must an online audience interrupt a speaker mid-sentence via their microphone to ask clarification questions on a webinar?",
         a: "No",
+		cor: [false],
         exp: "Users should utilize the text-based monitored Q&A area to log questions quietly without disrupting the presenter's delivery."
     },
     {
         type: "yesno",
         q: "Does the 'Raise Hand' button trigger a loud, continuous alarm sound that forcefully shuts down all video streams on the network?",
         a: "No",
+		cor: [false],
         exp: "The 'Raise Hand' utility creates a subtle, non-disruptive visual marker next to the user's name on the host's monitor to request floor access."
     },
     {
         type: "yesno",
         q: "Can virtual presentations be recorded by the platform engine and subsequently placed on a shared drive for attendees to download later?",
         a: "Yes",
+		cor: [true],
         exp: "Live sessions can be captured as multimedia files and dropped onto shared directories as a reference database."
     },
     {
         type: "yesno",
         q: "Is modifying your digital software video background to a professional look or a soft blur considered a standard digital literacy etiquette standard?",
         a: "Yes",
+		cor: [true],
         exp: "Using a background blur hides personal surroundings, prevents visual distractions for other attendees, and preserves privacy during professional calls."
     },
     {
         type: "yesno",
         q: "Are document updates lost forever if a cloud environment lacks automated version history archiving?",
         a: "Yes",
+		cor: [true],
         exp: "Without explicit version control or manual file increments, matching edits risk overwriting each other, leading to unrecoverable data loss."
     },
     {
         type: "yesno",
         q: "Does a web-based collaborative environment require a user to install heavy desktop application software to view shared documents?",
         a: "No",
+		cor: [false],
         exp: "Web-based collaborative tools render content inside standard web browsers, eliminating the need for standalone desktop software installs."
     },
     {
         type: "yesno",
         q: "Do collaborative calendar platforms allow teams to deploy custom surveys and opinion polls straight into their communication workflows?",
         a: "Yes",
+		cor: [true],
         exp: "Integrated enterprise systems let managers deploy real-time quick surveys, feedback polls, and scheduling options directly inside the shared space."
     },
     {
         type: "yesno",
         q: "If multiple team members access a single live shared folder, can reference files be distributed to all of them at the same time?",
         a: "Yes",
+		cor: [true],
         exp: "Shared folders act as uniform file distribution points, making uploaded assets immediately available to all authenticated accounts."
     },
 
@@ -5409,120 +5429,140 @@ l2_lesson13: [
         type: "yesno",
         q: "Does utilizing a shared cloud system create a uniform workspace that helps clean up chaotic email inboxes by organizing group notices into a single accessible area?",
         a: "Yes",
+		cor: [true],
         exp: "Shared group workspaces centralize communication threads and logs, keeping clutter out of individual team member mailboxes."
     },
     {
         type: "yesno",
         q: "Can a user who is granted control of a shared screen execute operational actions inside an application on the presenter's system?",
         a: "Yes",
+		cor: [true],
         exp: "Remote input authorization lets an attendee interact with software applications running on the host system in real time."
     },
     {
         type: "yesno",
         q: "Does a standard document workflow tracking environment require an employee to manually print out a physical page and run it to the next office floor?",
         a: "No",
+		cor: [false],
         exp: "Workflow systems handle this digitally by routing tracking paths over web connections, saving significant administrative time."
     },
     {
         type: "yesno",
         q: "Is a face-to-face interaction categorized as a delayed communication format?",
         a: "No",
+		cor: [false],
         exp: "Face-to-face discussion is an immediate, zero-latency exchange, making it a classic example of real-time communication."
     },
     {
         type: "yesno",
         q: "Can any user on a public browser access an internal enterprise SharePoint library if it is explicitly locked down by corporate security administrators?",
         a: "No",
+		cor: [false],
         exp: "Access to secured cloud document portals strictly requires explicit profile authentication and verified system permissions."
     },
     {
         type: "yesno",
         q: "Are team polls and surveys effective tools for gathering data and making decisions during collaborative projects?",
         a: "Yes",
+		cor: [true],
         exp: "Integrated polling features allow team leaders to rapidly collect opinions, gauge project consensus, and build data-driven schedules."
     },
     {
         type: "yesno",
         q: "Will clicking the 'Join Meeting' link inside an active calendar entry fail to open if your computer has no network access to the web?",
         a: "Yes",
+		cor: [true],
         exp: "Web conferencing tools run entirely over cloud data tunnels; you must have an active internet connection to access a meeting space."
     },
     {
         type: "yesno",
         q: "Is it considered acceptable etiquette during an important corporate presentation to leave your microphone line unmuted while typing loudly on a mechanical keyboard?",
         a: "No",
+		cor: [false],
         exp: "Typing clatter creates immediate background noise disruption; lines should stay muted unless you are actively speaking to the group."
     },
     {
         type: "yesno",
         q: "Can shared folders on cloud environments house large directories of reference files, documents, and slides for an entire organization?",
         a: "Yes",
+		cor: [true],
         exp: "Shared directories provide high-volume storage infrastructure to distribute key reference material to authorized users."
     },
     {
         type: "yesno",
         q: "Does version control ensure that editing records show exactly which team member made a change to a shared document?",
         a: "Yes",
+		cor: [true],
         exp: "Comprehensive version control platforms tag each change with a unique user stamp, providing a clear audit log of all updates."
     },
     {
         type: "yesno",
         q: "Is it a waste of time to run an interactive training webinar if you want to teach remote employees new software skills without traveling?",
         a: "No",
+		cor: [false],
         exp: "Webinars are highly effective tools for long-distance training, allowing screen-sharing demonstrations and live Q&A sessions globally."
     },
     {
         type: "yesno",
         q: "Does a digital system's 'Participants' window display an accurate roster of everyone currently connected to a virtual meeting room?",
         a: "Yes",
+		cor: [true],
         exp: "The Participants panel serves as a real-time attendance log, allowing hosts to verify who is listening or presenting on the call."
     },
     {
         type: "yesno",
         q: "Can a presentation host choose to record a live web conference to ensure team members who missed it can review it later?",
         a: "Yes",
+		cor: [true],
         exp: "Recording tools convert live video streams into standalone video files that can be archived and accessed asynchronously on-demand."
     },
     {
         type: "yesno",
         q: "Does a soft background blur or custom virtual image help shield your personal environment from being broadcast over a work video feed?",
         a: "Yes",
+		cor: [true],
         exp: "Virtual backgrounds dynamically mask your actual physical room, keeping the focus entirely on you and maintaining privacy."
     },
     {
         type: "yesno",
         q: "Are email communications considered real-time interactions since they always trigger an instant face-to-face video feed?",
         a: "No",
+		cor: [false],
         exp: "Email is a delayed, text-based communication format that does not provide immediate video interaction or real-time delivery tracking."
     },
     {
         type: "yesno",
         q: "Can team members use built-in social tools within their corporate project hub to post quick text updates and coordinate tasks?",
         a: "Yes",
+		cor: [true],
         exp: "Modern collaboration platforms integrate internal feeds to let staff share text updates and coordinate tasks without formal email chains."
     },
     {
         type: "yesno",
         q: "Will a digital calendar app reject a meeting invitation if you choose to accept it through your email client workflow?",
         a: "No",
+		cor: [false],
         exp: "Accepting an invite in your email client automatically flags your calendar engine to log the event slot seamlessly."
     },
     {
         type: "yesno",
         q: "Is it required to keep your webcam turned on during a virtual meeting if you have low internet bandwidth and want to prevent audio dropping?",
         a: "No",
+		cor: [false],
         exp: "Turning off your camera saves substantial data bandwidth, which can help keep your voice connection stable if network performance drops."
     },
     {
         type: "yesno",
         q: "Do monitored text chat zones inside webinars allow users to ask questions safely without breaking the speaker's vocal delivery flow?",
         a: "Yes",
+		cor: [true],
         exp: "Monitored chat boxes allow participants to log questions cleanly in text, letting the presenter answer them at an appropriate stopping point."
     },
     {
         type: "yesno",
         q: "Can file version histories be completely ignored when multiple people are collaborating on a critical project report?",
         a: "No",
+		cor: [false],
         exp: "Ignoring version tracking risks overwriting important edits, making clear tracking essential to avoid data loss."
     }
 ],

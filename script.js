@@ -4719,104 +4719,431 @@ const allModules = {
         ],
         cor: 2,
         exp: "Currency in information evaluation methodologies gauges how recently the material was recorded, edited, or reviewed to protect against obsolete data."
+    }
+	],
+	l1_lesson12: [
+    // --- 1. MESSAGING APPS & SMS ---
+    {
+        type: "mcq",
+        q: "What does SMS stand for in the context of mobile communication?",
+        a: ["System Messaging Standard", "Short Message Service", "Standard Mobile Stream", "Secure Media System"],
+        cor: 1,
+        exp: "SMS stands for Short Message Service, the protocol used for text messaging over cellular networks."
+    },
+    {
+        type: "mcq",
+        q: "What is the approximate character limit for an SMS message?",
+        a: ["500-1000", "1000-2000", "100-200", "Unlimited"],
+        cor: 2,
+        exp: "SMS messages are generally limited to 100-200 characters depending on the service provider."
+    },
+    {
+        type: "yesno",
+        q: "Evaluate these statements about text messaging:",
+        statements: [
+            "SMS is the protocol used for sending photos.",
+            "You must know the recipient's cell phone number to send an SMS.",
+            "International texts are always free of extra charges."
+        ],
+        cor: [false, true, false],
+        exp: "SMS is for text; MMS is for media. Providers often charge extra for international texts."
+    },
+    {
+        type: "matching",
+        q: "Match the messaging term to its correct description:",
+        pairs: [
+            { term: "SMS", definition: "Short text strings sent over cellular networks." },
+            { term: "MMS", definition: "Multimedia messages including photos and videos." },
+            { term: "Chat Rooms", definition: "Online spaces for real-time text discussion." }
+        ],
+        exp: "Understanding the difference between text-only and multimedia messaging is essential."
     },
 
-    // --- SECTION 5: COMPLEX IDENTIFICATION & CLASSIFICATION (YES/NO FOCUS) ---
+    // --- 2. MULTIMEDIA MESSAGING (MMS) ---
     {
-        type: "yesno",
-        q: "Does a standard digital certificate contain data that validates the cryptographic key and proves the true identity of a website's parent entity?",
-        a: "Yes",
-        exp: "Digital certificates are cryptographic credentials issued by trusted authorities specifically to bind identity data to a web domain's public keys."
+        type: "mcq",
+        q: "What kind of content is MMS primarily designed to send?",
+        a: ["Only text under 100 characters", "Photographs, videos, and news updates", "Hardware configuration files", "System BIOS updates"],
+        cor: 1,
+        exp: "MMS (Multimedia Messaging Service) is used for sharing media like photos and videos."
     },
     {
         type: "yesno",
-        q: "Can standard cell phone text messaging apps be used to transmit files, photos, and video attachments if the underlying network protocol switches from SMS to MMS?",
-        a: "Yes",
-        exp: "Multimedia Messaging Service (MMS) expands basic texting capabilities to support sending photos, audio, short video clips, and location markers."
+        q: "Is MMS speed always consistent regardless of file size?",
+        statements: [
+            "No, MMS speed depends on message size and cellular network speed.",
+            "Yes, it is always the same speed as SMS.",
+            "Yes, network speed does not affect MMS."
+        ],
+        cor: [true, false, false],
+        exp: "MMS can be slower than SMS because it carries larger media files."
+    },
+    {
+        type: "mcq",
+        q: "Why might you choose to text someone instead of calling them?",
+        a: ["When you want to spend more money", "When no other communication forms are available", "To increase your internet data plan", "When you want to delete their contact"],
+        cor: 1,
+        exp: "Texting is a useful alternative when other forms of communication are unavailable or the recipient cannot answer."
+    },
+
+    // --- 3. STREAMING & MEDIA SERVERS ---
+    {
+        type: "mcq",
+        q: "What is the function of a 'Media Server'?",
+        a: ["To delete files from your hard drive", "To send streaming content to a client application", "To print documents", "To manage your local printer"],
+        cor: 1,
+        exp: "The media server streams content to the client, which plays it in a media player."
+    },
+    {
+        type: "multi",
+        q: "Which actions can you perform on pre-recorded streamed files? (Select 3)",
+        a: ["Pause", "Rewind", "Fast-forward", "Delete from server", "Format the drive"],
+        cor: [0, 1, 2],
+        required: 3,
+        exp: "Pre-recorded streams allow standard playback controls like pause, rewind, and fast-forward."
     },
     {
         type: "yesno",
-        q: "Is it necessary to complete a formal system reboot every time an in-app purchase is successfully processed on a smartphone?",
-        a: "No",
-        exp: "In-app purchases update dynamically within the running program context by communicating with the app store API; no device reboot is required."
+        q: "Evaluate these statements about Live Streaming:",
+        statements: [
+            "Live streaming involves broadcasting real-time footage over the Internet.",
+            "You can pause and rewind a live broadcast just like a file.",
+            "Viewers can play streams on mobile devices like phones."
+        ],
+        cor: [true, false, true],
+        exp: "Live streams are broadcast in real-time, so they cannot be paused or rewound."
+    },
+    {
+        type: "categorization",
+        q: "Categorize the communication and media types:",
+        categories: ["Streaming", "Messaging"],
+        items: [
+            { name: "Live Video Feed", category: "Streaming" },
+            { name: "SMS", category: "Messaging" },
+            { name: "MMS", category: "Messaging" },
+            { name: "Pre-recorded Movie", category: "Streaming" }
+        ],
+        exp: "Streaming handles media feeds, while Messaging handles text and small file exchanges."
+    },
+
+    // --- 4. STREAMING BUSINESS & COST ---
+    {
+        type: "mcq",
+        q: "What happens if you do not subscribe to a streaming service?",
+        a: ["Your device will crash", "You will see advertisements appear while streaming", "The service will work faster", "You will be banned from the internet"],
+        cor: 1,
+        exp: "Free streaming tiers often rely on advertisements to support the service."
+    },
+    {
+        type: "mcq",
+        q: "What hardware is typically needed to broadcast a live stream?",
+        a: ["A satellite dish and a pager", "A camera and a computer", "A landline telephone", "A fax machine"],
+        cor: 1,
+        exp: "Broadcasting a live stream usually requires a camera and a connected computer or mobile device."
+    },
+    {
+        type: "ordering",
+        q: "Order the typical flow of streaming content:",
+        items: [
+            "Media server hosts the content.",
+            "User selects content to watch.",
+            "Stream is sent to the client application.",
+            "Content plays in the media player."
+        ],
+        cor: [0, 1, 2, 3],
+        exp: "The server hosts, the user requests, the stream is sent, and the client displays it."
     },
     {
         type: "yesno",
-        q: "Does using the 'Bcc' field in an email client automatically encrypt the entire body text of the message from cyber intercepts?",
-        a: "No",
-        exp: "Bcc handles recipient visibility constraints only; it does not encrypt or sign the textual contents of the email body payload."
+        q: "Can viewers interact during a live broadcast?",
+        statements: [
+            "Yes, they can interact with the host or panel.",
+            "No, streaming is a one-way broadcast only.",
+            "Yes, they can interact with other viewers."
+        ],
+        cor: [true, false, true],
+        exp: "Modern streaming platforms allow for interaction with hosts and other audience members."
+    },
+
+    // --- 5. INTERNET COMMERCE & SECURITY ---
+    {
+        type: "mcq",
+        q: "What icon in the address bar indicates that a website is using encrypted, secure transactions?",
+        a: ["A trash can", "A globe", "A lock", "A wrench"],
+        cor: 2,
+        exp: "A lock icon signifies the use of HTTPS encryption for secure data transfer."
+    },
+    {
+        type: "mcq",
+        q: "What is an 'In-app purchase'?",
+        a: ["Buying a new phone from an app", "Buying items or features within an application", "Downloading an app for free", "A way to hack a website"],
+        cor: 1,
+        exp: "In-app purchases allow users to buy digital goods or unlock features within software."
+    },
+    {
+        type: "multi",
+        q: "What are some ways to pay for online commerce? (Select 2)",
+        a: ["Credit cards", "Digital wallets", "Sending physical gold", "Using a postage stamp"],
+        cor: [0, 1],
+        required: 2,
+        exp: "Credit cards and digital wallets are standard, secure digital payment methods."
     },
     {
         type: "yesno",
-        q: "Are web-based forums completely anonymous spaces where users are barred from forming organized sub-groups or threads?",
-        a: "No",
-        exp: "Forums are highly organized structures explicitly split into logical topic categories and conversation threads, often requiring registration."
+        q: "Evaluate these statements regarding e-commerce security:",
+        statements: [
+            "It is safe to enter credit card info on any website.",
+            "Always check for a secure connection before providing payment details.",
+            "E-commerce has helped businesses reach a global customer base."
+        ],
+        cor: [false, true, true],
+        exp: "Only provide payment info on secure sites; e-commerce is a global business tool."
+    },
+
+    // --- 6. ADVANCED COMMUNICATION CONCEPTS ---
+    {
+        type: "mcq",
+        q: "What does VoIP stand for?",
+        a: ["Video Over Internet Protocol", "Voice over Internet Protocol", "Virtual Online Inter-Process", "Voice On Internet Power"],
+        cor: 1,
+        exp: "VoIP is Voice over Internet Protocol, allowing phone calls via the internet."
     },
     {
         type: "yesno",
-        q: "Is an internet connection mandatory for a consumer to experience real-time video conferencing on an iOS or Android mobile device?",
-        a: "Yes",
-        exp: "Video conferencing pipelines transfer massive amounts of real-time audio/visual data packets, which strictly requires data connectivity via Wi-Fi or mobile networks."
+        q: "Does VoIP require a traditional telephone landline?",
+        statements: [
+            "Yes, it requires a copper wire landline.",
+            "No, it uses a broadband internet connection.",
+            "Only for international calls."
+        ],
+        cor: [false, true, false],
+        exp: "VoIP bypasses traditional phone lines by using internet broadband."
+    },
+    {
+        type: "matching",
+        q: "Match the internet interaction concept:",
+        pairs: [
+            { term: "Encryption", definition: "Scrambles data so unauthorized parties cannot read it." },
+            { term: "VoIP", definition: "Voice calls over the internet." },
+            { term: "Streaming", definition: "Media sent to a player in real-time." }
+        ],
+        exp: "These terms define modern digital commerce and communication basics."
+    },
+    {
+        type: "mcq",
+        q: "What is an advantage of digital communication for businesses?",
+        a: ["Eliminating the need for customers", "Improving efficiency and connectivity", "Increasing paper costs", "Removing all computer hardware"],
+        cor: 1,
+        exp: "Digital tools streamline processes and allow instant communication across the globe."
+    },
+
+    // --- 7. ADDITIONAL QUESTIONS (RECAP) ---
+    {
+        type: "mcq",
+        q: "What should you do if a website lacks a security lock icon?",
+        a: ["Enter your credit card anyway", "Avoid providing sensitive personal or financial information", "Refresh the page 10 times", "Download the entire site"],
+        cor: 1,
+        exp: "Lack of a lock icon suggests the connection is not encrypted and is unsafe for transactions."
+    },
+    {
+        type: "multi",
+        q: "Which of these are examples of digital communication? (Select 3)",
+        a: ["SMS", "Email", "Streaming Video", "Sending a paper letter", "Writing on a chalkboard"],
+        cor: [0, 1, 2],
+        required: 3,
+        exp: "SMS, Email, and Streaming are all digital, internet-based methods."
     },
     {
         type: "yesno",
-        q: "Can a user pull down the formatting toolbar within an email client to adjust font sizes, alter colors, or structure text lists?",
-        a: "Yes",
-        exp: "The formatting toolbar in email interfaces provides explicit rich-text controls to modify fonts, text properties, text alignments, and lists."
+        q: "Are message boards and forums considered digital interaction?",
+        statements: [
+            "Yes, they are online spaces for interaction.",
+            "No, they are physical offices.",
+            "Only for gamers."
+        ],
+        cor: [true, false, false],
+        exp: "Message boards and forums have long been standard digital interaction spaces."
+    },
+    {
+        type: "mcq",
+        q: "What is the primary benefit of streaming for a global business?",
+        a: ["It reduces the need for the internet", "It allows sharing information/presentations with global audiences easily", "It makes hardware smaller", "It eliminates the need for customers"],
+        cor: 1,
+        exp: "Streaming allows content to be consumed by anyone, anywhere, at any time."
+    },
+    {
+        type: "mcq",
+        q: "When sending an SMS to someone in another country, what should you expect?",
+        a: ["It is always free", "Most providers charge extra fees", "It is illegal", "It takes a month to arrive"],
+        cor: 1,
+        exp: "International texting usually incurs additional costs from your service provider."
     },
     {
         type: "yesno",
-        q: "Are international cellular text messages guaranteed to cost the exact same rate as domestic text messages under all baseline cellular contracts?",
-        a: "No",
-        exp: "International texting routing rates carry premium charges; users should carefully review their cellular contract terms to avoid unexpected international fees."
+        q: "Does the media server send a separate stream to every client?",
+        statements: [
+            "Yes, it manages individual streams to each connected client.",
+            "No, everyone gets the exact same broadcast file simultaneously.",
+            "Only for audio files."
+        ],
+        cor: [true, false, false],
+        exp: "While the source is the same, the server effectively manages individual stream connections."
+    },
+    {
+        type: "mcq",
+        q: "What is a 'Client' in a streaming context?",
+        a: ["The person who pays the bill", "The media player application on your device", "The server rack", "The internet cable"],
+        cor: 1,
+        exp: "The media player acts as the client that receives and renders the stream."
+    },
+    {
+        type: "multi",
+        q: "What can you share on mobile communication devices? (Select 3)",
+        a: ["Photos", "Videos", "Files", "Physical Hardware", "Electricity"],
+        cor: [0, 1, 2],
+        required: 3,
+        exp: "Mobile devices are designed to share digital media and files easily."
     },
     {
         type: "yesno",
-        q: "Does Voice over Internet Protocol technology run exclusively over dedicated fiber-optic copper cables completely isolated from the rest of the web?",
-        a: "No",
-        exp: "VoIP utilizes standard public and private broadband networks, parsing voice data packets alongside normal everyday web traffic."
+        q: "Is MMS limited to only 200 characters like SMS?",
+        statements: [
+            "Yes, MMS has the same limit.",
+            "No, MMS is designed for media files, not character-limited text.",
+            "Only if you pay extra."
+        ],
+        cor: [false, true, false],
+        exp: "MMS allows for photos/videos and does not share the strict character limit of SMS."
+    },
+    {
+        type: "mcq",
+        q: "Why do companies provide streaming services?",
+        a: ["To force users to buy new computers", "To share content and earn subscription or ad revenue", "To make internet slower", "To prevent file sharing"],
+        cor: 1,
+        exp: "Streaming services provide value to users and generate revenue via subs/ads."
     },
     {
         type: "yesno",
-        q: "Is an email signature block required by modern operating systems to be a legally binding, cryptographically locked document?",
-        a: "No",
-        exp: "An email signature is simply an optional block of descriptive text containing contact details, names, or sign-off greetings appended to the end of a message."
+        q: "Can you change background while on camera in a meeting?",
+        statements: [
+            "Yes, most modern meeting tools support this.",
+            "No, it is impossible.",
+            "Only if you have a green screen."
+        ],
+        cor: [true, false, false],
+        exp: "Virtual backgrounds are a standard feature in most collaboration software."
+    },
+    {
+        type: "mcq",
+        q: "What is an 'In-app purchase' used for?",
+        a: ["To delete apps", "To buy special features or digital content", "To restart the phone", "To install a printer"],
+        cor: 1,
+        exp: "In-app purchases typically unlock premium features or currency."
     },
     {
         type: "yesno",
-        q: "Should an online consumer exercise skepticism and conduct external background research if a digital vendor's brand is completely unfamiliar to them?",
-        a: "Yes",
-        exp: "Skepticism is an important digital literacy habit; researching unknown brands protects consumers from fraudulent sites and bad refund practices."
+        q: "Are all streaming services free?",
+        statements: [
+            "No, many require a monthly subscription fee.",
+            "Yes, the internet is always free.",
+            "Only the ones with ads are free."
+        ],
+        cor: [true, false, false],
+        exp: "Most quality streaming content is behind a paywall (subscription)."
+    },
+    {
+        type: "mcq",
+        q: "What does a 'Lock' icon signify in e-commerce?",
+        a: ["The site is locked from hackers", "The site uses encryption for transactions", "You cannot leave the site", "The site is offline"],
+        cor: 1,
+        exp: "The lock icon indicates the connection is encrypted/secure."
+    },
+    {
+        type: "multi",
+        q: "Which are common forms of digital interaction? (Select 3)",
+        a: ["Message boards", "Forums", "Email", "Physical paper letters"],
+        cor: [0, 1, 2],
+        required: 3,
+        exp: "Message boards, forums, and email are all forms of digital interaction."
+    },
+    {
+        type: "mcq",
+        q: "What defines 'Live Streaming'?",
+        a: ["Downloading a file first", "Broadcasting real-time audio/video", "Playing a CD", "Sending an email"],
+        cor: 1,
+        exp: "Live streaming is defined by the real-time nature of the broadcast."
     },
     {
         type: "yesno",
-        q: "Does a local library act as an acceptable physical or digital alternative tool to narrow down highly specific community resource info?",
-        a: "Yes",
-        exp: "Libraries offer access to verified scholarly lookup indices, archival storage databases, and expert assistance to locate targeted information."
+        q: "Do you need a cell number to send an SMS?",
+        statements: [
+            "Yes, you need the number.",
+            "No, you can send it via email address only.",
+            "Only for international calls."
+        ],
+        cor: [true, false, false],
+        exp: "SMS is tied to the cellular phone number protocol."
+    },
+    {
+        type: "mcq",
+        q: "Why is VoIP cheaper than traditional phone calls?",
+        a: ["It uses the internet instead of physical phone lines", "It is lower quality", "It only works at night", "It is owned by the government"],
+        cor: 0,
+        exp: "VoIP uses broadband/internet, bypassing expensive long-distance infrastructure."
     },
     {
         type: "yesno",
-        q: "Will a standard pre-recorded media stream crash if a single viewer attempts to use fast-forward controls while another user is pausing?",
-        a: "No",
-        exp: "Media servers process distinct interaction streams for each connected client asset handle, ensuring absolute independence during playback."
+        q: "Is it safe to conduct business on a public Wi-Fi without security?",
+        statements: [
+            "No, it is risky.",
+            "Yes, it is always safe.",
+            "Only if you have an antivirus."
+        ],
+        cor: [true, false, false],
+        exp: "Public Wi-Fi can be insecure; encrypted connections are safer."
+    },
+    {
+        type: "mcq",
+        q: "What is the primary way people consume streamed content?",
+        a: ["Using a media player application", "Using a calculator", "Printing it out", "Using a fax machine"],
+        cor: 0,
+        exp: "A media player is the essential client tool for viewing streams."
     },
     {
         type: "yesno",
-        q: "Is it standard protocol to run an automated spell checker and manually proofread a professional business message before firing it out?",
-        a: "Yes",
-        exp: "Proofreading and utilizing spellcheck engines minimizes syntax mistakes, maintaining professional credibility in all business communications."
+        q: "Does MMS support news and weather updates?",
+        statements: [
+            "Yes, MMS can send this info.",
+            "No, only photos.",
+            "Only text."
+        ],
+        cor: [true, false, false],
+        exp: "MMS was designed to handle various multimedia and informational data."
+    },
+    {
+        type: "mcq",
+        q: "What happens if an SMS is too long?",
+        a: ["It disappears", "It is split into multiple messages", "The phone shuts down", "It is mailed to you"],
+        cor: 1,
+        exp: "Networks typically concatenate or split long messages."
     },
     {
         type: "yesno",
-        q: "Are premium streaming platforms legally obligated to keep all content entirely free of charge for anyone who accesses their webpage?",
-        a: "No",
-        exp: "Streaming vendors use various business models, ranging from subscription paywalls to ad-supported monetization engines."
+        q: "Is streaming only for entertainment?",
+        statements: [
+            "No, it is used for business meetings and presentations.",
+            "Yes, strictly for movies.",
+            "Yes, strictly for music."
+        ],
+        cor: [true, false, false],
+        exp: "Streaming is a major business tool for global meetings and events."
     },
     {
-        type: "yesno",
-        q: "Is a traditional instant message board thread exactly identical to a landline phone conference architecture?",
-        a: "No",
-        exp: "Instant message boards use text-based asynchronous data formats, whereas landline conferencing utilizes circuit-switched voice channels."
+        type: "mcq",
+        q: "What is the primary role of a subscriber in a streaming service?",
+        a: ["To provide hardware", "To pay a fee for access to content", "To host the content", "To censor the content"],
+        cor: 1,
+        exp: "Subscribers pay to access the service's library."
     }
 ],
 l2_lesson13: [

@@ -5556,7 +5556,7 @@ l2_lesson13: [
         q: "Do monitored text chat zones inside webinars allow users to ask questions safely without breaking the speaker's vocal delivery flow?",
         a: "Yes",
 		cor: [true],
-        exp: "Monitored chat boxes allow participants to log questions cleanly in text, letting the presenter answer them at an appropriate stopping point."
+        exp: "Monitored chat boxes allow participants to log  cleanly in text, letting the presenter answer them at an appropriate stopping point."
     },
     {
         type: "yesno",
@@ -6135,21 +6135,29 @@ function saveStateToStorage(moduleKey) {
     }
 }
 
-// ==========================================
-// CORE WORKSPACE QUESTION RENDERING ENGINES
-// ==========================================
+// =================================================================
+// CORE WORKSPACE QUESTION RENDERING & GRADING ENGINES
+// =================================================================
+
 function loadQuestion() {
     if (!session) return;
     
+    // Security & State Reset to prevent "stuck" interactions
+    window.activeMatchTerm = null; 
     UI.feedback.classList.add('hidden');
     UI.optionsContainer.innerHTML = '';
     UI.interactiveContainer.innerHTML = '';
     
     const q = session.getCurrentQuestion();
-    const qType = q.type || 'mcq';
+    if (!q) return;
+
+    // NORMALIZE DATA TYPES: Bridges the gap between L1-L11 schemas and L12-L14 schemas
+    const rawType = (q.type || 'mcq').toLowerCase();
+    const qType = (rawType === 'match') ? 'matching' : (rawType === 'arrange') ? 'ordering' : rawType;
+
     UI.qText.innerText = `${session.currentIdx + 1}. ${q.q}`;
     
-    // Toggle containers
+    // Toggle UI containers based on the normalized question type
     if (['mcq', 'multi', 'yesno'].includes(qType)) {
         UI.optionsContainer.classList.remove('hidden');
         UI.interactiveContainer.classList.add('hidden');
@@ -6157,72 +6165,53 @@ function loadQuestion() {
         UI.optionsContainer.classList.add('hidden');
         UI.interactiveContainer.classList.remove('hidden');
     }
-    
-    if (session.flags.includes(session.currentIdx)) {
-        UI.flagBtn.innerText = "🚩 Flagged";
-        UI.flagBtn.classList.add('active');
-    } else {
-        UI.flagBtn.innerText = "Flag for Review";
-        UI.flagBtn.classList.remove('active');
-    }
 
-    if (session.mode === 'testing') {
-        UI.submitBtn.classList.add('hidden');
-        UI.nextBtn.classList.remove('hidden');
-        UI.nextBtn.innerText = (session.currentIdx === session.questions.length - 1) ? "Finish & Review" : "Next Question";
-    } else {
-        UI.nextBtn.innerText = "Next Question";
-        if (session.isLocked[session.currentIdx]) {
-            UI.submitBtn.classList.add('hidden');
-            UI.nextBtn.classList.remove('hidden');
-            revealTrainingFeedback(q);
-        } else {
-            UI.submitBtn.classList.remove('hidden');
-            UI.nextBtn.classList.add('hidden');
-        }
-    }
+    // Flag UI Status
+    UI.flagBtn.className = session.flags.includes(session.currentIdx) ? "active" : "";
+    UI.flagBtn.innerText = session.flags.includes(session.currentIdx) ? "🚩 Flagged" : "Flag for Review";
 
-    // TYPE ROUTER
+    // Navigation Button States
+    UI.submitBtn.classList.toggle('hidden', session.mode === 'testing' || session.isLocked[session.currentIdx]);
+    UI.nextBtn.classList.toggle('hidden', session.mode === 'training' && !session.isLocked[session.currentIdx]);
+    UI.nextBtn.innerText = (session.currentIdx === session.questions.length - 1) ? "Finish & Review" : "Next Question";
+
+    // DYNAMIC ROUTER
     if (qType === 'mcq') renderMCQ(q);
-    if (qType === 'multi') renderMulti(q);
-    if (qType === 'yesno') renderYesNo(q);
-    if (qType === 'ordering') renderOrdering(q);
-    if (qType === 'matching') renderMatching(q);
-    if (qType === 'categorization') renderCategorization(q);
+    else if (qType === 'multi') renderMulti(q);
+    else if (qType === 'yesno') renderYesNo(q);
+    else if (qType === 'ordering') renderOrdering(q);
+    else if (qType === 'matching') renderMatching(q);
+    else if (qType === 'categorization') renderCategorization(q);
+    else renderMCQ(q); // Safe Fallback
+
+    if (session.isLocked[session.currentIdx]) revealTrainingFeedback(q);
 
     updateNavGrid();
     updateProgress();
     saveStateToStorage(session.questions[0].sourceLesson); // Auto-save
 }
 
-// --- 1. STANDARD CHOICE ENGINE (MCQ) ---
+// --- 1. MCQ ENGINE ---
 function renderMCQ(q) {
-    const historicalAnswer = session.userAnswers[session.currentIdx];
+    const historical = session.userAnswers[session.currentIdx];
     const isLocked = session.mode === 'training' && session.isLocked[session.currentIdx];
 
-    q.a.forEach((option, idx) => {
+    q.a.forEach((opt, idx) => {
         const btn = document.createElement('button');
-        btn.className = 'option-btn';
-        btn.innerText = option;
-
-        if (historicalAnswer === idx) btn.classList.add('selected');
+        btn.className = `option-btn ${historical === idx ? 'selected' : ''}`;
+        btn.innerText = opt;
+        btn.disabled = isLocked;
 
         if (!isLocked) {
-            btn.onclick = () => {
-                session.userAnswers[session.currentIdx] = idx;
-                if (session.mode === 'testing') updateNavGrid();
-                loadQuestion();
-            };
-        } else {
-            btn.disabled = true;
-            if (idx === q.cor) btn.classList.add('correct-glow');
-            if (historicalAnswer === idx && historicalAnswer !== q.cor) btn.classList.add('wrong-glow');
-        }
+            btn.onclick = () => { session.userAnswers[session.currentIdx] = idx; loadQuestion(); };
+        } else if (idx === q.cor) { btn.classList.add('correct-glow'); }
+        else if (historical === idx) { btn.classList.add('wrong-glow'); }
+        
         UI.optionsContainer.appendChild(btn);
     });
 }
 
-// --- 2. MULTI-SELECT ENGINE (Select 2, 3, or 4) ---
+// --- 2. MULTI-SELECT ENGINE ---
 function renderMulti(q) {
     const historical = session.userAnswers[session.currentIdx] || [];
     const isLocked = session.mode === 'training' && session.isLocked[session.currentIdx];
@@ -6235,181 +6224,180 @@ function renderMulti(q) {
 
     q.a.forEach((opt, idx) => {
         const btn = document.createElement('button');
-        btn.className = 'option-btn';
+        btn.className = `option-btn ${historical.includes(idx) ? 'selected' : ''}`;
         btn.innerHTML = `<input type="checkbox" ${historical.includes(idx) ? 'checked' : ''} style="margin-right:10px; pointer-events:none;"> ${opt}`;
-        
-        if (historical.includes(idx)) btn.classList.add('selected');
+        btn.disabled = isLocked;
 
         if (!isLocked) {
             btn.onclick = () => {
-                let newAns = [...historical];
-                if (newAns.includes(idx)) {
-                    newAns = newAns.filter(val => val !== idx);
-                } else {
-                    if (newAns.length < (q.required || q.cor.length)) newAns.push(idx);
-                }
+                let newAns = historical.includes(idx) ? historical.filter(i => i !== idx) : [...historical];
+                if (!historical.includes(idx) && newAns.length < (q.required || q.cor.length)) newAns.push(idx);
                 session.userAnswers[session.currentIdx] = newAns;
-                if (session.mode === 'testing') updateNavGrid();
                 loadQuestion();
             };
-        } else {
-            btn.disabled = true;
-            if (q.cor.includes(idx)) btn.classList.add('correct-glow');
-        }
+        } else if (q.cor.includes(idx)) btn.classList.add('correct-glow');
+        
         UI.optionsContainer.appendChild(btn);
     });
 }
 
-// --- 3. YES/NO MATRIX ENGINE ---
+// --- 3. UNIVERSAL YES/NO ENGINE ---
 function renderYesNo(q) {
-    const historical = session.userAnswers[session.currentIdx] || {};
+    const historical = session.userAnswers[session.currentIdx];
     const isLocked = session.mode === 'training' && session.isLocked[session.currentIdx];
 
-    q.statements.forEach((stmt, idx) => {
-        const row = document.createElement('div');
-        row.style.display = "flex";
-        row.style.justifyContent = "space-between";
-        row.style.alignItems = "center";
-        row.style.padding = "15px";
-        row.style.background = "#f7fafc";
-        row.style.border = "1px solid #e2e8f0";
-        row.style.borderRadius = "8px";
-        row.style.marginBottom = "10px";
-        
-        if (isLocked) {
-            const isRowCorrect = historical[idx] === q.cor[idx];
-            row.style.borderColor = isRowCorrect ? '#38a169' : '#e53e3e';
-            row.style.background = isRowCorrect ? '#f0fff4' : '#fff5f5';
-        }
+    // Sub-Route A: Matrix Format (Lessons 1-11 style)
+    if (q.statements) {
+        const histObj = historical || {};
+        q.statements.forEach((stmt, idx) => {
+            const row = document.createElement('div');
+            row.style = "display:flex; justify-content:space-between; align-items:center; padding:15px; background:#f7fafc; border:1px solid #e2e8f0; border-radius:8px; margin-bottom:10px;";
+            if (isLocked) row.style.background = (histObj[idx] === q.cor[idx]) ? "#f0fff4" : "#fff5f5";
+            
+            row.innerHTML = `<span style="flex:1; font-weight:500;">${stmt}</span><div style="display:flex; gap:15px;">
+                <label><input type="radio" name="yn_${idx}" value="true" ${histObj[idx]===true?'checked':''} ${isLocked?'disabled':''}> Yes</label>
+                <label><input type="radio" name="yn_${idx}" value="false" ${histObj[idx]===false?'checked':''} ${isLocked?'disabled':''}> No</label>
+            </div>`;
+            
+            if (!isLocked) {
+                row.querySelectorAll('input').forEach(rad => rad.onchange = (e) => {
+                    histObj[idx] = (e.target.value === 'true');
+                    session.userAnswers[session.currentIdx] = { ...histObj };
+                });
+            }
+            UI.optionsContainer.appendChild(row);
+        });
+    } 
+    // Sub-Route B: Standard True/False Single Format (Lessons 12-14 style)
+    else {
+        const options = Array.isArray(q.a) ? q.a : ["Yes", "No"];
+        options.forEach((opt, idx) => {
+            const btn = document.createElement('button');
+            btn.className = `option-btn ${historical === opt || historical === idx ? 'selected' : ''}`;
+            btn.innerText = opt;
+            btn.disabled = isLocked;
 
-        row.innerHTML = `
-            <span style="flex:1; font-weight:500;">${stmt}</span>
-            <div style="display:flex; gap:15px;">
-                <label style="cursor:${isLocked?'not-allowed':'pointer'}">
-                    <input type="radio" name="yn_${idx}" ${historical[idx] === true ? 'checked' : ''} ${isLocked?'disabled':''}> Yes
-                </label>
-                <label style="cursor:${isLocked?'not-allowed':'pointer'}">
-                    <input type="radio" name="yn_${idx}" ${historical[idx] === false ? 'checked' : ''} ${isLocked?'disabled':''}> No
-                </label>
-            </div>
-        `;
-
-        if (!isLocked) {
-            row.querySelectorAll('input[type="radio"]').forEach((radio, radioIdx) => {
-                radio.onchange = () => {
-                    historical[idx] = radioIdx === 0; // 0 is Yes, 1 is No
-                    session.userAnswers[session.currentIdx] = { ...historical };
-                    if (session.mode === 'testing') updateNavGrid();
+            if (!isLocked) {
+                btn.onclick = () => { 
+                    session.userAnswers[session.currentIdx] = typeof q.cor === 'number' ? idx : opt; 
+                    loadQuestion(); 
                 };
-            });
-        }
-        UI.optionsContainer.appendChild(row);
-    });
+            } else {
+                let isCor = false;
+                if (typeof q.cor === 'number' && idx === q.cor) isCor = true;
+                if (typeof q.cor === 'boolean' && ((opt === "Yes" && q.cor) || (opt === "No" && !q.cor))) isCor = true;
+                if (typeof q.a === 'string' && opt === q.a) isCor = true;
+
+                if (isCor) btn.classList.add('correct-glow');
+                else if ((historical === opt || historical === idx) && !isCor) btn.classList.add('wrong-glow');
+            }
+            UI.optionsContainer.appendChild(btn);
+        });
+    }
 }
 
-// --- 4. SEQUENCE ENGINE (ORDERING) ---
+// --- 4. SEQUENCE ENGINE (ORDERING/ARRANGE) ---
 function renderOrdering(q) {
     const historical = session.userAnswers[session.currentIdx] || [];
     const isLocked = session.mode === 'training' && session.isLocked[session.currentIdx];
+    
+    // Normalization bridge: Map 'steps' to 'items'
+    const items = q.items || q.steps || [];
 
     const wrapper = document.createElement('div');
     wrapper.className = 'ordering-wrapper';
 
-    q.items.forEach((item, idx) => {
+    items.forEach((item, idx) => {
         const el = document.createElement('div');
-        el.className = 'interactive-item';
-        el.innerText = item;
-
-        const stepBadge = document.createElement('span');
-        stepBadge.className = 'step-badge';
+        el.className = 'interactive-item ' + (historical.includes(idx) ? 'selected' : '');
         
-        let matchIdx = historical.indexOf(idx);
-        if (matchIdx !== -1) {
-            el.classList.add('selected');
-            stepBadge.innerText = matchIdx + 1;
-        } else {
-            stepBadge.innerText = '-';
-        }
-        el.prepend(stepBadge);
+        const badge = document.createElement('span');
+        badge.className = 'step-badge';
+        badge.innerText = historical.indexOf(idx) !== -1 ? historical.indexOf(idx) + 1 : '-';
+        
+        el.appendChild(badge);
+        el.appendChild(document.createTextNode(item));
 
         if (!isLocked) {
             el.onclick = () => {
-                let currentPos = historical.indexOf(idx);
+                let current = historical.indexOf(idx);
                 let newSeq = [...historical];
-                if (currentPos !== -1) newSeq.splice(currentPos, 1);
-                else newSeq.push(idx);
+                if (current !== -1) newSeq.splice(current, 1);
+                else if (newSeq.length < items.length) newSeq.push(idx);
                 
                 session.userAnswers[session.currentIdx] = newSeq.length ? newSeq : null;
-                if (session.mode === 'testing') updateNavGrid();
                 loadQuestion();
             };
         } else {
             el.classList.add('disabled');
-            if (q.cor && q.cor[idx] === idx) el.classList.add('correct-glow');
+            const correctSequence = q.cor || items.map((_, i) => i);
+            if (correctSequence[historical.indexOf(idx)] === idx) el.classList.add('correct-glow');
         }
         wrapper.appendChild(el);
     });
     UI.interactiveContainer.appendChild(wrapper);
 }
 
-// --- 5. MATRIX ENGINE (MATCHING - DUPLICATION FIXED) ---
+// --- 5. MATCHING MATRIX ENGINE ---
 function renderMatching(q) {
     const historical = session.userAnswers[session.currentIdx] || {};
     const isLocked = session.mode === 'training' && session.isLocked[session.currentIdx];
-
+    
     UI.interactiveContainer.innerHTML = '<div class="matching-matrix" id="match-matrix"></div>';
     const matrix = document.getElementById('match-matrix');
 
     const leftCol = document.createElement('div'); leftCol.className = 'matrix-column';
     const rightCol = document.createElement('div'); rightCol.className = 'matrix-column';
 
-    q.pairs.forEach((pair) => {
+    // Normalization bridge: Map 'item/match' to 'term/definition'
+    const pairs = (q.pairs || []).map(p => ({
+        term: p.term || p.item,
+        definition: p.definition || p.match
+    }));
+
+    pairs.forEach((p) => {
+        // Left Column: Terms
         const termBtn = document.createElement('button');
-        termBtn.className = 'matrix-btn term-btn';
-        termBtn.innerText = pair.term;
-
-        if (historical[pair.term]) termBtn.classList.add('paired');
-        if (window.activeMatchTerm === pair.term) termBtn.classList.add('active');
-
+        termBtn.className = `matrix-btn term-btn ${historical[p.term] ? 'paired' : ''} ${window.activeMatchTerm === p.term ? 'active' : ''}`;
+        termBtn.innerText = p.term;
+        termBtn.disabled = isLocked;
+        
         if (!isLocked) {
-            termBtn.onclick = () => {
-                window.activeMatchTerm = (window.activeMatchTerm === pair.term) ? null : pair.term;
-                loadQuestion();
+            termBtn.onclick = () => { 
+                window.activeMatchTerm = window.activeMatchTerm === p.term ? null : p.term; 
+                loadQuestion(); 
             };
-        } else { termBtn.disabled = true; }
+        }
         leftCol.appendChild(termBtn);
     });
 
-    const renderedDefs = q.pairs.map(p => p.definition);
-    renderedDefs.forEach(def => {
+    // Right Column: Definitions
+    const definitions = pairs.map(p => p.definition).sort(); // Sort to mix up visually
+    definitions.forEach(def => {
         const defBtn = document.createElement('button');
         defBtn.className = 'matrix-btn def-btn';
         defBtn.innerText = def;
+        defBtn.disabled = isLocked;
 
+        let isPaired = false;
         Object.keys(historical).forEach(t => {
             if (historical[t] === def) {
-                defBtn.classList.add('paired');
-                const indicator = document.createElement('small');
-                indicator.innerText = ` [Paired]`;
-                defBtn.appendChild(indicator);
+                isPaired = true;
+                defBtn.innerHTML = `${def} <br><small style="color:#3182ce; font-weight:bold;">[Paired]</small>`;
             }
         });
+        if (isPaired) defBtn.classList.add('paired');
 
         if (!isLocked) {
             defBtn.onclick = () => {
-                if (!window.activeMatchTerm) return alert("Select a term on the left first.");
-                
-                // Remove if already paired elsewhere
+                if(!window.activeMatchTerm) return alert("Select a term on the left side first.");
                 Object.keys(historical).forEach(t => { if (historical[t] === def) delete historical[t]; });
-                
                 historical[window.activeMatchTerm] = def;
-                session.userAnswers[session.currentIdx] = { ...historical };
+                session.userAnswers[session.currentIdx] = {...historical};
                 window.activeMatchTerm = null;
-                
-                if (session.mode === 'testing') updateNavGrid();
                 loadQuestion();
             };
-        } else { defBtn.disabled = true; }
+        }
         rightCol.appendChild(defBtn);
     });
 
@@ -6417,7 +6405,7 @@ function renderMatching(q) {
     matrix.appendChild(rightCol);
 }
 
-// --- 6. CLASSIFICATION ENGINE (CATEGORIZATION) ---
+// --- 6. CATEGORIZATION ENGINE ---
 function renderCategorization(q) {
     const historical = session.userAnswers[session.currentIdx] || {};
     const isLocked = session.mode === 'training' && session.isLocked[session.currentIdx];
@@ -6446,15 +6434,13 @@ function renderCategorization(q) {
         if (!isLocked) {
             itemNode.onclick = () => {
                 const assigned = historical[item.name];
-                if (!assigned) {
-                    historical[item.name] = q.categories[0];
-                } else {
+                if (!assigned) historical[item.name] = q.categories[0];
+                else {
                     const currentIdx = q.categories.indexOf(assigned);
                     if (currentIdx === q.categories.length - 1) delete historical[item.name];
                     else historical[item.name] = q.categories[currentIdx + 1];
                 }
                 session.userAnswers[session.currentIdx] = { ...historical };
-                if (session.mode === 'testing') updateNavGrid();
                 loadQuestion();
             };
         } else { itemNode.classList.add('disabled'); }
@@ -6475,13 +6461,17 @@ function renderCategorization(q) {
 function checkAnswer() {
     if (!session) return;
     const q = session.getCurrentQuestion();
-    const qType = q.type || 'mcq';
+    
+    // Normalize Type again for submission check
+    const rawType = (q.type || 'mcq').toLowerCase();
+    const qType = (rawType === 'match') ? 'matching' : (rawType === 'arrange') ? 'ordering' : rawType;
     const ans = session.userAnswers[session.currentIdx];
 
     // Validation checks before submission
     if (qType === 'mcq' && ans === null) return alert("Please select an answer.");
     if (qType === 'multi' && (!ans || ans.length < (q.required || q.cor.length))) return alert("Please select the required number of options.");
-    if (qType === 'yesno' && (!ans || Object.keys(ans).length < q.statements.length)) return alert("Please answer Yes or No for all statements.");
+    if (qType === 'yesno' && q.statements && (!ans || Object.keys(ans).length < q.statements.length)) return alert("Please answer Yes or No for all statements.");
+    if (qType === 'yesno' && !q.statements && ans === null) return alert("Please select Yes or No.");
 
     session.isLocked[session.currentIdx] = true;
     revealTrainingFeedback(q);
@@ -6505,15 +6495,39 @@ function revealTrainingFeedback(q) {
 }
 
 function gradeQuestion(q, ans) {
-    const qType = q.type || 'mcq';
-    if (!ans) return false;
+    const rawType = (q.type || 'mcq').toLowerCase();
+    const qType = (rawType === 'match') ? 'matching' : (rawType === 'arrange') ? 'ordering' : rawType;
+
+    if (ans === null || ans === undefined) return false;
 
     if (qType === 'mcq') return ans === q.cor;
-    if (qType === 'multi') return ans.length === q.cor.length && [...ans].sort().every((v, i) => v === [...q.cor].sort()[i]);
-    if (qType === 'yesno') return q.cor.every((correctVal, i) => ans[i] === correctVal);
-    if (qType === 'ordering') return ans.length === q.items.length && ans.every((val, i) => val === q.cor[i]);
-    if (qType === 'matching') return q.pairs.every(p => ans[p.term] === p.definition);
+    
+    if (qType === 'multi') return Array.isArray(ans) && ans.length === q.cor.length && [...ans].sort().every((v, i) => v === [...q.cor].sort()[i]);
+    
+    if (qType === 'yesno') {
+        if (q.statements) return q.cor.every((correctVal, i) => ans[i] === correctVal);
+        else {
+            if (typeof q.cor === 'number') return ans === q.cor;
+            if (typeof q.cor === 'boolean') return (ans === "Yes" && q.cor) || (ans === "No" && !q.cor);
+            if (typeof q.a === 'string') return ans === q.a;
+            return false;
+        }
+    }
+    
+    if (qType === 'ordering') {
+        const items = q.items || q.steps || [];
+        const correctSequence = q.cor || items.map((_, i) => i);
+        return Array.isArray(ans) && ans.length === items.length && ans.every((val, i) => val === correctSequence[i]);
+    }
+    
+    if (qType === 'matching') {
+        const pairs = (q.pairs || []).map(p => ({term: p.term || p.item, definition: p.definition || p.match}));
+        if (Object.keys(ans).length !== pairs.length) return false;
+        return pairs.every(p => ans[p.term] === p.definition);
+    }
+    
     if (qType === 'categorization') return q.items.every(item => ans[item.name] === item.category);
+    
     return false;
 }
 
